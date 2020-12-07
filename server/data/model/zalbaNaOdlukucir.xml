@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zalba>
+    <predmet>
+        ЖАЛБА  ПРОТИВ  ОДЛУКЕ ОРГАНА  ВЛАСТИ КОЈОМ ЈЕ 
+        ОДБИЈЕН ИЛИ ОДБАЧЕН ЗАХТЕВ ЗА ПРИСТУП ИНФОРМАЦИЈИ
+    </predmet>
+    
+    
+    <kome_je_upucena>
+        <naziv>Повереникy за информације од јавног значаја и заштиту података о личности</naziv> 
+        
+        <adresa_za_postu>
+            <grad>Београд</grad>
+            <ulica>Булевар краља Александрa бр. 15</ulica>
+            <broj>15</broj>
+        </adresa_za_postu>
+    </kome_je_upucena>
+    
+    <naslov>ЖАЛБА</naslov>
+    
+    
+    <telo>
+        <zalilac>
+            <ime>Marko</ime>
+            <prezime>Suhanov</prezime>
+            <naziv></naziv>
+            <adresa>Bulevaar Oslobodjenja 70</adresa>
+            <sediste></sediste>
+        </zalilac>
+        
+        <paragraf>против решења-закључка</paragraf>
+        
+        <donosilac_odluke>
+            <naziv></naziv>
+        </donosilac_odluke>
+        
+        <paragraf>Број <broj_resenja>214</broj_resenja> од <datum_resenja>2019</datum_resenja> године. </paragraf>
+        
+        <paragraf>Наведеном одлуком органа власти (решењем, закључком, обавештењем у писаној форми са елементима одлуке) , супротно закону, 
+            одбијен-одбачен је мој захтев који сам поднео/ла-упутио/ла дана <dan_podnosenja_zahteva>19.05.2019.</dan_podnosenja_zahteva> године
+            и тако ми ускраћено-онемогућено остваривање уставног и законског права на слободан приступ информацијама од јавног значаја. 
+            Oдлуку побијам у целости, односно у делу којим <razlog_pobijanja_odluke></razlog_pobijanja_odluke>јер није заснована 
+            на Закону о слободном приступу информацијама од јавног значаја. </paragraf>
+        
+        <paragraf>На основу изнетих разлога, предлажем да Повереник уважи моју жалбу,  поништи одлука првостепеног органа и омогући ми приступ 
+            траженој/им  информацији/ма.</paragraf>
+        
+        <paragraf>Жалбу подносим благовремено, у законском року утврђеном у члану 22. ст. 1. Закона о слободном приступу информацијама од јавног значаја.</paragraf>
+        
+        <paragraf>У <grad_gde_je_podneta>Kragujevcu</grad_gde_je_podneta> дана <dan_podnosenja>15.11.2020</dan_podnosenja>. године.</paragraf>
+        
+        <podnosilac_zalbe>
+            <ime></ime>
+            <prezime></prezime>
+            
+            <adresa>
+                <grad>Kragujevac</grad>
+                <ulica>Булевар Александра 15</ulica>
+                <broj>15</broj>
+            </adresa>
+            
+            <drugi_kontakt></drugi_kontakt>
+            <potpis></potpis>
+        </podnosilac_zalbe>
+    
+    </telo>
+    
+    
+    <podnaslov>Напомена: </podnaslov>
+    
+    <paragraf> - У жалби се мора навести одлука која се побија (решење, закључак, обавештење), назив органа који је одлуку донео, 
+            као и број и датум одлуке. Довољно је да жалилац наведе у жалби у ком погледу је незадовољан одлуком, с тим да жалбу не мора посебно образложити.
+            Ако жалбу изјављује на овом обрасцу, додатно образложење може  посебно приложити.  </paragraf>
+        
+    <paragraf> - Уз жалбу обавезно приложити копију поднетог захтева и доказ о његовој предаји-упућивању органу као и копију одлуке органа 
+            која се оспорава жалбом.</paragraf>
+    
+    
+</zalba>
