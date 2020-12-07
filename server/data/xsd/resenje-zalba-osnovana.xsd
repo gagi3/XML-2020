@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.pijz.rs/resenje-zalba-osnovana" vc:minVersion="1.1"
+    xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"> </xs:schema>
