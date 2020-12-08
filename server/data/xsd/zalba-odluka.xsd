@@ -3,7 +3,7 @@
     targetNamespace="http://www.pijz.rs/zalba-odluka" vc:minVersion="1.1"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     xmlns:zo="http://www.pijz.rs/zalba-odluka">
-    <xs:element name="Zalba">
+    <xs:element name="ZalbaOdluka">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="Predmet" type="xs:string"/>
