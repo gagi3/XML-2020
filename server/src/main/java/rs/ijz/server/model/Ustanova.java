@@ -15,16 +15,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Osoba complex type.
+ * <p>Java class for Ustanova complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Osoba">
+ * &lt;complexType name="Ustanova">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ime">
+ *         &lt;element name="naziv">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *               &lt;minLength value="2"/>
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
- *         &lt;element name="prezime">
+ *         &lt;element name="grad">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *               &lt;minLength value="2"/>
@@ -40,6 +40,14 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
+ *         &lt;element name="ulica">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;minLength value="2"/>
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
+ *         &lt;element name="broj" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,63 +57,108 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Osoba", propOrder = {
-    "ime",
-    "prezime"
+@XmlType(name = "Ustanova", propOrder = {
+    "naziv",
+    "grad",
+    "ulica",
+    "broj"
 })
-public class Osoba {
+public class Ustanova {
 
     @XmlElement(required = true)
-    protected String ime;
+    protected String naziv;
     @XmlElement(required = true)
-    protected String prezime;
+    protected String grad;
+    @XmlElement(required = true)
+    protected String ulica;
+    protected int broj;
 
     /**
-     * Gets the value of the ime property.
+     * Gets the value of the naziv property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIme() {
-        return ime;
+    public String getNaziv() {
+        return naziv;
     }
 
     /**
-     * Sets the value of the ime property.
+     * Sets the value of the naziv property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIme(String value) {
-        this.ime = value;
+    public void setNaziv(String value) {
+        this.naziv = value;
     }
 
     /**
-     * Gets the value of the prezime property.
+     * Gets the value of the grad property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPrezime() {
-        return prezime;
+    public String getGrad() {
+        return grad;
     }
 
     /**
-     * Sets the value of the prezime property.
+     * Sets the value of the grad property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPrezime(String value) {
-        this.prezime = value;
+    public void setGrad(String value) {
+        this.grad = value;
+    }
+
+    /**
+     * Gets the value of the ulica property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUlica() {
+        return ulica;
+    }
+
+    /**
+     * Sets the value of the ulica property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUlica(String value) {
+        this.ulica = value;
+    }
+
+    /**
+     * Gets the value of the broj property.
+     * 
+     */
+    public int getBroj() {
+        return broj;
+    }
+
+    /**
+     * Sets the value of the broj property.
+     * 
+     */
+    public void setBroj(int value) {
+        this.broj = value;
     }
 
 }
