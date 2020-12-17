@@ -1,67 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-    elementFormDefault="qualified" 
-    targetNamespace="http://www.pijz.rs/resenje-zalba-osnovana" 
-    vc:minVersion="1.1"
-    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-    xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.pijz.rs/resenje-zalba-osnovana" vc:minVersion="1.1"
+    xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    xmlns:cmn="http://www.pijz.rs/common">
+
+    <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
+
     <xs:element name="ResenjeZalbaOsnovana">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="metadata"/>
-                <xs:element name="trazilac" type="rzo:Osoba"/>
-                <xs:element name="ustanova" type="rzo:Ustanova"/>
-                <xs:element name="poverenik" type="rzo:Osoba"/>
+                <xs:element name="trazilac" type="cmn:FizickoLice"/>
+                <xs:element name="poverenik" type="cmn:FizickoLice"/>
+                <xs:element name="ustanova" type="cmn:PravnoLice"/>
                 <xs:element name="datum_zahteva" type="xs:date"/>
                 <xs:element name="dispozitiv">
                     <xs:complexType>
-                        <xs:sequence minOccurs="1">
-                            <xs:element name="stav">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="dokument">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                  <xs:element name="naziv">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="xs:string">
-                                                  <xs:minLength value="1"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
-                                                  </xs:element>
-                                                  <xs:element name="zasticene_informacije">
-                                                  <xs:complexType>
-                                                  <xs:sequence>
-                                                  <xs:element name="zasticena_informacija">
-                                                  <xs:simpleType>
-                                                  <xs:restriction base="xs:string">
-                                                  <xs:minLength value="2"/>
-                                                  </xs:restriction>
-                                                  </xs:simpleType>
-                                                  </xs:element>
-                                                  </xs:sequence>
-                                                  </xs:complexType>
-                                                  </xs:element>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
-                                        <xs:element name="rok_obavestenja">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:int">
-                                                  <xs:minInclusive value="0"/>
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                    <xs:attribute name="redni_broj">
-                                        <xs:simpleType>
-                                            <xs:restriction base="xs:int">
-                                                <xs:minInclusive value="1"/>
-                                            </xs:restriction>
-                                        </xs:simpleType>
-                                    </xs:attribute>
-                                </xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="stav" maxOccurs="unbounded" type="rzo:Stav">
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
@@ -71,101 +27,39 @@
                         <xs:sequence>
                             <xs:element name="datum_izjave" type="xs:date"/>
                             <xs:element name="datum_postupka" type="xs:date"/>
-                            <xs:element name="rok_postupka">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:int">
-                                        <xs:minInclusive value="0"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="rok_zahteva">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:int">
-                                        <xs:minInclusive value="0"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="tuzba">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="rok">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:int">
-                                                  <xs:minInclusive value="0"/>
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:element>
-                                        <xs:element name="taksa">
-                                            <xs:simpleType>
-                                                <xs:restriction base="xs:double">
-                                                  <xs:minInclusive value="0"/>
-                                                </xs:restriction>
-                                            </xs:simpleType>
-                                        </xs:element>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
+                            <xs:element name="rok_postupka" type="xs:int"/>
+                            <xs:element name="rok_zahteva" type="xs:int"/>
+                            <xs:element name="tuzba" type="rzo:Tuzba"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="broj">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:minLength value="1"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>
+            <xs:attribute name="id" type="xs:ID"/>
+            <xs:attribute name="broj" type="xs:string"/>
             <xs:attribute name="datum" type="xs:date"/>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="Osoba">
+
+    <xs:complexType name="Stav">
         <xs:sequence>
-            <xs:element name="ime">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:minLength value="2"/>
-                        <xs:maxLength value="30"/>
-                    </xs:restriction>
-                </xs:simpleType>
+            <xs:element name="dokument">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="naziv" type="xs:string"/>
+                        <xs:element name="zasticena_informacija" maxOccurs="unbounded">
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
             </xs:element>
-            <xs:element name="prezime">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:minLength value="2"/>
-                        <xs:maxLength value="30"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="rok_obavestenja" type="xs:int"/>
         </xs:sequence>
+        <xs:attribute name="redni_broj" type="xs:int"/>
     </xs:complexType>
-    <xs:complexType name="Ustanova">
+
+    <xs:complexType name="Tuzba">
         <xs:sequence>
-            <xs:element name="naziv">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:minLength value="2"/>
-                        <xs:maxLength value="30"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="grad">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:minLength value="2"/>
-                        <xs:maxLength value="30"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="ulica">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:minLength value="2"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="broj" type="xs:int"/>
+            <xs:element name="rok" type="xs:int"/>
+            <xs:element name="taksa" type="xs:double"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
-

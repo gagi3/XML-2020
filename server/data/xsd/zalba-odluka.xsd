@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.pijz.rs/zalba-odluka" vc:minVersion="1.1"
-    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-    xmlns:zo="http://www.pijz.rs/zalba-odluka">
+    xmlns:zo="http://www.pijz.rs/zalba-odluka" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    xmlns:cmn="http://www.pijz.rs/common">
+
+    <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
+
     <xs:element name="ZalbaOdluka">
         <xs:complexType>
             <xs:sequence>
@@ -11,14 +14,14 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="Naziv" type="xs:string"/>
-                            <xs:element name="Adresa_za_postu" type="zo:Adresa"/>
+                            <xs:element name="Adresa_za_postu" type="cmn:Adresa"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="Zalilac">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Osoba_zalilac" type="zo:Osoba"/>
+                            <xs:element name="Osoba_zalilac" type="cmn:FizickoLice"/>
                             <xs:element name="Sediste_zalioca" type="xs:string"/>
                             <xs:element name="Naziv" type="xs:string"/>
                         </xs:sequence>
@@ -32,7 +35,7 @@
                 <xs:element name="Podnosilac_zalbe">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Osoba" type="zo:Osoba"/>
+                            <xs:element name="Osoba" type="cmn:FizickoLice"/>
                             <xs:element name="Drugi_kontakt" type="xs:string"/>
                             <xs:element name="Potpis" type="xs:string"/>
                         </xs:sequence>
@@ -49,18 +52,4 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="Adresa">
-        <xs:sequence>
-            <xs:element name="Grad" type="xs:string"/>
-            <xs:element name="Ulica" type="xs:string"/>
-            <xs:element name="Broj_ulice" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="Osoba">
-        <xs:sequence>
-            <xs:element name="Ime" type="xs:string"/>
-            <xs:element name="Prezime" type="xs:string"/>
-            <xs:element name="Adresa" type="zo:Adresa"/>
-        </xs:sequence>
-    </xs:complexType>
 </xs:schema>

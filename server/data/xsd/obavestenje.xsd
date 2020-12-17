@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.pijz.rs/obavestenje" vc:minVersion="1.1"
-    xmlns:o="http://www.pijz.rs/obavestenje" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    xmlns:o="http://www.pijz.rs/obavestenje" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    xmlns:cmn="http://www.pijz.rs/common">
+
+    <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
+
     <xs:element name="Obavestenje">
         <xs:complexType>
             <xs:sequence>
@@ -9,15 +13,15 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="naziv" type="xs:string"/>
-                            <xs:element name="sediste" type="o:Adresa"/>
+                            <xs:element name="sediste" type="cmn:Adresa"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="Podnosilac">
                     <xs:complexType>
                         <xs:choice>
-                            <xs:element name="fizickoLice" type="o:FizickoLice"/>
-                            <xs:element name="pravnoLice" type="o:PravnoLice"/>
+                            <xs:element name="fizickoLice" type="cmn:FizickoLice"/>
+                            <xs:element name="pravnoLice" type="cmn:PravnoLice"/>
                         </xs:choice>
                     </xs:complexType>
                 </xs:element>
@@ -44,24 +48,5 @@
             <xs:attribute name="datum" type="xs:date"/>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="Adresa">
-        <xs:sequence>
-            <xs:element name="ulica" type="xs:string"/>
-            <xs:element name="broj" type="xs:string"/>
-            <xs:element name="mesto" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="FizickoLice">
-        <xs:sequence>
-            <xs:element name="ime" type="xs:string"/>
-            <xs:element name="prezime" type="xs:string"/>
-            <xs:element name="adresa" type="o:Adresa"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="PravnoLice">
-        <xs:sequence>
-            <xs:element name="naziv" type="xs:string"/>
-            <xs:element name="adresa" type="o:Adresa"/>
-        </xs:sequence>
-    </xs:complexType>
+    
 </xs:schema>
