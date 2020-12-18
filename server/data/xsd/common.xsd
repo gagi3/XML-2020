@@ -26,4 +26,11 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="Tuzba">
+        <xs:sequence>
+            <xs:element name="rok" type="xs:int"/>
+            <xs:element name="taksa" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>

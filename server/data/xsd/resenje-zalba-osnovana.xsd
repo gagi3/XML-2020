@@ -25,11 +25,17 @@
                 <xs:element name="obrazlozenje">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="datum_izjave" type="xs:date"/>
-                            <xs:element name="datum_postupka" type="xs:date"/>
-                            <xs:element name="rok_postupka" type="xs:int"/>
-                            <xs:element name="rok_zahteva" type="xs:int"/>
-                            <xs:element name="tuzba" type="rzo:Tuzba"/>
+                            <xs:element maxOccurs="unbounded" name="paragraf"> 
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="datum_izjave" type="xs:date"/>
+                                        <xs:element name="datum_postupka" type="xs:date"/>
+                                        <xs:element name="rok_postupka" type="xs:int"/>
+                                        <xs:element name="rok_zahteva" type="xs:int"/>
+                                        <xs:element name="tuzba" type="cmn:Tuzba"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -46,8 +52,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="naziv" type="xs:string"/>
-                        <xs:element name="zasticena_informacija" maxOccurs="unbounded">
-                        </xs:element>
+                        <xs:element name="zasticena_informacija" type="xs:string" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -56,10 +61,4 @@
         <xs:attribute name="redni_broj" type="xs:int"/>
     </xs:complexType>
 
-    <xs:complexType name="Tuzba">
-        <xs:sequence>
-            <xs:element name="rok" type="xs:int"/>
-            <xs:element name="taksa" type="xs:double"/>
-        </xs:sequence>
-    </xs:complexType>
 </xs:schema>
