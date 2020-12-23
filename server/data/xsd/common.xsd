@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema vc:minVersion="1.1" elementFormDefault="qualified"
+    targetNamespace="http://www.pijz.rs/common" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common">
+    <xs:complexType name="Adresa">
+        <xs:sequence>
+            <xs:element name="grad" type="xs:string"/>
+            <xs:element name="ulica" type="xs:string"/>
+            <xs:element name="broj" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FizickoLice">
+        <xs:sequence>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="prezime" type="xs:string"/>
+            <xs:element name="adresa" type="cmn:Adresa"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PravnoLice">
+        <xs:sequence>
+            <xs:element name="naziv" type="xs:string"/>
+            <xs:element name="adresa" type="cmn:Adresa"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Tuzba">
+        <xs:sequence>
+            <xs:element name="rok" type="xs:int"/>
+            <xs:element name="taksa" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
