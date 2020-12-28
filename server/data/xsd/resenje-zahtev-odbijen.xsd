@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.pijz.rs/resenje-zahtev-odbijen" vc:minVersion="1.1"
+    xmlns:rzo="http://www.pijz.rs/resenje-zahtev-odbijen"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common">
+
+    <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
+    <xs:element name="ResenjeZhtevOdbijen">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="metadata"/>
+                <xs:element name="trazilac" type="cmn:FizickoLice"/>
+                <xs:element name="poverenik" type="cmn:FizickoLice"/>
+                <xs:element name="ustanova" type="cmn:PravnoLice"/>
+                <xs:element name="datumZalbe" type="xs:date"/>
+                <xs:element maxOccurs="1" name="brojZalbe" type="xs:string"/>
+                <xs:element name="resenje"/>
+                <xs:element name="obrazlozenje">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="paragraf">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="datumIzjave" type="xs:date"/>
+                                        <xs:element name="datumDostaveZalbe" type="xs:date"/>
+                                        <xs:element name="razlog" type="xs:string"/>
+                                        <xs:element maxOccurs="unbounded" name="trazeniOdgovori"
+                                            type="xs:string"/>
+                                        <xs:element name="obrazlozenje" type="xs:string"/>
+                                        <xs:element name="rokSlanjaOdg" type="xs:int"/>
+                                        <xs:element name="razlogNeosnovanosti" type="xs:string"/>
+                                        <xs:element name="tuzba" type="cmn:Tuzba"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ID" type="xs:string"/>
+            <xs:attribute name="broj" type="xs:string"/>
+            <xs:attribute name="datum" type="xs:date"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
