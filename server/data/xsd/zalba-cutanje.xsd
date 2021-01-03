@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.pijz.rs/zalba-cutanje" vc:minVersion="1.1"
-    xmlns:zc="http://www.pijz.rs/zalba-cutanje" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-    xmlns:cmn="http://www.pijz.rs/common">
+    xmlns:zc="http://www.pijz.rs/zalba-cutanje"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
     <xs:element name="ZalbaCutanje">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Predmet" type="xs:string"/>
-                <xs:element name="Kome_je_upucena">
+                <xs:element name="dateMetadata">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Naziv" type="xs:string"/>
-                            <xs:element name="Adresa_za_postu" type="cmn:Adresa"/>
+                            <xs:element name="datum_zahteva" type="xs:date"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Protiv_organa" nillable="false" type="xs:string"/>
-                <xs:element name="Razlog" type="xs:string"/>
-                <xs:element name="Datum_zahtevanja" type="xs:date"/>
-                <xs:element name="Podaci_o_zahtevu" type="xs:string"/>
-                <xs:element name="Podnosilac_zalbe">
+                <xs:element name="predmet" type="xs:string"/>
+                <xs:element name="kome_je_upucena">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Osoba" type="cmn:FizickoLice"/>
-                            <xs:element name="Drugi_kontakt" type="xs:string"/>
-                            <xs:element name="Potpis" type="xs:string"/>
+                            <xs:element name="naziv" type="xs:string"/>
+                            <xs:element name="adresa_za_postu" type="cmn:Adresa"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Mesto_podnosenja_zalbe">
+                <xs:element name="protiv_organa" nillable="false" type="xs:string"/>
+                <xs:element name="razlog" type="xs:string"/>
+                <xs:element name="podaci_o_zahtevu" type="xs:string"/>
+                <xs:element name="podnosilac_zalbe">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Grad" type="xs:string"/>
-                            <xs:element name="Datum" type="xs:date"/>
+                            <xs:element name="osoba" type="cmn:FizickoLice"/>
+                            <xs:element name="drugi_kontakt" type="xs:string"/>
+                            <xs:element name="potpis" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="mesto_podnosenja_zalbe">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="grad" type="xs:string"/>
+                            <xs:element name="datum" type="xs:date"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
