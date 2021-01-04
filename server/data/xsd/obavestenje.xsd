@@ -9,7 +9,8 @@
     <xs:element name="Obavestenje">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Organ">
+                <xs:element name="metadata" type="cmn:MetaData"/>
+                <xs:element name="organ">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="naziv" type="xs:string"/>
@@ -17,7 +18,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Podnosilac">
+                <xs:element name="podnosilac">
                     <xs:complexType>
                         <xs:choice>
                             <xs:element name="fizickoLice" type="cmn:FizickoLice"/>
@@ -27,14 +28,14 @@
                 </xs:element>
                 <xs:element name="naslov" type="xs:string"/>
                 <xs:element name="podnaslov" type="xs:string"/>
-                <xs:element name="Telo">
+                <xs:element name="telo">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element maxOccurs="unbounded" name="paragraf" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="Podnozje">
+                <xs:element name="podnozje">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="pecat" type="xs:string"/>
@@ -43,8 +44,8 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID"/>
-            <xs:attribute name="brojPredmeta" type="xs:string"/>
+            <xs:attribute name="ID" type="xs:ID"/>
+            <xs:attribute name="broj" type="xs:string"/>
             <xs:attribute name="datum" type="xs:date"/>
         </xs:complexType>
     </xs:element>
