@@ -5,20 +5,11 @@
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-    
+
     <xs:element name="ResenjeZahtevOdbijen">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="dateMetadata">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="datum_obavestenja" type="xs:date"/>
-                            <xs:element name="datum_zahteva" type="xs:date"/>
-                            <xs:element name="datum_zalbe" type="xs:date"/>
-                            <xs:element name="datum_postupka" type="xs:date"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="metadata" type="cmn:MetaData"/>
                 <xs:element name="trazilac" type="cmn:FizickoLice"/>
                 <xs:element name="poverenik" type="cmn:FizickoLice"/>
                 <xs:element name="ustanova" type="cmn:PravnoLice"/>
@@ -46,6 +37,10 @@
             <xs:attribute name="ID" type="xs:ID"/>
             <xs:attribute name="broj" type="xs:string"/>
             <xs:attribute name="datum" type="xs:date"/>
+            <xs:attribute name="datum_obavestenja" type="xs:date"/>
+            <xs:attribute name="datum_zahteva" type="xs:date"/>
+            <xs:attribute name="datum_zalbe" type="xs:date"/>
+            <xs:attribute name="datum_postupka" type="xs:date"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

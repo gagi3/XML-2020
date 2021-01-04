@@ -9,6 +9,7 @@
     <xs:element name="Obavestenje">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="metadata" type="cmn:MetaData"/>
                 <xs:element name="organ">
                     <xs:complexType>
                         <xs:sequence>

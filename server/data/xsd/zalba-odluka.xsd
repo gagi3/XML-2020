@@ -9,13 +9,7 @@
     <xs:element name="ZalbaOdluka">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="dateMetadata">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="datum_zahteva" type="xs:date"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="metadata" type="cmn:MetaData"/>
                 <xs:element name="predmet" type="xs:string"/>
                 <xs:element name="kome_je_upucena">
                     <xs:complexType>
@@ -56,6 +50,7 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="datum_zahteva" type="xs:date"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>
