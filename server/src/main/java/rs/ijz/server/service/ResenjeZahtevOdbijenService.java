@@ -43,7 +43,7 @@ public class ResenjeZahtevOdbijenService {
         return commonRepository.queryResenjeZahtevOdbijen(xPath).getSize() != 0;
     }
 
-    public ResenjeZahtevOdbijen save(ResenjeZahtevOdbijen resenjeZahtevOdbijen) throws Exception {
+    public ResenjeZahtevOdbijen create(ResenjeZahtevOdbijen resenjeZahtevOdbijen) throws Exception {
         if (existsById("TODO")) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }

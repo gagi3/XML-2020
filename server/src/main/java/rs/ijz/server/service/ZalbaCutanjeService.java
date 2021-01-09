@@ -43,7 +43,7 @@ public class ZalbaCutanjeService {
         return commonRepository.queryZalbaCutanje(xPath).getSize() != 0;
     }
 
-    public ZalbaCutanje save(ZalbaCutanje zalbaCutanje) throws Exception {
+    public ZalbaCutanje create(ZalbaCutanje zalbaCutanje) throws Exception {
         if (existsById("TODO")) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
