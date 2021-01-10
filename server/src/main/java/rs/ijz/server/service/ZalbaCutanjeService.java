@@ -25,12 +25,17 @@ public class ZalbaCutanjeService {
     @Autowired
     private DocumentService documentService;
 
-    public List<ZalbaCutanje> findAll() {
-        return null;
+    public List<ZalbaCutanje> findAll() throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (List<ZalbaCutanje>) commonRepository.resourceSetToClass(result, ZalbaCutanje.class);
     }
 
     public ZalbaCutanje getOne(String id) throws XMLDBException {
-        String xPath = "/zc:ZalbaCutanje[zc:zalbaCutanje_ID='" + id + "']";
+        String xPath = "/zc:ZalbaCutanje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -39,7 +44,7 @@ public class ZalbaCutanjeService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/zc:ZalbaCutanje[zc:zalbaCutanje_ID='" + id + "']";
+        String xPath = "/zc:ZalbaCutanje[@id='" + id + "']";
         return commonRepository.queryZalbaCutanje(xPath).getSize() != 0;
     }
 
@@ -51,7 +56,7 @@ public class ZalbaCutanjeService {
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/zc:ZalbaCutanje[zc:zalbaCutanje_ID='" + id + "']";
+        String xPath = "/zc:ZalbaCutanje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
         ZalbaCutanje zalbaCutanje = (ZalbaCutanje) commonRepository.resourceSetToClass(result, ZalbaCutanje.class);
         String xmlInstance = "data/xsd/instance/" + "zalba-cutanje-" + id + ".xml";

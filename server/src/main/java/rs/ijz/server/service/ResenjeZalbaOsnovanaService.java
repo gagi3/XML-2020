@@ -25,33 +25,39 @@ public class ResenjeZalbaOsnovanaService {
     @Autowired
     private DocumentService documentService;
 
-    public List<ResenjeZalbaOsnovana> findAll() {
-        return null;
-    }
-
-    public ResenjeZalbaOsnovana getOne(String id) throws XMLDBException {
-        String xPath = "/rzo:ResenjeZalbaOsnovana[rzo:resenjeZalbaOsnovana_ID='" + id + "']";
+    public List<ResenjeZalbaOsnovana> findAll() throws XMLDBException {
+        String xPath = "/rzo:ResenjeZalbaOsnovana";
         ResourceSet result = commonRepository.queryResenjeZalbaOsnovana(xPath);
         if (result.getSize() == 0) {
             return null;
         }
+        System.out.println(result.toString());
+        return (List<ResenjeZalbaOsnovana>) commonRepository.resourceSetToClass(result, ResenjeZalbaOsnovana.class);
+    }
+
+    public ResenjeZalbaOsnovana getOne(String id) throws XMLDBException {
+        String xPath = "/rzo:ResenjeZalbaOsnovana[@id='" + id + "']";
+        ResourceSet result = commonRepository.queryResenjeZalbaOsnovana(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        System.out.println(result.toString());
         return (ResenjeZalbaOsnovana) commonRepository.resourceSetToClass(result, ResenjeZalbaOsnovana.class);
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/rzo:ResenjeZalbaOsnovana[rzo:resenjeZalbaOsnovana_ID='" + id + "']";
+        String xPath = "/rzo:ResenjeZalbaOsnovana[@id='" + id + "']";
         return commonRepository.queryResenjeZalbaOsnovana(xPath).getSize() != 0;
     }
 
     public ResenjeZalbaOsnovana create(ResenjeZalbaOsnovana resenjeZalbaOsnovana) throws Exception {
-        if (existsById("TODO")) {
+        if (existsById(resenjeZalbaOsnovana.getId())) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
         return resenjeZalbaOsnovanaRepository.save(resenjeZalbaOsnovana);
     }
-
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/rzo:ResenjeZalbaOsnovana[rzo:resenjeZalbaOsnovana_ID='" + id + "']";
+        String xPath = "/rzo:ResenjeZalbaOsnovana[@id='" + id + "']";
         ResourceSet result = commonRepository.queryResenjeZalbaOsnovana(xPath);
         ResenjeZalbaOsnovana resenjeZalbaOsnovana = (ResenjeZalbaOsnovana) commonRepository.resourceSetToClass(result, ResenjeZalbaOsnovana.class);
         String xmlInstance = "data/xsd/instance/" + "resenje-zalba-osnovana-" + id + ".xml";

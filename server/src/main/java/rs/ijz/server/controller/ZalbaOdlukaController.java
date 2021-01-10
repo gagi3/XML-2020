@@ -7,13 +7,25 @@ import rs.ijz.server.dto.ResponseMessage;
 import rs.ijz.server.model.ZalbaOdluka;
 import rs.ijz.server.service.ZalbaOdlukaService;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/zalba-odluka")
 public class ZalbaOdlukaController {
     @Autowired
     private ZalbaOdlukaService zalbaOdlukaService;
-    @GetMapping(value = "/search")
+    @GetMapping(value = "", produces = "application/xml")
+    private ResponseEntity<List<ZalbaOdluka>> findAll() {
+        try {
+            List<ZalbaOdluka> zalbe = zalbaOdlukaService.findAll();
+            return ResponseEntity.ok().body(zalbe);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+    @GetMapping(value = "/search", produces = "application/xml")
     private ResponseEntity<ZalbaOdluka> getOne(@RequestParam String id) {
         try {
             ZalbaOdluka zalba = zalbaOdlukaService.getOne(id);
@@ -23,7 +35,7 @@ public class ZalbaOdlukaController {
             return ResponseEntity.badRequest().body(null);
         }
     }
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create", produces = "application/xml")
     private ResponseEntity<ZalbaOdluka> create(@RequestBody ZalbaOdluka zalba) {
         try {
             ZalbaOdluka zalbaOdluka = zalbaOdlukaService.create(zalba);

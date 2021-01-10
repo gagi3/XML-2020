@@ -5,5 +5,17 @@
 // Generated on: 2021.01.04 at 06:30:16 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.pijz.rs/common", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(xmlns = {
+        @XmlNs(prefix = "cmn", namespaceURI = "http://www.pijz.rs/common"),
+        @XmlNs(prefix = "o", namespaceURI = "http://www.pijz.rs/obavestenje"),
+        @XmlNs(prefix = "rp", namespaceURI = "http://www.pijz.rs/resenje-ponisteno"),
+        @XmlNs(prefix = "rzho", namespaceURI = "http://www.pijz.rs/resenje-zahtev-odbijen"),
+        @XmlNs(prefix = "rzn", namespaceURI = "http://www.pijz.rs/resenje-zalba-neosnovana"),
+        @XmlNs(prefix = "rzo", namespaceURI = "http://www.pijz.rs/resenje-zalba-osnovana"),
+        @XmlNs(prefix = "zc", namespaceURI = "http://www.pijz.rs/zalba-cutanje"),
+        @XmlNs(prefix = "zo", namespaceURI = "http://www.pijz.rs/zalba-odluka")
+}, elementFormDefault = XmlNsForm.QUALIFIED)
 package rs.ijz.server.model;
+
+import javax.xml.bind.annotation.XmlNs;
+import javax.xml.bind.annotation.XmlNsForm;

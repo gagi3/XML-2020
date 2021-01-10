@@ -5,7 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ijz.server.dto.ResponseMessage;
 import rs.ijz.server.model.ZalbaCutanje;
+import rs.ijz.server.model.ZalbaOdluka;
 import rs.ijz.server.service.ZalbaCutanjeService;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -13,7 +16,17 @@ import rs.ijz.server.service.ZalbaCutanjeService;
 public class ZalbaCutanjeController {
     @Autowired
     private ZalbaCutanjeService zalbaCutanjeService;
-    @GetMapping(value = "/search")
+    @GetMapping(value = "", produces = "application/xml")
+    private ResponseEntity<List<ZalbaCutanje>> findAll() {
+        try {
+            List<ZalbaCutanje> zalbe = zalbaCutanjeService.findAll();
+            return ResponseEntity.ok().body(zalbe);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+    @GetMapping(value = "/search", produces = "application/xml")
     private ResponseEntity<ZalbaCutanje> getOne(@RequestParam String id) {
         try {
             ZalbaCutanje zalba = zalbaCutanjeService.getOne(id);
@@ -23,7 +36,7 @@ public class ZalbaCutanjeController {
             return ResponseEntity.badRequest().body(null);
         }
     }
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create", produces = "application/xml")
     private ResponseEntity<ZalbaCutanje> create(@RequestBody ZalbaCutanje zalba) {
         try {
             ZalbaCutanje zalbaCutanje = zalbaCutanjeService.create(zalba);

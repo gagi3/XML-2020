@@ -25,12 +25,17 @@ public class ZalbaOdlukaService {
     @Autowired
     private DocumentService documentService;
 
-    public List<ZalbaOdluka> findAll() {
-        return null;
+    public List<ZalbaOdluka> findAll() throws XMLDBException {
+        String xPath = "/zo:ZalbaOdluka";
+        ResourceSet result = commonRepository.queryZalbaOdluka(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (List<ZalbaOdluka>) commonRepository.resourceSetToClass(result, ZalbaOdluka.class);
     }
 
     public ZalbaOdluka getOne(String id) throws XMLDBException {
-        String xPath = "/zo:ZalbaOdluka[zo:zalbaOdluka_ID='" + id + "']";
+        String xPath = "/zo:ZalbaOdluka[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaOdluka(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -39,7 +44,7 @@ public class ZalbaOdlukaService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/zo:ZalbaOdluka[zo:zalbaOdluka_ID='" + id + "']";
+        String xPath = "/zo:ZalbaOdluka[@id='" + id + "']";
         return commonRepository.queryZalbaOdluka(xPath).getSize() != 0;
     }
 
@@ -51,7 +56,7 @@ public class ZalbaOdlukaService {
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/zo:ZalbaOdluka[zo:zalbaOdluka_ID='" + id + "']";
+        String xPath = "/zo:ZalbaOdluka[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaOdluka(xPath);
         ZalbaOdluka zalbaOdluka = (ZalbaOdluka) commonRepository.resourceSetToClass(result, ZalbaOdluka.class);
         String xmlInstance = "data/xsd/instance/" + "zalba-odluka-" + id + ".xml";

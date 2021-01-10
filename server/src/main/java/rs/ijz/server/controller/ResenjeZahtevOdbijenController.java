@@ -5,7 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ijz.server.dto.ResponseMessage;
 import rs.ijz.server.model.ResenjeZahtevOdbijen;
+import rs.ijz.server.model.ResenjeZalbaNeosnovana;
 import rs.ijz.server.service.ResenjeZahtevOdbijenService;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -13,7 +16,17 @@ import rs.ijz.server.service.ResenjeZahtevOdbijenService;
 public class ResenjeZahtevOdbijenController {
     @Autowired
     private ResenjeZahtevOdbijenService resenjeZahtevOdbijenService;
-    @GetMapping(value = "/search")
+    @GetMapping(value = "", produces = "application/xml")
+    private ResponseEntity<List<ResenjeZahtevOdbijen>> findAll() {
+        try {
+            List<ResenjeZahtevOdbijen> resenja = resenjeZahtevOdbijenService.findAll();
+            return ResponseEntity.ok().body(resenja);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+    @GetMapping(value = "/search", produces = "application/xml")
     private ResponseEntity<ResenjeZahtevOdbijen> getOne(@RequestParam String id) {
         try {
             ResenjeZahtevOdbijen resenje = resenjeZahtevOdbijenService.getOne(id);
@@ -23,7 +36,7 @@ public class ResenjeZahtevOdbijenController {
             return ResponseEntity.badRequest().body(null);
         }
     }
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create", produces = "application/xml")
     private ResponseEntity<ResenjeZahtevOdbijen> create(@RequestBody ResenjeZahtevOdbijen resenje) {
         try {
             ResenjeZahtevOdbijen resenjeZahtevOdbijen = resenjeZahtevOdbijenService.create(resenje);

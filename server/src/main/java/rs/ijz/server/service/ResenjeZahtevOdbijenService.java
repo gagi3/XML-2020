@@ -25,12 +25,17 @@ public class ResenjeZahtevOdbijenService {
     @Autowired
     private DocumentService documentService;
 
-    public List<ResenjeZahtevOdbijen> findAll() {
-        return null;
+    public List<ResenjeZahtevOdbijen> findAll() throws XMLDBException {
+        String xPath = "/rzho:ResenjeZahtevOdbijen";
+        ResourceSet result = commonRepository.queryResenjeZahtevOdbijen(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (List<ResenjeZahtevOdbijen>) commonRepository.resourceSetToClass(result, ResenjeZahtevOdbijen.class);
     }
 
     public ResenjeZahtevOdbijen getOne(String id) throws XMLDBException {
-        String xPath = "/rzho:ResenjeZahtevOdbijen[rzho:resenjeZahtevOdbijen_ID='" + id + "']";
+        String xPath = "/rzho:ResenjeZahtevOdbijen[@id='" + id + "']";
         ResourceSet result = commonRepository.queryResenjeZahtevOdbijen(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -39,19 +44,19 @@ public class ResenjeZahtevOdbijenService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/rzho:ResenjeZahtevOdbijen[rzho:resenjeZahtevOdbijen_ID='" + id + "']";
+        String xPath = "/rzho:ResenjeZahtevOdbijen[@id='" + id + "']";
         return commonRepository.queryResenjeZahtevOdbijen(xPath).getSize() != 0;
     }
 
     public ResenjeZahtevOdbijen create(ResenjeZahtevOdbijen resenjeZahtevOdbijen) throws Exception {
-        if (existsById("TODO")) {
+        if (existsById(resenjeZahtevOdbijen.getID())) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
         return resenjeZahtevOdbijenRepository.save(resenjeZahtevOdbijen);
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/rzho:ResenjeZahtevOdbijen[rzho:resenjeZahtevOdbijen_ID='" + id + "']";
+        String xPath = "/rzho:ResenjeZahtevOdbijen[@id='" + id + "']";
         ResourceSet result = commonRepository.queryResenjeZahtevOdbijen(xPath);
         ResenjeZahtevOdbijen resenjeZahtevOdbijen = (ResenjeZahtevOdbijen) commonRepository.resourceSetToClass(result, ResenjeZahtevOdbijen.class);
         String xmlInstance = "data/xsd/instance/" + "resenje-zahtev-odbijen-" + id + ".xml";

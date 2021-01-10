@@ -7,13 +7,25 @@ import rs.ijz.server.dto.ResponseMessage;
 import rs.ijz.server.model.ResenjeZalbaOsnovana;
 import rs.ijz.server.service.ResenjeZalbaOsnovanaService;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/resenje-zalba-osnovana")
 public class ResenjeZalbaOsnovanaController {
     @Autowired
     private ResenjeZalbaOsnovanaService resenjeZalbaOsnovanaService;
-    @GetMapping(value = "/search")
+    @GetMapping(value = "", produces = "application/xml")
+    private ResponseEntity<List<ResenjeZalbaOsnovana>> findAll() {
+        try {
+            List<ResenjeZalbaOsnovana> resenja = resenjeZalbaOsnovanaService.findAll();
+            return ResponseEntity.ok().body(resenja);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+    @GetMapping(value = "/search", produces = "application/xml")
     private ResponseEntity<ResenjeZalbaOsnovana> getOne(@RequestParam String id) {
         try {
             ResenjeZalbaOsnovana resenje = resenjeZalbaOsnovanaService.getOne(id);
@@ -23,7 +35,7 @@ public class ResenjeZalbaOsnovanaController {
             return ResponseEntity.badRequest().body(null);
         }
     }
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create", produces = "application/xml")
     private ResponseEntity<ResenjeZalbaOsnovana> create(@RequestBody ResenjeZalbaOsnovana resenje) {
         try {
             ResenjeZalbaOsnovana resenjeZalbaOsnovana = resenjeZalbaOsnovanaService.create(resenje);

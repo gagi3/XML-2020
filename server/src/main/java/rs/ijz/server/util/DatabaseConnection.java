@@ -13,7 +13,7 @@ import java.util.Arrays;
 @Component
 public class DatabaseConnection {
     public final String username = "admin";
-    public final String password = "admin";
+    public final String password = "";
     public final String URI = "xmldb:exist://localhost:8899/exist/xmlrpc";
     public final String jenaURI = "http://localhost:3030";
     public Database database;
