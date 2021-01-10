@@ -12,10 +12,8 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
-
 import com.itextpdf.text.DocumentException;
-
-import rs.ijz.server.model.ResenjeZahtevOdbijen;
+import rs.ijz.server.model.resenje_zahtev_odbijen.ResenjeZahtevOdbijen;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ResenjeZahtevOdbijenRepository;
 import rs.ijz.server.repository.rdf.FusekiDocumentRepository;

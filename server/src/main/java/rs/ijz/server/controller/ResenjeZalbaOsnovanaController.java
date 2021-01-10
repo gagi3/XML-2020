@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import rs.ijz.server.dto.ResponseMessage;
-import rs.ijz.server.model.ResenjeZalbaOsnovana;
 import rs.ijz.server.service.DomParserService;
+import rs.ijz.server.model.resenje_zalba_osnovana.ResenjeZalbaOsnovana;
 import rs.ijz.server.service.ResenjeZalbaOsnovanaService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -30,11 +33,12 @@ public class ResenjeZalbaOsnovanaController {
     @Autowired
     private DomParserService domParserService;
     
-    @GetMapping(value = "", produces = "application/xml")
-    private ResponseEntity<List<ResenjeZalbaOsnovana>> findAll() {
+    @GetMapping(value = "")
+    private ResponseEntity<?> findAll() {
         try {
-            List<ResenjeZalbaOsnovana> resenja = resenjeZalbaOsnovanaService.findAll();
-            return ResponseEntity.ok().body(resenja);
+            List<ResenjeZalbaOsnovana> resenja = new ArrayList<>();
+            resenja = resenjeZalbaOsnovanaService.findAll();
+            return ResponseEntity.ok(resenja);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

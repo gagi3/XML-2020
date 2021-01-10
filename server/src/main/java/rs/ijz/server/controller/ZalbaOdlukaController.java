@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ijz.server.dto.ResponseMessage;
-import rs.ijz.server.model.ZalbaOdluka;
+import rs.ijz.server.model.zalba_odluka.ZalbaOdluka;
 import rs.ijz.server.service.ZalbaOdlukaService;
 
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 public class ZalbaOdlukaController {
     @Autowired
     private ZalbaOdlukaService zalbaOdlukaService;
-    @GetMapping(value = "", produces = "application/xml")
+    @GetMapping(value = "")
     private ResponseEntity<List<ZalbaOdluka>> findAll() {
         try {
             List<ZalbaOdluka> zalbe = zalbaOdlukaService.findAll();

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import rs.ijz.server.dto.ResponseMessage;
-import rs.ijz.server.model.ResenjeZahtevOdbijen;
 import rs.ijz.server.service.DomParserService;
+import rs.ijz.server.model.resenje_zahtev_odbijen.ResenjeZahtevOdbijen;
 import rs.ijz.server.service.ResenjeZahtevOdbijenService;
 
 @CrossOrigin
@@ -29,8 +29,8 @@ public class ResenjeZahtevOdbijenController {
     
     @Autowired
     private DomParserService domParserService;
-    
-    @GetMapping(value = "", produces = "application/xml")
+
+    @GetMapping(value = "")
     private ResponseEntity<List<ResenjeZahtevOdbijen>> findAll() {
         try {
             List<ResenjeZahtevOdbijen> resenja = resenjeZahtevOdbijenService.findAll();
