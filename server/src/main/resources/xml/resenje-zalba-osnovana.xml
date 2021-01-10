@@ -5,9 +5,8 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.pijz.rs/resenje-zalba-osnovana file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zalba-osnovana.xsd" id="ID000" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
     <rzo:metadata>
-        <cmn:meta property="author" content="random-author">meta0</cmn:meta>
-        <cmn:meta property="subject" content="random-subject">meta1</cmn:meta>
-        <cmn:meta property="language" content="random-language">meta2</cmn:meta>
+        <cmn:meta property="cmn:ime" content="Jane"/>
+        <cmn:meta property="cmn:prezime" content="Doe"/>
     </rzo:metadata>
     <rzo:trazilac>
         <cmn:ime>ime0</cmn:ime>
