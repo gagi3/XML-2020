@@ -12,20 +12,18 @@ import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
 import com.itextpdf.text.DocumentException;
+
 import rs.ijz.server.model.resenje_zalba_osnovana.ResenjeZalbaOsnovana;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ResenjeZalbaOsnovanaRepository;
-import rs.ijz.server.repository.rdf.FusekiDocumentRepository;
 
 @Service
 public class ResenjeZalbaOsnovanaService {
 	
     @Autowired
     private CommonRepository commonRepository;
-
-    @Autowired
-    private FusekiDocumentRepository fusekiDocumentRepository;
     
     @Autowired
     private ResenjeZalbaOsnovanaRepository resenjeZalbaOsnovanaRepository;
@@ -71,9 +69,5 @@ public class ResenjeZalbaOsnovanaService {
         String xml = "data/xml/" + "resenje-zalba-osnovana_" + id + ".xml";
         documentService.createXML(ResenjeZalbaOsnovana.class, resenjeZalbaOsnovana, xmlInstance);
         System.out.println("Docs generated!");
-    }
-    
-    public void extractMetadata(String xmlContent, String filename) throws Exception {
-        fusekiDocumentRepository.extractMetadata(xmlContent, filename);
     }
 }

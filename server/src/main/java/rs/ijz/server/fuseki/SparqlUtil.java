@@ -1,7 +1,7 @@
-package rs.ijz.server.repository.rdf;
+package rs.ijz.server.fuseki;
 
 public class SparqlUtil {
-	
+
 	/* The following operation causes all of the triples in all of the graphs to be deleted */
 	private static final String DROP_ALL = "DROP ALL";
 	
@@ -12,15 +12,16 @@ public class SparqlUtil {
 	 * A template for creating SPARUL (SPARQL Update) query can be found here:
 	 * https://www.w3.org/TR/sparql11-update/
 	 */
-
 	/* Insert RDF data into the default graph */
 	private static final String UPDATE_TEMPLATE = "INSERT DATA { %s }";
 	
 	/* Insert RDF data to an arbitrary named graph */
 	private static final String UPDATE_TEMPLATE_NAMED_GRAPH = "INSERT DATA { GRAPH <%1$s> { %2$s } }";
+	
 
 	/* Simple SPARQL query on a named graph */
-	private static final String SELECT_NAMED_GRAPH_TEMPLATE = "SELECT ?s FROM <%1$s> WHERE { %2$s }";
+	private static final String SELECT_NAMED_GRAPH_TEMPLATE = "SELECT * FROM <%1$s> WHERE { %2$s }";
+	
 	
 	/* Plain text RDF serialization format */
 	public static final String NTRIPLES = "N-TRIPLES";
@@ -49,5 +50,4 @@ public class SparqlUtil {
 		return String.format(SELECT_NAMED_GRAPH_TEMPLATE, graphURI, sparqlCondition);
 	}
 	
-
 }

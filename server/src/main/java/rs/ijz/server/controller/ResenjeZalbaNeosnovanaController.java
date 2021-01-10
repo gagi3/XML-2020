@@ -70,10 +70,4 @@ public class ResenjeZalbaNeosnovanaController {
             return ResponseEntity.badRequest().body(new ResponseMessage("Neuspesno kreiranje."));
         }
     }
-    
-    @PostMapping("/rdf/extract")
-    public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
-    	resenjeZalbaNeosnovanaService.extractMetadata(domParserService.readMultipartXMLFile(file), "test");
-    	return new ResponseEntity<>("Test success", HttpStatus.OK);
-    }
 }
