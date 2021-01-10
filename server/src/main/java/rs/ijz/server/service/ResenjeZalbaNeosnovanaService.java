@@ -1,27 +1,37 @@
 package rs.ijz.server.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.ijz.server.model.ResenjeZalbaNeosnovana;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ResenjeZalbaNeosnovanaRepository;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.util.List;
+import rs.ijz.server.repository.rdf.FusekiDocumentRepository;
 
 @Service
 public class ResenjeZalbaNeosnovanaService {
+	
     @Autowired
     private CommonRepository commonRepository;
+    
+    @Autowired
+    private FusekiDocumentRepository fusekiDocumentRepository;
+    
     @Autowired
     private ResenjeZalbaNeosnovanaRepository resenjeZalbaNeosnovanaRepository;
+    
     @Autowired
     private DocumentService documentService;
 
@@ -63,5 +73,9 @@ public class ResenjeZalbaNeosnovanaService {
         String xml = "data/xml/" + "resenje-zalba-neosnovana_" + id + ".xml";
         documentService.createXML(ResenjeZalbaNeosnovana.class, resenjeZalbaNeosnovana, xmlInstance);
         System.out.println("Docs generated!");
+    }
+    
+    public void extractMetadata(String xmlContent, String filename) throws Exception {
+        fusekiDocumentRepository.extractMetadata(xmlContent, filename);
     }
 }

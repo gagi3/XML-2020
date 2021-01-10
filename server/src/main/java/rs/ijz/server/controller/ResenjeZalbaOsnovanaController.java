@@ -1,20 +1,35 @@
 package rs.ijz.server.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import rs.ijz.server.dto.ResponseMessage;
 import rs.ijz.server.model.ResenjeZalbaOsnovana;
+import rs.ijz.server.service.DomParserService;
 import rs.ijz.server.service.ResenjeZalbaOsnovanaService;
-
-import java.util.List;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/resenje-zalba-osnovana")
 public class ResenjeZalbaOsnovanaController {
+	
     @Autowired
     private ResenjeZalbaOsnovanaService resenjeZalbaOsnovanaService;
+    
+    @Autowired
+    private DomParserService domParserService;
+    
     @GetMapping(value = "", produces = "application/xml")
     private ResponseEntity<List<ResenjeZalbaOsnovana>> findAll() {
         try {
@@ -54,5 +69,11 @@ public class ResenjeZalbaOsnovanaController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(new ResponseMessage("Neuspesno kreiranje."));
         }
+    }
+    
+    @PostMapping("/rdf/extract")
+    public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
+    	resenjeZalbaOsnovanaService.extractMetadata(domParserService.readMultipartXMLFile(file), "test");
+    	return new ResponseEntity<>("Test success", HttpStatus.OK);
     }
 }

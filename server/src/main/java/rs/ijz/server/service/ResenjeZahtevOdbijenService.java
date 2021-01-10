@@ -1,27 +1,37 @@
 package rs.ijz.server.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.ijz.server.model.ResenjeZahtevOdbijen;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ResenjeZahtevOdbijenRepository;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.util.List;
+import rs.ijz.server.repository.rdf.FusekiDocumentRepository;
 
 @Service
 public class ResenjeZahtevOdbijenService {
+	
     @Autowired
     private CommonRepository commonRepository;
+    
+    @Autowired
+    private FusekiDocumentRepository fusekiDocumentRepository;
+    
     @Autowired
     private ResenjeZahtevOdbijenRepository resenjeZahtevOdbijenRepository;
+    
     @Autowired
     private DocumentService documentService;
 
@@ -63,5 +73,9 @@ public class ResenjeZahtevOdbijenService {
         String xml = "data/xml/" + "resenje-zahtev-odbijen_" + id + ".xml";
         documentService.createXML(ResenjeZahtevOdbijen.class, resenjeZahtevOdbijen, xmlInstance);
         System.out.println("Docs generated!");
+    }
+    
+    public void extractMetadata(String xmlContent, String filename) throws Exception {
+        fusekiDocumentRepository.extractMetadata(xmlContent, filename);
     }
 }
