@@ -43,6 +43,10 @@ public class CommonRepository {
         return jaxbService.unmarshal(resource.getContent().toString(), genericClass);
     }
 
+    public <T> Object resourceToClass(Resource resource, Class<T> genericClass) throws XMLDBException {
+        return jaxbService.unmarshal(resource.getContent().toString(), genericClass);
+    }
+
     public <T> void generateXML(Class<T> genericClass, Object object, String path) throws JAXBException, FileNotFoundException {
         JAXBContext context = JAXBContext.newInstance(genericClass);
         Marshaller marshaller = context.createMarshaller();

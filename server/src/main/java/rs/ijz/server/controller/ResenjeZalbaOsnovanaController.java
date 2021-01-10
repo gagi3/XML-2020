@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ijz.server.dto.ResponseMessage;
-import rs.ijz.server.model.ResenjeZalbaOsnovana;
+import rs.ijz.server.model.resenje_zalba_osnovana.ResenjeZalbaOsnovana;
 import rs.ijz.server.service.ResenjeZalbaOsnovanaService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -15,11 +16,12 @@ import java.util.List;
 public class ResenjeZalbaOsnovanaController {
     @Autowired
     private ResenjeZalbaOsnovanaService resenjeZalbaOsnovanaService;
-    @GetMapping(value = "", produces = "application/xml")
-    private ResponseEntity<List<ResenjeZalbaOsnovana>> findAll() {
+    @GetMapping(value = "")
+    private ResponseEntity<?> findAll() {
         try {
-            List<ResenjeZalbaOsnovana> resenja = resenjeZalbaOsnovanaService.findAll();
-            return ResponseEntity.ok().body(resenja);
+            List<ResenjeZalbaOsnovana> resenja = new ArrayList<>();
+            resenja = resenjeZalbaOsnovanaService.findAll();
+            return ResponseEntity.ok(resenja);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

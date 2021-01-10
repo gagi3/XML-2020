@@ -6,7 +6,7 @@ import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
-import rs.ijz.server.model.ResenjeZalbaNeosnovana;
+import rs.ijz.server.model.resenje_zalba_neosnovana.ResenjeZalbaNeosnovana;
 import rs.ijz.server.service.JAXBService;
 import rs.ijz.server.util.DatabaseConnection;
 
