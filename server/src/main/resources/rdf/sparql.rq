@@ -1,0 +1,1 @@
+SELECT * FROM <http://localhost:8081/fuseki/Resenje/data/metadata>
