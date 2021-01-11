@@ -84,19 +84,19 @@ import java.util.List;
 @XmlRootElement(name = "ResenjeZalbaNeosnovana", namespace = "http://www.pijz.rs/resenje-zalba-neosnovana")
 public class ResenjeZalbaNeosnovana {
 
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(required = true)
     protected MetaData metadata;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(required = true)
     protected FizickoLice trazilac;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(required = true)
     protected FizickoLice poverenik;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(required = true)
     protected PravnoLice ustanova;
-    @XmlElement(name = "broj_zalbe", namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(name = "broj_zalbe", required = true)
     protected String brojZalbe;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(required = true)
     protected Object dispozitiv;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+    @XmlElement(required = true)
     protected ResenjeZalbaNeosnovana.Obrazlozenje obrazlozenje;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -499,9 +499,9 @@ public class ResenjeZalbaNeosnovana {
     })
     public static class Obrazlozenje {
 
-        @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+        @XmlElement(required = true)
         protected List<ResenjeZalbaNeosnovana.Obrazlozenje.Paragraf> paragraf;
-        @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+        @XmlElement(required = true)
         protected Tuzba tuzba;
 
         /**
@@ -591,15 +591,15 @@ public class ResenjeZalbaNeosnovana {
         })
         public static class Paragraf {
 
-            @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+            @XmlElement(required = true)
             protected String razlog;
-            @XmlElement(name = "trazena_informacija", namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+            @XmlElement(name = "trazena_informacija", required = true)
             protected List<String> trazenaInformacija;
-            @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+            @XmlElement(required = true)
             protected String obavestenje;
-            @XmlElement(name = "rok_informisanja", namespace = "http://www.pijz.rs/resenje-zalba-neosnovana")
+            @XmlElement(name = "rok_informisanja")
             protected int rokInformisanja;
-            @XmlElement(name = "razlog_neosnovanosti", namespace = "http://www.pijz.rs/resenje-zalba-neosnovana", required = true)
+            @XmlElement(name = "razlog_neosnovanosti", required = true)
             protected String razlogNeosnovanosti;
 
             /**

@@ -49,7 +49,7 @@ public class ZalbaOdlukaService {
     }
 
     public ZalbaOdluka create(ZalbaOdluka zalbaOdluka) throws Exception {
-        if (existsById("TODO")) {
+        if (existsById(zalbaOdluka.getId())) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
         return zalbaOdlukaRepository.save(zalbaOdluka);

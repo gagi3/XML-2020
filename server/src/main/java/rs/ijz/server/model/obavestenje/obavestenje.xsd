@@ -44,10 +44,14 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="ID" type="xs:ID"/>
+            <xs:attribute name="id" type="xs:ID"/>
             <xs:attribute name="broj" type="xs:string"/>
             <xs:attribute name="datum" type="xs:date"/>
+            <xs:attribute name="datum_zahtevanja" type="xs:date"/>
+            <xs:attribute name="datum_uvida" type="xs:date"/>
+            <xs:attribute name="vreme_uvida_od" type="xs:time"/>
+            <xs:attribute name="vreme_uvida_do" type="xs:time"/>
         </xs:complexType>
     </xs:element>
-    
+
 </xs:schema>
