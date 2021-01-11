@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Obavestenje xmlns="http://www.pijz.rs/obavestenje" xmlns:ns2="http://www.pijz.rs/zalba-odluka" id="1" brojPredmeta="125" datum="2020-12-08+01:00">
+    <Organ>
+        <naziv>Organ prvi</naziv>
+        <sediste>
+            <ns2:Grad>Kragujevac</ns2:Grad>
+            <ns2:Ulica>Svetogorska</ns2:Ulica>
+            <ns2:Broj_ulice>23</ns2:Broj_ulice>
+        </sediste>
+    </Organ>
+    <naslov>Obavestenje za zaposlene</naslov>
+    <podnaslov>Podnaslov</podnaslov>
+</Obavestenje>

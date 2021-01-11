@@ -1,10 +1,14 @@
 package rs.ijz.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import rs.ijz.server.dto.ResponseMessage;
+import rs.ijz.server.fuseki.MetadataExtractor;
 import rs.ijz.server.model.zalba_cutanje.ZalbaCutanje;
+import rs.ijz.server.service.DomParserService;
 import rs.ijz.server.service.ZalbaCutanjeService;
 
 import java.util.List;
@@ -15,6 +19,10 @@ import java.util.List;
 public class ZalbaCutanjeController {
     @Autowired
     private ZalbaCutanjeService zalbaCutanjeService;
+    @Autowired
+    private DomParserService domParserService;
+    @Autowired
+    private MetadataExtractor metadataExtractor;
     @GetMapping(value = "")
     private ResponseEntity<List<ZalbaCutanje>> findAll() {
         try {
@@ -54,5 +62,11 @@ public class ZalbaCutanjeController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(new ResponseMessage("Neuspesno kreiranje."));
         }
+    }
+
+    @PostMapping(value = "/extract-metadata")
+    public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
+        metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
     }
 }

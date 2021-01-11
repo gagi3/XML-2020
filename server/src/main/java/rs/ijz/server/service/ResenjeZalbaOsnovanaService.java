@@ -1,27 +1,33 @@
 package rs.ijz.server.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.ijz.server.model.resenje_zalba_osnovana.ResenjeZalbaOsnovana;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ResenjeZalbaOsnovanaRepository;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.util.List;
-
 @Service
 public class ResenjeZalbaOsnovanaService {
+	
     @Autowired
     private CommonRepository commonRepository;
+    
     @Autowired
     private ResenjeZalbaOsnovanaRepository resenjeZalbaOsnovanaRepository;
+    
     @Autowired
     private DocumentService documentService;
 
