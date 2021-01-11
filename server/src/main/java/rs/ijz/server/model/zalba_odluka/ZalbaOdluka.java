@@ -1,11 +1,11 @@
 
 package rs.ijz.server.model.zalba_odluka;
 
-import rs.ijz.server.model.common.Adresa;
-import rs.ijz.server.model.common.FizickoLice;
-import rs.ijz.server.model.common.MetaData;
+import rs.ijz.server.model.common.*;
 
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
@@ -76,6 +76,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -100,27 +103,37 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "ZalbaOdluka", namespace = "http://www.pijz.rs/zalba-odluka")
 public class ZalbaOdluka {
 
-    @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+    @XmlElement(required = true)
     protected MetaData metadata;
-    @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+    @XmlElement(required = true)
     protected String predmet;
-    @XmlElement(name = "kome_je_upucena", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
-    protected ZalbaOdluka.KomeJeUpucena komeJeUpucena;
-    @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
-    protected ZalbaOdluka.Zalilac zalilac;
-    @XmlElement(name = "donosilac_odluke", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+    @XmlElement(required = true)
+    protected KomeJeUpucena komeJeUpucena;
+    @XmlElement(required = true)
+    protected Zalilac zalilac;
+    @XmlElement(name = "donosilac_odluke", required = true)
     protected String donosilacOdluke;
-    @XmlElement(name = "broj_resenja", namespace = "http://www.pijz.rs/zalba-odluka")
+    @XmlElement(name = "broj_resenja")
     protected int brojResenja;
-    @XmlElement(name = "godina_resenja", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+    @XmlElement(name = "godina_resenja", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar godinaResenja;
-    @XmlElement(name = "razlog_pobijanja", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+    @XmlElement(name = "razlog_pobijanja", required = true)
     protected String razlogPobijanja;
-    @XmlElement(name = "podnosilac_zalbe", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
-    protected ZalbaOdluka.PodnosilacZalbe podnosilacZalbe;
-    @XmlElement(name = "mesto_podnosenja_zalbe", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
-    protected ZalbaOdluka.MestoPodnosenjaZalbe mestoPodnosenjaZalbe;
+    @XmlElement(name = "podnosilac_zalbe", required = true)
+    protected PodnosilacZalbe podnosilacZalbe;
+    @XmlElement(name = "mesto_podnosenja_zalbe", required = true)
+    protected MestoPodnosenjaZalbe mestoPodnosenjaZalbe;
+    @XmlAttribute(name = "id")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlID
+    @XmlSchemaType(name = "ID")
+    protected String id;
+    @XmlAttribute(name = "broj")
+    protected String broj;
+    @XmlAttribute(name = "datum")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar datum;
     @XmlAttribute(name = "datum_zahteva")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumZahteva;
@@ -178,10 +191,10 @@ public class ZalbaOdluka {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaOdluka.KomeJeUpucena }
+     *     {@link KomeJeUpucena }
      *     
      */
-    public ZalbaOdluka.KomeJeUpucena getKomeJeUpucena() {
+    public KomeJeUpucena getKomeJeUpucena() {
         return komeJeUpucena;
     }
 
@@ -190,10 +203,10 @@ public class ZalbaOdluka {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaOdluka.KomeJeUpucena }
+     *     {@link KomeJeUpucena }
      *     
      */
-    public void setKomeJeUpucena(ZalbaOdluka.KomeJeUpucena value) {
+    public void setKomeJeUpucena(KomeJeUpucena value) {
         this.komeJeUpucena = value;
     }
 
@@ -202,10 +215,10 @@ public class ZalbaOdluka {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaOdluka.Zalilac }
+     *     {@link Zalilac }
      *     
      */
-    public ZalbaOdluka.Zalilac getZalilac() {
+    public Zalilac getZalilac() {
         return zalilac;
     }
 
@@ -214,10 +227,10 @@ public class ZalbaOdluka {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaOdluka.Zalilac }
+     *     {@link Zalilac }
      *     
      */
-    public void setZalilac(ZalbaOdluka.Zalilac value) {
+    public void setZalilac(Zalilac value) {
         this.zalilac = value;
     }
 
@@ -314,10 +327,10 @@ public class ZalbaOdluka {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaOdluka.PodnosilacZalbe }
+     *     {@link PodnosilacZalbe }
      *     
      */
-    public ZalbaOdluka.PodnosilacZalbe getPodnosilacZalbe() {
+    public PodnosilacZalbe getPodnosilacZalbe() {
         return podnosilacZalbe;
     }
 
@@ -326,10 +339,10 @@ public class ZalbaOdluka {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaOdluka.PodnosilacZalbe }
+     *     {@link PodnosilacZalbe }
      *     
      */
-    public void setPodnosilacZalbe(ZalbaOdluka.PodnosilacZalbe value) {
+    public void setPodnosilacZalbe(PodnosilacZalbe value) {
         this.podnosilacZalbe = value;
     }
 
@@ -338,10 +351,10 @@ public class ZalbaOdluka {
      * 
      * @return
      *     possible object is
-     *     {@link ZalbaOdluka.MestoPodnosenjaZalbe }
+     *     {@link MestoPodnosenjaZalbe }
      *     
      */
-    public ZalbaOdluka.MestoPodnosenjaZalbe getMestoPodnosenjaZalbe() {
+    public MestoPodnosenjaZalbe getMestoPodnosenjaZalbe() {
         return mestoPodnosenjaZalbe;
     }
 
@@ -350,11 +363,83 @@ public class ZalbaOdluka {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZalbaOdluka.MestoPodnosenjaZalbe }
+     *     {@link MestoPodnosenjaZalbe }
      *     
      */
-    public void setMestoPodnosenjaZalbe(ZalbaOdluka.MestoPodnosenjaZalbe value) {
+    public void setMestoPodnosenjaZalbe(MestoPodnosenjaZalbe value) {
         this.mestoPodnosenjaZalbe = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
+    }
+
+    /**
+     * Gets the value of the broj property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBroj() {
+        return broj;
+    }
+
+    /**
+     * Sets the value of the broj property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBroj(String value) {
+        this.broj = value;
+    }
+
+    /**
+     * Gets the value of the datum property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDatum() {
+        return datum;
+    }
+
+    /**
+     * Sets the value of the datum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDatum(XMLGregorianCalendar value) {
+        this.datum = value;
     }
 
     /**
@@ -409,9 +494,9 @@ public class ZalbaOdluka {
     })
     public static class KomeJeUpucena {
 
-        @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(required = true)
         protected String naziv;
-        @XmlElement(name = "adresa_za_postu", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(name = "adresa_za_postu",  required = true)
         protected Adresa adresaZaPostu;
 
         /**
@@ -492,9 +577,9 @@ public class ZalbaOdluka {
     })
     public static class MestoPodnosenjaZalbe {
 
-        @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(required = true)
         protected String grad;
-        @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(required = true)
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar datum;
 
@@ -578,11 +663,11 @@ public class ZalbaOdluka {
     })
     public static class PodnosilacZalbe {
 
-        @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(required = true)
         protected FizickoLice osoba;
-        @XmlElement(name = "drugi_kontakt", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(name = "drugi_kontakt",  required = true)
         protected String drugiKontakt;
-        @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(required = true)
         protected String potpis;
 
         /**
@@ -689,11 +774,11 @@ public class ZalbaOdluka {
     })
     public static class Zalilac {
 
-        @XmlElement(name = "osoba_zalilac", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(name = "osoba_zalilac",  required = true)
         protected FizickoLice osobaZalilac;
-        @XmlElement(name = "sediste_zalioca", namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(name = "sediste_zalioca",  required = true)
         protected String sedisteZalioca;
-        @XmlElement(namespace = "http://www.pijz.rs/zalba-odluka", required = true)
+        @XmlElement(required = true)
         protected String naziv;
 
         /**

@@ -89,4 +89,9 @@ public class CommonRepository {
         HashMap<String, String> namespace = new HashMap<>() {{put("rp", "http://www.pijz.rs/resenje-ponisteno");}};
         return runXpath("/db/pijz/resenje-ponisteno", namespace, query);
     }
+
+    public ResourceSet queryIzjasnjenjeNaZalbu(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{put("i", "http://www.pijz.rs/izjasnjenje-na-zalbu");}};
+        return runXpath("/db/pijz/izjasnjenje-na-zalbu", namespace, query);
+    }
 }

@@ -26,7 +26,6 @@
                         <xs:sequence>
                             <xs:element name="osoba" type="cmn:FizickoLice"/>
                             <xs:element name="drugi_kontakt" type="xs:string"/>
-                            <xs:element name="potpis" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -39,6 +38,9 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="id" type="xs:ID"/>
+            <xs:attribute name="broj" type="xs:string"/>
+            <xs:attribute name="datum" type="xs:date"/>
             <xs:attribute name="datum_zahteva" type="xs:date"/>
         </xs:complexType>
     </xs:element>

@@ -1,10 +1,7 @@
 
 package rs.ijz.server.model.obavestenje;
 
-import rs.ijz.server.model.common.Adresa;
-import rs.ijz.server.model.common.FizickoLice;
-import rs.ijz.server.model.common.MetaData;
-import rs.ijz.server.model.common.PravnoLice;
+import rs.ijz.server.model.common.*;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -75,9 +72,13 @@ import java.util.List;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
+ *       &lt;attribute name="datum_zahtevanja" type="{http://www.w3.org/2001/XMLSchema}date" />
+ *       &lt;attribute name="datum_uvida" type="{http://www.w3.org/2001/XMLSchema}date" />
+ *       &lt;attribute name="vreme_uvida_od" type="{http://www.w3.org/2001/XMLSchema}time" />
+ *       &lt;attribute name="vreme_uvida_do" type="{http://www.w3.org/2001/XMLSchema}time" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -98,21 +99,21 @@ import java.util.List;
 @XmlRootElement(name = "Obavestenje", namespace = "http://www.pijz.rs/obavestenje")
 public class Obavestenje {
 
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+    @XmlElement(required = true)
     protected MetaData metadata;
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
-    protected Obavestenje.Organ organ;
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
-    protected Obavestenje.Podnosilac podnosilac;
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+    @XmlElement(required = true)
+    protected Organ organ;
+    @XmlElement(required = true)
+    protected Podnosilac podnosilac;
+    @XmlElement(required = true)
     protected String naslov;
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+    @XmlElement(required = true)
     protected String podnaslov;
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
-    protected Obavestenje.Telo telo;
-    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
-    protected Obavestenje.Podnozje podnozje;
-    @XmlAttribute(name = "ID")
+    @XmlElement(required = true)
+    protected Telo telo;
+    @XmlElement(required = true)
+    protected Podnozje podnozje;
+    @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
@@ -122,6 +123,18 @@ public class Obavestenje {
     @XmlAttribute(name = "datum")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datum;
+    @XmlAttribute(name = "datum_zahtevanja")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar datumZahtevanja;
+    @XmlAttribute(name = "datum_uvida")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar datumUvida;
+    @XmlAttribute(name = "vreme_uvida_od")
+    @XmlSchemaType(name = "time")
+    protected XMLGregorianCalendar vremeUvidaOd;
+    @XmlAttribute(name = "vreme_uvida_do")
+    @XmlSchemaType(name = "time")
+    protected XMLGregorianCalendar vremeUvidaDo;
 
     /**
      * Gets the value of the metadata property.
@@ -152,10 +165,10 @@ public class Obavestenje {
      * 
      * @return
      *     possible object is
-     *     {@link Obavestenje.Organ }
+     *     {@link Organ }
      *     
      */
-    public Obavestenje.Organ getOrgan() {
+    public Organ getOrgan() {
         return organ;
     }
 
@@ -164,10 +177,10 @@ public class Obavestenje {
      * 
      * @param value
      *     allowed object is
-     *     {@link Obavestenje.Organ }
+     *     {@link Organ }
      *     
      */
-    public void setOrgan(Obavestenje.Organ value) {
+    public void setOrgan(Organ value) {
         this.organ = value;
     }
 
@@ -176,10 +189,10 @@ public class Obavestenje {
      * 
      * @return
      *     possible object is
-     *     {@link Obavestenje.Podnosilac }
+     *     {@link Podnosilac }
      *     
      */
-    public Obavestenje.Podnosilac getPodnosilac() {
+    public Podnosilac getPodnosilac() {
         return podnosilac;
     }
 
@@ -188,10 +201,10 @@ public class Obavestenje {
      * 
      * @param value
      *     allowed object is
-     *     {@link Obavestenje.Podnosilac }
+     *     {@link Podnosilac }
      *     
      */
-    public void setPodnosilac(Obavestenje.Podnosilac value) {
+    public void setPodnosilac(Podnosilac value) {
         this.podnosilac = value;
     }
 
@@ -248,10 +261,10 @@ public class Obavestenje {
      * 
      * @return
      *     possible object is
-     *     {@link Obavestenje.Telo }
+     *     {@link Telo }
      *     
      */
-    public Obavestenje.Telo getTelo() {
+    public Telo getTelo() {
         return telo;
     }
 
@@ -260,10 +273,10 @@ public class Obavestenje {
      * 
      * @param value
      *     allowed object is
-     *     {@link Obavestenje.Telo }
+     *     {@link Telo }
      *     
      */
-    public void setTelo(Obavestenje.Telo value) {
+    public void setTelo(Telo value) {
         this.telo = value;
     }
 
@@ -272,10 +285,10 @@ public class Obavestenje {
      * 
      * @return
      *     possible object is
-     *     {@link Obavestenje.Podnozje }
+     *     {@link Podnozje }
      *     
      */
-    public Obavestenje.Podnozje getPodnozje() {
+    public Podnozje getPodnozje() {
         return podnozje;
     }
 
@@ -284,10 +297,10 @@ public class Obavestenje {
      * 
      * @param value
      *     allowed object is
-     *     {@link Obavestenje.Podnozje }
+     *     {@link Podnozje }
      *     
      */
-    public void setPodnozje(Obavestenje.Podnozje value) {
+    public void setPodnozje(Podnozje value) {
         this.podnozje = value;
     }
 
@@ -299,7 +312,7 @@ public class Obavestenje {
      *     {@link String }
      *     
      */
-    public String getID() {
+    public String getId() {
         return id;
     }
 
@@ -311,7 +324,7 @@ public class Obavestenje {
      *     {@link String }
      *     
      */
-    public void setID(String value) {
+    public void setId(String value) {
         this.id = value;
     }
 
@@ -363,6 +376,102 @@ public class Obavestenje {
         this.datum = value;
     }
 
+    /**
+     * Gets the value of the datumZahtevanja property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDatumZahtevanja() {
+        return datumZahtevanja;
+    }
+
+    /**
+     * Sets the value of the datumZahtevanja property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDatumZahtevanja(XMLGregorianCalendar value) {
+        this.datumZahtevanja = value;
+    }
+
+    /**
+     * Gets the value of the datumUvida property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDatumUvida() {
+        return datumUvida;
+    }
+
+    /**
+     * Sets the value of the datumUvida property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDatumUvida(XMLGregorianCalendar value) {
+        this.datumUvida = value;
+    }
+
+    /**
+     * Gets the value of the vremeUvidaOd property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getVremeUvidaOd() {
+        return vremeUvidaOd;
+    }
+
+    /**
+     * Sets the value of the vremeUvidaOd property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setVremeUvidaOd(XMLGregorianCalendar value) {
+        this.vremeUvidaOd = value;
+    }
+
+    /**
+     * Gets the value of the vremeUvidaDo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getVremeUvidaDo() {
+        return vremeUvidaDo;
+    }
+
+    /**
+     * Sets the value of the vremeUvidaDo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setVremeUvidaDo(XMLGregorianCalendar value) {
+        this.vremeUvidaDo = value;
+    }
+
 
     /**
      * <p>Java class for anonymous complex type.
@@ -391,9 +500,9 @@ public class Obavestenje {
     })
     public static class Organ {
 
-        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+        @XmlElement(required = true)
         protected String naziv;
-        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+        @XmlElement(required = true)
         protected Adresa sediste;
 
         /**
@@ -557,9 +666,9 @@ public class Obavestenje {
     })
     public static class Podnozje {
 
-        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+        @XmlElement(required = true)
         protected String pecat;
-        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+        @XmlElement(required = true)
         protected String potpis;
 
         /**
@@ -638,7 +747,7 @@ public class Obavestenje {
     })
     public static class Telo {
 
-        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+        @XmlElement(required = true)
         protected List<String> paragraf;
 
         /**

@@ -82,17 +82,17 @@ import java.util.List;
 @XmlRootElement(name = "ResenjeZahtevOdbijen", namespace = "http://www.pijz.rs/resenje-zahtev-odbijen")
 public class ResenjeZahtevOdbijen {
 
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+    @XmlElement(required = true)
     protected MetaData metadata;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+    @XmlElement(required = true)
     protected FizickoLice trazilac;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+    @XmlElement(required = true)
     protected FizickoLice poverenik;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+    @XmlElement(required = true)
     protected PravnoLice ustanova;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+    @XmlElement(required = true)
     protected Object dispozitiv;
-    @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+    @XmlElement(required = true)
     protected ResenjeZahtevOdbijen.Obrazlozenje obrazlozenje;
     @XmlAttribute(name = "ID")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -471,9 +471,9 @@ public class ResenjeZahtevOdbijen {
     })
     public static class Obrazlozenje {
 
-        @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+        @XmlElement(required = true)
         protected List<ResenjeZahtevOdbijen.Obrazlozenje.Paragraf> paragraf;
-        @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+        @XmlElement(required = true)
         protected Tuzba tuzba;
 
         /**
@@ -563,15 +563,15 @@ public class ResenjeZahtevOdbijen {
         })
         public static class Paragraf {
 
-            @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+            @XmlElement(required = true)
             protected String razlog;
-            @XmlElement(name = "trazeni_odgovor", namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+            @XmlElement(name = "trazeni_odgovor", required = true)
             protected List<String> trazeniOdgovor;
-            @XmlElement(namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+            @XmlElement(required = true)
             protected String obavestenje;
             @XmlElement(name = "rok_informisanja", namespace = "http://www.pijz.rs/resenje-zahtev-odbijen")
             protected int rokInformisanja;
-            @XmlElement(name = "razlog_neosnovanosti", namespace = "http://www.pijz.rs/resenje-zahtev-odbijen", required = true)
+            @XmlElement(name = "razlog_neosnovanosti", required = true)
             protected String razlogNeosnovanosti;
 
             /**
