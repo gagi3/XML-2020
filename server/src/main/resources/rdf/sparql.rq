@@ -1,1 +1,4 @@
-SELECT * FROM <http://localhost:8081/fuseki/Resenje/data/metadata>
+prefix rzo: <http://www.pijz.rs/resenje-zalba-osnovana>
+SELECT * WHERE {
+  ?resenje rzo:datum ?datum
+}

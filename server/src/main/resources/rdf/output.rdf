@@ -1,8 +1,20 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
   <rdf:Description rdf:about="">
-    <cmn:ime xmlns:cmn="http://www.pijz.rs/common" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Mark</cmn:ime>
+    <rzo:id xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">ID001</rzo:id>
   </rdf:Description>
   <rdf:Description rdf:about="">
-    <cmn:prezime xmlns:cmn="http://www.pijz.rs/common" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Doe</cmn:prezime>
+    <rzo:broj xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">broj0</rzo:broj>
+  </rdf:Description>
+  <rdf:Description rdf:about="">
+    <rzo:datum xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">2006-05-04</rzo:datum>
+  </rdf:Description>
+  <rdf:Description rdf:about="">
+    <rzo:datum_zahteva xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">2006-05-04</rzo:datum_zahteva>
+  </rdf:Description>
+  <rdf:Description rdf:about="">
+    <rzo:datum_zalbe xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">2006-05-04</rzo:datum_zalbe>
+  </rdf:Description>
+  <rdf:Description rdf:about="">
+    <rzo:datum_postupka xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">2006-05-04</rzo:datum_postupka>
   </rdf:Description>
 </rdf:RDF>

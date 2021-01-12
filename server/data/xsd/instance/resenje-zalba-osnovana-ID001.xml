@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rzo:ResenjeZalbaOsnovana xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" xmlns:cmn="http://www.pijz.rs/common" id="ID001" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
     <rzo:metadata>
-        <cmn:meta property="property0" content="content0"/>
-        <cmn:meta property="property1" content="content1"/>
+        <cmn:meta property="rzo:id" content="ID001"/>
+        <cmn:meta property="rzo:broj" content="broj0"/>
+        <cmn:meta property="rzo:datum" content="2006-05-04"/>
+        <cmn:meta property="rzo:datum_zahteva" content="2006-05-04"/>
+        <cmn:meta property="rzo:datum_zalbe" content="2006-05-04"/>
+        <cmn:meta property="rzo:datum_postupka" content="2006-05-04"/>
     </rzo:metadata>
     <rzo:trazilac>
         <cmn:ime>ime0</cmn:ime>
