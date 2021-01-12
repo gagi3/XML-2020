@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<zo:ZalbaOdluka xmlns:zo="http://www.pijz.rs/zalba-odluka" xmlns:cmn="http://www.pijz.rs/common" id="ID000" broj="01/21" datum="2006-05-04" datum_zahteva="2006-05-04">
+    <zo:metadata>
+        <cmn:meta property="zo:id" content="ID002"/>
+        <cmn:meta property="zo:broj" content="03/21"/>
+        <cmn:meta property="zo:datum" content="2006-05-04"/>
+        <cmn:meta property="zo:datum_zahteva" content="2006-05-04"/>
+    </zo:metadata>
+    <zo:predmet>F</zo:predmet>
+    <zo:kome_je_upucena>
+        <zo:naziv>aay_a</zo:naziv>
+        <zo:adresa_za_postu>
+            <cmn:grad>LzkrZFFvdwR</cmn:grad>
+            <cmn:ulica>AbU</cmn:ulica>
+            <cmn:broj>15</cmn:broj>
+        </zo:adresa_za_postu>
+    </zo:kome_je_upucena>
+    <zo:zalilac>
+        <zo:osoba_zalilac>
+            <cmn:ime>qxqRtoEghrhSRE37gUfHXB996zZ40</cmn:ime>
+            <cmn:prezime>uFj-mPZeMlock</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>FxrxsSGMHsAGbC091cp7P</cmn:grad>
+                <cmn:ulica>RpwpOGLHmll9TO_lpWfAybub</cmn:ulica>
+                <cmn:broj>Jcda_</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba_zalilac>
+        <zo:sediste_zalioca>fW5.6-KHLqfd3L6fC5.89LJdt</zo:sediste_zalioca>
+        <zo:naziv>_wDBydJpenS</zo:naziv>
+    </zo:zalilac>
+    <zo:donosilac_odluke>t.L6ZbH</zo:donosilac_odluke>
+    <zo:broj_resenja>-1222924953</zo:broj_resenja>
+    <zo:godina_resenja>2021-12-29Z</zo:godina_resenja>
+    <zo:razlog_pobijanja>e4AYlVVokiRASTE</zo:razlog_pobijanja>
+    <zo:podnosilac_zalbe>
+        <zo:osoba>
+            <cmn:ime>n8JYR-</cmn:ime>
+            <cmn:prezime>kMGJkMVsreRZ</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>Yl3d-1U0oKc_JMApLTAqopio</cmn:grad>
+                <cmn:ulica>cDs_xbylwKYfzBEPibnTicL</cmn:ulica>
+                <cmn:broj>VUbyrrC4</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba>
+        <zo:drugi_kontakt>VEt8-HY</zo:drugi_kontakt>
+        <zo:potpis>LJWX-ZY40dPzF3RJ3Ae5GPMUCHH</zo:potpis>
+    </zo:podnosilac_zalbe>
+    <zo:mesto_podnosenja_zalbe>
+        <zo:grad>bTSL90lYmDPVHc</zo:grad>
+        <zo:datum>2022-01-11</zo:datum>
+    </zo:mesto_podnosenja_zalbe>
+</zo:ZalbaOdluka>

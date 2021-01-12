@@ -36,7 +36,7 @@ public class ZalbaCutanjeRepository {
     }
 
     public void generateZalbaCutanjeXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/zc:ZalbaCutanje[zc:zalbaCutanje_id='" + ID + "']";
+        String xpath = "/zc:ZalbaCutanje[@id='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("zc", "http://www.pijz.rs/zalba-cutanje");
         ResourceSet result = commonRepository.runXpath("/db/pijz/zalba-cutanje", namespace, xpath);

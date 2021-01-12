@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<rzo:ResenjeZalbaOsnovana xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" xmlns:cmn="http://www.pijz.rs/common" id="ID001" broj="02/21" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
+<rzo:ResenjeZalbaOsnovana xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana" xmlns:cmn="http://www.pijz.rs/common" id="ID002" broj="03/21" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
     <rzo:metadata>
         <cmn:meta property="rzo:id" content="ID000"/>
         <cmn:meta property="rzo:broj" content="01/21"/>

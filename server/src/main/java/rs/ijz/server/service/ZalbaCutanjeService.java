@@ -4,8 +4,10 @@ import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
+import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+import rs.ijz.server.model.resenje_zalba_neosnovana.ResenjeZalbaNeosnovana;
 import rs.ijz.server.model.zalba_cutanje.ZalbaCutanje;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ZalbaCutanjeRepository;
@@ -14,6 +16,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,7 +34,12 @@ public class ZalbaCutanjeService {
         if (result.getSize() == 0) {
             return null;
         }
-        return (List<ZalbaCutanje>) commonRepository.resourceSetToClass(result, ZalbaCutanje.class);
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
     }
 
     public ZalbaCutanje getOne(String id) throws XMLDBException {

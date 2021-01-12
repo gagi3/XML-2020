@@ -37,8 +37,8 @@ public class IzjasnjenjeNaZalbuController {
     @GetMapping(value = "")
     private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAll() {
         try {
-            List<IzjasnjenjeNaZalbu> resenja = izjasnjenjeNaZalbuService.findAll();
-            return ResponseEntity.ok().body(resenja);
+            List<IzjasnjenjeNaZalbu> izjasnjenja = izjasnjenjeNaZalbuService.findAll();
+            return ResponseEntity.ok().body(izjasnjenja);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

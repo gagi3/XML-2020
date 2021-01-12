@@ -1,6 +1,7 @@
 package rs.ijz.server.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
@@ -10,12 +11,14 @@ import javax.xml.transform.TransformerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
+import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
 
 import com.itextpdf.text.DocumentException;
 
 import rs.ijz.server.model.resenje_zalba_neosnovana.ResenjeZalbaNeosnovana;
+import rs.ijz.server.model.resenje_zalba_osnovana.ResenjeZalbaOsnovana;
 import rs.ijz.server.repository.CommonRepository;
 import rs.ijz.server.repository.ResenjeZalbaNeosnovanaRepository;
 
@@ -37,7 +40,12 @@ public class ResenjeZalbaNeosnovanaService {
         if (result.getSize() == 0) {
             return null;
         }
-        return (List<ResenjeZalbaNeosnovana>) commonRepository.resourceSetToClass(result, ResenjeZalbaNeosnovana.class);
+        List<ResenjeZalbaNeosnovana> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ResenjeZalbaNeosnovana) commonRepository.resourceToClass(iterator.nextResource(), ResenjeZalbaNeosnovana.class));
+        }
+        return results;
     }
 
     public ResenjeZalbaNeosnovana getOne(String id) throws XMLDBException {

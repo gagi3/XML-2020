@@ -36,7 +36,7 @@ public class ResenjeZahtevOdbijenRepository {
     }
 
     public void generateResenjeZahtevOdbijenXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/rzho:ResenjeZahtevOdbijen[rzho:resenjeZahtevOdbijen_id='" + ID + "']";
+        String xpath = "/rzho:ResenjeZahtevOdbijen[@id='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("rzho", "http://www.pijz.rs/resenje-zahtev-odbijen");
         ResourceSet result = commonRepository.runXpath("/db/pijz/resenje-zahtev-odbijen", namespace, xpath);

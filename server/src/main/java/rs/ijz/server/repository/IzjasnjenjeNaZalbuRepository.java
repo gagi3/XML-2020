@@ -35,10 +35,10 @@ public class IzjasnjenjeNaZalbuRepository {
         return izjasnjenjeNaZalbu;
     }
 
-    public void generateIzjasnjenjeNaXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/zc:IzjasnjenjeNaZalbu[zc:izjasnjenjeNaZalbu_id='" + ID + "']";
+    public void generateIzjasnjenjeNaZalbuXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
+        String xpath = "/i:IzjasnjenjeNaZalbu[@id='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("zc", "http://www.pijz.rs/izjasnjenje-na-zalbu");
+        namespace.put("i", "http://www.pijz.rs/izjasnjenje-na-zalbu");
         ResourceSet result = commonRepository.runXpath("/db/pijz/izjasnjenje-na-zalbu", namespace, xpath);
         IzjasnjenjeNaZalbu izjasnjenjeNa = (IzjasnjenjeNaZalbu) commonRepository.resourceSetToClass(result, IzjasnjenjeNaZalbu.class);
         String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
