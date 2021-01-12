@@ -45,6 +45,7 @@ public class MetadataExtractor {
 	 * @param in XML containing input stream
 	 * @param out RDF/XML output stream
 	 */
+
 	public void extract(String in) throws FileNotFoundException, TransformerException {
 
 		OutputStream out = new FileOutputStream(new File(RDF_FILE));
@@ -67,7 +68,11 @@ public class MetadataExtractor {
 		
 		// Trigger the transformation
 		grddlTransformer.transform(source, result);
-		
+		try {
+			FusekiWriter.saveRDF();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
