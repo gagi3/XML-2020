@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<i:izjasnjenjeNaZalbu xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:cmn="http://www.pijz.rs/common"
+ xmlns:i="http://www.pijz.rs/izjasnjenje-na-zalbu"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pijz.rs/izjasnjenje-na-zalbu file:/D:/College/XML%202020/Project/XML-2020/server/data/xsd/izjasnjenje-na-zalbu.xsd" id="ID004" broj="broj0" broj_zalbe="ID004" datum_izjave="2006-05-04">
+    <i:metadata>
+        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
+        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
+    </i:metadata>
+    <i:tekst_izjave>tekst_izjave0</i:tekst_izjave>
+    <i:saglasnost_sa_zalbom>false</i:saglasnost_sa_zalbom>
+</i:izjasnjenjeNaZalbu>

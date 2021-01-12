@@ -32,7 +32,7 @@ public class IzjasnjenjeNaZalbuService {
     private DocumentService documentService;
 
     public List<IzjasnjenjeNaZalbu> findAll() throws XMLDBException {
-        String xPath = "/rzho:IzjasnjenjeNaZalbu";
+        String xPath = "/i:IzjasnjenjeNaZalbu";
         ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -41,7 +41,7 @@ public class IzjasnjenjeNaZalbuService {
     }
 
     public IzjasnjenjeNaZalbu getOne(String id) throws XMLDBException {
-        String xPath = "/rzho:IzjasnjenjeNaZalbu[@id='" + id + "']";
+        String xPath = "/i:IzjasnjenjeNaZalbu[@id='" + id + "']";
         ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -50,7 +50,7 @@ public class IzjasnjenjeNaZalbuService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/rzho:IzjasnjenjeNaZalbu[@id='" + id + "']";
+        String xPath = "/i:IzjasnjenjeNaZalbu[@id='" + id + "']";
         return commonRepository.queryIzjasnjenjeNaZalbu(xPath).getSize() != 0;
     }
 
@@ -62,7 +62,7 @@ public class IzjasnjenjeNaZalbuService {
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/rzho:IzjasnjenjeNaZalbu[@id='" + id + "']";
+        String xPath = "/i:IzjasnjenjeNaZalbu[@id='" + id + "']";
         ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
         IzjasnjenjeNaZalbu izjasnjenjeNaZalbu = (IzjasnjenjeNaZalbu) commonRepository.resourceSetToClass(result, IzjasnjenjeNaZalbu.class);
         String xmlInstance = "data/xsd/instance/" + "izjasnjenje-na-zalbu-" + id + ".xml";

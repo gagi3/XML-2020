@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rzo:ResenjeZalbaOsnovana xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana"
+ xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:cmn="http://www.pijz.rs/common"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pijz.rs/resenje-zalba-osnovana file:/D:/College/XML%202020/Project/XML-2020/server/data/xsd/resenje-zalba-osnovana.xsd" id="ID001" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
+    <rzo:metadata>
+        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
+        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
+    </rzo:metadata>
+    <rzo:trazilac>
+        <cmn:ime>ime0</cmn:ime>
+        <cmn:prezime>prezime0</cmn:prezime>
+        <cmn:adresa>
+            <cmn:grad>grad0</cmn:grad>
+            <cmn:ulica>ulica0</cmn:ulica>
+            <cmn:broj>broj0</cmn:broj>
+        </cmn:adresa>
+    </rzo:trazilac>
+    <rzo:poverenik>
+        <cmn:ime>ime1</cmn:ime>
+        <cmn:prezime>prezime1</cmn:prezime>
+        <cmn:adresa>
+            <cmn:grad>grad1</cmn:grad>
+            <cmn:ulica>ulica1</cmn:ulica>
+            <cmn:broj>broj1</cmn:broj>
+        </cmn:adresa>
+    </rzo:poverenik>
+    <rzo:ustanova>
+        <cmn:naziv>naziv0</cmn:naziv>
+        <cmn:adresa>
+            <cmn:grad>grad2</cmn:grad>
+            <cmn:ulica>ulica2</cmn:ulica>
+            <cmn:broj>broj2</cmn:broj>
+        </cmn:adresa>
+    </rzo:ustanova>
+    <rzo:dispozitiv>
+        <rzo:stav redni_broj="0">
+            <rzo:dokument>
+                <rzo:naziv>naziv0</rzo:naziv>
+                <rzo:zasticena_informacija>zasticena_informacija0</rzo:zasticena_informacija>
+                <rzo:zasticena_informacija>zasticena_informacija1</rzo:zasticena_informacija>
+            </rzo:dokument>
+            <rzo:rok_obavestenja>0</rzo:rok_obavestenja>
+        </rzo:stav>
+        <rzo:stav redni_broj="0">
+            <rzo:dokument>
+                <rzo:naziv>naziv1</rzo:naziv>
+                <rzo:zasticena_informacija>zasticena_informacija2</rzo:zasticena_informacija>
+                <rzo:zasticena_informacija>zasticena_informacija3</rzo:zasticena_informacija>
+            </rzo:dokument>
+            <rzo:rok_obavestenja>0</rzo:rok_obavestenja>
+        </rzo:stav>
+    </rzo:dispozitiv>
+    <rzo:obrazlozenje>
+        <rzo:paragraf>
+            <rzo:rok_postupka>0</rzo:rok_postupka>
+            <rzo:rok_zahteva>0</rzo:rok_zahteva>
+        </rzo:paragraf>
+        <rzo:paragraf>
+            <rzo:rok_postupka>0</rzo:rok_postupka>
+            <rzo:rok_zahteva>0</rzo:rok_zahteva>
+        </rzo:paragraf>
+        <rzo:tuzba>
+            <cmn:rok>0</cmn:rok>
+            <cmn:taksa>0</cmn:taksa>
+        </rzo:tuzba>
+    </rzo:obrazlozenje>
+</rzo:ResenjeZalbaOsnovana>

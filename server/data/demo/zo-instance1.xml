@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zo:ZalbaOdluka xmlns:zo="http://www.pijz.rs/zalba-odluka"
+ xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:cmn="http://www.pijz.rs/common"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pijz.rs/zalba-odluka file:/D:/College/XML%202020/Project/XML-2020/server/data/xsd/zalba-odluka.xsd" id="ID000" broj="QVqtG5V_dh" datum="2021-02-04" datum_zahteva="2021-07-05Z">
+    <zo:metadata>
+        <cmn:meta property="XN.QauiulED4QErxNSaqfwwq_0.SSb" content="hqc2CTezZJI_Y3QCokRbNHigZLFRhh">VIWaYAd</cmn:meta>
+        <cmn:meta property="rFYzWPds8" content="zYkARPGUoASjpduUIpkzp">XE0oO9MtOBsAoBvQWk</cmn:meta>
+    </zo:metadata>
+    <zo:predmet>F</zo:predmet>
+    <zo:kome_je_upucena>
+        <zo:naziv>aay_a</zo:naziv>
+        <zo:adresa_za_postu>
+            <cmn:grad>LzkrZFFvdwRDA-7-urDtno_</cmn:grad>
+            <cmn:ulica>AbU</cmn:ulica>
+            <cmn:broj>aH3C-bx4XSW0</cmn:broj>
+        </zo:adresa_za_postu>
+    </zo:kome_je_upucena>
+    <zo:zalilac>
+        <zo:osoba_zalilac>
+            <cmn:ime>qxqRtoEghrhSRE37gUfHXB996zZ40</cmn:ime>
+            <cmn:prezime>uFj-mPZeMlock</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>FxrxsSGMHsAGbC091cp7P</cmn:grad>
+                <cmn:ulica>RpwpOGLHmll9TO_lpWfAybub</cmn:ulica>
+                <cmn:broj>Jcda_</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba_zalilac>
+        <zo:sediste_zalioca>fW5.6-KHLqfd3L6fC5.89LJdt</zo:sediste_zalioca>
+        <zo:naziv>_wDBydJpenS</zo:naziv>
+    </zo:zalilac>
+    <zo:donosilac_odluke>t.L6ZbH</zo:donosilac_odluke>
+    <zo:broj_resenja>-1222924953</zo:broj_resenja>
+    <zo:godina_resenja>2021-12-29Z</zo:godina_resenja>
+    <zo:razlog_pobijanja>e4AYlVVokiRASTE</zo:razlog_pobijanja>
+    <zo:podnosilac_zalbe>
+        <zo:osoba>
+            <cmn:ime>n8JYR-</cmn:ime>
+            <cmn:prezime>kMGJkMVsreRZ</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>Yl3d-1U0oKc_JMApLTAqopio</cmn:grad>
+                <cmn:ulica>cDs_xbylwKYfzBEPibnTicL</cmn:ulica>
+                <cmn:broj>VUbyrrC4</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba>
+        <zo:drugi_kontakt>VEt8-HY</zo:drugi_kontakt>
+        <zo:potpis>LJWX-ZY40dPzF3RJ3Ae5GPMUCHH</zo:potpis>
+    </zo:podnosilac_zalbe>
+    <zo:mesto_podnosenja_zalbe>
+        <zo:grad>bTSL90lYmDPVHc</zo:grad>
+        <zo:datum>2022-01-11</zo:datum>
+    </zo:mesto_podnosenja_zalbe>
+</zo:ZalbaOdluka>

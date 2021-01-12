@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zo:ZalbaOdluka xmlns:zo="http://www.pijz.rs/zalba-odluka"
+ xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:cmn="http://www.pijz.rs/common"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pijz.rs/zalba-odluka file:/D:/College/XML%202020/Project/XML-2020/server/data/xsd/zalba-odluka.xsd" id="ID002" broj="IgH-WTyn6Q.vwvfpyMcjan6usOzfaQ" datum="2022-10-27Z" datum_zahteva="2022-01-30">
+    <zo:metadata>
+        <cmn:meta property="H7QDPHP2W80cQ-HNARNkggtasfU6z0" content="q3zwglU9iIo4m7xKJfrI.-">XZhOs</cmn:meta>
+        <cmn:meta property="rltelOYndpudF" content="GY3xPsNAbp4bjH8">fBzRAwBJEN</cmn:meta>
+    </zo:metadata>
+    <zo:predmet>w7YYElOS6y9QYIBLz8sp</zo:predmet>
+    <zo:kome_je_upucena>
+        <zo:naziv>gFB7LidC77SB8PEP</zo:naziv>
+        <zo:adresa_za_postu>
+            <cmn:grad>tOkpr</cmn:grad>
+            <cmn:ulica>BUjPDyb8WBlI5c3YdRnJ3k1k2MU</cmn:ulica>
+            <cmn:broj>otcGF1SaWa0</cmn:broj>
+        </zo:adresa_za_postu>
+    </zo:kome_je_upucena>
+    <zo:zalilac>
+        <zo:osoba_zalilac>
+            <cmn:ime>_bdj0Tz8rBmaKb1oY.SN77ybb</cmn:ime>
+            <cmn:prezime>DBtTaQj51TMiEcUT4K09HeZc</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>AtA</cmn:grad>
+                <cmn:ulica>POQy24uw-d</cmn:ulica>
+                <cmn:broj>WTvkBnheNDmQeA4dqCpd5HFrax</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba_zalilac>
+        <zo:sediste_zalioca>buxvSqs1NAWPjNG8dCxS8WA-</zo:sediste_zalioca>
+        <zo:naziv>WI2AdegHlsNQ5Hc3Lc2.Y</zo:naziv>
+    </zo:zalilac>
+    <zo:donosilac_odluke>JrIGt6HlNn4xZ5-uL-gJa4W</zo:donosilac_odluke>
+    <zo:broj_resenja>279023597</zo:broj_resenja>
+    <zo:godina_resenja>2022-07-13</zo:godina_resenja>
+    <zo:razlog_pobijanja>s_pROR4eguXn3-ZsGXriZYB4y</zo:razlog_pobijanja>
+    <zo:podnosilac_zalbe>
+        <zo:osoba>
+            <cmn:ime>n7joiWR0aT4b670FxVph9</cmn:ime>
+            <cmn:prezime>pynF6huudTOOVarDK5RWB</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>M</cmn:grad>
+                <cmn:ulica>qKGkTDGQC</cmn:ulica>
+                <cmn:broj>G1XyPkp</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba>
+        <zo:drugi_kontakt>NKP_Habg6u.WOG</zo:drugi_kontakt>
+        <zo:potpis>GMA3ufRiEzPNC-yTx1Y.gm5jm</zo:potpis>
+    </zo:podnosilac_zalbe>
+    <zo:mesto_podnosenja_zalbe>
+        <zo:grad>m9prtlgWlyhQ-El6F</zo:grad>
+        <zo:datum>2021-05-13</zo:datum>
+    </zo:mesto_podnosenja_zalbe>
+</zo:ZalbaOdluka>
