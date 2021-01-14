@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.entity.auth;
+package rs.pijz.server.sluzbenik.entity.auth;
 
 import javax.validation.constraints.Email;
 

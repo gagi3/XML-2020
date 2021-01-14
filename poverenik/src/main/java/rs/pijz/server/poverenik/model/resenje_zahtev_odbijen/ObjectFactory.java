@@ -1,6 +1,6 @@
-package rs.ijz.server.poverenik.model.resenje_zahtev_odbijen;
+package rs.pijz.server.poverenik.model.resenje_zahtev_odbijen;
 
-import rs.ijz.server.poverenik.model.common.*;
+import rs.pijz.server.poverenik.model.common.*;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

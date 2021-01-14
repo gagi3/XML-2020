@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.dto;
+package rs.pijz.server.poverenik.dto;
 
 import javax.xml.bind.annotation.*;
 

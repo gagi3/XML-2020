@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.entity.auth;
+package rs.pijz.server.sluzbenik.entity.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,15 +13,15 @@ public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
     public Collection<? extends GrantedAuthority> authorities;
     private Long id;
-    private String username; //TODO: email validacija
+    private String username;
     @JsonIgnore
     private String password;
     private String forename;
     private String surname;
-    private String address;
     private String city;
-    private String country;
-    private String phone; //TODO: regex
+    private String address;
+    private String homeNumber;
+    private String phone;
     private Boolean enabled;
     private Boolean validated;
 
@@ -36,7 +36,7 @@ public class UserDetailsImpl implements UserDetails {
         this.surname = user.getSurname();
         this.address = user.getAddress();
         this.city = user.getCity();
-        this.country = user.getCountry();
+        this.homeNumber = user.getHomeNumber();
         this.phone = user.getPhone();
         this.enabled = user.getEnabled();
         this.validated = user.getValidated();

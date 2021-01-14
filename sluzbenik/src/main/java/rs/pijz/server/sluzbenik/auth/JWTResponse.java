@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.auth;
+package rs.pijz.server.sluzbenik.auth;
 
 import org.springframework.security.core.GrantedAuthority;
 

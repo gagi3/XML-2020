@@ -1,10 +1,8 @@
-package rs.ijz.server.sluzbenik.entity.auth;
+package rs.pijz.server.sluzbenik.entity.auth;
 
 public enum RoleType {
-    ROLE_PATIENT,
-    ROLE_PHARMACIST,
-    ROLE_DERMATOLOGIST,
-    ROLE_PHARMACY_ADMIN,
-    ROLE_SYSTEM_ADMIN,
-    ROLE_SUPPLIER
+    ROLE_SLUZBENIK,
+    ROLE_POVERENIK,
+    ROLE_GRADJANIN,
+    ROLE_SYSTEMADMIN
 }

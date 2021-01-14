@@ -1,15 +1,15 @@
-package rs.ijz.server.poverenik.controller;
+package rs.pijz.server.poverenik.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import rs.ijz.server.poverenik.dto.ResponseMessage;
-import rs.ijz.server.poverenik.fuseki.MetadataExtractor;
-import rs.ijz.server.poverenik.model.zalba_odluka.ZalbaOdluka;
-import rs.ijz.server.poverenik.service.DomParserService;
-import rs.ijz.server.poverenik.service.ZalbaOdlukaService;
+import rs.pijz.server.poverenik.dto.ResponseMessage;
+import rs.pijz.server.poverenik.fuseki.MetadataExtractor;
+import rs.pijz.server.poverenik.model.zalba_odluka.ZalbaOdluka;
+import rs.pijz.server.poverenik.service.DomParserService;
+import rs.pijz.server.poverenik.service.ZalbaOdlukaService;
 
 import java.util.List;
 

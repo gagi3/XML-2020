@@ -1,9 +1,9 @@
-package rs.ijz.server.poverenik.model.zalba_cutanje;
+package rs.pijz.server.poverenik.model.zalba_cutanje;
 
 
-import rs.ijz.server.poverenik.model.common.Adresa;
-import rs.ijz.server.poverenik.model.common.FizickoLice;
-import rs.ijz.server.poverenik.model.common.MetaData;
+import rs.pijz.server.poverenik.model.common.Adresa;
+import rs.pijz.server.poverenik.model.common.FizickoLice;
+import rs.pijz.server.poverenik.model.common.MetaData;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;

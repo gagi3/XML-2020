@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.repository.auth;
+package rs.pijz.server.sluzbenik.repository.auth;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import rs.pijz.server.sluzbenik.entity.auth.Role;

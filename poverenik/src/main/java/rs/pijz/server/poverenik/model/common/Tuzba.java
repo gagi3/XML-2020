@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.model.common;
+package rs.pijz.server.poverenik.model.common;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

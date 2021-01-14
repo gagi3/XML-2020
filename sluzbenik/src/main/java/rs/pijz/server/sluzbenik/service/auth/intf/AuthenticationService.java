@@ -1,4 +1,4 @@
-package rs.pijz.server.sluzbenik.service.intf.auth;
+package rs.pijz.server.sluzbenik.service.auth.intf;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

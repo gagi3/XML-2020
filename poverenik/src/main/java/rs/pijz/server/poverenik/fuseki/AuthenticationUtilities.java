@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.fuseki;
+package rs.pijz.server.poverenik.fuseki;
 
 import java.io.IOException;
 import java.io.InputStream;

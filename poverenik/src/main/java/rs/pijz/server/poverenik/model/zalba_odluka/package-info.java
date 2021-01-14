@@ -6,7 +6,7 @@
         },
         elementFormDefault = XmlNsForm.QUALIFIED
 )
-package rs.ijz.server.poverenik.model.zalba_odluka;
+package rs.pijz.server.poverenik.model.zalba_odluka;
 
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlNsForm;

@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.auth;
+package rs.pijz.server.sluzbenik.auth;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
-import rs.pijz.server.sluzbenik.service.impl.auth.UserDetailsServiceImpl;
+import rs.pijz.server.sluzbenik.service.auth.impl.UserDetailsServiceImpl;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

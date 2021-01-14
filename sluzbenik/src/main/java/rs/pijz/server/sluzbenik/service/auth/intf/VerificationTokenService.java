@@ -1,4 +1,4 @@
-package rs.pijz.server.sluzbenik.service.intf.auth;
+package rs.pijz.server.sluzbenik.service.auth.intf;
 
 import rs.pijz.server.sluzbenik.entity.auth.User;
 import rs.pijz.server.sluzbenik.entity.auth.VerificationToken;

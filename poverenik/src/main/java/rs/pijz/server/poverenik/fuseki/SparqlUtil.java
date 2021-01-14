@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.fuseki;
+package rs.pijz.server.poverenik.fuseki;
 
 public class SparqlUtil {
 

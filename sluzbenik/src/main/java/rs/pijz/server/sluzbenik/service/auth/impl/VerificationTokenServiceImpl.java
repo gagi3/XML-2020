@@ -1,4 +1,4 @@
-package rs.pijz.server.sluzbenik.service.impl.auth;
+package rs.pijz.server.sluzbenik.service.auth.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import rs.pijz.server.sluzbenik.entity.auth.User;
 import rs.pijz.server.sluzbenik.entity.auth.VerificationToken;
 import rs.pijz.server.sluzbenik.repository.auth.VerificationTokenRepository;
-import rs.pijz.server.sluzbenik.service.intf.auth.UserService;
-import rs.pijz.server.sluzbenik.service.intf.auth.VerificationTokenService;
+import rs.pijz.server.sluzbenik.service.auth.intf.UserService;
+import rs.pijz.server.sluzbenik.service.auth.intf.VerificationTokenService;
 
 import java.util.List;
 import java.util.UUID;
@@ -67,14 +67,14 @@ public class VerificationTokenServiceImpl implements VerificationTokenService {
         email.setTo(user.getUsername());
         email.setSubject("Potvrda registracije");
         email.setText("Postovani/a " + user.getForename() + ",\n\n" +
-                "Hvala vam što ste odabrali baš nas.\n\n" +
+                "Hvala vam na registraciji.\n\n" +
                 "Da biste potvrdili vašu registraciju, molimo vas da kliknete na link ispod.\n\n" +
                 "http://localhost:4200/confirm?token=" + token.getToken() + "\n\n" +
                 "Link važi 24 sata od registracije." +
                 "Ukoliko vam je istekao, molimo vas da kliknete na link ispod kako biste dobili novi link.\n\n" +
                 "http://localhost:4200/request-token\n\n" +
                 "Srdačan pozdrav,\n\n" +
-                "ISA");
+                "Portal za pristup informacijama od javnog značaja");
         mailSender.send(email);
     }
 

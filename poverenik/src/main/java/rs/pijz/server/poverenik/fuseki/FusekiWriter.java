@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.fuseki;
+package rs.pijz.server.poverenik.fuseki;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;

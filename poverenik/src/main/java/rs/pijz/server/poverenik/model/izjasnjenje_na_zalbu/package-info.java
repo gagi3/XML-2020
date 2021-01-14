@@ -6,7 +6,7 @@
         },
         elementFormDefault = XmlNsForm.QUALIFIED
 )
-package rs.ijz.server.poverenik.model.izjasnjenje_na_zalbu;
+package rs.pijz.server.poverenik.model.izjasnjenje_na_zalbu;
 
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlNsForm;

@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.model.resenje_zalba_osnovana;
+package rs.pijz.server.poverenik.model.resenje_zalba_osnovana;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;

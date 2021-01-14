@@ -1,4 +1,4 @@
-package rs.pijz.server.sluzbenik.service.impl.auth;
+package rs.pijz.server.sluzbenik.service.auth.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,8 +12,8 @@ import rs.pijz.server.sluzbenik.auth.JWTResponse;
 import rs.pijz.server.sluzbenik.entity.auth.*;
 import rs.pijz.server.sluzbenik.repository.auth.RoleRepository;
 import rs.pijz.server.sluzbenik.repository.auth.UserRepository;
-import rs.pijz.server.sluzbenik.service.intf.auth.UserService;
-import rs.pijz.server.sluzbenik.service.intf.auth.VerificationTokenService;
+import rs.pijz.server.sluzbenik.service.auth.intf.UserService;
+import rs.pijz.server.sluzbenik.service.auth.intf.VerificationTokenService;
 
 import java.util.Calendar;
 import java.util.List;
@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         updated.setAddress(user.getAddress());
         updated.setCity(user.getCity());
-        updated.setCountry(user.getCountry());
+        updated.setHomeNumber(user.getHomeNumber());
         updated.setForename(user.getForename());
         updated.setSurname(user.getSurname());
         updated.setPhone(user.getPhone());

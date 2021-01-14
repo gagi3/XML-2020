@@ -1,4 +1,4 @@
-package rs.ijz.server.poverenik.fuseki;
+package rs.pijz.server.poverenik.fuseki;
 
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;

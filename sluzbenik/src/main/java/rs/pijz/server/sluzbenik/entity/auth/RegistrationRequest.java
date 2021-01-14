@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.entity.auth;
+package rs.pijz.server.sluzbenik.entity.auth;
 
 import javax.validation.constraints.Email;
 
@@ -10,7 +10,7 @@ public class RegistrationRequest {
     private String surname;
     private String address;
     private String city;
-    private String country;
+    private String homeNumber;
     private String phone; //TODO: regex
 
     public RegistrationRequest() {
@@ -64,12 +64,12 @@ public class RegistrationRequest {
         this.city = city;
     }
 
-    public String getCountry() {
-        return country;
+    public String getHomeNumber() {
+        return homeNumber;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setHomeNumber(String homeNumber) {
+        this.homeNumber = homeNumber;
     }
 
     public String getPhone() {

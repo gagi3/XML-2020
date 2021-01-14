@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.controller.auth;
+package rs.pijz.server.sluzbenik.controller.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import rs.pijz.server.sluzbenik.auth.JWTResponse;
 import rs.pijz.server.sluzbenik.entity.auth.LoginRequest;
 import rs.pijz.server.sluzbenik.entity.auth.RegistrationRequest;
 import rs.pijz.server.sluzbenik.entity.auth.User;
-import rs.pijz.server.sluzbenik.service.intf.auth.UserService;
-import rs.pijz.server.sluzbenik.service.intf.auth.VerificationTokenService;
+import rs.pijz.server.sluzbenik.service.auth.intf.UserService;
+import rs.pijz.server.sluzbenik.service.auth.intf.VerificationTokenService;
 
 @CrossOrigin
 @RestController

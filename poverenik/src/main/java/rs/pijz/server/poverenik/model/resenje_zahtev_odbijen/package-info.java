@@ -6,7 +6,7 @@
         },
         elementFormDefault = XmlNsForm.QUALIFIED
 )
-package rs.ijz.server.poverenik.model.resenje_zahtev_odbijen;
+package rs.pijz.server.poverenik.model.resenje_zahtev_odbijen;
 
 import javax.xml.bind.annotation.XmlNs;
 import javax.xml.bind.annotation.XmlNsForm;

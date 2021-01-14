@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.security;
+package rs.pijz.server.sluzbenik.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import rs.pijz.server.sluzbenik.auth.JWTAuthEntryPoint;
 import rs.pijz.server.sluzbenik.auth.JWTAuthTokenFilter;
-import rs.pijz.server.sluzbenik.service.impl.auth.UserDetailsServiceImpl;
+import rs.pijz.server.sluzbenik.service.auth.impl.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

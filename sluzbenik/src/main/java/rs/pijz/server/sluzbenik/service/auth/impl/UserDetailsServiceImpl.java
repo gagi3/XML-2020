@@ -1,4 +1,4 @@
-package rs.pijz.server.sluzbenik.service.impl.auth;
+package rs.pijz.server.sluzbenik.service.auth.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

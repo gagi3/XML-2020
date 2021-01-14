@@ -1,9 +1,9 @@
-package rs.ijz.server.poverenik.model.resenje_zahtev_odbijen;
+package rs.pijz.server.poverenik.model.resenje_zahtev_odbijen;
 
-import rs.ijz.server.poverenik.model.common.FizickoLice;
-import rs.ijz.server.poverenik.model.common.MetaData;
-import rs.ijz.server.poverenik.model.common.PravnoLice;
-import rs.ijz.server.poverenik.model.common.Tuzba;
+import rs.pijz.server.poverenik.model.common.FizickoLice;
+import rs.pijz.server.poverenik.model.common.MetaData;
+import rs.pijz.server.poverenik.model.common.PravnoLice;
+import rs.pijz.server.poverenik.model.common.Tuzba;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;

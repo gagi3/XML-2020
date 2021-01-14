@@ -1,4 +1,4 @@
-package rs.ijz.server.sluzbenik.entity.auth;
+package rs.pijz.server.sluzbenik.entity.auth;
 
 import org.hibernate.annotations.NaturalId;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Entity
 @Table
-@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +25,11 @@ public class User {
     @Column(nullable = false)
     private String surname;
     @Column(nullable = false)
-    private String address;
-    @Column(nullable = false)
     private String city;
     @Column(nullable = false)
-    private String country;
+    private String address;
+    @Column(nullable = false)
+    private String homeNumber;
     @Column(nullable = false)
     private String phone;
 
@@ -39,7 +38,7 @@ public class User {
     @Column(nullable = false)
     private Boolean validated;
 
-    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
@@ -54,12 +53,12 @@ public class User {
         this.surname = request.getSurname();
         this.address = request.getAddress();
         this.city = request.getCity();
-        this.country = request.getCountry();
+        this.homeNumber = request.getHomeNumber();
         this.phone = request.getPhone();
         this.enabled = true;
         this.validated = false;
         this.roles = new HashSet<>() {{
-            add(new Role(RoleType.ROLE_PATIENT));
+            add(new Role(RoleType.ROLE_GRADJANIN));
         }};
     }
 
@@ -71,7 +70,7 @@ public class User {
         this.surname = surname;
         this.address = address;
         this.city = city;
-        this.country = country;
+        this.homeNumber = country;
         this.phone = phone;
         this.enabled = enabled;
         this.validated = validated;
@@ -130,12 +129,12 @@ public class User {
         this.city = city;
     }
 
-    public String getCountry() {
-        return country;
+    public String getHomeNumber() {
+        return homeNumber;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setHomeNumber(String country) {
+        this.homeNumber = country;
     }
 
     public String getPhone() {
