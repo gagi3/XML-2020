@@ -1,4 +1,5 @@
 prefix rzo: <http://www.pijz.rs/resenje-zalba-osnovana>
+
 SELECT * WHERE {
-  ?resenje rzo:datum ?datum
+    ?resenje rzo:datum ?datum
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rzho:ResenjeZahtevOdbijen xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
- xmlns:cmn="http://www.pijz.rs/common"
- xmlns:rzho="http://www.pijz.rs/resenje-zahtev-odbijen"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.pijz.rs/resenje-zahtev-odbijen file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zahtev-odbijen.xsd" ID="ID000" broj="broj0" datum="2006-05-04" datum_obavestenja="2006-05-04" datum_zahteva="2006-05-04"
-     datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
+<rzho:ResenjeZahtevOdbijen
+        xmlns:cmn="http://www.pijz.rs/common"
+        xmlns:rzho="http://www.pijz.rs/resenje-zahtev-odbijen"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.pijz.rs/resenje-zahtev-odbijen file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zahtev-odbijen.xsd"
+        ID="ID000" broj="broj0" datum="2006-05-04" datum_obavestenja="2006-05-04"
+        datum_zahteva="2006-05-04"
+        datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
     <rzho:metadata>
         <cmn:meta property="cmn:ime" content="Mark"/>
         <cmn:meta property="cmn:prezime" content="Doe"/>
