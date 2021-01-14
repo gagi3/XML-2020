@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rzo:ResenjeZalbaOsnovana xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana"
- xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
- xmlns:cmn="http://www.pijz.rs/common"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.pijz.rs/resenje-zalba-osnovana file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zalba-osnovana.xsd" id="ID000" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04">
+                          xmlns:cmn="http://www.pijz.rs/common"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:schemaLocation="http://www.pijz.rs/resenje-zalba-osnovana file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zalba-osnovana.xsd"
+                          id="ID000" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04"
+                          datum_postupka="2006-05-04">
     <rzo:metadata>
         <cmn:meta property="cmn:ime" content="Jane"/>
         <cmn:meta property="cmn:prezime" content="Doe"/>
