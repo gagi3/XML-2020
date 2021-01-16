@@ -26,7 +26,7 @@ public class ZalbaCutanjeRepository {
     private CommonRepository commonRepository;
 
     public ZalbaCutanje save(ZalbaCutanje zalbaCutanje) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz/zalba-cutanje");
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/zalba-cutanje");
         XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(zalbaCutanje, stream, ZalbaCutanje.class);
@@ -39,7 +39,7 @@ public class ZalbaCutanjeRepository {
         String xpath = "/zc:ZalbaCutanje[@id='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("zc", "http://www.pijz.rs/zalba-cutanje");
-        ResourceSet result = commonRepository.runXpath("/db/pijz/zalba-cutanje", namespace, xpath);
+        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/zalba-cutanje", namespace, xpath);
         ZalbaCutanje zalbaCutanje = (ZalbaCutanje) commonRepository.resourceSetToClass(result, ZalbaCutanje.class);
         String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
         commonRepository.generateXML(ZalbaCutanje.class, zalbaCutanje, xmlFile);

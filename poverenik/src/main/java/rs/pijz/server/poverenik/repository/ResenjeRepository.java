@@ -26,7 +26,7 @@ public class ResenjeRepository {
     private CommonRepository commonRepository;
 
     public Resenje save(Resenje Resenje) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz/resenje");
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/resenje");
         XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(Resenje, stream, Resenje.class);
@@ -36,10 +36,10 @@ public class ResenjeRepository {
     }
 
     public void generateResenjeXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/r:Resenje[@id='" + ID + "']";
+        String xpath = "/r:Resenje[@ID='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("r", "http://www.pijz.rs/resenje");
-        ResourceSet result = commonRepository.runXpath("/db/pijz/resenje", namespace, xpath);
+        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/resenje", namespace, xpath);
         Resenje Resenje = (Resenje) commonRepository.resourceSetToClass(result, Resenje.class);
         String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
         commonRepository.generateXML(Resenje.class, Resenje, xmlFile);

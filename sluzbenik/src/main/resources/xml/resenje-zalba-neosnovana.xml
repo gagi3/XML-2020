@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rzn:ResenjeZalbaNeosnovana
+        xmlns:cmn="http://www.pijz.rs/common"
+        xmlns:rzn="http://www.pijz.rs/resenje-zalba-neosnovana"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.pijz.rs/resenje-zalba-neosnovana file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zalba-neosnovana.xsd"
+        id="ID000" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04"
+        datum_zalbe="2006-05-04" datum_postupka="2006-05-04"
+        datum_odgovora="2006-05-04">
+    <rzn:metadata>
+        <cmn:meta property="cmn:ime" content="Lucy"/>
+        <cmn:meta property="cmn:prezime" content="Doe"/>
+    </rzn:metadata>
+    <rzn:trazilac>
+        <cmn:ime>ime0</cmn:ime>
+        <cmn:prezime>prezime0</cmn:prezime>
+        <cmn:adresa>
+            <cmn:grad>grad0</cmn:grad>
+            <cmn:ulica>ulica0</cmn:ulica>
+            <cmn:broj>broj0</cmn:broj>
+        </cmn:adresa>
+    </rzn:trazilac>
+    <rzn:poverenik>
+        <cmn:ime>ime1</cmn:ime>
+        <cmn:prezime>prezime1</cmn:prezime>
+        <cmn:adresa>
+            <cmn:grad>grad1</cmn:grad>
+            <cmn:ulica>ulica1</cmn:ulica>
+            <cmn:broj>broj1</cmn:broj>
+        </cmn:adresa>
+    </rzn:poverenik>
+    <rzn:ustanova>
+        <cmn:naziv>naziv0</cmn:naziv>
+        <cmn:adresa>
+            <cmn:grad>grad2</cmn:grad>
+            <cmn:ulica>ulica2</cmn:ulica>
+            <cmn:broj>broj2</cmn:broj>
+        </cmn:adresa>
+    </rzn:ustanova>
+    <rzn:broj_zalbe>broj_zalbe0</rzn:broj_zalbe>
+    <rzn:dispozitiv>
+    </rzn:dispozitiv>
+    <rzn:obrazlozenje>
+        <rzn:paragraf>
+            <rzn:razlog>razlog0</rzn:razlog>
+            <rzn:trazena_informacija>trazena_informacija0</rzn:trazena_informacija>
+            <rzn:trazena_informacija>trazena_informacija1</rzn:trazena_informacija>
+            <rzn:trazena_informacija>trazena_informacija2</rzn:trazena_informacija>
+            <rzn:obavestenje>obavestenje0</rzn:obavestenje>
+            <rzn:rok_informisanja>0</rzn:rok_informisanja>
+            <rzn:razlog_neosnovanosti>razlog_neosnovanosti0</rzn:razlog_neosnovanosti>
+        </rzn:paragraf>
+        <rzn:paragraf>
+            <rzn:razlog>razlog1</rzn:razlog>
+            <rzn:trazena_informacija>trazena_informacija3</rzn:trazena_informacija>
+            <rzn:trazena_informacija>trazena_informacija4</rzn:trazena_informacija>
+            <rzn:trazena_informacija>trazena_informacija5</rzn:trazena_informacija>
+            <rzn:obavestenje>obavestenje1</rzn:obavestenje>
+            <rzn:rok_informisanja>0</rzn:rok_informisanja>
+            <rzn:razlog_neosnovanosti>razlog_neosnovanosti1</rzn:razlog_neosnovanosti>
+        </rzn:paragraf>
+        <rzn:paragraf>
+            <rzn:razlog>razlog2</rzn:razlog>
+            <rzn:trazena_informacija>trazena_informacija6</rzn:trazena_informacija>
+            <rzn:trazena_informacija>trazena_informacija7</rzn:trazena_informacija>
+            <rzn:trazena_informacija>trazena_informacija8</rzn:trazena_informacija>
+            <rzn:obavestenje>obavestenje2</rzn:obavestenje>
+            <rzn:rok_informisanja>0</rzn:rok_informisanja>
+            <rzn:razlog_neosnovanosti>razlog_neosnovanosti2</rzn:razlog_neosnovanosti>
+        </rzn:paragraf>
+        <rzn:tuzba>
+            <cmn:rok>0</cmn:rok>
+            <cmn:taksa>0</cmn:taksa>
+        </rzn:tuzba>
+    </rzn:obrazlozenje>
+</rzn:ResenjeZalbaNeosnovana>

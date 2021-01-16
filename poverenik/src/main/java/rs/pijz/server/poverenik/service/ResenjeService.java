@@ -45,7 +45,7 @@ public class ResenjeService {
     }
 
     public Resenje getOne(String id) throws XMLDBException {
-        String xPath = "/r:Resenje[@id='" + id + "']";
+        String xPath = "/r:Resenje[@ID='" + id + "']";
         ResourceSet result = commonRepository.queryResenje(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -55,7 +55,7 @@ public class ResenjeService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/r:Resenje[@id='" + id + "']";
+        String xPath = "/r:Resenje[@ID='" + id + "']";
         return commonRepository.queryResenje(xPath).getSize() != 0;
     }
 
@@ -67,7 +67,7 @@ public class ResenjeService {
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/r:Resenje[@id='" + id + "']";
+        String xPath = "/r:Resenje[@ID='" + id + "']";
         ResourceSet result = commonRepository.queryResenje(xPath);
         Resenje resenje = (Resenje) commonRepository.resourceSetToClass(result, Resenje.class);
         String xmlInstance = "../data/xsd/instance/" + "resenje-" + id + ".xml";
