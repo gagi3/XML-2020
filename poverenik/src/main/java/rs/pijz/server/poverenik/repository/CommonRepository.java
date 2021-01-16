@@ -59,55 +59,41 @@ public class CommonRepository {
         HashMap<String, String> namespace = new HashMap<>() {{
             put("o", "http://www.pijz.rs/obavestenje");
         }};
-        return runXpath("/db/pijz/obavestenje", namespace, query);
+        return runXpath("/db/pijz_poverenik/obavestenje", namespace, query);
     }
 
     public ResourceSet queryZalbaCutanje(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
             put("zc", "http://www.pijz.rs/zalba-cutanje");
         }};
-        return runXpath("/db/pijz/zalba-cutanje", namespace, query);
+        return runXpath("/db/pijz_poverenik/zalba-cutanje", namespace, query);
     }
 
     public ResourceSet queryZalbaOdluka(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
             put("zo", "http://www.pijz.rs/zalba-odluka");
         }};
-        return runXpath("/db/pijz/zalba-odluka", namespace, query);
+        return runXpath("/db/pijz_poverenik/zalba-odluka", namespace, query);
     }
 
-    public ResourceSet queryResenjeZahtevOdbijen(String query) throws XMLDBException {
+    public ResourceSet queryResenje(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
-            put("rzho", "http://www.pijz.rs/resenje-zahtev-odbijen");
+            put("r", "http://www.pijz.rs/resenje");
         }};
-        return runXpath("/db/pijz/resenje-zahtev-odbijen", namespace, query);
-    }
-
-    public ResourceSet queryResenjeZalbaNeosnovana(String query) throws XMLDBException {
-        HashMap<String, String> namespace = new HashMap<>() {{
-            put("rzn", "http://www.pijz.rs/resenje-zalba-neosnovana");
-        }};
-        return runXpath("/db/pijz/resenje-zalba-neosnovana", namespace, query);
-    }
-
-    public ResourceSet queryResenjeZalbaOsnovana(String query) throws XMLDBException {
-        HashMap<String, String> namespace = new HashMap<>() {{
-            put("rzo", "http://www.pijz.rs/resenje-zalba-osnovana");
-        }};
-        return runXpath("/db/pijz/resenje-zalba-osnovana", namespace, query);
+        return runXpath("/db/pijz_poverenik/resenje", namespace, query);
     }
 
     public ResourceSet queryResenjePonisteno(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
             put("rp", "http://www.pijz.rs/resenje-ponisteno");
         }};
-        return runXpath("/db/pijz/resenje-ponisteno", namespace, query);
+        return runXpath("/db/pijz_poverenik/resenje-ponisteno", namespace, query);
     }
 
     public ResourceSet queryIzjasnjenjeNaZalbu(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
             put("i", "http://www.pijz.rs/izjasnjenje-na-zalbu");
         }};
-        return runXpath("/db/pijz/izjasnjenje-na-zalbu", namespace, query);
+        return runXpath("/db/pijz_poverenik/izjasnjenje-na-zalbu", namespace, query);
     }
 }

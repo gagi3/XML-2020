@@ -26,7 +26,7 @@ public class IzjasnjenjeNaZalbuRepository {
     private CommonRepository commonRepository;
 
     public IzjasnjenjeNaZalbu save(IzjasnjenjeNaZalbu izjasnjenjeNaZalbu) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz/izjasnjenje-na-zalbu");
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/izjasnjenje-na-zalbu");
         XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(izjasnjenjeNaZalbu, stream, IzjasnjenjeNaZalbu.class);
@@ -39,7 +39,7 @@ public class IzjasnjenjeNaZalbuRepository {
         String xpath = "/i:IzjasnjenjeNaZalbu[@id='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("i", "http://www.pijz.rs/izjasnjenje-na-zalbu");
-        ResourceSet result = commonRepository.runXpath("/db/pijz/izjasnjenje-na-zalbu", namespace, xpath);
+        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/izjasnjenje-na-zalbu", namespace, xpath);
         IzjasnjenjeNaZalbu izjasnjenjeNa = (IzjasnjenjeNaZalbu) commonRepository.resourceSetToClass(result, IzjasnjenjeNaZalbu.class);
         String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
         commonRepository.generateXML(IzjasnjenjeNaZalbu.class, izjasnjenjeNa, xmlFile);

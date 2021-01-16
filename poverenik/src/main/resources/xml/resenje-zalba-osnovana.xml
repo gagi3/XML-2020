@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rzo:ResenjeZalbaOsnovana xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana"
+<rzo:Resenje xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana"
                           xmlns:cmn="http://www.pijz.rs/common"
                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                           xsi:schemaLocation="http://www.pijz.rs/resenje-zalba-osnovana file:/Users/sevic/Documents/XML-2020/server/data/xsd/resenje-zalba-osnovana.xsd"
@@ -82,4 +82,4 @@
             <cmn:taksa>0</cmn:taksa>
         </rzo:tuzba>
     </rzo:obrazlozenje>
-</rzo:ResenjeZalbaOsnovana>
+</rzo:Resenje>
