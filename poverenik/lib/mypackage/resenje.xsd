@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rzo="http://www.pijz.rs/resenje-zalba-osnovana"
-           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common"
-           elementFormDefault="qualified"
-           targetNamespace="http://www.pijz.rs/resenje-zalba-osnovana" vc:minVersion="1.1">
-
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.pijz.rs/resenje" vc:minVersion="1.1"
+    xmlns:r="http://www.pijz.rs/resenje"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common">
+    
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-
-    <xs:element name="ResenjeZalbaOsnovana">
+    
+    <xs:element name="Resenje">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="metadata" type="cmn:MetaData"/>
@@ -16,44 +16,44 @@
                 <xs:element name="dispozitiv">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="stav" maxOccurs="unbounded" type="rzo:Stav">
-                            </xs:element>
+                            <xs:element name="stav" type="r:Stav" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="obrazlozenje">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element maxOccurs="unbounded" name="paragraf">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="rok_postupka" type="xs:int"/>
-                                        <xs:element name="rok_zahteva" type="xs:int"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
+                            <xs:element name="paragraf" type="r:Paragraf" maxOccurs="unbounded"/>
                             <xs:element name="tuzba" type="cmn:Tuzba"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID"/>
+            <xs:attribute name="ID" type="xs:ID"/>
             <xs:attribute name="broj" type="xs:string"/>
-            <xs:attribute name="datum" type="xs:date"/>
             <xs:attribute name="datum_zahteva" type="xs:date"/>
             <xs:attribute name="datum_zalbe" type="xs:date"/>
             <xs:attribute name="datum_postupka" type="xs:date"/>
+            <xs:attribute name="tip" type="r:Tip"/>
         </xs:complexType>
     </xs:element>
-
+    
+    <xs:simpleType name="Tip">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="zalba_osnovana" />
+            <xs:enumeration value="zalba_neosnovana" />
+            <xs:enumeration value="zahtev_odbijen" />
+            <xs:enumeration value="ponisteno" />
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:complexType name="Stav">
         <xs:sequence>
-            <xs:element name="dokument">
+            <xs:element name="dokument" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="naziv" type="xs:string"/>
-                        <xs:element name="zasticena_informacija" type="xs:string"
-                                    maxOccurs="unbounded"/>
+                        <xs:element name="informacija" type="xs:string" maxOccurs="unbounded"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -61,5 +61,11 @@
         </xs:sequence>
         <xs:attribute name="redni_broj" type="xs:int"/>
     </xs:complexType>
-
+    
+    <xs:complexType name="Paragraf">
+        <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+        </xs:simpleContent>
+    </xs:complexType>
+    
 </xs:schema>

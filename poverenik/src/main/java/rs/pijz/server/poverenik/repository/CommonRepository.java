@@ -90,11 +90,11 @@ public class CommonRepository {
         return runXpath("/db/pijz/resenje-zalba-neosnovana", namespace, query);
     }
 
-    public ResourceSet queryResenjeZalbaOsnovana(String query) throws XMLDBException {
+    public ResourceSet queryResenje(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
-            put("rzo", "http://www.pijz.rs/resenje-zalba-osnovana");
+            put("r", "http://www.pijz.rs/resenje");
         }};
-        return runXpath("/db/pijz/resenje-zalba-osnovana", namespace, query);
+        return runXpath("/db/pijz/resenje", namespace, query);
     }
 
     public ResourceSet queryResenjePonisteno(String query) throws XMLDBException {

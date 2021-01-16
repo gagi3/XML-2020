@@ -7,19 +7,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import rs.pijz.server.poverenik.dto.ResponseMessage;
 import rs.pijz.server.poverenik.fuseki.MetadataExtractor;
-import rs.pijz.server.poverenik.model.resenje_zalba_neosnovana.ResenjeZalbaNeosnovana;
+import rs.pijz.server.poverenik.model.resenje.Resenje;
 import rs.pijz.server.poverenik.service.DomParserService;
-import rs.pijz.server.poverenik.service.ResenjeZalbaNeosnovanaService;
+import rs.pijz.server.poverenik.service.ResenjeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/resenje-zalba-neosnovana")
-public class ResenjeZalbaNeosnovanaController {
+@RequestMapping("/resenje")
+public class ResenjeController {
 
     @Autowired
-    private ResenjeZalbaNeosnovanaService resenjeZalbaNeosnovanaService;
+    private ResenjeService ResenjeService;
 
     @Autowired
     private DomParserService domParserService;
@@ -28,10 +29,11 @@ public class ResenjeZalbaNeosnovanaController {
     private MetadataExtractor metadataExtractor;
 
     @GetMapping(value = "")
-    private ResponseEntity<List<ResenjeZalbaNeosnovana>> findAll() {
+    private ResponseEntity<?> findAll() {
         try {
-            List<ResenjeZalbaNeosnovana> resenja = resenjeZalbaNeosnovanaService.findAll();
-            return ResponseEntity.ok().body(resenja);
+            List<Resenje> resenja = new ArrayList<>();
+            resenja = ResenjeService.findAll();
+            return ResponseEntity.ok(resenja);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -39,9 +41,9 @@ public class ResenjeZalbaNeosnovanaController {
     }
 
     @GetMapping(value = "/search", produces = "application/xml")
-    private ResponseEntity<ResenjeZalbaNeosnovana> getOne(@RequestParam String id) {
+    private ResponseEntity<Resenje> getOne(@RequestParam String id) {
         try {
-            ResenjeZalbaNeosnovana resenje = resenjeZalbaNeosnovanaService.getOne(id);
+            Resenje resenje = ResenjeService.getOne(id);
             return ResponseEntity.ok().body(resenje);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,10 +52,10 @@ public class ResenjeZalbaNeosnovanaController {
     }
 
     @PostMapping(value = "/create", produces = "application/xml")
-    private ResponseEntity<ResenjeZalbaNeosnovana> create(@RequestBody ResenjeZalbaNeosnovana resenje) {
+    private ResponseEntity<Resenje> create(@RequestBody Resenje resenje) {
         try {
-            ResenjeZalbaNeosnovana resenjeZalbaNeosnovana = resenjeZalbaNeosnovanaService.create(resenje);
-            return ResponseEntity.ok().body(resenjeZalbaNeosnovana);
+            Resenje Resenje = ResenjeService.create(resenje);
+            return ResponseEntity.ok().body(Resenje);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -63,7 +65,7 @@ public class ResenjeZalbaNeosnovanaController {
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
-            resenjeZalbaNeosnovanaService.generateDocuments(id);
+            ResenjeService.generateDocuments(id);
             return ResponseEntity.ok().body(new ResponseMessage("Uspesno kreiranje."));
         } catch (Exception e) {
             e.printStackTrace();

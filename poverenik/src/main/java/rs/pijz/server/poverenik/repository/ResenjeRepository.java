@@ -6,7 +6,7 @@ import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
-import rs.pijz.server.poverenik.model.resenje_zahtev_odbijen.ResenjeZahtevOdbijen;
+import rs.pijz.server.poverenik.model.resenje.Resenje;
 import rs.pijz.server.poverenik.service.JAXBService;
 import rs.pijz.server.poverenik.util.DatabaseConnection;
 
@@ -17,7 +17,7 @@ import java.io.OutputStream;
 import java.util.HashMap;
 
 @Repository
-public class ResenjeZahtevOdbijenRepository {
+public class ResenjeRepository {
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,23 +25,23 @@ public class ResenjeZahtevOdbijenRepository {
     @Autowired
     private CommonRepository commonRepository;
 
-    public ResenjeZahtevOdbijen save(ResenjeZahtevOdbijen resenjeZahtevOdbijen) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz/resenje-zahtev-odbijen");
+    public Resenje save(Resenje Resenje) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz/resenje");
         XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
-        jaxbService.marshal(resenjeZahtevOdbijen, stream, ResenjeZahtevOdbijen.class);
+        jaxbService.marshal(Resenje, stream, Resenje.class);
         resource.setContent(stream);
         collection.storeResource(resource);
-        return resenjeZahtevOdbijen;
+        return Resenje;
     }
 
-    public void generateResenjeZahtevOdbijenXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/rzho:ResenjeZahtevOdbijen[@id='" + ID + "']";
+    public void generateResenjeXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
+        String xpath = "/r:Resenje[@id='" + ID + "']";
         HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("rzho", "http://www.pijz.rs/resenje-zahtev-odbijen");
-        ResourceSet result = commonRepository.runXpath("/db/pijz/resenje-zahtev-odbijen", namespace, xpath);
-        ResenjeZahtevOdbijen resenjeZahtevOdbijen = (ResenjeZahtevOdbijen) commonRepository.resourceSetToClass(result, ResenjeZahtevOdbijen.class);
+        namespace.put("r", "http://www.pijz.rs/resenje");
+        ResourceSet result = commonRepository.runXpath("/db/pijz/resenje", namespace, xpath);
+        Resenje Resenje = (Resenje) commonRepository.resourceSetToClass(result, Resenje.class);
         String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(ResenjeZahtevOdbijen.class, resenjeZahtevOdbijen, xmlFile);
+        commonRepository.generateXML(Resenje.class, Resenje, xmlFile);
     }
 }

@@ -1,23 +1,26 @@
-package rs.pijz.server.poverenik.model.resenje_zalba_osnovana;
 
-import rs.pijz.server.poverenik.model.common.FizickoLice;
-import rs.pijz.server.poverenik.model.common.MetaData;
-import rs.pijz.server.poverenik.model.common.PravnoLice;
-import rs.pijz.server.poverenik.model.common.Tuzba;
-
-import javax.xml.bind.annotation.*;
+package rs.pijz.server.poverenik.model.resenje;
+import rs.pijz.server.poverenik.model.common.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -32,7 +35,7 @@ import java.util.List;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="stav" type="{http://www.pijz.rs/resenje-zalba-osnovana}Stav" maxOccurs="unbounded"/>
+ *                   &lt;element name="stav" type="{http://www.pijz.rs/resenje}Stav" maxOccurs="unbounded"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -43,18 +46,7 @@ import java.util.List;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="paragraf" maxOccurs="unbounded">
- *                     &lt;complexType>
- *                       &lt;complexContent>
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           &lt;sequence>
- *                             &lt;element name="rok_postupka" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                             &lt;element name="rok_zahteva" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *                           &lt;/sequence>
- *                         &lt;/restriction>
- *                       &lt;/complexContent>
- *                     &lt;/complexType>
- *                   &lt;/element>
+ *                   &lt;element name="paragraf" type="{http://www.pijz.rs/resenje}Paragraf" maxOccurs="unbounded"/>
  *                   &lt;element name="tuzba" type="{http://www.pijz.rs/common}Tuzba"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
@@ -62,51 +54,50 @@ import java.util.List;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zalbe" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_postupka" type="{http://www.w3.org/2001/XMLSchema}date" />
+ *       &lt;attribute name="tip" type="{http://www.pijz.rs/resenje}Tip" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "metadata",
-        "trazilac",
-        "poverenik",
-        "ustanova",
-        "dispozitiv",
-        "obrazlozenje"
+    "metadata",
+    "trazilac",
+    "poverenik",
+    "ustanova",
+    "dispozitiv",
+    "obrazlozenje"
 })
-@XmlRootElement(name = "ResenjeZalbaOsnovana")
-public class ResenjeZalbaOsnovana {
+@XmlRootElement(name = "Resenje", namespace = "http://www.pijz.rs/resenje")
+public class Resenje {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
     protected MetaData metadata;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
     protected FizickoLice trazilac;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
     protected FizickoLice poverenik;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
     protected PravnoLice ustanova;
-    @XmlElement(required = true)
-    protected ResenjeZalbaOsnovana.Dispozitiv dispozitiv;
-    @XmlElement(required = true)
-    protected ResenjeZalbaOsnovana.Obrazlozenje obrazlozenje;
-    @XmlAttribute(name = "id")
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
+    protected Dispozitiv dispozitiv;
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
+    protected Obrazlozenje obrazlozenje;
+    @XmlAttribute(name = "ID")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
     protected String id;
     @XmlAttribute(name = "broj")
     protected String broj;
-    @XmlAttribute(name = "datum")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datum;
     @XmlAttribute(name = "datum_zahteva")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumZahteva;
@@ -116,12 +107,16 @@ public class ResenjeZalbaOsnovana {
     @XmlAttribute(name = "datum_postupka")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumPostupka;
+    @XmlAttribute(name = "tip")
+    protected Tip tip;
 
     /**
      * Gets the value of the metadata property.
-     *
-     * @return possible object is
-     * {@link MetaData }
+     * 
+     * @return
+     *     possible object is
+     *     {@link MetaData }
+     *     
      */
     public MetaData getMetadata() {
         return metadata;
@@ -129,9 +124,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the metadata property.
-     *
-     * @param value allowed object is
-     *              {@link MetaData }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MetaData }
+     *     
      */
     public void setMetadata(MetaData value) {
         this.metadata = value;
@@ -139,9 +136,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Gets the value of the trazilac property.
-     *
-     * @return possible object is
-     * {@link FizickoLice }
+     * 
+     * @return
+     *     possible object is
+     *     {@link FizickoLice }
+     *     
      */
     public FizickoLice getTrazilac() {
         return trazilac;
@@ -149,9 +148,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the trazilac property.
-     *
-     * @param value allowed object is
-     *              {@link FizickoLice }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FizickoLice }
+     *     
      */
     public void setTrazilac(FizickoLice value) {
         this.trazilac = value;
@@ -159,9 +160,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Gets the value of the poverenik property.
-     *
-     * @return possible object is
-     * {@link FizickoLice }
+     * 
+     * @return
+     *     possible object is
+     *     {@link FizickoLice }
+     *     
      */
     public FizickoLice getPoverenik() {
         return poverenik;
@@ -169,9 +172,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the poverenik property.
-     *
-     * @param value allowed object is
-     *              {@link FizickoLice }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FizickoLice }
+     *     
      */
     public void setPoverenik(FizickoLice value) {
         this.poverenik = value;
@@ -179,9 +184,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Gets the value of the ustanova property.
-     *
-     * @return possible object is
-     * {@link PravnoLice }
+     * 
+     * @return
+     *     possible object is
+     *     {@link PravnoLice }
+     *     
      */
     public PravnoLice getUstanova() {
         return ustanova;
@@ -189,9 +196,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the ustanova property.
-     *
-     * @param value allowed object is
-     *              {@link PravnoLice }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PravnoLice }
+     *     
      */
     public void setUstanova(PravnoLice value) {
         this.ustanova = value;
@@ -199,69 +208,83 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Gets the value of the dispozitiv property.
-     *
-     * @return possible object is
-     * {@link ResenjeZalbaOsnovana.Dispozitiv }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Dispozitiv }
+     *     
      */
-    public ResenjeZalbaOsnovana.Dispozitiv getDispozitiv() {
+    public Dispozitiv getDispozitiv() {
         return dispozitiv;
     }
 
     /**
      * Sets the value of the dispozitiv property.
-     *
-     * @param value allowed object is
-     *              {@link ResenjeZalbaOsnovana.Dispozitiv }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Dispozitiv }
+     *     
      */
-    public void setDispozitiv(ResenjeZalbaOsnovana.Dispozitiv value) {
+    public void setDispozitiv(Dispozitiv value) {
         this.dispozitiv = value;
     }
 
     /**
      * Gets the value of the obrazlozenje property.
-     *
-     * @return possible object is
-     * {@link ResenjeZalbaOsnovana.Obrazlozenje }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Obrazlozenje }
+     *     
      */
-    public ResenjeZalbaOsnovana.Obrazlozenje getObrazlozenje() {
+    public Obrazlozenje getObrazlozenje() {
         return obrazlozenje;
     }
 
     /**
      * Sets the value of the obrazlozenje property.
-     *
-     * @param value allowed object is
-     *              {@link ResenjeZalbaOsnovana.Obrazlozenje }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Obrazlozenje }
+     *     
      */
-    public void setObrazlozenje(ResenjeZalbaOsnovana.Obrazlozenje value) {
+    public void setObrazlozenje(Obrazlozenje value) {
         this.obrazlozenje = value;
     }
 
     /**
      * Gets the value of the id property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public String getId() {
+    public String getID() {
         return id;
     }
 
     /**
      * Sets the value of the id property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setId(String value) {
+    public void setID(String value) {
         this.id = value;
     }
 
     /**
      * Gets the value of the broj property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getBroj() {
         return broj;
@@ -269,39 +292,23 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the broj property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setBroj(String value) {
         this.broj = value;
     }
 
     /**
-     * Gets the value of the datum property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
-     */
-    public XMLGregorianCalendar getDatum() {
-        return datum;
-    }
-
-    /**
-     * Sets the value of the datum property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
-     */
-    public void setDatum(XMLGregorianCalendar value) {
-        this.datum = value;
-    }
-
-    /**
      * Gets the value of the datumZahteva property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumZahteva() {
         return datumZahteva;
@@ -309,9 +316,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the datumZahteva property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumZahteva(XMLGregorianCalendar value) {
         this.datumZahteva = value;
@@ -319,9 +328,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Gets the value of the datumZalbe property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumZalbe() {
         return datumZalbe;
@@ -329,9 +340,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the datumZalbe property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumZalbe(XMLGregorianCalendar value) {
         this.datumZalbe = value;
@@ -339,9 +352,11 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Gets the value of the datumPostupka property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumPostupka() {
         return datumPostupka;
@@ -349,60 +364,90 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * Sets the value of the datumPostupka property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumPostupka(XMLGregorianCalendar value) {
         this.datumPostupka = value;
     }
 
+    /**
+     * Gets the value of the tip property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Tip }
+     *     
+     */
+    public Tip getTip() {
+        return tip;
+    }
+
+    /**
+     * Sets the value of the tip property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Tip }
+     *     
+     */
+    public void setTip(Tip value) {
+        this.tip = value;
+    }
+
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="stav" type="{http://www.pijz.rs/resenje-zalba-osnovana}Stav" maxOccurs="unbounded"/>
+     *         &lt;element name="stav" type="{http://www.pijz.rs/resenje}Stav" maxOccurs="unbounded"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "stav"
+        "stav"
     })
     public static class Dispozitiv {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
         protected List<Stav> stav;
 
         /**
          * Gets the value of the stav property.
-         *
+         * 
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the stav property.
-         *
+         * 
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getStav().add(newItem);
          * </pre>
-         *
-         *
+         * 
+         * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link Stav }
+         * 
+         * 
          */
         public List<Stav> getStav() {
             if (stav == null) {
@@ -416,77 +461,72 @@ public class ResenjeZalbaOsnovana {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="paragraf" maxOccurs="unbounded">
-     *           &lt;complexType>
-     *             &lt;complexContent>
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                 &lt;sequence>
-     *                   &lt;element name="rok_postupka" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                   &lt;element name="rok_zahteva" type="{http://www.w3.org/2001/XMLSchema}int"/>
-     *                 &lt;/sequence>
-     *               &lt;/restriction>
-     *             &lt;/complexContent>
-     *           &lt;/complexType>
-     *         &lt;/element>
+     *         &lt;element name="paragraf" type="{http://www.pijz.rs/resenje}Paragraf" maxOccurs="unbounded"/>
      *         &lt;element name="tuzba" type="{http://www.pijz.rs/common}Tuzba"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "paragraf",
-            "tuzba"
+        "paragraf",
+        "tuzba"
     })
     public static class Obrazlozenje {
 
-        @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-osnovana", required = true)
-        protected List<ResenjeZalbaOsnovana.Obrazlozenje.Paragraf> paragraf;
-        @XmlElement(namespace = "http://www.pijz.rs/resenje-zalba-osnovana", required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
+        protected List<Paragraf> paragraf;
+        @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
         protected Tuzba tuzba;
 
         /**
          * Gets the value of the paragraf property.
-         *
+         * 
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the paragraf property.
-         *
+         * 
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getParagraf().add(newItem);
          * </pre>
-         *
-         *
+         * 
+         * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link ResenjeZalbaOsnovana.Obrazlozenje.Paragraf }
+         * {@link Paragraf }
+         * 
+         * 
          */
-        public List<ResenjeZalbaOsnovana.Obrazlozenje.Paragraf> getParagraf() {
+        public List<Paragraf> getParagraf() {
             if (paragraf == null) {
-                paragraf = new ArrayList<ResenjeZalbaOsnovana.Obrazlozenje.Paragraf>();
+                paragraf = new ArrayList<Paragraf>();
             }
             return this.paragraf;
         }
 
         /**
          * Gets the value of the tuzba property.
-         *
-         * @return possible object is
-         * {@link Tuzba }
+         * 
+         * @return
+         *     possible object is
+         *     {@link Tuzba }
+         *     
          */
         public Tuzba getTuzba() {
             return tuzba;
@@ -494,73 +534,14 @@ public class ResenjeZalbaOsnovana {
 
         /**
          * Sets the value of the tuzba property.
-         *
-         * @param value allowed object is
-         *              {@link Tuzba }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Tuzba }
+         *     
          */
         public void setTuzba(Tuzba value) {
             this.tuzba = value;
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         *
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         *
-         * <pre>
-         * &lt;complexType>
-         *   &lt;complexContent>
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *       &lt;sequence>
-         *         &lt;element name="rok_postupka" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *         &lt;element name="rok_zahteva" type="{http://www.w3.org/2001/XMLSchema}int"/>
-         *       &lt;/sequence>
-         *     &lt;/restriction>
-         *   &lt;/complexContent>
-         * &lt;/complexType>
-         * </pre>
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-                "rokPostupka",
-                "rokZahteva"
-        })
-        public static class Paragraf {
-
-            @XmlElement(name = "rok_postupka", namespace = "http://www.pijz.rs/resenje-zalba-osnovana")
-            protected int rokPostupka;
-            @XmlElement(name = "rok_zahteva", namespace = "http://www.pijz.rs/resenje-zalba-osnovana")
-            protected int rokZahteva;
-
-            /**
-             * Gets the value of the rokPostupka property.
-             */
-            public int getRokPostupka() {
-                return rokPostupka;
-            }
-
-            /**
-             * Sets the value of the rokPostupka property.
-             */
-            public void setRokPostupka(int value) {
-                this.rokPostupka = value;
-            }
-
-            /**
-             * Gets the value of the rokZahteva property.
-             */
-            public int getRokZahteva() {
-                return rokZahteva;
-            }
-
-            /**
-             * Sets the value of the rokZahteva property.
-             */
-            public void setRokZahteva(int value) {
-                this.rokZahteva = value;
-            }
-
         }
 
     }
