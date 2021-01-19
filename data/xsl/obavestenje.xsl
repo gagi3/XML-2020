@@ -11,6 +11,36 @@
 
             <body>
                 <div>
+                    <div>
+                        <i>ID: </i>
+                        <xsl:value-of select="o:Obavestenje/@id"/>
+                    </div>
+                    <div>
+                        <i>Broj: </i>
+                        <xsl:value-of select="o:Obavestenje/@broj"/>
+                    </div>
+                    <div>
+                        <i>Datum: </i>
+                        <xsl:value-of select="o:Obavestenje/@datum"/>
+                    </div>
+                    <div>
+                        <i>Datum zahtevanja: </i>
+                        <xsl:value-of select="o:Obavestenje/@datum_zahtevanja"/>
+                    </div>
+                    <div>
+                        <i>Datum uvida: </i>
+                        <xsl:value-of select="o:Obavestenje/@datum_uvida"/>
+                    </div>
+                    <div>
+                        <i>Vreme uvida [od]: </i>
+                        <xsl:value-of select="o:Obavestenje/@vreme_uvida_od"/>
+                    </div>
+                    <div>
+                        <i>Vreme uvida [do]: </i>
+                        <xsl:value-of select="o:Obavestenje/@vreme_uvida_do"/>
+                    </div>
+                </div>
+                <div>
                     <h1>obavestenje</h1>
                     <div>
                         <strong>Organ: </strong> 

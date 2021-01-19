@@ -11,6 +11,32 @@
 
             <body>
                 <div>
+                    <div>
+                        <i>ID: </i>
+                        <xsl:value-of select="r:Resenje/@ID"/>
+                    </div>
+                    <div>
+                        <i>Broj: </i>
+                        <xsl:value-of select="r:Resenje/@broj"/>
+                    </div>
+                    <div>
+                        <i>Datum zahteva: </i>
+                        <xsl:value-of select="r:Resenje/@datum_zahteva"/>
+                    </div>
+                    <div>
+                        <i>Datum zalbe: </i>
+                        <xsl:value-of select="r:Resenje/@datum_zalbe"/>
+                    </div>
+                    <div>
+                        <i>Datum postupka: </i>
+                        <xsl:value-of select="r:Resenje/@datum_postupka"/>
+                    </div>
+                    <div>
+                        <i>Tip: </i>
+                        <xsl:value-of select="r:Resenje/@tip"/>
+                    </div>
+                </div>
+                <div>
                     <h1>resenje</h1>
                     <div>
                         <strong>Trazilac: </strong> 

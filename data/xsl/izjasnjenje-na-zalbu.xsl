@@ -8,6 +8,24 @@
 
             <body>
                 <div>
+                    <div>
+                        <i>ID: </i>
+                        <xsl:value-of select="i:izjasnjenjeNaZalbu/@id"/>
+                    </div>
+                    <div>
+                        <i>Broj: </i>
+                        <xsl:value-of select="i:izjasnjenjeNaZalbu/@broj"/>
+                    </div>
+                    <div>
+                        <i>Broj zalbe: </i>
+                        <xsl:value-of select="i:izjasnjenjeNaZalbu/@broj_zalbe"/>
+                    </div>
+                    <div>
+                        <i>Datum izjave: </i>
+                        <xsl:value-of select="i:izjasnjenjeNaZalbu/@datum_izjave"/>
+                    </div>
+                </div>
+                <div>
                     <h1>izjasnjenje-na-zalbu</h1>
                     <div>
                         <strong>Tekst izjave: </strong> 

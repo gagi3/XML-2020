@@ -11,6 +11,24 @@
 
             <body>
                 <div>
+                    <div>
+                        <i>ID: </i>
+                        <xsl:value-of select="zo:ZalbaOdluka/@id"/>
+                    </div>
+                    <div>
+                        <i>Broj: </i>
+                        <xsl:value-of select="zo:ZalbaOdluka/@broj"/>
+                    </div>
+                    <div>
+                        <i>Datum: </i>
+                        <xsl:value-of select="zo:ZalbaOdluka/@datum"/>
+                    </div>
+                    <div>
+                        <i>Datum zahteva: </i>
+                        <xsl:value-of select="zo:ZalbaOdluka/@datum_zahteva"/>
+                    </div>
+                </div>
+                <div>
                     <h1>zalba-odluka</h1>
                     <div>
                         <strong>Predmet: </strong> 
