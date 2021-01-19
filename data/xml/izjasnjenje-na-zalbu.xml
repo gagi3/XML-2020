@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/izjasnjenje-na-zalbu.xsl"?>
 <i:izjasnjenjeNaZalbu xmlns:i="http://www.pijz.rs/izjasnjenje-na-zalbu"
  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
  xmlns:cmn="http://www.pijz.rs/common"
