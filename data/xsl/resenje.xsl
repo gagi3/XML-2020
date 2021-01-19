@@ -58,15 +58,48 @@
                     </div>
                     <div>
                         <strong>Dispozitiv: </strong>
-                        <xsl:value-of select="r:Resenje/r:dispozitiv"/>
+                        <xsl:for-each select="r:Resenje/r:dispozitiv/r:stav">
+            				<xsl:call-template name="Stav">
+                                <xsl:with-param name="stav" select="." />
+                            </xsl:call-template>
+            			</xsl:for-each>
                     </div>
                     <div>
                         <strong>Obrazlozenje: </strong>
-                        <xsl:value-of select="r:Resenje/r:obrazlozenje"/>
+                        <xsl:for-each select="r:Resenje/r:obrazlozenje/r:paragraf">
+            				<xsl:call-template name="Paragraf">
+                                <xsl:with-param name="paragraf" select="." />
+                            </xsl:call-template>
+            			</xsl:for-each>
+                        <xsl:call-template name="Tuzba">
+                            <xsl:with-param name="tuzba" select="r:Resenje/r:obrazlozenje/r:tuzba" />
+                        </xsl:call-template>
                     </div>
                 </div>
             </body>
         </html>
 
     </xsl:template>
+
+    <xsl:template name="Stav">
+        <xsl:param name="stav"/>
+        <div>
+            <i>Redni broj: </i>
+            <xsl:value-of select="$stav/@redni_broj"/><br/>
+            <div>
+                <u>Dokument</u>: <xsl:value-of select="$stav/r:dokument/r:naziv"/> [rok obavestenja: <xsl:value-of select="$stav/r:rok_obavestenja"/>]
+                <div>
+                    <xsl:for-each select="$stav/r:dokument/r:informacija">
+                        <li><xsl:value-of select="."/></li>
+                    </xsl:for-each>
+                </div>
+            </div>
+        </div>
+    </xsl:template>
+
+    <xsl:template name="Paragraf">
+        <xsl:param name="paragraf"/>
+        <p> <xsl:value-of select="."/> </p>
+    </xsl:template>
+
 </xsl:stylesheet>

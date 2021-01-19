@@ -33,10 +33,11 @@
 
     <xsl:template name="Tuzba">
         <xsl:param name="tuzba"/>
-        <div>
-            <xsl:value-of select="$tuzba/cmn:rok"/><br/>
-            <xsl:value-of select="$tuzba/cmn:taksa"/>
-        </div>
+        <p>
+            Против овог решења није допуштена жалба већ се, у складу са Законом о управним споровима, може покренути
+            управни спор тужбом Управном суду у Београду, у року од <xsl:value-of select="$tuzba/cmn:rok"/> дана од дана пријема решења.
+            Такса на тужбу износи <xsl:value-of select="$tuzba/cmn:taksa"/> динара. 
+        </p>
     </xsl:template>
 
 </xsl:stylesheet>
