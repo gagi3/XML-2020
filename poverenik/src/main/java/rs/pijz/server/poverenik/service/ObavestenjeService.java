@@ -10,6 +10,7 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.poverenik.model.obavestenje.Obavestenje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ObavestenjeRepository;
+import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,6 +27,11 @@ public class ObavestenjeService {
     private ObavestenjeRepository obavestenjeRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private XSLFOTransformer xslfoTransformer;
+    
+    private String xslTemplatePath = "../data/xsl/obavestenje.xsl";
 
     public List<Obavestenje> findAll() throws XMLDBException {
         String xPath = "/o:Obavestenje";
@@ -70,5 +76,9 @@ public class ObavestenjeService {
         String xml = "../data/xml/" + "zalba-cutanje-" + id + ".xml";
         documentService.createXML(Obavestenje.class, obavestenje, xmlInstance);
         System.out.println("Docs generated!");
+    }
+    
+    public String convertToHTML(String xml) throws Exception {
+    	return xslfoTransformer.generateHTML(xml, xslTemplatePath);
     }
 }

@@ -78,4 +78,10 @@ public class ObavestenjeController {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
     }
+    
+    @PostMapping(value = "/convert-to-html")
+    public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
+    	String result = ObavestenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }
