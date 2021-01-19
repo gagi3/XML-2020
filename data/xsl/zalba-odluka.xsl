@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:zo="http://www.pijz.rs/zalba-odluka" version="2.0">
+
+    <xsl:import href="common.xsl"/>
+
     <xsl:template match="/">
         <html>
             <head>
@@ -15,11 +18,18 @@
                     </div>
                     <div>
                         <strong>Kome je upucena: </strong>
-                        <xsl:value-of select="zo:ZalbaOdluka/zo:kome_je_upucena"/>
+                        <xsl:value-of select="zo:ZalbaOdluka/zo:kome_je_upucena/zo:naziv"/>
+                        <xsl:call-template name="Adresa">
+                            <xsl:with-param name="adresa" select="zo:ZalbaOdluka/zo:kome_je_upucena/zo:adresa_za_postu"/>
+                        </xsl:call-template>
                     </div>
                     <div>
                         <strong>Zalilac: </strong>
-                        <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac"/>
+                        <xsl:call-template name="FizickoLice">
+                            <xsl:with-param name="fizickoLice" select="zo:ZalbaOdluka/zo:zalilac/zo:osoba_zalilac"/>
+                        </xsl:call-template>
+                        <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:sediste_zalioca"/>
+                        <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:naziv"/>
                     </div>
                     <div>
                         <strong>Donosilac odluke: </strong>
@@ -39,7 +49,11 @@
                     </div>
                     <div>
                         <strong>Podnosilac zalbe: </strong>
-                        <xsl:value-of select="zo:ZalbaOdluka/zo:podnosilac_zalbe"/>
+                        <xsl:call-template name="FizickoLice">
+                            <xsl:with-param name="fizickoLice" select="zo:ZalbaOdluka/zo:podnosilac_zalbe/zo:osoba"/>
+                        </xsl:call-template>
+                        <xsl:value-of select="zo:ZalbaOdluka/zo:podnosilac_zalbe/zo:drugi_kontakt"/>
+                        <xsl:value-of select="zo:ZalbaOdluka/zo:podnosilac_zalbe/zo:potpis"/>
                     </div>
                     <div>
                         <strong>Mesto podnosenja zalbe: </strong>

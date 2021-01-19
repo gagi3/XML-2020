@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:zc="http://www.pijz.rs/zalba-cutanje" version="2.0">
+
+    <xsl:import href="common.xsl"/>
+
     <xsl:template match="/">
         <html>
             <head>
@@ -15,7 +18,10 @@
                     </div>
                     <div>
                         <strong>Kome je upucena: </strong>
-                        <xsl:value-of select="zc:ZalbaCutanje/zc:kome_je_upucena"/>
+                        <xsl:value-of select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:naziv"/>
+                        <xsl:call-template name="Adresa">
+                            <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:adresa_za_postu"/> />
+                        </xsl:call-template>
                     </div>
                     <div>
                         <strong>Protiv organa: </strong>
@@ -31,7 +37,10 @@
                     </div>
                     <div>
                         <strong>Podnosilac zalbe: </strong>
-                        <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe"/>
+                        <xsl:call-template name="FizickoLice">
+                            <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/> />
+                        </xsl:call-template>
+                        <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:drugi_kontakt"/>
                     </div>
                     <div>
                         <strong>Mesto podnosenja zalbe: </strong>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:r="http://www.pijz.rs/resenje" version="2.0">
+
+    <xsl:import href="common.xsl"/>
+
     <xsl:template match="/">
         <html>
             <head>
@@ -11,15 +14,21 @@
                     <h1>resenje</h1>
                     <div>
                         <strong>Trazilac: </strong> 
-                        <xsl:value-of select="r:Resenje/r:trazilac"/>
+                        <xsl:call-template name="FizickoLice">
+                            <xsl:with-param name="fizickoLice" select="r:Resenje/r:trazilac" />
+                        </xsl:call-template>
                     </div>
                     <div>
                         <strong>Poverenik: </strong>
-                        <xsl:value-of select="r:Resenje/r:poverenik"/>
+                        <xsl:call-template name="FizickoLice">
+                            <xsl:with-param name="fizickoLice" select="r:Resenje/r:poverenik" />
+                        </xsl:call-template>
                     </div>
                     <div>
                         <strong>Ustanova: </strong>
-                        <xsl:value-of select="r:Resenje/r:ustanova"/>
+                        <xsl:call-template name="PravnoLice">
+                            <xsl:with-param name="pravnoLice" select="r:Resenje/r:ustanova" />
+                        </xsl:call-template>
                     </div>
                     <div>
                         <strong>Dispozitiv: </strong>

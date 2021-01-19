@@ -15,7 +15,9 @@
         <div>
             <xsl:value-of select="$fizickoLice/cmn:ime"/><br/>
             <xsl:value-of select="$fizickoLice/cmn:prezime"/><br/>
-            <xsl:value-of select="$fizickoLice/cmn:Adresa"/>
+            <xsl:call-template name="Adresa">
+                <xsl:with-param name="adresa" select="$fizickoLice/cmn:adresa"/>
+            </xsl:call-template>
         </div>
     </xsl:template>
 
@@ -23,7 +25,9 @@
         <xsl:param name="pravnoLice"/>
         <div>
             <xsl:value-of select="$pravnoLice/cmn:naziv"/><br/>
-            <xsl:value-of select="$pravnoLice/cmn:Adresa"/>
+            <xsl:call-template name="Adresa">
+                <xsl:with-param name="adresa" select="$pravnoLice/cmn:adresa"/>
+            </xsl:call-template>
         </div>
     </xsl:template>
 
