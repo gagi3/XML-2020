@@ -38,7 +38,7 @@
                         <strong>Kome je upucena: </strong>
                         <xsl:value-of select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:naziv"/>
                         <xsl:call-template name="Adresa">
-                            <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:adresa_za_postu"/> />
+                            <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:adresa_za_postu"/>
                         </xsl:call-template>
                     </div>
                     <div>
@@ -56,7 +56,7 @@
                     <div>
                         <strong>Podnosilac zalbe: </strong>
                         <xsl:call-template name="FizickoLice">
-                            <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/> />
+                            <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/>
                         </xsl:call-template>
                         <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:drugi_kontakt"/>
                     </div>
