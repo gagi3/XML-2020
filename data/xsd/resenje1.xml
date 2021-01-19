@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r:Resenje xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:cmn="http://www.pijz.rs/common"
+ xmlns:r="http://www.pijz.rs/resenje"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pijz.rs/resenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/resenje.xsd" ID="ID000" broj="broj0" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04"
+     tip="zalba_osnovana">
+    <r:metadata>
+        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
+        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
+        <cmn:meta property="property2" content="content2">meta2</cmn:meta>
+    </r:metadata>
+    <r:trazilac>
+        <cmn:ime>ime0</cmn:ime>
+        <cmn:prezime>prezime0</cmn:prezime>
+        <cmn:adresa>
+            <cmn:grad>grad0</cmn:grad>
+            <cmn:ulica>ulica0</cmn:ulica>
+            <cmn:broj>broj0</cmn:broj>
+        </cmn:adresa>
+    </r:trazilac>
+    <r:poverenik>
+        <cmn:ime>ime1</cmn:ime>
+        <cmn:prezime>prezime1</cmn:prezime>
+        <cmn:adresa>
+            <cmn:grad>grad1</cmn:grad>
+            <cmn:ulica>ulica1</cmn:ulica>
+            <cmn:broj>broj1</cmn:broj>
+        </cmn:adresa>
+    </r:poverenik>
+    <r:ustanova>
+        <cmn:naziv>naziv0</cmn:naziv>
+        <cmn:adresa>
+            <cmn:grad>grad2</cmn:grad>
+            <cmn:ulica>ulica2</cmn:ulica>
+            <cmn:broj>broj2</cmn:broj>
+        </cmn:adresa>
+    </r:ustanova>
+    <r:dispozitiv>
+        <r:stav redni_broj="0">
+            <r:dokument>
+                <r:naziv>naziv0</r:naziv>
+                <r:informacija>informacija0</r:informacija>
+                <r:informacija>informacija1</r:informacija>
+                <r:informacija>informacija2</r:informacija>
+            </r:dokument>
+            <r:rok_obavestenja>0</r:rok_obavestenja>
+        </r:stav>
+        <r:stav redni_broj="0">
+            <r:dokument>
+                <r:naziv>naziv1</r:naziv>
+                <r:informacija>informacija3</r:informacija>
+                <r:informacija>informacija4</r:informacija>
+                <r:informacija>informacija5</r:informacija>
+            </r:dokument>
+            <r:rok_obavestenja>0</r:rok_obavestenja>
+        </r:stav>
+        <r:stav redni_broj="0">
+            <r:dokument>
+                <r:naziv>naziv2</r:naziv>
+                <r:informacija>informacija6</r:informacija>
+                <r:informacija>informacija7</r:informacija>
+                <r:informacija>informacija8</r:informacija>
+            </r:dokument>
+            <r:rok_obavestenja>0</r:rok_obavestenja>
+        </r:stav>
+    </r:dispozitiv>
+    <r:obrazlozenje>
+        <r:paragraf>paragraf0</r:paragraf>
+        <r:paragraf>paragraf1</r:paragraf>
+        <r:paragraf>paragraf2</r:paragraf>
+        <r:tuzba>
+            <cmn:rok>0</cmn:rok>
+            <cmn:taksa>0</cmn:taksa>
+        </r:tuzba>
+    </r:obrazlozenje>
+</r:Resenje>

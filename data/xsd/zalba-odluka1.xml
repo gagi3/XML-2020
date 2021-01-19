@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zo:ZalbaOdluka xmlns:zo="http://www.pijz.rs/zalba-odluka"
+ xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+ xmlns:cmn="http://www.pijz.rs/common"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.pijz.rs/zalba-odluka file:/D:/College/XML%202020/Project/XML-2020/data/xsd/zalba-odluka.xsd" id="ID000" broj="broj0" datum="2006-05-04" datum_zahteva="2006-05-04">
+    <zo:metadata>
+        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
+        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
+        <cmn:meta property="property2" content="content2">meta2</cmn:meta>
+    </zo:metadata>
+    <zo:predmet>predmet0</zo:predmet>
+    <zo:kome_je_upucena>
+        <zo:naziv>naziv0</zo:naziv>
+        <zo:adresa_za_postu>
+            <cmn:grad>grad0</cmn:grad>
+            <cmn:ulica>ulica0</cmn:ulica>
+            <cmn:broj>broj0</cmn:broj>
+        </zo:adresa_za_postu>
+    </zo:kome_je_upucena>
+    <zo:zalilac>
+        <zo:osoba_zalilac>
+            <cmn:ime>ime0</cmn:ime>
+            <cmn:prezime>prezime0</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>grad1</cmn:grad>
+                <cmn:ulica>ulica1</cmn:ulica>
+                <cmn:broj>broj1</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba_zalilac>
+        <zo:sediste_zalioca>sediste_zalioca0</zo:sediste_zalioca>
+        <zo:naziv>naziv1</zo:naziv>
+    </zo:zalilac>
+    <zo:donosilac_odluke>donosilac_odluke0</zo:donosilac_odluke>
+    <zo:broj_resenja>0</zo:broj_resenja>
+    <zo:godina_resenja>2006-05-04</zo:godina_resenja>
+    <zo:razlog_pobijanja>razlog_pobijanja0</zo:razlog_pobijanja>
+    <zo:podnosilac_zalbe>
+        <zo:osoba>
+            <cmn:ime>ime1</cmn:ime>
+            <cmn:prezime>prezime1</cmn:prezime>
+            <cmn:adresa>
+                <cmn:grad>grad2</cmn:grad>
+                <cmn:ulica>ulica2</cmn:ulica>
+                <cmn:broj>broj2</cmn:broj>
+            </cmn:adresa>
+        </zo:osoba>
+        <zo:drugi_kontakt>drugi_kontakt0</zo:drugi_kontakt>
+        <zo:potpis>potpis0</zo:potpis>
+    </zo:podnosilac_zalbe>
+    <zo:mesto_podnosenja_zalbe>
+        <zo:grad>grad0</zo:grad>
+        <zo:datum>2006-05-04</zo:datum>
+    </zo:mesto_podnosenja_zalbe>
+</zo:ZalbaOdluka>
