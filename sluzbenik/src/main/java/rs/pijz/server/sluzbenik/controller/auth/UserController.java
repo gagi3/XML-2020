@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     VerificationTokenService verificationTokenService;
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/register", consumes = "application/xml", produces = "application/xml")
     public ResponseEntity<String> register(@RequestBody RegistrationRequest request) throws Exception {
         User user = userService.create(request);
         if (user == null) {
@@ -30,7 +30,7 @@ public class UserController {
         return new ResponseEntity<>("Registracija uspešna! Proverite vaš email za potvrdu registracije.", HttpStatus.OK);
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/login", consumes = "application/xml", produces = "application/xml")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) throws Exception {
         JWTResponse response = userService.login(request);
         if (response == null) {
@@ -39,7 +39,7 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/confirm")
+    @GetMapping(value = "/confirm", produces = "application/xml")
     public ResponseEntity<String> confirm(@RequestParam String token) throws Exception {
         Boolean confirm = userService.confirm(token);
         if (!confirm) {
@@ -48,7 +48,7 @@ public class UserController {
         return new ResponseEntity<>("Registracija je potvrđena.", HttpStatus.OK);
     }
 
-    @GetMapping(value = "/request-token")
+    @GetMapping(value = "/request-token", produces = "application/xml")
     public ResponseEntity<?> requestToken(@RequestParam String email) throws Exception {
         verificationTokenService.requestToken(email);
         return new ResponseEntity<>("Zahtev je poslat. Molimo vas da proverite email kako biste potvrdili registraciju.", HttpStatus.OK);
