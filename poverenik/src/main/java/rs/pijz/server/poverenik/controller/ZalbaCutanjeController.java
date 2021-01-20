@@ -11,6 +11,7 @@ import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.poverenik.service.DomParserService;
 import rs.pijz.server.poverenik.service.ZalbaCutanjeService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 @CrossOrigin
@@ -78,5 +79,11 @@ public class ZalbaCutanjeController {
     public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
     	String result = zalbaCutanjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    
+    @PostMapping(value = "/convert-to-pdf")
+    public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
+    	ByteArrayOutputStream result = zalbaCutanjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

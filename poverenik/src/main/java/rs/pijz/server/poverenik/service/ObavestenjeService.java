@@ -1,23 +1,27 @@
 package rs.pijz.server.poverenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.poverenik.model.obavestenje.Obavestenje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ObavestenjeRepository;
 import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ObavestenjeService {
@@ -32,6 +36,8 @@ public class ObavestenjeService {
     private XSLFOTransformer xslfoTransformer;
     
     private String xslTemplatePath = "../data/xsl/obavestenje.xsl";
+    private String xslfoTemplatePath = "../data/xsl-fo/obavestenje.xsl";
+    private String pdfOutput = "../data/pdf/obavestenje.pdf";
 
     public List<Obavestenje> findAll() throws XMLDBException {
         String xPath = "/o:Obavestenje";
@@ -81,4 +87,8 @@ public class ObavestenjeService {
     public String convertToHTML(String xml) throws Exception {
     	return xslfoTransformer.generateHTML(xml, xslTemplatePath);
     }
+
+	public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+	}
 }

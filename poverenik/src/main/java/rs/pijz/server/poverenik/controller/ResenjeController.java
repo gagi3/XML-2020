@@ -11,6 +11,7 @@ import rs.pijz.server.poverenik.model.resenje.Resenje;
 import rs.pijz.server.poverenik.service.DomParserService;
 import rs.pijz.server.poverenik.service.ResenjeService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,5 +84,11 @@ public class ResenjeController {
     public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
     	String result = ResenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    
+    @PostMapping(value = "/convert-to-pdf")
+    public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
+    	ByteArrayOutputStream result = ResenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

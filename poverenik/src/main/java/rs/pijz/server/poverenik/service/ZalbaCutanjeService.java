@@ -15,6 +15,8 @@ import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,8 @@ public class ZalbaCutanjeService {
     private XSLFOTransformer xslfoTransformer;
     
     private String xslTemplatePath = "../data/xsl/zalba-cutanje.xsl";
+    private String xslfoTemplatePath = "../data/xsl-fo/zalba-cutanje.xsl";
+    private String pdfOutput = "../data/pdf/zalba-cutanje.pdf";
 
     public List<ZalbaCutanje> findAll() throws XMLDBException {
         String xPath = "/zc:ZalbaCutanje";
@@ -81,4 +85,8 @@ public class ZalbaCutanjeService {
     public String convertToHTML(String xml) throws Exception {
     	return xslfoTransformer.generateHTML(xml, xslTemplatePath);
     }
+    
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+	}
 }

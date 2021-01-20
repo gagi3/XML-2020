@@ -1,5 +1,6 @@
 package rs.pijz.server.poverenik.service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,8 @@ public class IzjasnjenjeNaZalbuService {
     private XSLFOTransformer xslfoTransformer;
     
     private String xslTemplatePath = "../data/xsl/izjasnjenje-na-zalbu.xsl";
+    private String xslfoTemplatePath = "../data/xsl-fo/izjasnjenje-na-zalbu.xsl";
+    private String pdfOutput = "../data/pdf/izjasnjenje-na-zalbu.pdf";
 
     public List<IzjasnjenjeNaZalbu> findAll() throws XMLDBException {
         String xPath = "/i:IzjasnjenjeNaZalbu";
@@ -87,4 +90,8 @@ public class IzjasnjenjeNaZalbuService {
     public String convertToHTML(String xml) throws Exception {
     	return xslfoTransformer.generateHTML(xml, xslTemplatePath);
     }
+    
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+	}
 }
