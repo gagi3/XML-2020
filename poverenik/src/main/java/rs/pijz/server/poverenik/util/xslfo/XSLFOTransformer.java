@@ -3,6 +3,7 @@ package rs.pijz.server.poverenik.util.xslfo;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringReader;
@@ -37,7 +38,7 @@ public class XSLFOTransformer {
 		transformerFactory = TransformerFactory.newInstance();
 	}
 
-	public String generateHTML(String xml, String xslPath) throws Exception {
+	public String generateHTML(String xml, String output, String xslPath) throws Exception {
 
 		File tf = new File(xslPath);
 		StringWriter out = new StringWriter();
@@ -48,8 +49,14 @@ public class XSLFOTransformer {
 		Source s = new StreamSource(src);
 		Result r = new StreamResult(out);
 		t.transform(s, r);
+		
+		String outString = out.toString();
+		
+		try (FileWriter fileWriter = new FileWriter(output)) {
+			fileWriter.write(outString);
+		}
 
-		return out.toString();
+		return outString;
 	}
 	
 	public ByteArrayOutputStream generatePDF(String xml, String output, String xslfoPath) throws Exception {

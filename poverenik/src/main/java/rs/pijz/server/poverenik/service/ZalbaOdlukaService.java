@@ -35,6 +35,8 @@ public class ZalbaOdlukaService {
     
     private String xslTemplatePath = "../data/xsl/zalba-odluka.xsl";
     private String xslfoTemplatePath = "../data/xsl-fo/zalba-odluka.xsl";
+    
+    private String htmlOutput = "../data/html/zalba-odluka.html";
     private String pdfOutput = "../data/pdf/zalba-odluka.pdf";
 
     public List<ZalbaOdluka> findAll() throws XMLDBException {
@@ -83,7 +85,7 @@ public class ZalbaOdlukaService {
     }
     
     public String convertToHTML(String xml) throws Exception {
-    	return xslfoTransformer.generateHTML(xml, xslTemplatePath);
+    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
     }
     
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {

@@ -38,6 +38,8 @@ public class ResenjeService {
     
     private String xslTemplatePath = "../data/xsl/resenje.xsl";
     private String xslfoTemplatePath = "../data/xsl-fo/resenje.xsl";
+    
+    private String htmlOutput = "../data/html/resenje.html";
     private String pdfOutput = "../data/pdf/resenje.pdf";
 
     public List<Resenje> findAll() throws XMLDBException {
@@ -87,7 +89,7 @@ public class ResenjeService {
     }
     
     public String convertToHTML(String xml) throws Exception {
-    	return xslfoTransformer.generateHTML(xml, xslTemplatePath);
+    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
     }
     
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
