@@ -10,32 +10,32 @@
         <cmn:meta property="property1" content="content1">meta1</cmn:meta>
         <cmn:meta property="property2" content="content2">meta2</cmn:meta>
     </zc:metadata>
-    <zc:predmet>predmet0</zc:predmet>
+    <zc:predmet>ЖАЛБА КАДА ОРГАН ВЛАСТИ НИЈЕ ПОСТУПИО/ није поступио у целости/ ПО ЗАХТЕВУ ТРАЖИОЦА У ЗАКОНСКОМ РОКУ (ЋУТАЊЕ УПРАВЕ)</zc:predmet>
     <zc:kome_je_upucena>
-        <zc:naziv>naziv0</zc:naziv>
+        <zc:naziv>Повереникy за информације од јавног значаја и заштиту података о личности</zc:naziv>
         <zc:adresa_za_postu>
-            <cmn:grad>grad0</cmn:grad>
-            <cmn:ulica>ulica0</cmn:ulica>
-            <cmn:broj>broj0</cmn:broj>
+            <cmn:grad>Београд</cmn:grad>
+            <cmn:ulica>Булевар краља Александрa</cmn:ulica>
+            <cmn:broj>15</cmn:broj>
         </zc:adresa_za_postu>
     </zc:kome_je_upucena>
-    <zc:protiv_organa>protiv_organa0</zc:protiv_organa>
-    <zc:razlog>razlog0</zc:razlog>
-    <zc:podaci_o_zahtevu>podaci_o_zahtevu0</zc:podaci_o_zahtevu>
+    <zc:protiv_organa>Основни кривични суд у Београду</zc:protiv_organa>
+    <zc:razlog>није поступио / није поступио у целости /  у законском року</zc:razlog>
+    <zc:podaci_o_zahtevu>детаљни подаци о захтеву и информацијама</zc:podaci_o_zahtevu>
     <zc:podnosilac_zalbe>
         <zc:osoba>
-            <cmn:ime>ime0</cmn:ime>
-            <cmn:prezime>prezime0</cmn:prezime>
+            <cmn:ime>Маријана</cmn:ime>
+            <cmn:prezime>Попов</cmn:prezime>
             <cmn:adresa>
-                <cmn:grad>grad1</cmn:grad>
-                <cmn:ulica>ulica1</cmn:ulica>
-                <cmn:broj>broj1</cmn:broj>
+                <cmn:grad>Нови Сад</cmn:grad>
+                <cmn:ulica>Степе Степановића</cmn:ulica>
+                <cmn:broj>30</cmn:broj>
             </cmn:adresa>
         </zc:osoba>
-        <zc:drugi_kontakt>drugi_kontakt0</zc:drugi_kontakt>
+        <zc:drugi_kontakt>marijanapopov@gmail.com</zc:drugi_kontakt>
     </zc:podnosilac_zalbe>
     <zc:mesto_podnosenja_zalbe>
-        <zc:grad>grad0</zc:grad>
+        <zc:grad>Нови Сад</zc:grad>
         <zc:datum>2006-05-04</zc:datum>
     </zc:mesto_podnosenja_zalbe>
 </zc:ZalbaCutanje>
