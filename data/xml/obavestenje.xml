@@ -4,7 +4,7 @@
  xmlns:cmn="http://www.pijz.rs/common"
  xmlns:o="http://www.pijz.rs/obavestenje"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.pijz.rs/obavestenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/obavestenje.xsd" id="ID000" broj="broj0" datum="2006-05-04" datum_zahtevanja="2006-05-04" datum_uvida="2006-05-04" vreme_uvida_od="01:01:01.001"
+ xsi:schemaLocation="http://www.pijz.rs/obavestenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/obavestenje.xsd" id="ID000" broj="33-2102/2311" datum="2006-05-04" datum_zahtevanja="2006-05-04" datum_uvida="2006-05-04" vreme_uvida_od="01:01:01.001"
      vreme_uvida_do="01:01:01.001">
     <o:metadata>
         <cmn:meta property="property0" content="content0">meta0</cmn:meta>
@@ -12,33 +12,33 @@
         <cmn:meta property="property2" content="content2">meta2</cmn:meta>
     </o:metadata>
     <o:organ>
-        <o:naziv>naziv0</o:naziv>
+        <o:naziv>Основни кривични суд</o:naziv>
         <o:sediste>
-            <cmn:grad>grad0</cmn:grad>
-            <cmn:ulica>ulica0</cmn:ulica>
-            <cmn:broj>broj0</cmn:broj>
+            <cmn:grad>Нови Сад</cmn:grad>
+            <cmn:ulica>Његошева</cmn:ulica>
+            <cmn:broj>3</cmn:broj>
         </o:sediste>
     </o:organ>
     <o:podnosilac>
         <o:fizickoLice>
-            <cmn:ime>ime0</cmn:ime>
-            <cmn:prezime>prezime0</cmn:prezime>
+            <cmn:ime>Николина</cmn:ime>
+            <cmn:prezime>Марковић</cmn:prezime>
             <cmn:adresa>
-                <cmn:grad>grad1</cmn:grad>
-                <cmn:ulica>ulica1</cmn:ulica>
-                <cmn:broj>broj1</cmn:broj>
+                <cmn:grad>Нови Сад</cmn:grad>
+                <cmn:ulica>Булевар Ослобођења</cmn:ulica>
+                <cmn:broj>99а</cmn:broj>
             </cmn:adresa>
         </o:fizickoLice>
     </o:podnosilac>
-    <o:naslov>naslov0</o:naslov>
-    <o:podnaslov>podnaslov0</o:podnaslov>
+    <o:naslov>О Б А В Е Ш Т Е Њ Е</o:naslov>
+    <o:podnaslov>о стављању на увид документа који садржи тражену информацију и о изради копије</o:podnaslov>
     <o:telo>
         <o:paragraf>paragraf0</o:paragraf>
         <o:paragraf>paragraf1</o:paragraf>
         <o:paragraf>paragraf2</o:paragraf>
     </o:telo>
     <o:podnozje>
-        <o:pecat>pecat0</o:pecat>
-        <o:potpis>potpis0</o:potpis>
+        <o:pecat>П Е Ч А Т</o:pecat>
+        <o:potpis>П О Т П И С</o:potpis>
     </o:podnozje>
 </o:Obavestenje>
