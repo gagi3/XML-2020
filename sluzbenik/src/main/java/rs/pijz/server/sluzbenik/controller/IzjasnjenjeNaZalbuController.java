@@ -2,6 +2,7 @@ package rs.pijz.server.sluzbenik.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,7 +28,7 @@ public class IzjasnjenjeNaZalbuController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAll() {
         try {
             List<IzjasnjenjeNaZalbu> izjasnjenja = izjasnjenjeNaZalbuService.findAll();
@@ -38,7 +39,7 @@ public class IzjasnjenjeNaZalbuController {
         }
     }
 
-    @GetMapping(value = "/search", produces = "application/xml")
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<IzjasnjenjeNaZalbu> getOne(@RequestParam String id) {
         try {
             IzjasnjenjeNaZalbu izjasnjenje = izjasnjenjeNaZalbuService.getOne(id);
@@ -49,7 +50,7 @@ public class IzjasnjenjeNaZalbuController {
         }
     }
 
-    @PostMapping(value = "/create", produces = "application/xml")
+    @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<IzjasnjenjeNaZalbu> create(@RequestBody IzjasnjenjeNaZalbu izjasnjenje) {
         try {
             IzjasnjenjeNaZalbu izjasnjenjeNaZalbu = izjasnjenjeNaZalbuService.create(izjasnjenje);
