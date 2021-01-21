@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,7 @@ public class ObavestenjeController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<?> findAll() {
         try {
             List<Obavestenje> resenja = new ArrayList<>();
@@ -48,7 +49,7 @@ public class ObavestenjeController {
         }
     }
 
-    @GetMapping(value = "/search", produces = "application/xml")
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Obavestenje> getOne(@RequestParam String id) {
         try {
             Obavestenje obavestenje = ObavestenjeService.getOne(id);
@@ -59,7 +60,7 @@ public class ObavestenjeController {
         }
     }
 
-    @PostMapping(value = "/create", produces = "application/xml")
+    @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Obavestenje> create(@RequestBody Obavestenje obavestenje) {
         try {
             Obavestenje Obavestenje = ObavestenjeService.create(obavestenje);

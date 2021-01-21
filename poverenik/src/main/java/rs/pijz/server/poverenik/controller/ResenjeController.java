@@ -2,6 +2,7 @@ package rs.pijz.server.poverenik.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +30,7 @@ public class ResenjeController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<?> findAll() {
         try {
             List<Resenje> resenja = new ArrayList<>();
@@ -41,7 +42,7 @@ public class ResenjeController {
         }
     }
 
-    @GetMapping(value = "/search", produces = "application/xml")
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Resenje> getOne(@RequestParam String id) {
         try {
             Resenje resenje = ResenjeService.getOne(id);
@@ -52,7 +53,7 @@ public class ResenjeController {
         }
     }
 
-    @PostMapping(value = "/create", produces = "application/xml")
+    @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Resenje> create(@RequestBody Resenje resenje) {
         try {
             Resenje Resenje = ResenjeService.create(resenje);

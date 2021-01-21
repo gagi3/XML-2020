@@ -2,6 +2,7 @@ package rs.pijz.server.poverenik.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +26,7 @@ public class ZalbaOdlukaController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<List<ZalbaOdluka>> findAll() {
         try {
             List<ZalbaOdluka> zalbe = zalbaOdlukaService.findAll();
@@ -36,7 +37,7 @@ public class ZalbaOdlukaController {
         }
     }
 
-    @GetMapping(value = "/search", produces = "application/xml")
+    @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<ZalbaOdluka> getOne(@RequestParam String id) {
         try {
             ZalbaOdluka zalba = zalbaOdlukaService.getOne(id);
@@ -47,7 +48,7 @@ public class ZalbaOdlukaController {
         }
     }
 
-    @PostMapping(value = "/create", produces = "application/xml")
+    @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<ZalbaOdluka> create(@RequestBody ZalbaOdluka zalba) {
         try {
             ZalbaOdluka zalbaOdluka = zalbaOdlukaService.create(zalba);
