@@ -3,11 +3,12 @@
 
     <xsl:template name="Adresa">
         <xsl:param name="adresa"/>
-        <div>
-            <xsl:value-of select="$adresa/cmn:grad"/><br/>
-            <xsl:value-of select="$adresa/cmn:ulica"/><br/>
-            <xsl:value-of select="$adresa/cmn:broj"/>
-        </div>
+        <xsl:value-of select="$adresa/cmn:grad"/>, улица <xsl:value-of select="$adresa/cmn:ulica"/>&#160;<xsl:value-of select="$adresa/cmn:broj"/>
+    </xsl:template>
+
+    <xsl:template name="FizickoLiceSimple">
+        <xsl:param name="fizickoLice"/>
+        <xsl:value-of select="$fizickoLice/cmn:ime"/>&#160;<xsl:value-of select="$fizickoLice/cmn:prezime"/>
     </xsl:template>
 
     <xsl:template name="FizickoLice">
@@ -21,7 +22,7 @@
         </div>
     </xsl:template>
 
-    <xsl:template name="PravnoLice">
+    <xsl:template name="PravnoLiceSimple">
         <xsl:param name="pravnoLice"/>
         <div>
             <xsl:value-of select="$pravnoLice/cmn:naziv"/><br/>
@@ -29,6 +30,14 @@
                 <xsl:with-param name="adresa" select="$pravnoLice/cmn:adresa"/>
             </xsl:call-template>
         </div>
+    </xsl:template>
+
+    <xsl:template name="PravnoLice">
+        <xsl:param name="pravnoLice"/>
+        <xsl:value-of select="$pravnoLice/cmn:naziv"/> са седиштем у
+        <xsl:call-template name="Adresa">
+            <xsl:with-param name="adresa" select="$pravnoLice/cmn:adresa"/>
+        </xsl:call-template>
     </xsl:template>
 
     <xsl:template name="Tuzba">
