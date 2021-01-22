@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:cmn="http://www.pijz.rs/common" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
-           targetNamespace="http://www.pijz.rs/zahtev" elementFormDefault="qualified" vc:minVersion="1.1">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://www.pijz.rs/zahtev"
+    xmlns:cmn="http://www.pijz.rs/common" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.pijz.rs/zahtev" elementFormDefault="qualified" vc:minVersion="1.1">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
     <xs:element name="Zahtev">
@@ -14,6 +14,8 @@
                 <xs:element name="mesto" type="xs:string"/>
                 <xs:element name="trazilacDodatniKontakt" type="xs:string"/>
                 <xs:element name="drugiNacinDostave" type="xs:string"/>
+                <xs:element maxOccurs="unbounded" minOccurs="1" name="tip" type="z:TipZahteva"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="dostava" type="z:Dostava"/>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID"/>
             <xs:attribute name="datum" type="xs:date"/>

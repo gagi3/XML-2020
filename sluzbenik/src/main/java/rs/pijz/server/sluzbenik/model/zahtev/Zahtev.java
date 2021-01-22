@@ -9,6 +9,8 @@ import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,6 +30,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="mesto" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="trazilacDodatniKontakt" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="drugiNacinDostave" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="tip" type="{http://www.pijz.rs/zahtev}TipZahteva" maxOccurs="unbounded"/>
+ *         &lt;element name="dostava" type="{http://www.pijz.rs/zahtev}Dostava" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
@@ -46,7 +50,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "poverenik",
     "mesto",
     "trazilacDodatniKontakt",
-    "drugiNacinDostave"
+    "drugiNacinDostave",
+    "tip",
+    "dostava"
 })
 @XmlRootElement(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev")
 public class Zahtev {
@@ -65,6 +71,12 @@ public class Zahtev {
     protected String trazilacDodatniKontakt;
     @XmlElement(required = true)
     protected String drugiNacinDostave;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "string", namespace = "http://www.pijz.rs/zahtev")
+    protected List<TipZahteva> tip;
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev")
+    @XmlSchemaType(name = "string")
+    protected List<Dostava> dostava;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -240,6 +252,64 @@ public class Zahtev {
      */
     public void setDrugiNacinDostave(String value) {
         this.drugiNacinDostave = value;
+    }
+
+    /**
+     * Gets the value of the tip property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the tip property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTip().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TipZahteva }
+     * 
+     * 
+     */
+    public List<TipZahteva> getTip() {
+        if (tip == null) {
+            tip = new ArrayList<TipZahteva>();
+        }
+        return this.tip;
+    }
+
+    /**
+     * Gets the value of the dostava property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the dostava property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getDostava().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Dostava }
+     * 
+     * 
+     */
+    public List<Dostava> getDostava() {
+        if (dostava == null) {
+            dostava = new ArrayList<Dostava>();
+        }
+        return this.dostava;
     }
 
     /**

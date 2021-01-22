@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import rs.pijz.server.sluzbenik.dto.ResponseMessage;
 import rs.pijz.server.sluzbenik.fuseki.MetadataExtractor;
-import rs.pijz.server.sluzbenik.model.resenje.Resenje;
+import rs.pijz.server.sluzbenik.model.zahtev.Zahtev;
 import rs.pijz.server.sluzbenik.service.DomParserService;
-import rs.pijz.server.sluzbenik.service.ResenjeService;
+import rs.pijz.server.sluzbenik.service.ZahtevService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/resenje")
-public class ResenjeController {
+@RequestMapping("/zahtev")
+public class ZahtevController {
 
     @Autowired
-    private ResenjeService resenjeService;
+    private ZahtevService zahtevService;
 
     @Autowired
     private DomParserService domParserService;
@@ -32,9 +32,9 @@ public class ResenjeController {
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<?> findAll() {
         try {
-            List<Resenje> resenja = new ArrayList<>();
-            resenja = resenjeService.findAll();
-            return ResponseEntity.ok(resenja);
+            List<Zahtev> zahtevi = new ArrayList<>();
+            zahtevi = zahtevService.findAll();
+            return ResponseEntity.ok(zahtevi);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -42,10 +42,10 @@ public class ResenjeController {
     }
 
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<Resenje> getOne(@RequestParam String id) {
+    private ResponseEntity<Zahtev> getOne(@RequestParam String id) {
         try {
-            Resenje resenje = resenjeService.getOne(id);
-            return ResponseEntity.ok().body(resenje);
+            Zahtev zahtev = zahtevService.getOne(id);
+            return ResponseEntity.ok().body(zahtev);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -53,10 +53,10 @@ public class ResenjeController {
     }
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<Resenje> create(@RequestBody Resenje resenje) {
+    private ResponseEntity<Zahtev> create(@RequestBody Zahtev zahtev) {
         try {
-            Resenje Resenje = resenjeService.create(resenje);
-            return ResponseEntity.ok().body(Resenje);
+            Zahtev Zahtev = zahtevService.create(zahtev);
+            return ResponseEntity.ok().body(Zahtev);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -66,7 +66,7 @@ public class ResenjeController {
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
-            resenjeService.generateDocuments(id);
+            zahtevService.generateDocuments(id);
             return ResponseEntity.ok().body(new ResponseMessage("Uspesno kreiranje."));
         } catch (Exception e) {
             e.printStackTrace();

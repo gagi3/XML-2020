@@ -1,6 +1,8 @@
 
 package rs.pijz.server.sluzbenik.model.zahtev;
 
+import rs.pijz.server.sluzbenik.model.common.*;
+
 import javax.xml.bind.annotation.XmlRegistry;
 
 

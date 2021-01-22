@@ -21,7 +21,7 @@ import java.util.List;
 public class ResenjeController {
 
     @Autowired
-    private ResenjeService ResenjeService;
+    private ResenjeService resenjeService;
 
     @Autowired
     private DomParserService domParserService;
@@ -33,7 +33,7 @@ public class ResenjeController {
     private ResponseEntity<?> findAll() {
         try {
             List<Resenje> resenja = new ArrayList<>();
-            resenja = ResenjeService.findAll();
+            resenja = resenjeService.findAll();
             return ResponseEntity.ok(resenja);
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class ResenjeController {
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Resenje> getOne(@RequestParam String id) {
         try {
-            Resenje resenje = ResenjeService.getOne(id);
+            Resenje resenje = resenjeService.getOne(id);
             return ResponseEntity.ok().body(resenje);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class ResenjeController {
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Resenje> create(@RequestBody Resenje resenje) {
         try {
-            Resenje Resenje = ResenjeService.create(resenje);
+            Resenje Resenje = resenjeService.create(resenje);
             return ResponseEntity.ok().body(Resenje);
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class ResenjeController {
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
-            ResenjeService.generateDocuments(id);
+            resenjeService.generateDocuments(id);
             return ResponseEntity.ok().body(new ResponseMessage("Uspesno kreiranje."));
         } catch (Exception e) {
             e.printStackTrace();

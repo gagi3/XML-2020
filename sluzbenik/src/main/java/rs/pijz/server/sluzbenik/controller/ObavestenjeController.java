@@ -21,7 +21,7 @@ import java.util.List;
 public class ObavestenjeController {
 
     @Autowired
-    private ObavestenjeService ObavestenjeService;
+    private ObavestenjeService obavestenjeService;
 
     @Autowired
     private DomParserService domParserService;
@@ -32,9 +32,9 @@ public class ObavestenjeController {
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<?> findAll() {
         try {
-            List<Obavestenje> resenja = new ArrayList<>();
-            resenja = ObavestenjeService.findAll();
-            return ResponseEntity.ok(resenja);
+            List<Obavestenje> obavestenja = new ArrayList<>();
+            obavestenja = obavestenjeService.findAll();
+            return ResponseEntity.ok(obavestenja);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -44,7 +44,7 @@ public class ObavestenjeController {
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Obavestenje> getOne(@RequestParam String id) {
         try {
-            Obavestenje obavestenje = ObavestenjeService.getOne(id);
+            Obavestenje obavestenje = obavestenjeService.getOne(id);
             return ResponseEntity.ok().body(obavestenje);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,8 +55,8 @@ public class ObavestenjeController {
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Obavestenje> create(@RequestBody Obavestenje obavestenje) {
         try {
-            Obavestenje Obavestenje = ObavestenjeService.create(obavestenje);
-            return ResponseEntity.ok().body(Obavestenje);
+            Obavestenje obavestenje1 = obavestenjeService.create(obavestenje);
+            return ResponseEntity.ok().body(obavestenje1);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
@@ -66,7 +66,7 @@ public class ObavestenjeController {
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
-            ObavestenjeService.generateDocuments(id);
+            obavestenjeService.generateDocuments(id);
             return ResponseEntity.ok().body(new ResponseMessage("Uspesno kreiranje."));
         } catch (Exception e) {
             e.printStackTrace();

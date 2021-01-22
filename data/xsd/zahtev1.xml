@@ -3,31 +3,37 @@
  xmlns:cmn="http://www.pijz.rs/common"
  xmlns:z="http://www.pijz.rs/zahtev"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.pijz.rs/zahtev file:/D:/College/XML%202020/Project/XML-2020/data/xsd/zahtev.xsd" id="ID000" datum="2022-01-11">
-    <z:opisInformacije>BYMG</z:opisInformacije>
+ xsi:schemaLocation="http://www.pijz.rs/zahtev file:/D:/College/XML%202020/Project/XML-2020/data/xsd/zahtev.xsd" id="ID000" datum="2006-05-04">
+    <z:opisInformacije>opisInformacije0</z:opisInformacije>
     <z:metadata>
-        <cmn:meta property="K9-qRjM2WFVyMxD81iY4W" content="mv">paaAyhKKpNmD4lI</cmn:meta>
-        <cmn:meta property="DtwvPKP9yT" content="Fxv4DGumX3">It.iWLk8RyHxKRMSws_0i2M</cmn:meta>
-        <cmn:meta property="ybZrvgrPaV" content="i6yxyetqb1Qz4F_ifrfEIKGgm">uRqak_</cmn:meta>
+        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
+        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
+        <cmn:meta property="property2" content="content2">meta2</cmn:meta>
     </z:metadata>
     <z:trazilac>
-        <cmn:ime>o9nw9</cmn:ime>
-        <cmn:prezime>oQwJmzoFD.SN2VeAsTkwrWoWH.</cmn:prezime>
+        <cmn:ime>ime0</cmn:ime>
+        <cmn:prezime>prezime0</cmn:prezime>
         <cmn:adresa>
-            <cmn:grad>c</cmn:grad>
-            <cmn:ulica>J1optubzKCCcceiCgUO</cmn:ulica>
-            <cmn:broj>quAZCrZgAOeBEFdHR4v</cmn:broj>
+            <cmn:grad>grad0</cmn:grad>
+            <cmn:ulica>ulica0</cmn:ulica>
+            <cmn:broj>broj0</cmn:broj>
         </cmn:adresa>
     </z:trazilac>
     <z:poverenik>
-        <cmn:naziv>W5s</cmn:naziv>
+        <cmn:naziv>naziv0</cmn:naziv>
         <cmn:adresa>
-            <cmn:grad>h-</cmn:grad>
-            <cmn:ulica>p3uHs2WVLox23TK-</cmn:ulica>
-            <cmn:broj>NcUUKJ6OeKSE1r</cmn:broj>
+            <cmn:grad>grad1</cmn:grad>
+            <cmn:ulica>ulica1</cmn:ulica>
+            <cmn:broj>broj1</cmn:broj>
         </cmn:adresa>
     </z:poverenik>
-    <z:mesto>FYi7</z:mesto>
-    <z:trazilacDodatniKontakt>WE6UFx8GbTozhLfny3</z:trazilacDodatniKontakt>
-    <z:drugiNacinDostave>IYzTJJjXuxgbLHdBDLKC-ViAGyG0aq</z:drugiNacinDostave>
+    <z:mesto>mesto0</z:mesto>
+    <z:trazilacDodatniKontakt>trazilacDodatniKontakt0</z:trazilacDodatniKontakt>
+    <z:drugiNacinDostave>drugiNacinDostave0</z:drugiNacinDostave>
+    <z:tip>obavestenje</z:tip>
+    <z:tip>uvid</z:tip>
+    <z:tip>dostava</z:tip>
+    <z:dostava>posta</z:dostava>
+    <z:dostava>email</z:dostava>
+    <z:dostava>faks</z:dostava>
 </z:Zahtev>

@@ -1,6 +1,8 @@
 
 package rs.pijz.server.poverenik.model.zahtev;
 
+import rs.pijz.server.poverenik.model.common.*;
+
 import javax.xml.bind.annotation.XmlRegistry;
 
 

@@ -96,4 +96,11 @@ public class CommonRepository {
         }};
         return runXpath("/db/pijz_sluzbenik/izjasnjenje-na-zalbu", namespace, query);
     }
+
+    public ResourceSet queryZahtev(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{
+            put("z", "http://www.pijz.rs/zahtev");
+        }};
+        return runXpath("/db/pijz_sluzbenik/zahtev", namespace, query);
+    }
 }
