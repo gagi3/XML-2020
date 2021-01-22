@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:z="http://www.pijz.rs/zahtev"
+    xmlns:cmn="http://www.pijz.rs/common" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.pijz.rs/zahtev" elementFormDefault="qualified" vc:minVersion="1.1">
+
+    <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
+    <xs:element name="Zahtev">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="opisInformacije" type="xs:string"/>
+                <xs:element name="metadata" type="cmn:MetaData"/>
+                <xs:element name="trazilac" type="cmn:FizickoLice"/>
+                <xs:element name="poverenik" type="cmn:PravnoLice"/>
+                <xs:element name="mesto" type="xs:string"/>
+                <xs:element name="trazilacDodatniKontakt" type="xs:string"/>
+                <xs:element name="drugiNacinDostave" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID"/>
+            <xs:attribute name="datum" type="xs:date"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="TipZahteva">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="obavestenje"/>
+            <xs:enumeration value="uvid"/>
+            <xs:enumeration value="kopija"/>
+            <xs:enumeration value="dostava"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Dostava">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="posta"/>
+            <xs:enumeration value="email"/>
+            <xs:enumeration value="faks"/>
+            <xs:enumeration value="drugo"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
