@@ -10,10 +10,13 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.poverenik.model.zalba_odluka.ZalbaOdluka;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ZalbaOdlukaRepository;
+import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,15 @@ public class ZalbaOdlukaService {
     private ZalbaOdlukaRepository zalbaOdlukaRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private XSLFOTransformer xslfoTransformer;
+    
+    private String xslTemplatePath = "../data/xsl/zalba-odluka.xsl";
+    private String xslfoTemplatePath = "../data/xsl-fo/zalba-odluka.xsl";
+    
+    private String htmlOutput = "../data/html/zalba-odluka.html";
+    private String pdfOutput = "../data/pdf/zalba-odluka.pdf";
 
     public List<ZalbaOdluka> findAll() throws XMLDBException {
         String xPath = "/zo:ZalbaOdluka";
@@ -71,4 +83,12 @@ public class ZalbaOdlukaService {
         documentService.createXML(ZalbaOdluka.class, zalbaOdluka, xmlInstance);
         System.out.println("Docs generated!");
     }
+    
+    public String convertToHTML(String xml) throws Exception {
+    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+    }
+    
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+	}
 }

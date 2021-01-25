@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/zalba-odluka.xsl"?>
 <zo:ZalbaOdluka xmlns:zo="http://www.pijz.rs/zalba-odluka"
  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
  xmlns:cmn="http://www.pijz.rs/common"
@@ -9,13 +10,13 @@
         <cmn:meta property="property1" content="content1">meta1</cmn:meta>
         <cmn:meta property="property2" content="content2">meta2</cmn:meta>
     </zo:metadata>
-    <zo:predmet>predmet0</zo:predmet>
+    <zo:predmet>ЖАЛБА ПРОТИВ ОДЛУКЕ ОРГАНА ВЛАСТИ КОЈОМ ЈЕ ОДБИЈЕН ИЛИ ОДБАЧЕН ЗАХТЕВ ЗА ПРИСТУП ИНФОРМАЦИЈИ</zo:predmet>
     <zo:kome_je_upucena>
-        <zo:naziv>naziv0</zo:naziv>
+        <zo:naziv>Поверенику за информације од јавног значаја и заштиту података о личности</zo:naziv>
         <zo:adresa_za_postu>
-            <cmn:grad>grad0</cmn:grad>
-            <cmn:ulica>ulica0</cmn:ulica>
-            <cmn:broj>broj0</cmn:broj>
+            <cmn:grad>Београд</cmn:grad>
+            <cmn:ulica>Булевар краља Александра</cmn:ulica>
+            <cmn:broj>15</cmn:broj>
         </zo:adresa_za_postu>
     </zo:kome_je_upucena>
     <zo:zalilac>
