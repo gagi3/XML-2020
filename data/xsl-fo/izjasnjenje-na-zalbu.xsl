@@ -7,7 +7,7 @@
 >
     <xsl:template match="/">
 
-        <fo:root font-family="Arial Unicode MS">
+        <fo:root font-family="Arial Unicode MS" font-size="10px">
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="izjasnjenje-na-zalbu-page">
                     <fo:region-body margin="1in"/>
