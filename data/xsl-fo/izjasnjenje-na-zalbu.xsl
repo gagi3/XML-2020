@@ -7,7 +7,7 @@
 >
     <xsl:template match="/">
 
-        <fo:root>
+        <fo:root font-family="Arial Unicode MS" font-size="10px">
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="izjasnjenje-na-zalbu-page">
                     <fo:region-body margin="1in"/>
@@ -18,25 +18,26 @@
 
             <fo:page-sequence master-reference="izjasnjenje-na-zalbu-page">
                 <fo:flow flow-name="xsl-region-body">
-                    <fo:block margin-top="10px" font-size="8px">
-                        ID: <xsl:value-of select="i:izjasnjenjeNaZalbu/@id"/>
+                    <fo:block margin-top="20px" text-align="center">
+                        И З Ј А Ш Њ Е Њ Е
                     </fo:block>
-                    <fo:block margin-top="10px" font-size="8px">
-                        Broj: <xsl:value-of select="i:izjasnjenjeNaZalbu/@broj"/>
+                    <fo:block margin-top="20px" text-align="center">
+                        број <xsl:value-of select="i:izjasnjenjeNaZalbu/@broj"/>
+                        на жалбу број <xsl:value-of select="i:izjasnjenjeNaZalbu/@broj_zalbe"/>
+                        датума <xsl:value-of select="i:izjasnjenjeNaZalbu/@datum_izjave"/>
                     </fo:block>
-                    <fo:block margin-top="10px" font-size="8px">
-                        Broj zalbe: <xsl:value-of select="i:izjasnjenjeNaZalbu/@broj_zalbe"/>
+                    <fo:block margin-top="20px" text-align="justify">
+                        <xsl:value-of select="i:izjasnjenjeNaZalbu/i:tekst_izjave"/>
                     </fo:block>
-                    <fo:block margin-top="10px" font-size="8px">
-                        Datum izjave: <xsl:value-of select="i:izjasnjenjeNaZalbu/@datum_izjave"/>
-                    </fo:block>
-                    <fo:block margin-top="20px">
-                        <fo:block>
-                            Tekst izjave: <xsl:value-of select="i:izjasnjenjeNaZalbu/i:tekst_izjave"/>
-                        </fo:block>
-                        <fo:block> 
-                            Saglasnost sa zalbom: <xsl:value-of select="i:izjasnjenjeNaZalbu/i:saglasnost_sa_zalbom"/>
-                        </fo:block>
+                    <fo:block margin-top="20px" text-align="justify"> 
+                        <xsl:choose>
+                            <xsl:when test="i:izjasnjenjeNaZalbu/i:saglasnost_sa_zalbom = 'true'">
+                                Постоји сагласност са жалбом.
+                            </xsl:when>
+                            <xsl:otherwise>
+                                Не постоји сагласност са жалбом.
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </fo:block>
                 </fo:flow>
             </fo:page-sequence>
