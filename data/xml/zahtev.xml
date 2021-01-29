@@ -10,26 +10,26 @@
         <cmn:meta property="property2" content="content2">meta2</cmn:meta>
     </z:metadata>
     <z:trazilac>
-        <cmn:ime>ime0</cmn:ime>
-        <cmn:prezime>prezime0</cmn:prezime>
+        <cmn:ime>Лана</cmn:ime>
+        <cmn:prezime>Марковић</cmn:prezime>
         <cmn:adresa>
-            <cmn:grad>grad0</cmn:grad>
-            <cmn:ulica>ulica0</cmn:ulica>
-            <cmn:broj>broj0</cmn:broj>
+            <cmn:grad>Ужице</cmn:grad>
+            <cmn:ulica>Чачанска</cmn:ulica>
+            <cmn:broj>50</cmn:broj>
         </cmn:adresa>
     </z:trazilac>
     <z:poverenik>
-        <cmn:naziv>naziv0</cmn:naziv>
+        <cmn:naziv>Скупштина општине Бајина Башта</cmn:naziv>
         <cmn:adresa>
-            <cmn:grad>grad1</cmn:grad>
-            <cmn:ulica>ulica1</cmn:ulica>
-            <cmn:broj>broj1</cmn:broj>
+            <cmn:grad>Бајина Башта</cmn:grad>
+            <cmn:ulica>Краља Милана</cmn:ulica>
+            <cmn:broj>92а</cmn:broj>
         </cmn:adresa>
     </z:poverenik>
-    <z:opisInformacije>opisInformacije0</z:opisInformacije>
-    <z:mesto>mesto0</z:mesto>
-    <z:trazilacDodatniKontakt>trazilacDodatniKontakt0</z:trazilacDodatniKontakt>
-    <z:drugiNacinDostave>drugiNacinDostave0</z:drugiNacinDostave>
+    <z:opisInformacije>информације о доказима застарелости предмета који се односи на кривични поступак против НН лица</z:opisInformacije>
+    <z:mesto>Нови Сад</z:mesto>
+    <z:trazilacDodatniKontakt>lanamarkovic@gmail.com</z:trazilacDodatniKontakt>
+    <z:drugiNacinDostave>на адресу предузећа</z:drugiNacinDostave>
     <z:tip>obavestenje</z:tip>
     <z:tip>uvid</z:tip>
     <z:tip>dostava</z:tip>
