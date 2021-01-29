@@ -4,7 +4,6 @@
  xmlns:z="http://www.pijz.rs/zahtev"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.pijz.rs/zahtev file:/D:/College/XML%202020/Project/XML-2020/data/xsd/zahtev.xsd" id="ID000" datum="2006-05-04">
-    <z:opisInformacije>opisInformacije0</z:opisInformacije>
     <z:metadata>
         <cmn:meta property="property0" content="content0">meta0</cmn:meta>
         <cmn:meta property="property1" content="content1">meta1</cmn:meta>
@@ -27,6 +26,7 @@
             <cmn:broj>broj1</cmn:broj>
         </cmn:adresa>
     </z:poverenik>
+    <z:opisInformacije>opisInformacije0</z:opisInformacije>
     <z:mesto>mesto0</z:mesto>
     <z:trazilacDodatniKontakt>trazilacDodatniKontakt0</z:trazilacDodatniKontakt>
     <z:drugiNacinDostave>drugiNacinDostave0</z:drugiNacinDostave>
