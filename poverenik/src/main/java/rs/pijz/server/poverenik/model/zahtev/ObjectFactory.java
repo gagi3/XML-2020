@@ -3,7 +3,10 @@ package rs.pijz.server.poverenik.model.zahtev;
 
 import rs.pijz.server.poverenik.model.common.*;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -23,6 +26,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Zahtev_QNAME = new QName("http://www.pijz.rs/zahtev", "Zahtev");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: mypackage
@@ -85,6 +89,15 @@ public class ObjectFactory {
      */
     public MetaData.Meta createMetaDataMeta() {
         return new MetaData.Meta();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Zahtev }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pijz.rs/zahtev", name = "Zahtev")
+    public JAXBElement<Zahtev> createZahtev(Zahtev value) {
+        return new JAXBElement<Zahtev>(_Zahtev_QNAME, Zahtev.class, null, value);
     }
 
 }

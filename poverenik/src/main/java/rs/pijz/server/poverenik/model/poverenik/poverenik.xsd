@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:p="http://www.pijz.rs/poverenik"
+    xmlns:k="http://www.pijz.rs/korisnik" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.pijz.rs/poverenik" elementFormDefault="qualified"
+    vc:minVersion="1.1">
+    <xs:import namespace="http://www.pijz.rs/korisnik" schemaLocation="korisnik.xsd"/>
+    <xs:element name="Poverenik" type="p:Poverenik"> </xs:element>
+    <xs:complexType name="Poverenik">
+        <xs:sequence>
+            <xs:element name="korisnik" type="k:Korisnik"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="zalbe" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="resenja" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="izvestaji" type="xs:ID"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

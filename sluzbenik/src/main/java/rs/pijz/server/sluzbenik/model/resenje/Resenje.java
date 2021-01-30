@@ -15,12 +15,12 @@ import java.util.List;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for Resenje complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Resenje">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -66,7 +66,7 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "Resenje", namespace = "http://www.pijz.rs/resenje", propOrder = {
     "metadata",
     "trazilac",
     "poverenik",
@@ -74,7 +74,6 @@ import java.util.List;
     "dispozitiv",
     "obrazlozenje"
 })
-@XmlRootElement(name = "Resenje", namespace = "http://www.pijz.rs/resenje")
 public class Resenje {
 
     @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)

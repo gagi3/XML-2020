@@ -3,7 +3,10 @@ package rs.pijz.server.poverenik.model.resenje;
 
 import rs.pijz.server.poverenik.model.common.*;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -23,6 +26,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Resenje_QNAME = new QName("http://www.pijz.rs/resenje", "Resenje");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: mypackage
@@ -32,11 +36,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Resenje }
+     * Create an instance of {@link MetaData }
      * 
      */
-    public Resenje createResenje() {
-        return new Resenje();
+    public MetaData createMetaData() {
+        return new MetaData();
     }
 
     /**
@@ -48,11 +52,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MetaData }
+     * Create an instance of {@link Resenje }
      * 
      */
-    public MetaData createMetaData() {
-        return new MetaData();
+    public Resenje createResenje() {
+        return new Resenje();
+    }
+
+    /**
+     * Create an instance of {@link Paragraf }
+     * 
+     */
+    public Paragraf createParagraf() {
+        return new Paragraf();
     }
 
     /**
@@ -72,30 +84,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Resenje.Dispozitiv }
-     * 
-     */
-    public Resenje.Dispozitiv createResenjeDispozitiv() {
-        return new Resenje.Dispozitiv();
-    }
-
-    /**
-     * Create an instance of {@link Resenje.Obrazlozenje }
-     * 
-     */
-    public Resenje.Obrazlozenje createResenjeObrazlozenje() {
-        return new Resenje.Obrazlozenje();
-    }
-
-    /**
-     * Create an instance of {@link Paragraf }
-     * 
-     */
-    public Paragraf createParagraf() {
-        return new Paragraf();
-    }
-
-    /**
      * Create an instance of {@link Adresa }
      * 
      */
@@ -112,6 +100,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MetaData.Meta }
+     * 
+     */
+    public MetaData.Meta createMetaDataMeta() {
+        return new MetaData.Meta();
+    }
+
+    /**
      * Create an instance of {@link Stav.Dokument }
      * 
      */
@@ -120,11 +116,28 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MetaData.Meta }
+     * Create an instance of {@link Resenje.Dispozitiv }
      * 
      */
-    public MetaData.Meta createMetaDataMeta() {
-        return new MetaData.Meta();
+    public Resenje.Dispozitiv createResenjeDispozitiv() {
+        return new Resenje.Dispozitiv();
+    }
+
+    /**
+     * Create an instance of {@link Resenje.Obrazlozenje }
+     * 
+     */
+    public Resenje.Obrazlozenje createResenjeObrazlozenje() {
+        return new Resenje.Obrazlozenje();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Resenje }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pijz.rs/resenje", name = "Resenje")
+    public JAXBElement<Resenje> createResenje(Resenje value) {
+        return new JAXBElement<Resenje>(_Resenje_QNAME, Resenje.class, null, value);
     }
 
 }

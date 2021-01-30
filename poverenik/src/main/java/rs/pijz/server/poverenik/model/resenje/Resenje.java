@@ -1,6 +1,8 @@
 
 package rs.pijz.server.poverenik.model.resenje;
+
 import rs.pijz.server.poverenik.model.common.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -17,12 +18,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for Resenje complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Resenje">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -68,7 +69,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "Resenje", namespace = "http://www.pijz.rs/resenje", propOrder = {
     "metadata",
     "trazilac",
     "poverenik",
@@ -76,7 +77,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "dispozitiv",
     "obrazlozenje"
 })
-@XmlRootElement(name = "Resenje", namespace = "http://www.pijz.rs/resenje")
 public class Resenje {
 
     @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
