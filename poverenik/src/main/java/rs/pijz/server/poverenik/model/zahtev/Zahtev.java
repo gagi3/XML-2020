@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -19,12 +18,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for Zahtev complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Zahtev">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -48,7 +47,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev", propOrder = {
     "opisInformacije",
     "metadata",
     "trazilac",
@@ -59,25 +58,24 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "tip",
     "dostava"
 })
-@XmlRootElement(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev")
 public class Zahtev {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected String opisInformacije;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected MetaData metadata;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected FizickoLice trazilac;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected PravnoLice poverenik;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected String mesto;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected String trazilacDodatniKontakt;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
     protected String drugiNacinDostave;
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "string", namespace = "http://www.pijz.rs/zahtev")
+    @XmlElement(namespace = "http://www.pijz.rs/zahtev", required = true)
+    @XmlSchemaType(name = "string")
     protected List<TipZahteva> tip;
     @XmlElement(namespace = "http://www.pijz.rs/zahtev")
     @XmlSchemaType(name = "string")

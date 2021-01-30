@@ -1,3 +1,4 @@
+
 package rs.pijz.server.sluzbenik.model.obavestenje;
 
 import rs.pijz.server.sluzbenik.model.common.Adresa;
@@ -14,12 +15,12 @@ import java.util.List;
 
 
 /**
- * <p>Java class for anonymous complex type.
- *
+ * <p>Java class for Obavestenje complex type.
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="Obavestenje">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -85,33 +86,34 @@ import java.util.List;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "metadata",
-        "organ",
-        "podnosilac",
-        "naslov",
-        "podnaslov",
-        "telo",
-        "podnozje"
+@XmlType(name = "Obavestenje", namespace = "http://www.pijz.rs/obavestenje", propOrder = {
+    "metadata",
+    "organ",
+    "podnosilac",
+    "naslov",
+    "podnaslov",
+    "telo",
+    "podnozje"
 })
-@XmlRootElement(name = "Obavestenje", namespace = "http://www.pijz.rs/obavestenje")
 public class Obavestenje {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected MetaData metadata;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected Organ organ;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected Podnosilac podnosilac;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected String naslov;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected String podnaslov;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected Telo telo;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected Podnozje podnozje;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -138,9 +140,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the metadata property.
-     *
-     * @return possible object is
-     * {@link MetaData }
+     * 
+     * @return
+     *     possible object is
+     *     {@link MetaData }
+     *     
      */
     public MetaData getMetadata() {
         return metadata;
@@ -148,9 +152,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the metadata property.
-     *
-     * @param value allowed object is
-     *              {@link MetaData }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MetaData }
+     *     
      */
     public void setMetadata(MetaData value) {
         this.metadata = value;
@@ -158,9 +164,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the organ property.
-     *
-     * @return possible object is
-     * {@link Organ }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Organ }
+     *     
      */
     public Organ getOrgan() {
         return organ;
@@ -168,9 +176,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the organ property.
-     *
-     * @param value allowed object is
-     *              {@link Organ }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Organ }
+     *     
      */
     public void setOrgan(Organ value) {
         this.organ = value;
@@ -178,9 +188,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the podnosilac property.
-     *
-     * @return possible object is
-     * {@link Podnosilac }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Podnosilac }
+     *     
      */
     public Podnosilac getPodnosilac() {
         return podnosilac;
@@ -188,9 +200,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the podnosilac property.
-     *
-     * @param value allowed object is
-     *              {@link Podnosilac }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Podnosilac }
+     *     
      */
     public void setPodnosilac(Podnosilac value) {
         this.podnosilac = value;
@@ -198,9 +212,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the naslov property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getNaslov() {
         return naslov;
@@ -208,9 +224,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the naslov property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setNaslov(String value) {
         this.naslov = value;
@@ -218,9 +236,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the podnaslov property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPodnaslov() {
         return podnaslov;
@@ -228,9 +248,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the podnaslov property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPodnaslov(String value) {
         this.podnaslov = value;
@@ -238,9 +260,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the telo property.
-     *
-     * @return possible object is
-     * {@link Telo }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Telo }
+     *     
      */
     public Telo getTelo() {
         return telo;
@@ -248,9 +272,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the telo property.
-     *
-     * @param value allowed object is
-     *              {@link Telo }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Telo }
+     *     
      */
     public void setTelo(Telo value) {
         this.telo = value;
@@ -258,9 +284,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the podnozje property.
-     *
-     * @return possible object is
-     * {@link Podnozje }
+     * 
+     * @return
+     *     possible object is
+     *     {@link Podnozje }
+     *     
      */
     public Podnozje getPodnozje() {
         return podnozje;
@@ -268,9 +296,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the podnozje property.
-     *
-     * @param value allowed object is
-     *              {@link Podnozje }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Podnozje }
+     *     
      */
     public void setPodnozje(Podnozje value) {
         this.podnozje = value;
@@ -278,9 +308,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the id property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getId() {
         return id;
@@ -288,9 +320,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the id property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setId(String value) {
         this.id = value;
@@ -298,9 +332,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the broj property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getBroj() {
         return broj;
@@ -308,9 +344,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the broj property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setBroj(String value) {
         this.broj = value;
@@ -318,9 +356,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the datum property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatum() {
         return datum;
@@ -328,9 +368,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the datum property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatum(XMLGregorianCalendar value) {
         this.datum = value;
@@ -338,9 +380,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the datumZahtevanja property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumZahtevanja() {
         return datumZahtevanja;
@@ -348,9 +392,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the datumZahtevanja property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumZahtevanja(XMLGregorianCalendar value) {
         this.datumZahtevanja = value;
@@ -358,9 +404,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the datumUvida property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumUvida() {
         return datumUvida;
@@ -368,9 +416,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the datumUvida property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumUvida(XMLGregorianCalendar value) {
         this.datumUvida = value;
@@ -378,9 +428,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the vremeUvidaOd property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getVremeUvidaOd() {
         return vremeUvidaOd;
@@ -388,9 +440,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the vremeUvidaOd property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setVremeUvidaOd(XMLGregorianCalendar value) {
         this.vremeUvidaOd = value;
@@ -398,9 +452,11 @@ public class Obavestenje {
 
     /**
      * Gets the value of the vremeUvidaDo property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getVremeUvidaDo() {
         return vremeUvidaDo;
@@ -408,9 +464,11 @@ public class Obavestenje {
 
     /**
      * Sets the value of the vremeUvidaDo property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setVremeUvidaDo(XMLGregorianCalendar value) {
         this.vremeUvidaDo = value;
@@ -419,9 +477,9 @@ public class Obavestenje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -434,24 +492,28 @@ public class Obavestenje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "naziv",
-            "sediste"
+        "naziv",
+        "sediste"
     })
     public static class Organ {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
         protected String naziv;
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
         protected Adresa sediste;
 
         /**
          * Gets the value of the naziv property.
-         *
-         * @return possible object is
-         * {@link String }
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
         public String getNaziv() {
             return naziv;
@@ -459,9 +521,11 @@ public class Obavestenje {
 
         /**
          * Sets the value of the naziv property.
-         *
-         * @param value allowed object is
-         *              {@link String }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
         public void setNaziv(String value) {
             this.naziv = value;
@@ -469,9 +533,11 @@ public class Obavestenje {
 
         /**
          * Gets the value of the sediste property.
-         *
-         * @return possible object is
-         * {@link Adresa }
+         * 
+         * @return
+         *     possible object is
+         *     {@link Adresa }
+         *     
          */
         public Adresa getSediste() {
             return sediste;
@@ -479,9 +545,11 @@ public class Obavestenje {
 
         /**
          * Sets the value of the sediste property.
-         *
-         * @param value allowed object is
-         *              {@link Adresa }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Adresa }
+         *     
          */
         public void setSediste(Adresa value) {
             this.sediste = value;
@@ -492,9 +560,9 @@ public class Obavestenje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -507,11 +575,13 @@ public class Obavestenje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "fizickoLice",
-            "pravnoLice"
+        "fizickoLice",
+        "pravnoLice"
     })
     public static class Podnosilac {
 
@@ -522,9 +592,11 @@ public class Obavestenje {
 
         /**
          * Gets the value of the fizickoLice property.
-         *
-         * @return possible object is
-         * {@link FizickoLice }
+         * 
+         * @return
+         *     possible object is
+         *     {@link FizickoLice }
+         *     
          */
         public FizickoLice getFizickoLice() {
             return fizickoLice;
@@ -532,9 +604,11 @@ public class Obavestenje {
 
         /**
          * Sets the value of the fizickoLice property.
-         *
-         * @param value allowed object is
-         *              {@link FizickoLice }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link FizickoLice }
+         *     
          */
         public void setFizickoLice(FizickoLice value) {
             this.fizickoLice = value;
@@ -542,9 +616,11 @@ public class Obavestenje {
 
         /**
          * Gets the value of the pravnoLice property.
-         *
-         * @return possible object is
-         * {@link PravnoLice }
+         * 
+         * @return
+         *     possible object is
+         *     {@link PravnoLice }
+         *     
          */
         public PravnoLice getPravnoLice() {
             return pravnoLice;
@@ -552,9 +628,11 @@ public class Obavestenje {
 
         /**
          * Sets the value of the pravnoLice property.
-         *
-         * @param value allowed object is
-         *              {@link PravnoLice }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link PravnoLice }
+         *     
          */
         public void setPravnoLice(PravnoLice value) {
             this.pravnoLice = value;
@@ -565,9 +643,9 @@ public class Obavestenje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -580,24 +658,28 @@ public class Obavestenje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "pecat",
-            "potpis"
+        "pecat",
+        "potpis"
     })
     public static class Podnozje {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
         protected String pecat;
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
         protected String potpis;
 
         /**
          * Gets the value of the pecat property.
-         *
-         * @return possible object is
-         * {@link String }
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
         public String getPecat() {
             return pecat;
@@ -605,9 +687,11 @@ public class Obavestenje {
 
         /**
          * Sets the value of the pecat property.
-         *
-         * @param value allowed object is
-         *              {@link String }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
         public void setPecat(String value) {
             this.pecat = value;
@@ -615,9 +699,11 @@ public class Obavestenje {
 
         /**
          * Gets the value of the potpis property.
-         *
-         * @return possible object is
-         * {@link String }
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
         public String getPotpis() {
             return potpis;
@@ -625,9 +711,11 @@ public class Obavestenje {
 
         /**
          * Sets the value of the potpis property.
-         *
-         * @param value allowed object is
-         *              {@link String }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
         public void setPotpis(String value) {
             this.potpis = value;
@@ -638,9 +726,9 @@ public class Obavestenje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -652,35 +740,39 @@ public class Obavestenje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "paragraf"
+        "paragraf"
     })
     public static class Telo {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
         protected List<String> paragraf;
 
         /**
          * Gets the value of the paragraf property.
-         *
+         * 
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
          * This is why there is not a <CODE>set</CODE> method for the paragraf property.
-         *
+         * 
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
          *    getParagraf().add(newItem);
          * </pre>
-         *
-         *
+         * 
+         * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link String }
+         * 
+         * 
          */
         public List<String> getParagraf() {
             if (paragraf == null) {

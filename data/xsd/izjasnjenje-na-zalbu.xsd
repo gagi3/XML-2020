@@ -4,17 +4,16 @@
     xmlns:i="http://www.pijz.rs/izjasnjenje-na-zalbu"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" xmlns:cmn="http://www.pijz.rs/common">
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-    <xs:element name="izjasnjenjeNaZalbu">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="metadata" type="cmn:MetaData"/>
-                <xs:element name="tekst_izjave" type="xs:string"/>
-                <xs:element name="saglasnost_sa_zalbom" type="xs:boolean"/>
-            </xs:sequence>
-            <xs:attribute name="id" type="xs:ID"/>
-            <xs:attribute name="broj" type="xs:string"/>
-            <xs:attribute name="broj_zalbe" type="xs:string"/>
-            <xs:attribute name="datum_izjave" type="xs:date"/>
-        </xs:complexType>
-    </xs:element>
+    <xs:element name="IzjasnjenjeNaZalbu" type="i:IzjasnjenjeNaZalbu"> </xs:element>
+    <xs:complexType name="IzjasnjenjeNaZalbu">
+        <xs:sequence>
+            <xs:element name="metadata" type="cmn:MetaData"/>
+            <xs:element name="tekst_izjave" type="xs:string"/>
+            <xs:element name="saglasnost_sa_zalbom" type="xs:boolean"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID"/>
+        <xs:attribute name="broj" type="xs:string"/>
+        <xs:attribute name="broj_zalbe" type="xs:string"/>
+        <xs:attribute name="datum_izjave" type="xs:date"/>
+    </xs:complexType>
 </xs:schema>

@@ -1,5 +1,5 @@
-package rs.pijz.server.sluzbenik.model.zalba_cutanje;
 
+package rs.pijz.server.sluzbenik.model.zalba_cutanje;
 
 import rs.pijz.server.sluzbenik.model.common.Adresa;
 import rs.pijz.server.sluzbenik.model.common.FizickoLice;
@@ -12,12 +12,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
- *
+ * <p>Java class for ZalbaCutanje complex type.
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="ZalbaCutanje">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -71,36 +71,37 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "metadata",
-        "predmet",
-        "komeJeUpucena",
-        "protivOrgana",
-        "razlog",
-        "podaciOZahtevu",
-        "podnosilacZalbe",
-        "mestoPodnosenjaZalbe"
+@XmlType(name = "ZalbaCutanje", namespace = "http://www.pijz.rs/zalba-cutanje", propOrder = {
+    "metadata",
+    "predmet",
+    "komeJeUpucena",
+    "protivOrgana",
+    "razlog",
+    "podaciOZahtevu",
+    "podnosilacZalbe",
+    "mestoPodnosenjaZalbe"
 })
-@XmlRootElement(name = "ZalbaCutanje", namespace = "http://www.pijz.rs/zalba-cutanje")
 public class ZalbaCutanje {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected MetaData metadata;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected String predmet;
-    @XmlElement(name = "kome_je_upucena", required = true)
+    @XmlElement(name = "kome_je_upucena", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected KomeJeUpucena komeJeUpucena;
-    @XmlElement(name = "protiv_organa", required = true)
+    @XmlElement(name = "protiv_organa", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected String protivOrgana;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected String razlog;
-    @XmlElement(name = "podaci_o_zahtevu", required = true)
+    @XmlElement(name = "podaci_o_zahtevu", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected String podaciOZahtevu;
-    @XmlElement(name = "podnosilac_zalbe", required = true)
+    @XmlElement(name = "podnosilac_zalbe", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected PodnosilacZalbe podnosilacZalbe;
-    @XmlElement(name = "mesto_podnosenja_zalbe", required = true)
+    @XmlElement(name = "mesto_podnosenja_zalbe", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected MestoPodnosenjaZalbe mestoPodnosenjaZalbe;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -118,9 +119,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the metadata property.
-     *
-     * @return possible object is
-     * {@link MetaData }
+     * 
+     * @return
+     *     possible object is
+     *     {@link MetaData }
+     *     
      */
     public MetaData getMetadata() {
         return metadata;
@@ -128,9 +131,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the metadata property.
-     *
-     * @param value allowed object is
-     *              {@link MetaData }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MetaData }
+     *     
      */
     public void setMetadata(MetaData value) {
         this.metadata = value;
@@ -138,9 +143,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the predmet property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPredmet() {
         return predmet;
@@ -148,9 +155,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the predmet property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPredmet(String value) {
         this.predmet = value;
@@ -158,9 +167,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the komeJeUpucena property.
-     *
-     * @return possible object is
-     * {@link KomeJeUpucena }
+     * 
+     * @return
+     *     possible object is
+     *     {@link KomeJeUpucena }
+     *     
      */
     public KomeJeUpucena getKomeJeUpucena() {
         return komeJeUpucena;
@@ -168,9 +179,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the komeJeUpucena property.
-     *
-     * @param value allowed object is
-     *              {@link KomeJeUpucena }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link KomeJeUpucena }
+     *     
      */
     public void setKomeJeUpucena(KomeJeUpucena value) {
         this.komeJeUpucena = value;
@@ -178,9 +191,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the protivOrgana property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getProtivOrgana() {
         return protivOrgana;
@@ -188,9 +203,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the protivOrgana property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setProtivOrgana(String value) {
         this.protivOrgana = value;
@@ -198,9 +215,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the razlog property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getRazlog() {
         return razlog;
@@ -208,9 +227,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the razlog property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setRazlog(String value) {
         this.razlog = value;
@@ -218,9 +239,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the podaciOZahtevu property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getPodaciOZahtevu() {
         return podaciOZahtevu;
@@ -228,9 +251,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the podaciOZahtevu property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setPodaciOZahtevu(String value) {
         this.podaciOZahtevu = value;
@@ -238,9 +263,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the podnosilacZalbe property.
-     *
-     * @return possible object is
-     * {@link PodnosilacZalbe }
+     * 
+     * @return
+     *     possible object is
+     *     {@link PodnosilacZalbe }
+     *     
      */
     public PodnosilacZalbe getPodnosilacZalbe() {
         return podnosilacZalbe;
@@ -248,9 +275,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the podnosilacZalbe property.
-     *
-     * @param value allowed object is
-     *              {@link PodnosilacZalbe }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PodnosilacZalbe }
+     *     
      */
     public void setPodnosilacZalbe(PodnosilacZalbe value) {
         this.podnosilacZalbe = value;
@@ -258,9 +287,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the mestoPodnosenjaZalbe property.
-     *
-     * @return possible object is
-     * {@link MestoPodnosenjaZalbe }
+     * 
+     * @return
+     *     possible object is
+     *     {@link MestoPodnosenjaZalbe }
+     *     
      */
     public MestoPodnosenjaZalbe getMestoPodnosenjaZalbe() {
         return mestoPodnosenjaZalbe;
@@ -268,9 +299,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the mestoPodnosenjaZalbe property.
-     *
-     * @param value allowed object is
-     *              {@link MestoPodnosenjaZalbe }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MestoPodnosenjaZalbe }
+     *     
      */
     public void setMestoPodnosenjaZalbe(MestoPodnosenjaZalbe value) {
         this.mestoPodnosenjaZalbe = value;
@@ -278,9 +311,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the id property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getId() {
         return id;
@@ -288,9 +323,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the id property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setId(String value) {
         this.id = value;
@@ -298,9 +335,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the broj property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getBroj() {
         return broj;
@@ -308,9 +347,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the broj property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setBroj(String value) {
         this.broj = value;
@@ -318,9 +359,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the datum property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatum() {
         return datum;
@@ -328,9 +371,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the datum property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatum(XMLGregorianCalendar value) {
         this.datum = value;
@@ -338,9 +383,11 @@ public class ZalbaCutanje {
 
     /**
      * Gets the value of the datumZahteva property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumZahteva() {
         return datumZahteva;
@@ -348,9 +395,11 @@ public class ZalbaCutanje {
 
     /**
      * Sets the value of the datumZahteva property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumZahteva(XMLGregorianCalendar value) {
         this.datumZahteva = value;
@@ -359,9 +408,9 @@ public class ZalbaCutanje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -374,24 +423,28 @@ public class ZalbaCutanje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "naziv",
-            "adresaZaPostu"
+        "naziv",
+        "adresaZaPostu"
     })
     public static class KomeJeUpucena {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
         protected String naziv;
-        @XmlElement(name = "adresa_za_postu", required = true)
+        @XmlElement(name = "adresa_za_postu", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
         protected Adresa adresaZaPostu;
 
         /**
          * Gets the value of the naziv property.
-         *
-         * @return possible object is
-         * {@link String }
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
         public String getNaziv() {
             return naziv;
@@ -399,9 +452,11 @@ public class ZalbaCutanje {
 
         /**
          * Sets the value of the naziv property.
-         *
-         * @param value allowed object is
-         *              {@link String }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
         public void setNaziv(String value) {
             this.naziv = value;
@@ -409,9 +464,11 @@ public class ZalbaCutanje {
 
         /**
          * Gets the value of the adresaZaPostu property.
-         *
-         * @return possible object is
-         * {@link Adresa }
+         * 
+         * @return
+         *     possible object is
+         *     {@link Adresa }
+         *     
          */
         public Adresa getAdresaZaPostu() {
             return adresaZaPostu;
@@ -419,9 +476,11 @@ public class ZalbaCutanje {
 
         /**
          * Sets the value of the adresaZaPostu property.
-         *
-         * @param value allowed object is
-         *              {@link Adresa }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Adresa }
+         *     
          */
         public void setAdresaZaPostu(Adresa value) {
             this.adresaZaPostu = value;
@@ -432,9 +491,9 @@ public class ZalbaCutanje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -447,25 +506,29 @@ public class ZalbaCutanje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "grad",
-            "datum"
+        "grad",
+        "datum"
     })
     public static class MestoPodnosenjaZalbe {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
         protected String grad;
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar datum;
 
         /**
          * Gets the value of the grad property.
-         *
-         * @return possible object is
-         * {@link String }
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
         public String getGrad() {
             return grad;
@@ -473,9 +536,11 @@ public class ZalbaCutanje {
 
         /**
          * Sets the value of the grad property.
-         *
-         * @param value allowed object is
-         *              {@link String }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
         public void setGrad(String value) {
             this.grad = value;
@@ -483,9 +548,11 @@ public class ZalbaCutanje {
 
         /**
          * Gets the value of the datum property.
-         *
-         * @return possible object is
-         * {@link XMLGregorianCalendar }
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
          */
         public XMLGregorianCalendar getDatum() {
             return datum;
@@ -493,9 +560,11 @@ public class ZalbaCutanje {
 
         /**
          * Sets the value of the datum property.
-         *
-         * @param value allowed object is
-         *              {@link XMLGregorianCalendar }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
          */
         public void setDatum(XMLGregorianCalendar value) {
             this.datum = value;
@@ -506,9 +575,9 @@ public class ZalbaCutanje {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -521,24 +590,28 @@ public class ZalbaCutanje {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "osoba",
-            "drugiKontakt"
+        "osoba",
+        "drugiKontakt"
     })
     public static class PodnosilacZalbe {
 
-        @XmlElement(required = true)
+        @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
         protected FizickoLice osoba;
-        @XmlElement(name = "drugi_kontakt", required = true)
+        @XmlElement(name = "drugi_kontakt", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
         protected String drugiKontakt;
 
         /**
          * Gets the value of the osoba property.
-         *
-         * @return possible object is
-         * {@link FizickoLice }
+         * 
+         * @return
+         *     possible object is
+         *     {@link FizickoLice }
+         *     
          */
         public FizickoLice getOsoba() {
             return osoba;
@@ -546,9 +619,11 @@ public class ZalbaCutanje {
 
         /**
          * Sets the value of the osoba property.
-         *
-         * @param value allowed object is
-         *              {@link FizickoLice }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link FizickoLice }
+         *     
          */
         public void setOsoba(FizickoLice value) {
             this.osoba = value;
@@ -556,9 +631,11 @@ public class ZalbaCutanje {
 
         /**
          * Gets the value of the drugiKontakt property.
-         *
-         * @return possible object is
-         * {@link String }
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
         public String getDrugiKontakt() {
             return drugiKontakt;
@@ -566,9 +643,11 @@ public class ZalbaCutanje {
 
         /**
          * Sets the value of the drugiKontakt property.
-         *
-         * @param value allowed object is
-         *              {@link String }
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
         public void setDrugiKontakt(String value) {
             this.drugiKontakt = value;

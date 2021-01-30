@@ -23,6 +23,7 @@ public class DatabaseConnection {
     }
 
     @SneakyThrows
+    @SuppressWarnings("deprecation")
     private Collection getOrCreateCollection(String collectionURI, Integer pathSegmentOffset) throws XMLDBException {
         System.out.println(Arrays.toString(DatabaseManager.getDatabases()));
         if (DatabaseManager.getDatabases().length == 0) {

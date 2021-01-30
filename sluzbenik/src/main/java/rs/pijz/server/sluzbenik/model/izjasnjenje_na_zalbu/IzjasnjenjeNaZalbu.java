@@ -1,3 +1,4 @@
+
 package rs.pijz.server.sluzbenik.model.izjasnjenje_na_zalbu;
 
 import rs.pijz.server.sluzbenik.model.common.MetaData;
@@ -9,12 +10,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for anonymous complex type.
- *
+ * <p>Java class for IzjasnjenjeNaZalbu complex type.
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="IzjasnjenjeNaZalbu">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -30,21 +31,22 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "metadata",
-        "tekstIzjave",
-        "saglasnostSaZalbom"
+@XmlType(name = "IzjasnjenjeNaZalbu", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu", propOrder = {
+    "metadata",
+    "tekstIzjave",
+    "saglasnostSaZalbom"
 })
-@XmlRootElement(name = "izjasnjenjeNaZalbu", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu")
 public class IzjasnjenjeNaZalbu {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu", required = true)
     protected MetaData metadata;
-    @XmlElement(name = "tekst_izjave", required = true)
+    @XmlElement(name = "tekst_izjave", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu", required = true)
     protected String tekstIzjave;
-    @XmlElement(name = "saglasnost_sa_zalbom")
+    @XmlElement(name = "saglasnost_sa_zalbom", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu")
     protected boolean saglasnostSaZalbom;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
@@ -61,9 +63,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the metadata property.
-     *
-     * @return possible object is
-     * {@link MetaData }
+     * 
+     * @return
+     *     possible object is
+     *     {@link MetaData }
+     *     
      */
     public MetaData getMetadata() {
         return metadata;
@@ -71,9 +75,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the metadata property.
-     *
-     * @param value allowed object is
-     *              {@link MetaData }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MetaData }
+     *     
      */
     public void setMetadata(MetaData value) {
         this.metadata = value;
@@ -81,9 +87,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the tekstIzjave property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getTekstIzjave() {
         return tekstIzjave;
@@ -91,9 +99,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the tekstIzjave property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setTekstIzjave(String value) {
         this.tekstIzjave = value;
@@ -101,6 +111,7 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the saglasnostSaZalbom property.
+     * 
      */
     public boolean isSaglasnostSaZalbom() {
         return saglasnostSaZalbom;
@@ -108,6 +119,7 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the saglasnostSaZalbom property.
+     * 
      */
     public void setSaglasnostSaZalbom(boolean value) {
         this.saglasnostSaZalbom = value;
@@ -115,9 +127,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the id property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getId() {
         return id;
@@ -125,9 +139,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the id property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setId(String value) {
         this.id = value;
@@ -135,9 +151,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the broj property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getBroj() {
         return broj;
@@ -145,9 +163,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the broj property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setBroj(String value) {
         this.broj = value;
@@ -155,9 +175,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the brojZalbe property.
-     *
-     * @return possible object is
-     * {@link String }
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getBrojZalbe() {
         return brojZalbe;
@@ -165,9 +187,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the brojZalbe property.
-     *
-     * @param value allowed object is
-     *              {@link String }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
     public void setBrojZalbe(String value) {
         this.brojZalbe = value;
@@ -175,9 +199,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Gets the value of the datumIzjave property.
-     *
-     * @return possible object is
-     * {@link XMLGregorianCalendar }
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public XMLGregorianCalendar getDatumIzjave() {
         return datumIzjave;
@@ -185,9 +211,11 @@ public class IzjasnjenjeNaZalbu {
 
     /**
      * Sets the value of the datumIzjave property.
-     *
-     * @param value allowed object is
-     *              {@link XMLGregorianCalendar }
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
     public void setDatumIzjave(XMLGregorianCalendar value) {
         this.datumIzjave = value;
