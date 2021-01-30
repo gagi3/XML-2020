@@ -4,16 +4,15 @@
     targetNamespace="http://www.pijz.rs/sluzbenik" elementFormDefault="qualified"
     vc:minVersion="1.1">
     <xs:import namespace="http://www.pijz.rs/korisnik" schemaLocation="korisnik.xsd"/>
-    <xs:element name="Sluzbenik">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="korisnik" type="k:Korisnik"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="zahtevi" type="xs:ID"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="zalbe" type="xs:ID"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="resenja" type="xs:ID"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="odgovori" type="xs:ID"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="izvestaji" type="xs:ID"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:element name="Sluzbenik" type="s:Sluzbenik"> </xs:element>
+    <xs:complexType name="Sluzbenik">
+        <xs:sequence>
+            <xs:element name="korisnik" type="k:Korisnik"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="zahtevi" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="zalbe" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="resenja" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="odgovori" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="izvestaji" type="xs:ID"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

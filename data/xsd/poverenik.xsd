@@ -4,14 +4,13 @@
     targetNamespace="http://www.pijz.rs/poverenik" elementFormDefault="qualified"
     vc:minVersion="1.1">
     <xs:import namespace="http://www.pijz.rs/korisnik" schemaLocation="korisnik.xsd"/>
-    <xs:element name="Poverenik">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="korisnik" type="k:Korisnik"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="zalbe" type="xs:ID"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="resenja" type="xs:ID"/>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="izvestaji" type="xs:ID"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:element name="Poverenik" type="p:Poverenik"> </xs:element>
+    <xs:complexType name="Poverenik">
+        <xs:sequence>
+            <xs:element name="korisnik" type="k:Korisnik"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="zalbe" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="resenja" type="xs:ID"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="izvestaji" type="xs:ID"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

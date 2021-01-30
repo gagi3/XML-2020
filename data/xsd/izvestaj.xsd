@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iz="http://www.pijz.rs/izvestaj"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.pijz.rs/izvestaj" elementFormDefault="qualified" vc:minVersion="1.1">
+
+    <xs:element name="Izvestaj" type="iz:Izvestaj"> </xs:element>
+    <xs:complexType name="ZalbaSadrzaj">
+        <xs:sequence>
+            <xs:element name="zalbaID" type="xs:ID"/>
+            <xs:element name="sadrzaj" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Izvestaj">
+        <xs:sequence>
+            <xs:element name="sluzbenikID" type="xs:ID"/>
+            <xs:element name="brojPodnetihZahteva" type="xs:int"/>
+            <xs:element name="brojOdbijenihZahteva" type="xs:int"/>
+            <xs:element name="brojZalbiOdluka" type="xs:int"/>
+            <xs:element name="zalbe" type="iz:ZalbaSadrzaj"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
+</xs:schema>
