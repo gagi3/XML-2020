@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:g="http://www.pijz.rs/gradjanin"
+    xmlns:k="http://www.pijz.rs/korisnik" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+    targetNamespace="http://www.pijz.rs/gradjanin" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns:cmn="http://www.pijz.rs/common">
+    <xs:import namespace="http://www.pijz.rs/korisnik" schemaLocation="korisnik.xsd"/>
+    <xs:element name="Gradjanin">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="korisnik" type="k:Korisnik"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="zahtevi" type="xs:ID"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="zalbe" type="xs:ID"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="resenja" type="xs:ID"/>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="odgovori" type="xs:ID"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
