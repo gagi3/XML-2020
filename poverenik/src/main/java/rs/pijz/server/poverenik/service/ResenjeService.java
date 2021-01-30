@@ -73,7 +73,7 @@ public class ResenjeService {
 
     public Resenje create(Resenje resenje) throws Exception {
         if (existsById(resenje.getID())) {
-            throw new Exception("Zalba sa istim ID vec postoji!");
+            throw new Exception("Resenje sa istim ID vec postoji!");
         }
         return resenjeRepository.save(resenje);
     }
