@@ -57,7 +57,7 @@ public class ObavestenjeService {
 
     public Obavestenje create(Obavestenje obavestenje) throws Exception {
         if (existsById(obavestenje.getId())) {
-            throw new Exception("Zalba sa istim ID vec postoji!");
+            throw new Exception("Obavestenje sa istim ID vec postoji!");
         }
         return obavestenjeRepository.save(obavestenje);
     }
@@ -66,8 +66,8 @@ public class ObavestenjeService {
         String xPath = "/o:Obavestenje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryObavestenje(xPath);
         Obavestenje obavestenje = (Obavestenje) commonRepository.resourceSetToClass(result, Obavestenje.class);
-        String xmlInstance = "../data/xsd/instance/" + "zalba-cutanje-" + id + ".xml";
-        String xml = "../data/xml/" + "zalba-cutanje-" + id + ".xml";
+        String xmlInstance = "../data/xsd/instance/" + "obavestenje-" + id + ".xml";
+        String xml = "../data/xml/" + "obavestenje-" + id + ".xml";
         documentService.createXML(Obavestenje.class, obavestenje, xmlInstance);
         System.out.println("Docs generated!");
     }

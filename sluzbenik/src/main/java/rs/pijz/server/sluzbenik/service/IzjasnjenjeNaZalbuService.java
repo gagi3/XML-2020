@@ -60,7 +60,7 @@ public class IzjasnjenjeNaZalbuService {
 
     public IzjasnjenjeNaZalbu create(IzjasnjenjeNaZalbu izjasnjenjeNaZalbu) throws Exception {
         if (existsById(izjasnjenjeNaZalbu.getId())) {
-            throw new Exception("Zalba sa istim ID vec postoji!");
+            throw new Exception("Izjasnjenje sa istim ID vec postoji!");
         }
         return izjasnjenjeNaZalbuRepository.save(izjasnjenjeNaZalbu);
     }

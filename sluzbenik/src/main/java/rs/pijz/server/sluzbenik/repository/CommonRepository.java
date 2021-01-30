@@ -103,4 +103,42 @@ public class CommonRepository {
         }};
         return runXpath("/db/pijz_sluzbenik/zahtev", namespace, query);
     }
+
+    public ResourceSet queryGradjanin(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{
+            put("g", "http://www.pijz.rs/gradjanin");
+            put("k", "http://www.pijz.rs/korisnik");
+        }};
+        return runXpath("/db/pijz_sluzbenik/gradjanin", namespace, query);
+    }
+
+    public ResourceSet querySluzbenik(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{
+            put("s", "http://www.pijz.rs/sluzbenik");
+            put("k", "http://www.pijz.rs/korisnik");
+        }};
+        return runXpath("/db/pijz_sluzbenik/sluzbenik", namespace, query);
+    }
+
+    public ResourceSet queryPoverenik(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{
+        put("p", "http://www.pijz.rs/poverenik");
+        put("k", "http://www.pijz.rs/korisnik");
+        }};
+        return runXpath("/db/pijz_sluzbenik/poverenik", namespace, query);
+    }
+
+    public ResourceSet queryIzvestaj(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{
+            put("iz", "http://www.pijz.rs/izvestaj");
+        }};
+        return runXpath("/db/pijz_sluzbenik/izvestaj", namespace, query);
+    }
+
+    public ResourceSet queryKorisnik(String query) throws XMLDBException {
+        HashMap<String, String> namespace = new HashMap<>() {{
+            put("k", "http://www.pijz.rs/korisnik");
+        }};
+        return runXpath("/db/pijz_sluzbenik/korisnik", namespace, query);
+    }
 }

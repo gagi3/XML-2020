@@ -73,7 +73,7 @@ public class ZahtevService {
 
     public Zahtev create(Zahtev zahtev) throws Exception {
         if (existsById(zahtev.getId())) {
-            throw new Exception("Zalba sa istim ID vec postoji!");
+            throw new Exception("Zahtev sa istim ID vec postoji!");
         }
         return zahtevRepository.save(zahtev);
     }

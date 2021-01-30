@@ -71,7 +71,7 @@ public class ObavestenjeService {
 
     public Obavestenje create(Obavestenje obavestenje) throws Exception {
         if (existsById(obavestenje.getId())) {
-            throw new Exception("Zalba sa istim ID vec postoji!");
+            throw new Exception("Obavestenje sa istim ID vec postoji!");
         }
         return obavestenjeRepository.save(obavestenje);
     }
