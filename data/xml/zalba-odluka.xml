@@ -21,36 +21,36 @@
     </zo:kome_je_upucena>
     <zo:zalilac>
         <zo:osoba_zalilac>
-            <cmn:ime>ime0</cmn:ime>
-            <cmn:prezime>prezime0</cmn:prezime>
+            <cmn:ime>Анастасија</cmn:ime>
+            <cmn:prezime>Петровић</cmn:prezime>
             <cmn:adresa>
-                <cmn:grad>grad1</cmn:grad>
-                <cmn:ulica>ulica1</cmn:ulica>
-                <cmn:broj>broj1</cmn:broj>
+                <cmn:grad>Београд</cmn:grad>
+                <cmn:ulica>Устаничка</cmn:ulica>
+                <cmn:broj>100</cmn:broj>
             </cmn:adresa>
         </zo:osoba_zalilac>
-        <zo:sediste_zalioca>sediste_zalioca0</zo:sediste_zalioca>
-        <zo:naziv>naziv1</zo:naziv>
+        <zo:sediste_zalioca>Суботица</zo:sediste_zalioca>
+        <zo:naziv>Први основни суд</zo:naziv>
     </zo:zalilac>
-    <zo:donosilac_odluke>donosilac_odluke0</zo:donosilac_odluke>
-    <zo:broj_resenja>0</zo:broj_resenja>
+    <zo:donosilac_odluke>Први кривични суд у Суботици</zo:donosilac_odluke>
+    <zo:broj_resenja>90</zo:broj_resenja>
     <zo:godina_resenja>2006-05-04</zo:godina_resenja>
-    <zo:razlog_pobijanja>razlog_pobijanja0</zo:razlog_pobijanja>
+    <zo:razlog_pobijanja>неоснованост чињеница</zo:razlog_pobijanja>
     <zo:podnosilac_zalbe>
         <zo:osoba>
-            <cmn:ime>ime1</cmn:ime>
-            <cmn:prezime>prezime1</cmn:prezime>
+            <cmn:ime>Маријана</cmn:ime>
+            <cmn:prezime>Петровић</cmn:prezime>
             <cmn:adresa>
-                <cmn:grad>grad2</cmn:grad>
-                <cmn:ulica>ulica2</cmn:ulica>
-                <cmn:broj>broj2</cmn:broj>
+                <cmn:grad>Београд</cmn:grad>
+                <cmn:ulica>Устаничка</cmn:ulica>
+                <cmn:broj>100</cmn:broj>
             </cmn:adresa>
         </zo:osoba>
-        <zo:drugi_kontakt>drugi_kontakt0</zo:drugi_kontakt>
-        <zo:potpis>potpis0</zo:potpis>
+        <zo:drugi_kontakt>marijanapetrovic@gmail.com</zo:drugi_kontakt>
+        <zo:potpis>М А Р И Ј А Н А - П.</zo:potpis>
     </zo:podnosilac_zalbe>
     <zo:mesto_podnosenja_zalbe>
-        <zo:grad>grad0</zo:grad>
+        <zo:grad>Нови Сад</zo:grad>
         <zo:datum>2006-05-04</zo:datum>
     </zo:mesto_podnosenja_zalbe>
 </zo:ZalbaOdluka>

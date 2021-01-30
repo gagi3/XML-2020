@@ -90,13 +90,13 @@ public class ObavestenjeController {
     
     @PostMapping(value = "/convert-to-html")
     public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
-    	String result = ObavestenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
+    	String result = obavestenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
     
     @PostMapping(value = "/convert-to-pdf")
     public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
-    	ByteArrayOutputStream result = ObavestenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
+    	ByteArrayOutputStream result = obavestenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

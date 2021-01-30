@@ -3,6 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
     xmlns:zc="http://www.pijz.rs/zalba-cutanje"
+    xmlns:cmn="http://www.pijz.rs/common"
     version="2.0"
 >
 
@@ -10,7 +11,7 @@
 
     <xsl:template match="/">
 
-        <fo:root>
+        <fo:root font-family="Arial Unicode MS" font-size="10px">
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="zalba-cutanje-page">
                     <fo:region-body margin="1in"/>
@@ -21,52 +22,78 @@
 
             <fo:page-sequence master-reference="zalba-cutanje-page">
                 <fo:flow flow-name="xsl-region-body">
-                    <fo:block margin-top="10px" font-size="8px">
-                        ID: <xsl:value-of select="zc:ZalbaCutanje/@id"/>
-                    </fo:block>
-                    <fo:block margin-top="10px" font-size="8px">
-                        Broj: <xsl:value-of select="zc:ZalbaCutanje/@broj"/>
-                    </fo:block>
-                    <fo:block margin-top="10px" font-size="8px">
-                        Datum: <xsl:value-of select="zc:ZalbaCutanje/@datum"/>
-                    </fo:block>
-                    <fo:block margin-top="10px" font-size="8px">
-                        Datum zahteva: <xsl:value-of select="zc:ZalbaCutanje/@datum_zahteva"/>
+                    <fo:block>
+                        <fo:block text-align="center"> <xsl:value-of select="zc:ZalbaCutanje/zc:predmet"/> </fo:block>
+                        <fo:block margin-top="10px">
+                            <xsl:value-of select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:naziv"/>  
+                            <fo:block>
+                                Адреса за пошту: 
+                                <xsl:call-template name="Adresa">
+                                    <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:adresa_za_postu"/>
+                                </xsl:call-template>
+                            </fo:block>
+                        </fo:block>
+
+                        <fo:block margin-top="20px"> У складу са чланом 22. Закона о слободном приступу информацијама од јавног значаја подносим: </fo:block>
+                        <fo:block text-align="center">ЖАЛБУ</fo:block>
+                        <fo:block text-align="center">против</fo:block>
+                        <fo:block margin-top="10px">
+                            <xsl:value-of select="zc:ZalbaCutanje/zc:protiv_organa"/>  
+                            <fo:block margin-top="10px" text-align="center"> (навести назив органа) </fo:block>
+                        </fo:block>
+                        <fo:block margin-top="10px" text-align="center">
+                            <fo:block> због тога што орган власти: </fo:block>
+                            <fo:block> <xsl:value-of select="zc:ZalbaCutanje/zc:razlog"/> </fo:block>
+                            <fo:block> (подвући због чега се изјављује жалба) </fo:block>
+                        </fo:block>
+                        <fo:block margin-top="10px" text-align="justify">
+                            по мом захтеву за слободан приступ информацијама од јавног значаја који сам поднео том органу 
+                            дана <xsl:value-of select="zc:ZalbaCutanje/@datum_zahteva"/> годинe, а којим сам 
+                            тражио/ла да ми се у складу са Законом о слободном приступу информацијама од јавног значаја омогући увид - копија 
+                            документа који садржи информације о /у вези са :
+                        </fo:block>
+                        <fo:block margin-top="10px">
+                            <xsl:value-of select="zc:ZalbaCutanje/zc:podaci_o_zahtevu"/>  
+                            <fo:block margin-top="10px" text-align="center"> (навести податке о захтеву и информацији/ама) </fo:block>
+                        </fo:block>
+
+                        <fo:block margin-top="10px">На основу изнетог, предлажем да Повереник уважи моју жалбу и омогући ми приступ траженој/им информацији/ма.</fo:block>
+                        <fo:block margin-top="10px">Као доказ, уз жалбу достављам копију захтева са доказом о предаји органу власти.</fo:block>
+                        <fo:block margin-top="10px">Напомена:  Код жалбе због непоступању по захтеву у целости, треба приложити и добијени одговор органа власти.</fo:block>
+
+                        <fo:block margin-top="20px" text-align="right">
+                            <fo:block>
+                                <fo:block margin-top="10px">
+                                    <xsl:call-template name="FizickoLiceSimple">
+                                        <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/>
+                                    </xsl:call-template>
+                                </fo:block>
+                                <fo:block>
+                                    Подносилац жалбе / Име и презиме
+                                </fo:block>
+
+                                <fo:block margin-top="10px"> 
+                                    <xsl:call-template name="Adresa">
+                                        <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba/cmn:adresa"/>
+                                    </xsl:call-template> 
+                                </fo:block>
+                                <fo:block>
+                                    адреса
+                                </fo:block>
+
+                                <fo:block margin-top="10px">
+                                    <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:drugi_kontakt"/>
+                                </fo:block>
+                                <fo:block>
+                                    други контакт
+                                </fo:block>
+                            </fo:block>
+                        </fo:block>
                     </fo:block>
                     <fo:block margin-top="20px">
                         <fo:block>
-                            Predmet:
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:predmet"/>
-                        </fo:block>
-                        <fo:block>
-                            Kome je upucena:
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:naziv"/>
-                            <xsl:call-template name="Adresa">
-                                <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:kome_je_upucena/zc:adresa_za_postu"/>
-                            </xsl:call-template>
-                        </fo:block>
-                        <fo:block>
-                            Protiv organa:
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:protiv_organa"/>
-                        </fo:block>
-                        <fo:block>
-                            Razlog:
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:razlog"/>
-                        </fo:block>
-                        <fo:block>
-                            Podaci o zahtevu:
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:podaci_o_zahtevu"/>
-                        </fo:block>
-                        <fo:block>
-                            Podnosilac zalbe:
-                            <xsl:call-template name="FizickoLice">
-                                <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/>
-                            </xsl:call-template>
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:drugi_kontakt"/>
-                        </fo:block>
-                        <fo:block>
-                            Mesto podnosenja zalbe:
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe"/>
+                            У <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:grad"/>, 
+                            дана <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:datum"/> године
                         </fo:block>
                     </fo:block>
                 </fo:flow>

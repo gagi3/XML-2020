@@ -83,13 +83,13 @@ public class ResenjeController {
     
     @PostMapping(value = "/convert-to-html")
     public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
-    	String result = ResenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
+    	String result = resenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
     
     @PostMapping(value = "/convert-to-pdf")
     public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
-    	ByteArrayOutputStream result = ResenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
+    	ByteArrayOutputStream result = resenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

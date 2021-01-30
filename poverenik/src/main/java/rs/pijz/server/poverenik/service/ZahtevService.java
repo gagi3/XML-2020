@@ -10,10 +10,13 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.poverenik.model.zahtev.Zahtev;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ZahtevRepository;
+import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,15 @@ public class ZahtevService {
 
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private XSLFOTransformer xslfoTransformer;
+    
+    private String xslTemplatePath = "../data/xsl/zahtev.xsl";
+    private String xslfoTemplatePath = "../data/xsl-fo/zahtev.xsl";
+    
+    private String htmlOutput = "../data/html/zahtev.html";
+    private String pdfOutput = "../data/pdf/zahtev.pdf";
 
     public List<Zahtev> findAll() throws XMLDBException {
         String xPath = "/z:Zahtev";
@@ -75,4 +87,12 @@ public class ZahtevService {
         documentService.createXML(Zahtev.class, zahtev, xmlInstance);
         System.out.println("Docs generated!");
     }
+    
+    public String convertToHTML(String xml) throws Exception {
+    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+    }
+    
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+	}
 }

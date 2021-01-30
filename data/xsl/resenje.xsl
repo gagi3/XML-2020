@@ -106,7 +106,7 @@
         <xsl:param name="stav"/>
         <p>
             <xsl:value-of select="$stav/@redni_broj"/>
-            Документ <xsl:value-of select="$stav/r:dokument/r:naziv"/> са траженим информацијама:
+            Документ "<xsl:value-of select="$stav/r:dokument/r:naziv"/>" са траженим информацијама:
             <xsl:for-each select="$stav/r:dokument/r:informacija">
                 <xsl:value-of select="."/>
                 <xsl:if test="position() != last()">
