@@ -25,7 +25,7 @@ public class AppLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if (korisnikService.findAll().size() == 0 || !hasAdmin()) {
+        if ((korisnikService.findAll() != null && korisnikService.findAll().size() == 0) || !hasAdmin()) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
             FizickoLice fizickoLice = new FizickoLice();
@@ -49,6 +49,11 @@ public class AppLoader implements ApplicationRunner {
 
     private Boolean hasAdmin() throws XMLDBException {
         AtomicReference<Boolean> hasAdmin = new AtomicReference<>(false);
+        
+        if (korisnikService.findAll() == null) {
+        	return false;
+        }
+        
         korisnikService.findAll().forEach(user -> {
             if (user.getTip().equals("POVERENIK")) {
                 hasAdmin.set(true);

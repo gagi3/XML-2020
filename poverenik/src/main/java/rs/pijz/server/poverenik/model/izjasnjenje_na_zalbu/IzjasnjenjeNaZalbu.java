@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -40,6 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
+@XmlRootElement(name = "IzjasnjenjeNaZalbu", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IzjasnjenjeNaZalbu", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu", propOrder = {
     "metadata",

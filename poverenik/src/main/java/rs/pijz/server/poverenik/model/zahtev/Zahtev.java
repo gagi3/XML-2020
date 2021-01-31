@@ -1,20 +1,24 @@
 
 package rs.pijz.server.poverenik.model.zahtev;
 
-import rs.pijz.server.poverenik.model.common.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
+
+import rs.pijz.server.poverenik.model.common.FizickoLice;
+import rs.pijz.server.poverenik.model.common.MetaData;
+import rs.pijz.server.poverenik.model.common.PravnoLice;
 
 
 /**
@@ -46,6 +50,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
+@XmlRootElement(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev", propOrder = {
     "opisInformacije",
