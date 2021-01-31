@@ -5,7 +5,7 @@
     xmlns:cmn="http://www.pijz.rs/common">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-    <xs:element name="Izvestaj" type="iz:Izvestaj"> </xs:element>
+    <xs:element name="izvestaj" type="iz:Izvestaj"> </xs:element>
     <xs:complexType name="ZalbaSadrzaj">
         <xs:sequence>
             <xs:element name="zalbaID" type="xs:ID"/>
@@ -14,7 +14,6 @@
     </xs:complexType>
     <xs:complexType name="Izvestaj">
         <xs:sequence>
-            <xs:element name="sluzbenikID" type="xs:ID"/>
             <xs:element name="metadata" type="cmn:MetaData"/>
             <xs:element name="brojPodnetihZahteva" type="xs:int"/>
             <xs:element name="brojOdbijenihZahteva" type="xs:int"/>
@@ -22,5 +21,6 @@
             <xs:element name="zalbe" type="iz:ZalbaSadrzaj"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
+        <xs:attribute name="sluzbenikID" type="xs:ID"/>
     </xs:complexType>
 </xs:schema>

@@ -6,7 +6,7 @@
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
-    <xs:element name="Obavestenje" type="o:Obavestenje"> </xs:element>
+    <xs:element name="obavestenje" type="o:Obavestenje"> </xs:element>
 
     <xs:complexType name="Obavestenje">
         <xs:sequence>
@@ -52,5 +52,7 @@
         <xs:attribute name="datum_uvida" type="xs:date"/>
         <xs:attribute name="vreme_uvida_od" type="xs:time"/>
         <xs:attribute name="vreme_uvida_do" type="xs:time"/>
+        <xs:attribute name="sluzbenikID" type="xs:ID"/>
+        <xs:attribute name="gradjaninID" type="xs:ID"/>
     </xs:complexType>
 </xs:schema>

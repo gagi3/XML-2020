@@ -4,7 +4,7 @@
     targetNamespace="http://www.pijz.rs/zahtev" elementFormDefault="qualified" vc:minVersion="1.1">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-    <xs:element name="Zahtev" type="z:Zahtev"> </xs:element>
+    <xs:element name="zahtev" type="z:Zahtev"> </xs:element>
     <xs:simpleType name="TipZahteva">
         <xs:restriction base="xs:string">
             <xs:enumeration value="obavestenje"/>
@@ -35,5 +35,7 @@
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
         <xs:attribute name="datum" type="xs:date"/>
+        <xs:attribute name="sluzbenikID" type="xs:ID"/>
+        <xs:attribute name="gradjaninID" type="xs:ID"/>
     </xs:complexType>
 </xs:schema>

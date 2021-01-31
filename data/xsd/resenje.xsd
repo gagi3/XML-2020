@@ -6,7 +6,7 @@
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
-    <xs:element name="Resenje" type="r:Resenje"> </xs:element>
+    <xs:element name="resenje" type="r:Resenje"> </xs:element>
 
     <xs:simpleType name="Tip">
         <xs:restriction base="xs:string">
@@ -62,9 +62,13 @@
         </xs:sequence>
         <xs:attribute name="ID" type="xs:ID"/>
         <xs:attribute name="broj" type="xs:string"/>
+        <xs:attribute name="zalbaID" type="xs:ID"/>
         <xs:attribute name="datum_zahteva" type="xs:date"/>
         <xs:attribute name="datum_zalbe" type="xs:date"/>
         <xs:attribute name="datum_postupka" type="xs:date"/>
         <xs:attribute name="tip" type="r:Tip"/>
+        <xs:attribute name="sluzbenikID" type="xs:ID"/>
+        <xs:attribute name="poverenikID" type="xs:ID"/>
+        <xs:attribute name="gradjaninID" type="xs:ID"/>
     </xs:complexType>
 </xs:schema>

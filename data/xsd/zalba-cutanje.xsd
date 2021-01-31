@@ -6,7 +6,7 @@
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
-    <xs:element name="ZalbaCutanje" type="zc:ZalbaCutanje"> </xs:element>
+    <xs:element name="zalbaCutanje" type="zc:ZalbaCutanje"> </xs:element>
     <xs:complexType name="ZalbaCutanje">
         <xs:sequence>
             <xs:element name="metadata" type="cmn:MetaData"/>
@@ -41,7 +41,11 @@
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
         <xs:attribute name="broj" type="xs:string"/>
+        <xs:attribute name="zahtevID" type="xs:ID"/>
         <xs:attribute name="datum" type="xs:date"/>
         <xs:attribute name="datum_zahteva" type="xs:date"/>
+        <xs:attribute name="sluzbenikID" type="xs:ID"/>
+        <xs:attribute name="poverenikID" type="xs:ID"/>
+        <xs:attribute name="gradjaninID" type="xs:ID"/>
     </xs:complexType>
 </xs:schema>
