@@ -25,17 +25,32 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 	
 	@Bean(name = "obavestenje-soap")
-	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+	public DefaultWsdl11Definition defaultWsdl11DefinitionObavestenje(XsdSchema obavestenjeSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("ObavestenjePort");
 		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/obavestenje");
-		wsdl11Definition.setSchema(countriesSchema);
+		wsdl11Definition.setSchema(obavestenjeSchema);
+		return wsdl11Definition;
+	}
+	
+	@Bean(name = "resenje-soap")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionResenje(XsdSchema resenjeSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("ResenjePort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/resenje");
+		wsdl11Definition.setSchema(resenjeSchema);
 		return wsdl11Definition;
 	}
 	
 	@Bean
-	public XsdSchema countriesSchema() {
+	public XsdSchema obavestenjeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("soap/obavestenje-soap.xsd"));
+	}
+	
+	@Bean
+	public XsdSchema resenjeSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("soap/resenje-soap.xsd"));
 	}
 }
