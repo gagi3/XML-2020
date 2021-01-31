@@ -20,7 +20,7 @@ public class ObavestenjeEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getObavestenjeRequest")
 	@ResponsePayload
-	public GetObavestenjeResponse getCountry(@RequestPayload GetObavestenjeRequest request) {
+	public GetObavestenjeResponse getObavestenje(@RequestPayload GetObavestenjeRequest request) {
 		GetObavestenjeResponse response = new GetObavestenjeResponse();
 		response.setObavestenje(obavestenjeRepositorySOAP.findObavestenje(request.getBroj()));
 

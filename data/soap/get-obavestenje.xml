@@ -1,8 +1,8 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:o="http://www.pijz.rs/obavestenje">
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
    <soapenv:Header/>
    <soapenv:Body>
-      <o:getObavestenjeRequest>
-         <o:broj>99-18/9981</o:broj>
-      <o:getObavestenjeRequest>
+      <getObavestenjeRequest xmlns="http://www.pijz.rs/obavestenje">
+         <broj xmlns="http://www.pijz.rs/obavestenje">99-18/9981</broj>
+      </getObavestenjeRequest>
    </soapenv:Body>
 </soapenv:Envelope>
