@@ -31,6 +31,7 @@ import java.util.List;
  * 
  * 
  */
+@XmlRootElement(name = "Poverenik", namespace = "http://www.pijz.rs/poverenik")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Poverenik", namespace = "http://www.pijz.rs/poverenik", propOrder = {
     "korisnik",

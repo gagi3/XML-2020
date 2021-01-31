@@ -95,10 +95,12 @@ public class KorisnikService {
                 Poverenik poverenik = new Poverenik();
                 poverenik.setKorisnik(korisnik);
                 poverenikService.create(poverenik);
+                break;
             default:
                 Gradjanin gradjanin = new Gradjanin();
                 gradjanin.setKorisnik(korisnik);
                 gradjaninService.create(gradjanin);
+                break;
         }
         return korisnikRepository.save(korisnik);
     }

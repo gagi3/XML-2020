@@ -8,10 +8,6 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.poverenik.model.common.Adresa;
 import rs.pijz.server.poverenik.model.common.FizickoLice;
 import rs.pijz.server.poverenik.model.korisnik.Korisnik;
-import rs.pijz.server.poverenik.repository.auth.UserRepository;
-
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Component

@@ -33,6 +33,7 @@ import java.util.List;
  * 
  * 
  */
+@XmlRootElement(name = "Sluzbenik", namespace = "http://www.pijz.rs/sluzbenik")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Sluzbenik", namespace = "http://www.pijz.rs/sluzbenik", propOrder = {
     "korisnik",
