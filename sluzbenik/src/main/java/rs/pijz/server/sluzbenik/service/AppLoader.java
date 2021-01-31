@@ -1,17 +1,14 @@
-package rs.pijz.server.poverenik.service;
+package rs.pijz.server.sluzbenik.service;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.xmldb.api.base.XMLDBException;
-import rs.pijz.server.poverenik.model.common.Adresa;
-import rs.pijz.server.poverenik.model.common.FizickoLice;
-import rs.pijz.server.poverenik.model.korisnik.Korisnik;
-import rs.pijz.server.poverenik.repository.auth.UserRepository;
+import rs.pijz.server.sluzbenik.model.common.Adresa;
+import rs.pijz.server.sluzbenik.model.common.FizickoLice;
+import rs.pijz.server.sluzbenik.model.korisnik.Korisnik;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Component

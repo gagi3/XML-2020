@@ -36,7 +36,7 @@ public class GradjaninRepository {
     }
 
     public void generateGradjaninXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/g:Gradjanin[k:Korisnik[@id='" + ID + "']]";
+        String xpath = "/g:Gradjanin/k:Korisnik[@id='" + ID + "']]";
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("g", "http://www.pijz.rs/gradjanin");
         namespace.put("k", "http://www.pijz.rs/korisnik");

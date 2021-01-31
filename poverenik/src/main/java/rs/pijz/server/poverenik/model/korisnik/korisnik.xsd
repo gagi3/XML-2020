@@ -9,7 +9,6 @@
     <xs:complexType name="Korisnik">
         <xs:sequence>
             <xs:element name="fizickoLice" type="cmn:FizickoLice"/>
-            <xs:element name="username" type="xs:string"/>
             <xs:element name="password" type="xs:string"/>
             <xs:element name="tip">
                 <xs:simpleType>
@@ -22,5 +21,6 @@
             </xs:element>
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
+        <xs:attribute name="username" type="xs:string"/>
     </xs:complexType>
 </xs:schema>

@@ -25,7 +25,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="fizickoLice" type="{http://www.pijz.rs/common}FizickoLice"/>
- *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="tip">
  *           &lt;simpleType>
@@ -38,6 +37,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;/element>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="username" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -48,25 +48,24 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Korisnik", namespace = "http://www.pijz.rs/korisnik", propOrder = {
     "fizickoLice",
-    "username",
     "password",
     "tip"
 })
 public class Korisnik {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/korisnik", required = true)
     protected FizickoLice fizickoLice;
-    @XmlElement(required = true)
-    protected String username;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/korisnik", required = true)
     protected String password;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/korisnik", required = true)
     protected String tip;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
     protected String id;
+    @XmlAttribute(name = "username")
+    protected String username;
 
     /**
      * Gets the value of the fizickoLice property.
@@ -90,30 +89,6 @@ public class Korisnik {
      */
     public void setFizickoLice(FizickoLice value) {
         this.fizickoLice = value;
-    }
-
-    /**
-     * Gets the value of the username property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Sets the value of the username property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUsername(String value) {
-        this.username = value;
     }
 
     /**
@@ -186,6 +161,30 @@ public class Korisnik {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the username property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Sets the value of the username property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUsername(String value) {
+        this.username = value;
     }
 
 }

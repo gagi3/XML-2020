@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import rs.pijz.server.poverenik.model.korisnik.Korisnik;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +14,7 @@ import java.util.stream.Collectors;
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
     public Collection<? extends GrantedAuthority> authorities;
-    private Long id;
+    private String id;
     private String username;
     @JsonIgnore
     private String password;
@@ -20,34 +22,29 @@ public class UserDetailsImpl implements UserDetails {
     private String surname;
     private String city;
     private String address;
-    private String homeNumber;
-    private String phone;
     private Boolean enabled;
     private Boolean validated;
 
     public UserDetailsImpl() {
     }
 
-    public UserDetailsImpl(User user, List<GrantedAuthority> authorities) {
-        this.id = user.getId();
-        this.username = user.getUsername();
-        this.password = user.getPassword();
-        this.forename = user.getForename();
-        this.surname = user.getSurname();
-        this.address = user.getAddress();
-        this.city = user.getCity();
-        this.homeNumber = user.getHomeNumber();
-        this.phone = user.getPhone();
-        this.enabled = user.getEnabled();
-        this.validated = user.getValidated();
+    public UserDetailsImpl(Korisnik korisnik, List<GrantedAuthority> authorities) {
+        this.id = korisnik.getId();
+        this.username = korisnik.getUsername();
+        this.password = korisnik.getPassword();
+        this.forename = korisnik.getFizickoLice().getIme();
+        this.surname = korisnik.getFizickoLice().getPrezime();
+        this.address = korisnik.getFizickoLice().getAdresa().getUlica() + " " + korisnik.getFizickoLice().getAdresa().getBroj();
+        this.city = korisnik.getFizickoLice().getAdresa().getGrad();
+        this.enabled = true;
+        this.validated = true;
         this.authorities = authorities;
     }
 
-    public static UserDetailsImpl build(User user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream().map(
-                role -> new SimpleGrantedAuthority(role.getName().name())
-        ).collect(Collectors.toList());
-        return new UserDetailsImpl(user, authorities);
+    public static UserDetailsImpl build(Korisnik korisnik) {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + korisnik.getTip()));
+        return new UserDetailsImpl(korisnik, authorities);
     }
 
     @Override
