@@ -34,6 +34,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
+@XmlRootElement(name = "IzjasnjenjeNaZalbu", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IzjasnjenjeNaZalbu", namespace = "http://www.pijz.rs/izjasnjenje-na-zalbu", propOrder = {
     "metadata",

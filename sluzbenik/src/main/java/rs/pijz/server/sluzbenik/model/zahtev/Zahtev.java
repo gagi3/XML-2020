@@ -42,6 +42,7 @@ import java.util.List;
  * 
  * 
  */
+@XmlRootElement(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Zahtev", namespace = "http://www.pijz.rs/zahtev", propOrder = {
     "opisInformacije",

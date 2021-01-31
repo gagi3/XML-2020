@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import rs.pijz.server.poverenik.entity.auth.UserDetailsImpl;
 import rs.pijz.server.poverenik.model.korisnik.Korisnik;
-import rs.pijz.server.poverenik.repository.auth.UserRepository;
 import rs.pijz.server.poverenik.service.KorisnikService;
 
 @Service

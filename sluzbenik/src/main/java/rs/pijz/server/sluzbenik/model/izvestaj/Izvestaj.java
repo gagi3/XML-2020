@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * 
  */
+@XmlRootElement(name = "Izvestaj", namespace = "http://www.pijz.rs/izvestaj")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Izvestaj", namespace = "http://www.pijz.rs/izvestaj", propOrder = {
     "sluzbenikID",

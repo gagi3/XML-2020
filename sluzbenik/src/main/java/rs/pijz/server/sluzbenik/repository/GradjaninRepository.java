@@ -26,7 +26,7 @@ public class GradjaninRepository {
     private CommonRepository commonRepository;
 
     public Gradjanin save(Gradjanin Gradjanin) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/gradjanin");
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
         XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(Gradjanin, stream, Gradjanin.class);
@@ -40,7 +40,7 @@ public class GradjaninRepository {
         HashMap<String, String> namespace = new HashMap<>();
         namespace.put("g", "http://www.pijz.rs/gradjanin");
         namespace.put("k", "http://www.pijz.rs/korisnik");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/gradjanin", namespace, xpath);
+        ResourceSet result = commonRepository.runXpath("/db/pijz_sluzbenik/gradjanin", namespace, xpath);
         Gradjanin Gradjanin = (Gradjanin) commonRepository.resourceSetToClass(result, Gradjanin.class);
         String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
         commonRepository.generateXML(Gradjanin.class, Gradjanin, xmlFile);
