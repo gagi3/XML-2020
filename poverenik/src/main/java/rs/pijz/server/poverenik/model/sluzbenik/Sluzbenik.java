@@ -1,16 +1,18 @@
 
 package rs.pijz.server.poverenik.model.sluzbenik;
 
-import rs.pijz.server.poverenik.model.korisnik.Korisnik;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import rs.pijz.server.poverenik.model.korisnik.Korisnik;
 
 
 /**
@@ -37,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
+@XmlRootElement(name = "Sluzbenik", namespace = "http://www.pijz.rs/sluzbenik")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Sluzbenik", namespace = "http://www.pijz.rs/sluzbenik", propOrder = {
     "korisnik",
