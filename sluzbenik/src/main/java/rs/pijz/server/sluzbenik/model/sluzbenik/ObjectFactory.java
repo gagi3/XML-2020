@@ -1,8 +1,8 @@
 
 package rs.pijz.server.sluzbenik.model.sluzbenik;
 
-import rs.pijz.server.sluzbenik.model.common.*;
 import rs.pijz.server.sluzbenik.model.korisnik.Korisnik;
+import rs.pijz.server.sluzbenik.model.common.*;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

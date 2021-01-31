@@ -52,5 +52,7 @@
         <xs:attribute name="datum_uvida" type="xs:date"/>
         <xs:attribute name="vreme_uvida_od" type="xs:time"/>
         <xs:attribute name="vreme_uvida_do" type="xs:time"/>
+        <xs:attribute name="sluzbenikID" type="xs:string"/>
+        <xs:attribute name="gradjaninID" type="xs:string"/>
     </xs:complexType>
 </xs:schema>

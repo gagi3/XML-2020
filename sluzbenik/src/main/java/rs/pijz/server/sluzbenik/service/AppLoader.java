@@ -9,6 +9,7 @@ import rs.pijz.server.sluzbenik.model.common.Adresa;
 import rs.pijz.server.sluzbenik.model.common.FizickoLice;
 import rs.pijz.server.sluzbenik.model.korisnik.Korisnik;
 
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Component
@@ -34,6 +35,7 @@ public class AppLoader implements ApplicationRunner {
             adresa.setUlica("Everywhere");
             fizickoLice.setAdresa(adresa);
             Korisnik korisnik = new Korisnik();
+            korisnik.setId(UUID.randomUUID().toString());
             korisnik.setUsername("pijz.portal.rs@gmail.com");
             korisnik.setPassword(encoder.encode("ybtmjKNDaw5T98d"));
             korisnik.setFizickoLice(fizickoLice);

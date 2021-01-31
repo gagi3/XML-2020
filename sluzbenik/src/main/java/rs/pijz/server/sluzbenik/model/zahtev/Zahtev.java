@@ -35,6 +35,8 @@ import java.util.List;
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
+ *       &lt;attribute name="sluzbenikID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="gradjaninID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -85,6 +87,10 @@ public class Zahtev {
     @XmlAttribute(name = "datum")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datum;
+    @XmlAttribute(name = "sluzbenikID")
+    protected String sluzbenikID;
+    @XmlAttribute(name = "gradjaninID")
+    protected String gradjaninID;
 
     /**
      * Gets the value of the opisInformacije property.
@@ -358,6 +364,54 @@ public class Zahtev {
      */
     public void setDatum(XMLGregorianCalendar value) {
         this.datum = value;
+    }
+
+    /**
+     * Gets the value of the sluzbenikID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSluzbenikID() {
+        return sluzbenikID;
+    }
+
+    /**
+     * Sets the value of the sluzbenikID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSluzbenikID(String value) {
+        this.sluzbenikID = value;
+    }
+
+    /**
+     * Gets the value of the gradjaninID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getGradjaninID() {
+        return gradjaninID;
+    }
+
+    /**
+     * Sets the value of the gradjaninID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGradjaninID(String value) {
+        this.gradjaninID = value;
     }
 
 }

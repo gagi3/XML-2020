@@ -2,6 +2,7 @@ package rs.pijz.server.poverenik.service;
 
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
@@ -85,6 +86,7 @@ public class KorisnikService {
         if (existsByUsername(korisnik.getUsername())) {
             throw new Exception("Korisnik sa istom email adresom vec postoji!");
         }
+        korisnik.setPassword(new BCryptPasswordEncoder().encode(korisnik.getPassword()));
         switch(korisnik.getTip()) {
             case "SLUZBENIK":
                 Sluzbenik sluzbenik = new Sluzbenik();
