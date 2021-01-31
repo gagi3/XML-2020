@@ -24,6 +24,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean<>(servlet, "/ws/*");
 	}
 	
+	@Bean(name = "izjasnjenje-na-zalbu-soap")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionIzjasnjenjeNaZalbu(XsdSchema izjasnjenjeNaZalbuSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("IzjasnjenjeNaZalbuPort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/izjasnjenje-na-zalbu");
+		wsdl11Definition.setSchema(izjasnjenjeNaZalbuSchema);
+		return wsdl11Definition;
+	}
+	
 	@Bean(name = "obavestenje-soap")
 	public DefaultWsdl11Definition defaultWsdl11DefinitionObavestenje(XsdSchema obavestenjeSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -41,6 +51,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/resenje");
 		wsdl11Definition.setSchema(resenjeSchema);
+		return wsdl11Definition;
+	}
+	
+	@Bean(name = "zahtev-soap")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionZahtev(XsdSchema zahtevSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("ZahtevPort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/zahtev");
+		wsdl11Definition.setSchema(zahtevSchema);
 		return wsdl11Definition;
 	}
 	
@@ -65,6 +85,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 	
 	@Bean
+	public XsdSchema izjasnjenjeNaZalbuSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("soap/izjasnjenje-na-zalbu-soap.xsd"));
+	}
+	
+	@Bean
 	public XsdSchema obavestenjeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("soap/obavestenje-soap.xsd"));
 	}
@@ -72,6 +97,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean
 	public XsdSchema resenjeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("soap/resenje-soap.xsd"));
+	}
+	
+	@Bean
+	public XsdSchema zahtevSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("soap/zahtev-soap.xsd"));
 	}
 	
 	@Bean
