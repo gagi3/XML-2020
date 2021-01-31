@@ -41,11 +41,11 @@
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
         <xs:attribute name="broj" type="xs:string"/>
-        <xs:attribute name="zahtevID" type="xs:ID"/>
+        <xs:attribute name="zahtevID" type="xs:string"/>
         <xs:attribute name="datum" type="xs:date"/>
         <xs:attribute name="datum_zahteva" type="xs:date"/>
-        <xs:attribute name="sluzbenikID" type="xs:ID"/>
-        <xs:attribute name="poverenikID" type="xs:ID"/>
-        <xs:attribute name="gradjaninID" type="xs:ID"/>
+        <xs:attribute name="sluzbenikID" type="xs:string"/>
+        <xs:attribute name="poverenikID" type="xs:string"/>
+        <xs:attribute name="gradjaninID" type="xs:string"/>
     </xs:complexType>
 </xs:schema>

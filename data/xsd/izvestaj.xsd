@@ -21,6 +21,6 @@
             <xs:element name="zalbe" type="iz:ZalbaSadrzaj"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
-        <xs:attribute name="sluzbenikID" type="xs:ID"/>
+        <xs:attribute name="sluzbenikID" type="xs:string"/>
     </xs:complexType>
 </xs:schema>

@@ -35,7 +35,7 @@
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
         <xs:attribute name="datum" type="xs:date"/>
-        <xs:attribute name="sluzbenikID" type="xs:ID"/>
-        <xs:attribute name="gradjaninID" type="xs:ID"/>
+        <xs:attribute name="sluzbenikID" type="xs:string"/>
+        <xs:attribute name="gradjaninID" type="xs:string"/>
     </xs:complexType>
 </xs:schema>
