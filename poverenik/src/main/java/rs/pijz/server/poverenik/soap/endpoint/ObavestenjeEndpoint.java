@@ -22,7 +22,7 @@ public class ObavestenjeEndpoint {
 	@ResponsePayload
 	public GetObavestenjeResponse getCountry(@RequestPayload GetObavestenjeRequest request) {
 		GetObavestenjeResponse response = new GetObavestenjeResponse();
-		response.setObavestenje(obavestenjeRepositorySOAP.findObavestenje(request.getId()));
+		response.setObavestenje(obavestenjeRepositorySOAP.findObavestenje(request.getBroj()));
 
 		return response;
 	}
