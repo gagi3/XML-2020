@@ -7,10 +7,12 @@ import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+import rs.pijz.server.sluzbenik.model.gradjanin.Gradjanin;
 import rs.pijz.server.sluzbenik.model.korisnik.Korisnik;
+import rs.pijz.server.sluzbenik.model.poverenik.Poverenik;
+import rs.pijz.server.sluzbenik.model.sluzbenik.Sluzbenik;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.KorisnikRepository;
-import rs.pijz.server.sluzbenik.service.DocumentService;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,6 +29,12 @@ public class KorisnikService {
     private KorisnikRepository korisnikRepository;
     @Autowired
     private DocumentService documentService;
+    @Autowired
+    private SluzbenikService sluzbenikService;
+    @Autowired
+    private PoverenikService poverenikService;
+    @Autowired
+    private GradjaninService gradjaninService;
 
     public List<Korisnik> findAll() throws XMLDBException {
         String xPath = "/k:Korisnik";
@@ -56,9 +64,41 @@ public class KorisnikService {
         return commonRepository.queryKorisnik(xPath).getSize() != 0;
     }
 
+    public Korisnik getByUsername(String username) throws XMLDBException {
+        String xPath = "/k:Korisnik[@username='" + username + "']";
+        ResourceSet result = commonRepository.queryKorisnik(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (Korisnik) commonRepository.resourceSetToClass(result, Korisnik.class);
+    }
+
+    public Boolean existsByUsername(String username) throws XMLDBException {
+        String xPath = "/k:Korisnik[@username='" + username + "']";
+        return commonRepository.queryKorisnik(xPath).getSize() != 0;
+    }
+
     public Korisnik create(Korisnik korisnik) throws Exception {
         if (existsById(korisnik.getId())) {
             throw new Exception("Korisnik sa istim ID vec postoji!");
+        }
+        if (existsByUsername(korisnik.getUsername())) {
+            throw new Exception("Korisnik sa istom email adresom vec postoji!");
+        }
+        switch(korisnik.getTip()) {
+            case "SLUZBENIK":
+                Sluzbenik sluzbenik = new Sluzbenik();
+                sluzbenik.setKorisnik(korisnik);
+                sluzbenikService.create(sluzbenik);
+                break;
+            case "POVERENIK":
+                Poverenik poverenik = new Poverenik();
+                poverenik.setKorisnik(korisnik);
+                poverenikService.create(poverenik);
+            default:
+                Gradjanin gradjanin = new Gradjanin();
+                gradjanin.setKorisnik(korisnik);
+                gradjaninService.create(gradjanin);
         }
         return korisnikRepository.save(korisnik);
     }
