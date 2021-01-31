@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:o="http://www.pijz.rs/obavestenje">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <o:getObavestenjeRequest>
+         <o:id>ID-0001</o:id>
+      <o:getObavestenjeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -35,18 +35,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,12 +53,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -203,6 +185,19 @@
 		        </exclusion>
 		    </exclusions>
 		</dependency>
+		
+		
+		<!-- SOAP [start] -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>wsdl4j</groupId>
+		    <artifactId>wsdl4j</artifactId>
+		</dependency>
+		<!-- SOAP [end] -->
+		
 
         <!--		<dependency>-->
         <!--			<groupId>net.sf.xmldb-org</groupId>-->

@@ -1,18 +1,16 @@
 package rs.pijz.server.poverenik.service;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.xmldb.api.base.XMLDBException;
+
 import rs.pijz.server.poverenik.model.common.Adresa;
 import rs.pijz.server.poverenik.model.common.FizickoLice;
 import rs.pijz.server.poverenik.model.korisnik.Korisnik;
-import rs.pijz.server.poverenik.repository.auth.UserRepository;
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Component
 public class AppLoader implements ApplicationRunner {
