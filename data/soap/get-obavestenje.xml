@@ -2,7 +2,7 @@
    <soapenv:Header/>
    <soapenv:Body>
       <getObavestenjeRequest xmlns="http://www.pijz.rs/obavestenje">
-         <broj xmlns="http://www.pijz.rs/obavestenje">99-18/9981</broj>
+         <broj xmlns="http://www.pijz.rs/obavestenje">OB-001</broj>
       </getObavestenjeRequest>
    </soapenv:Body>
 </soapenv:Envelope>

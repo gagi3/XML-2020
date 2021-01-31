@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.zalba_odluka.GetZalbaOdlukaRequest;
+import rs.pijz.server.poverenik.soap.communication.zalba_odluka.GetZalbaOdlukaResponse;
 import rs.pijz.server.poverenik.soap.repository.ZalbaOdlukaRepositorySOAP;
-import rs.pijz.server.poverenik.soap.request.zalba_odluka.GetZalbaOdlukaRequest;
-import rs.pijz.server.poverenik.soap.response.zalba_odluka.GetZalbaOdlukaResponse;
 
 @Endpoint
 public class ZalbaOdlukaEndpoint {

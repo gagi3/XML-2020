@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.obavestenje.GetObavestenjeRequest;
+import rs.pijz.server.poverenik.soap.communication.obavestenje.GetObavestenjeResponse;
 import rs.pijz.server.poverenik.soap.repository.ObavestenjeRepositorySOAP;
-import rs.pijz.server.poverenik.soap.request.obavestenje.GetObavestenjeRequest;
-import rs.pijz.server.poverenik.soap.response.obavestenje.GetObavestenjeResponse;
 
 @Endpoint
 public class ObavestenjeEndpoint {

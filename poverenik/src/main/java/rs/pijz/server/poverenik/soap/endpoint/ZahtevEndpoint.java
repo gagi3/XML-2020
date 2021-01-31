@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.zahtev.GetZahtevRequest;
+import rs.pijz.server.poverenik.soap.communication.zahtev.GetZahtevResponse;
 import rs.pijz.server.poverenik.soap.repository.ZahtevRepositorySOAP;
-import rs.pijz.server.poverenik.soap.request.zahtev.GetZahtevRequest;
-import rs.pijz.server.poverenik.soap.response.zahtev.GetZahtevResponse;
 
 @Endpoint
 public class ZahtevEndpoint {

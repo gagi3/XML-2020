@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.izjasnjenje_na_zalbu.GetIzjasnjenjeNaZalbuRequest;
+import rs.pijz.server.poverenik.soap.communication.izjasnjenje_na_zalbu.GetIzjasnjenjeNaZalbuResponse;
 import rs.pijz.server.poverenik.soap.repository.IzjasnjenjeNaZalbuRepositorySOAP;
-import rs.pijz.server.poverenik.soap.request.izjasnjenje_na_zalbu.GetIzjasnjenjeNaZalbuRequest;
-import rs.pijz.server.poverenik.soap.response.izjasnjenje_na_zalbu.GetIzjasnjenjeNaZalbuResponse;
 
 @Endpoint
 public class IzjasnjenjeNaZalbuEndpoint {

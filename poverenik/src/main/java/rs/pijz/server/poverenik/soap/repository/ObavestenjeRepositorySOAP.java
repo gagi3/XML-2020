@@ -17,10 +17,10 @@ public class ObavestenjeRepositorySOAP {
 	@PostConstruct
 	public void initData() throws Exception {
 		Obavestenje obavestenje1 = new Obavestenje();
-		obavestenje1.setBroj("99-18/9981");
+		obavestenje1.setBroj("OB-001");
 		
 		Obavestenje obavestenje2 = new Obavestenje();
-		obavestenje2.setBroj("99-18/9982");
+		obavestenje2.setBroj("OB-002");
 		
 		obavestenja.put(obavestenje1.getBroj(), obavestenje1);
 		obavestenja.put(obavestenje2.getBroj(), obavestenje2);

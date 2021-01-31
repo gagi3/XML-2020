@@ -6,9 +6,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.GetZalbaCutanjeRequest;
+import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.GetZalbaCutanjeResponse;
 import rs.pijz.server.poverenik.soap.repository.ZalbaCutanjeRepositorySOAP;
-import rs.pijz.server.poverenik.soap.request.zalba_cutanje.GetZalbaCutanjeRequest;
-import rs.pijz.server.poverenik.soap.response.zalba_cutanje.GetZalbaCutanjeResponse;
 
 @Endpoint
 public class ZalbaCutanjeEndpoint {
