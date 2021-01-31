@@ -1,20 +1,21 @@
 
 package rs.pijz.server.poverenik.model.zalba_cutanje;
 
-import rs.pijz.server.poverenik.model.common.Adresa;
-import rs.pijz.server.poverenik.model.common.FizickoLice;
-import rs.pijz.server.poverenik.model.common.MetaData;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
+
+import rs.pijz.server.poverenik.model.common.Adresa;
+import rs.pijz.server.poverenik.model.common.FizickoLice;
+import rs.pijz.server.poverenik.model.common.MetaData;
 
 
 /**
@@ -80,6 +81,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
+@XmlRootElement(name = "ZalbaCutanje", namespace = "http://www.pijz.rs/zalba-cutanje")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ZalbaCutanje", namespace = "http://www.pijz.rs/zalba-cutanje", propOrder = {
     "metadata",
