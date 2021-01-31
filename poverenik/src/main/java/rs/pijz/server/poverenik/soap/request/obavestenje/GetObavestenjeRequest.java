@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}ID"/>
+ *         &lt;element name="broj" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "broj"
 })
 @XmlRootElement(name = "getObavestenjeRequest", namespace = "http://www.pijz.rs/obavestenje")
 public class GetObavestenjeRequest {
@@ -48,31 +48,31 @@ public class GetObavestenjeRequest {
     @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
-    @XmlSchemaType(name = "ID")
-    protected String id;
+    @XmlSchemaType(name = "broj")
+    protected String broj;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the broj property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getId() {
-        return id;
+    public String getBroj() {
+        return broj;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the broj property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setId(String value) {
-        this.id = value;
+    public void setBroj(String value) {
+        this.broj = value;
     }
 
 }

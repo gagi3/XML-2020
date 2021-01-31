@@ -24,7 +24,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean<>(servlet, "/ws/*");
 	}
 	
-	@Bean(name = "obavestenje")
+	@Bean(name = "obavestenje-soap")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("ObavestenjePort");
@@ -36,6 +36,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	
 	@Bean
 	public XsdSchema countriesSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("xsd/obavestenje-soap.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("soap/obavestenje-soap.xsd"));
 	}
 }

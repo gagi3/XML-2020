@@ -40,12 +40,12 @@ public class ObavestenjeRepositorySOAP {
 		obavestenje2.setVremeUvidaOd(date);
 		obavestenje2.setVremeUvidaDo(date);
 		
-		obavestenja.put(obavestenje1.getId(), obavestenje1);
-		obavestenja.put(obavestenje2.getId(), obavestenje2);
+		obavestenja.put(obavestenje1.getBroj(), obavestenje1);
+		obavestenja.put(obavestenje2.getBroj(), obavestenje2);
 	}
 	
-	public Obavestenje findObavestenje(String id) {
-		return obavestenja.get(id);
+	public Obavestenje findObavestenje(String broj) {
+		return obavestenja.get(broj);
 	}
 
 }

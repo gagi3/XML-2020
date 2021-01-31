@@ -12,7 +12,7 @@
 	<xs:element name="getObavestenjeRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:ID" />
+				<xs:element name="broj" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

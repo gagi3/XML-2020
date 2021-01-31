@@ -2,7 +2,7 @@
    <soapenv:Header/>
    <soapenv:Body>
       <o:getObavestenjeRequest>
-         <o:id>ID-0001</o:id>
+         <o:broj>99-18/9981</o:broj>
       <o:getObavestenjeRequest>
    </soapenv:Body>
 </soapenv:Envelope>
