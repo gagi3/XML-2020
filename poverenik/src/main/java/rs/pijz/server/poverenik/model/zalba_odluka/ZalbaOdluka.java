@@ -1,21 +1,12 @@
 
 package rs.pijz.server.poverenik.model.zalba_odluka;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import rs.pijz.server.poverenik.model.common.*;
+
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
-
-import rs.pijz.server.poverenik.model.common.Adresa;
-import rs.pijz.server.poverenik.model.common.FizickoLice;
-import rs.pijz.server.poverenik.model.common.MetaData;
 
 
 /**
@@ -86,9 +77,14 @@ import rs.pijz.server.poverenik.model.common.MetaData;
  *         &lt;/element>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="zahtevID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="obavestenjeID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date" />
+ *       &lt;attribute name="sluzbenikID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="poverenikID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="gradjaninID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -138,6 +134,10 @@ public class ZalbaOdluka {
     @XmlID
     @XmlSchemaType(name = "ID")
     protected String id;
+    @XmlAttribute(name = "zahtevID")
+    protected String zahtevID;
+    @XmlAttribute(name = "obavestenjeID")
+    protected String obavestenjeID;
     @XmlAttribute(name = "broj")
     protected String broj;
     @XmlAttribute(name = "datum")
@@ -146,6 +146,12 @@ public class ZalbaOdluka {
     @XmlAttribute(name = "datum_zahteva")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumZahteva;
+    @XmlAttribute(name = "sluzbenikID")
+    protected String sluzbenikID;
+    @XmlAttribute(name = "poverenikID")
+    protected String poverenikID;
+    @XmlAttribute(name = "gradjaninID")
+    protected String gradjaninID;
 
     /**
      * Gets the value of the metadata property.
@@ -404,6 +410,54 @@ public class ZalbaOdluka {
     }
 
     /**
+     * Gets the value of the zahtevID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getZahtevID() {
+        return zahtevID;
+    }
+
+    /**
+     * Sets the value of the zahtevID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setZahtevID(String value) {
+        this.zahtevID = value;
+    }
+
+    /**
+     * Gets the value of the obavestenjeID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getObavestenjeID() {
+        return obavestenjeID;
+    }
+
+    /**
+     * Sets the value of the obavestenjeID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setObavestenjeID(String value) {
+        this.obavestenjeID = value;
+    }
+
+    /**
      * Gets the value of the broj property.
      * 
      * @return
@@ -473,6 +527,78 @@ public class ZalbaOdluka {
      */
     public void setDatumZahteva(XMLGregorianCalendar value) {
         this.datumZahteva = value;
+    }
+
+    /**
+     * Gets the value of the sluzbenikID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSluzbenikID() {
+        return sluzbenikID;
+    }
+
+    /**
+     * Sets the value of the sluzbenikID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSluzbenikID(String value) {
+        this.sluzbenikID = value;
+    }
+
+    /**
+     * Gets the value of the poverenikID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPoverenikID() {
+        return poverenikID;
+    }
+
+    /**
+     * Sets the value of the poverenikID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPoverenikID(String value) {
+        this.poverenikID = value;
+    }
+
+    /**
+     * Gets the value of the gradjaninID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getGradjaninID() {
+        return gradjaninID;
+    }
+
+    /**
+     * Sets the value of the gradjaninID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGradjaninID(String value) {
+        this.gradjaninID = value;
     }
 
 
