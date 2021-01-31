@@ -44,6 +44,26 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return wsdl11Definition;
 	}
 	
+	@Bean(name = "zalba-cutanje-soap")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionZalbaCutanje(XsdSchema zalbaCutanjeSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("ZalbaCutanjePort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/zalba-cutanje");
+		wsdl11Definition.setSchema(zalbaCutanjeSchema);
+		return wsdl11Definition;
+	}
+	
+	@Bean(name = "zalba-odluka-soap")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionZalbaOdluka(XsdSchema zalbaOdlukaSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("ZalbaOdlukaPort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/zalba-odluka");
+		wsdl11Definition.setSchema(zalbaOdlukaSchema);
+		return wsdl11Definition;
+	}
+	
 	@Bean
 	public XsdSchema obavestenjeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("soap/obavestenje-soap.xsd"));
@@ -52,5 +72,15 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean
 	public XsdSchema resenjeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("soap/resenje-soap.xsd"));
+	}
+	
+	@Bean
+	public XsdSchema zalbaCutanjeSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("soap/zalba-cutanje-soap.xsd"));
+	}
+	
+	@Bean
+	public XsdSchema zalbaOdlukaSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("soap/zalba-odluka-soap.xsd"));
 	}
 }
