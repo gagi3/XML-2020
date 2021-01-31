@@ -11,7 +11,6 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.poverenik.model.common.Adresa;
 import rs.pijz.server.poverenik.model.common.FizickoLice;
 import rs.pijz.server.poverenik.model.korisnik.Korisnik;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Component
 public class AppLoader implements ApplicationRunner {
