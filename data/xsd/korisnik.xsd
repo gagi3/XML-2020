@@ -5,7 +5,7 @@
     xmlns:cmn="http://www.pijz.rs/common">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-    <xs:element name="korisnik" type="k:Korisnik"> </xs:element>
+    <xs:element name="Korisnik" type="k:Korisnik"> </xs:element>
     <xs:complexType name="Korisnik">
         <xs:sequence>
             <xs:element name="fizickoLice" type="cmn:FizickoLice"/>

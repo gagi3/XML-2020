@@ -4,7 +4,7 @@
     targetNamespace="http://www.pijz.rs/poverenik" elementFormDefault="qualified"
     vc:minVersion="1.1">
     <xs:import namespace="http://www.pijz.rs/korisnik" schemaLocation="korisnik.xsd"/>
-    <xs:element name="poverenik" type="p:Poverenik"> </xs:element>
+    <xs:element name="Poverenik" type="p:Poverenik"> </xs:element>
     <xs:complexType name="Poverenik">
         <xs:sequence>
             <xs:element name="korisnik" type="k:Korisnik"/>

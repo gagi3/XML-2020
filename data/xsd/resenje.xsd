@@ -6,7 +6,7 @@
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
-    <xs:element name="resenje" type="r:Resenje"> </xs:element>
+    <xs:element name="Resenje" type="r:Resenje"> </xs:element>
 
     <xs:simpleType name="Tip">
         <xs:restriction base="xs:string">

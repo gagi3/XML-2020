@@ -6,7 +6,7 @@
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
-    <xs:element name="zalbaOdluka" type="zo:ZalbaOdluka"> </xs:element>
+    <xs:element name="ZalbaOdluka" type="zo:ZalbaOdluka"> </xs:element>
     <xs:complexType name="ZalbaOdluka">
         <xs:sequence>
             <xs:element name="metadata" type="cmn:MetaData"/>

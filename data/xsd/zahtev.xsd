@@ -4,7 +4,7 @@
     targetNamespace="http://www.pijz.rs/zahtev" elementFormDefault="qualified" vc:minVersion="1.1">
 
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
-    <xs:element name="zahtev" type="z:Zahtev"> </xs:element>
+    <xs:element name="Zahtev" type="z:Zahtev"> </xs:element>
     <xs:simpleType name="TipZahteva">
         <xs:restriction base="xs:string">
             <xs:enumeration value="obavestenje"/>
