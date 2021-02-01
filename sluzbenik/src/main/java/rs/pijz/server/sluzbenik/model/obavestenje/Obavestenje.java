@@ -82,6 +82,8 @@ import java.util.List;
  *       &lt;attribute name="datum_uvida" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="vreme_uvida_od" type="{http://www.w3.org/2001/XMLSchema}time" />
  *       &lt;attribute name="vreme_uvida_do" type="{http://www.w3.org/2001/XMLSchema}time" />
+ *       &lt;attribute name="sluzbenikID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="gradjaninID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -138,6 +140,10 @@ public class Obavestenje {
     @XmlAttribute(name = "vreme_uvida_do")
     @XmlSchemaType(name = "time")
     protected XMLGregorianCalendar vremeUvidaDo;
+    @XmlAttribute(name = "sluzbenikID")
+    protected String sluzbenikID;
+    @XmlAttribute(name = "gradjaninID")
+    protected String gradjaninID;
 
     /**
      * Gets the value of the metadata property.
@@ -473,6 +479,54 @@ public class Obavestenje {
      */
     public void setVremeUvidaDo(XMLGregorianCalendar value) {
         this.vremeUvidaDo = value;
+    }
+
+    /**
+     * Gets the value of the sluzbenikID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSluzbenikID() {
+        return sluzbenikID;
+    }
+
+    /**
+     * Sets the value of the sluzbenikID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSluzbenikID(String value) {
+        this.sluzbenikID = value;
+    }
+
+    /**
+     * Gets the value of the gradjaninID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getGradjaninID() {
+        return gradjaninID;
+    }
+
+    /**
+     * Sets the value of the gradjaninID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGradjaninID(String value) {
+        this.gradjaninID = value;
     }
 
 

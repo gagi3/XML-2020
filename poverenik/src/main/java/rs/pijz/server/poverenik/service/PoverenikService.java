@@ -42,7 +42,7 @@ public class PoverenikService {
     }
 
     public Poverenik getOne(String id) throws XMLDBException {
-        String xPath = "/p:Poverenik[@id='" + id + "']";
+        String xPath = "/p:Poverenik[p:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryPoverenik(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -51,7 +51,21 @@ public class PoverenikService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/p:Poverenik[@id='" + id + "']";
+        String xPath = "/p:Poverenik[p:korisnik[@id='" + id + "']]";
+        return commonRepository.queryPoverenik(xPath).getSize() != 0;
+    }
+
+    public Poverenik getByUsername(String username) throws XMLDBException {
+        String xPath = "/p:Poverenik[p:korisnik[@username='" + username + "']]";
+        ResourceSet result = commonRepository.queryPoverenik(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (Poverenik) commonRepository.resourceSetToClass(result, Poverenik.class);
+    }
+
+    public Boolean existsByUsername(String username) throws XMLDBException {
+        String xPath = "/p:Poverenik[p:korisnik[@username='" + username + "']]";
         return commonRepository.queryPoverenik(xPath).getSize() != 0;
     }
 
@@ -59,11 +73,14 @@ public class PoverenikService {
         if (existsById(poverenik.getKorisnik().getId())) {
             throw new Exception("Poverenik sa istim ID vec postoji!");
         }
+        if (existsByUsername(poverenik.getKorisnik().getUsername())) {
+            throw new Exception("Poverenik sa istom email adresom vec postoji!");
+        }
         return poverenikRepository.save(poverenik);
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/p:Poverenik[@id='" + id + "']";
+        String xPath = "/p:Poverenik[p:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryPoverenik(xPath);
         Poverenik poverenik = (Poverenik) commonRepository.resourceSetToClass(result, Poverenik.class);
         String xmlInstance = "../data/xsd/instance/" + "poverenik" + id + ".xml";

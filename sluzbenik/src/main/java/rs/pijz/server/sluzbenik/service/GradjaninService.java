@@ -10,7 +10,6 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.sluzbenik.model.gradjanin.Gradjanin;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.GradjaninRepository;
-import rs.pijz.server.sluzbenik.service.DocumentService;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -43,7 +42,7 @@ public class GradjaninService {
     }
 
     public Gradjanin getOne(String id) throws XMLDBException {
-        String xPath = "/g:Gradjanin[@id='" + id + "']";
+        String xPath = "/g:Gradjanin[g:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryGradjanin(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -52,7 +51,21 @@ public class GradjaninService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/g:Gradjanin[@id='" + id + "']";
+        String xPath = "/g:Gradjanin[g:korisnik[@id='" + id + "']]";
+        return commonRepository.queryGradjanin(xPath).getSize() != 0;
+    }
+
+    public Gradjanin getByUsername(String username) throws XMLDBException {
+        String xPath = "/g:Gradjanin[g:korisnik[@username='" + username + "']]";
+        ResourceSet result = commonRepository.queryGradjanin(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (Gradjanin) commonRepository.resourceSetToClass(result, Gradjanin.class);
+    }
+
+    public Boolean existsByUsername(String username) throws XMLDBException {
+        String xPath = "/g:Gradjanin[g:korisnik[@username='" + username + "']]";
         return commonRepository.queryGradjanin(xPath).getSize() != 0;
     }
 
@@ -60,11 +73,14 @@ public class GradjaninService {
         if (existsById(gradjanin.getKorisnik().getId())) {
             throw new Exception("Gradjanin sa istim ID vec postoji!");
         }
+        if (existsByUsername(gradjanin.getKorisnik().getUsername())) {
+            throw new Exception("Gradjanin sa istom email adresom vec postoji!");
+        }
         return gradjaninRepository.save(gradjanin);
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/g:Gradjanin[@id='" + id + "']";
+        String xPath = "/g:Gradjanin[g:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryGradjanin(xPath);
         Gradjanin gradjanin = (Gradjanin) commonRepository.resourceSetToClass(result, Gradjanin.class);
         String xmlInstance = "../data/xsd/instance/" + "gradjanin" + id + ".xml";

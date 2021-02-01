@@ -42,7 +42,7 @@ public class SluzbenikService {
     }
 
     public Sluzbenik getOne(String id) throws XMLDBException {
-        String xPath = "/s:Sluzbenik[@id='" + id + "']";
+        String xPath = "/s:Sluzbenik[s:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.querySluzbenik(xPath);
         if (result.getSize() == 0) {
             return null;
@@ -51,7 +51,21 @@ public class SluzbenikService {
     }
 
     public Boolean existsById(String id) throws XMLDBException {
-        String xPath = "/s:Sluzbenik[@id='" + id + "']";
+        String xPath = "/s:Sluzbenik[s:korisnik[@id='" + id + "']]";
+        return commonRepository.querySluzbenik(xPath).getSize() != 0;
+    }
+
+    public Sluzbenik getByUsername(String username) throws XMLDBException {
+        String xPath = "/s:Sluzbenik[s:korisnik[@username='" + username + "']]";
+        ResourceSet result = commonRepository.querySluzbenik(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        return (Sluzbenik) commonRepository.resourceSetToClass(result, Sluzbenik.class);
+    }
+
+    public Boolean existsByUsername(String username) throws XMLDBException {
+        String xPath = "/s:Sluzbenik[s:korisnik[@username='" + username + "']]";
         return commonRepository.querySluzbenik(xPath).getSize() != 0;
     }
 
@@ -59,11 +73,14 @@ public class SluzbenikService {
         if (existsById(sluzbenik.getKorisnik().getId())) {
             throw new Exception("Sluzbenik sa istim ID vec postoji!");
         }
+        if (existsByUsername(sluzbenik.getKorisnik().getUsername())) {
+            throw new Exception("Sluzbenik sa istom email adresom vec postoji!");
+        }
         return sluzbenikRepository.save(sluzbenik);
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
-        String xPath = "/s:Sluzbenik[@id='" + id + "']";
+        String xPath = "/s:Sluzbenik[s:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.querySluzbenik(xPath);
         Sluzbenik sluzbenik = (Sluzbenik) commonRepository.resourceSetToClass(result, Sluzbenik.class);
         String xmlInstance = "../data/xsd/instance/" + "sluzbenik" + id + ".xml";

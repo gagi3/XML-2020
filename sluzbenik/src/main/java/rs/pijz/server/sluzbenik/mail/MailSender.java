@@ -1,4 +1,4 @@
-package rs.pijz.server.poverenik.mail;
+package rs.pijz.server.sluzbenik.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
