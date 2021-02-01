@@ -9,19 +9,19 @@
         <cmn:meta property="property1" content="content1">meta1</cmn:meta>
         <cmn:meta property="property2" content="content2">meta2</cmn:meta>
     </iz:metadata>
-    <iz:brojPodnetihZahteva>0</iz:brojPodnetihZahteva>
-    <iz:brojOdbijenihZahteva>0</iz:brojOdbijenihZahteva>
-    <iz:brojZalbiOdluka>0</iz:brojZalbiOdluka>
+    <iz:brojPodnetihZahteva>18</iz:brojPodnetihZahteva>
+    <iz:brojOdbijenihZahteva>6</iz:brojOdbijenihZahteva>
+    <iz:brojZalbiOdluka>10</iz:brojZalbiOdluka>
     <iz:zalbe>
         <iz:zalbaID>ID001</iz:zalbaID>
-        <iz:sadrzaj>sadrzaj0</iz:sadrzaj>
+        <iz:sadrzaj>Садржај прве жалбе.</iz:sadrzaj>
     </iz:zalbe>
     <iz:zalbe>
         <iz:zalbaID>ID002</iz:zalbaID>
-        <iz:sadrzaj>sadrzaj1</iz:sadrzaj>
+        <iz:sadrzaj>Садржај друге жалбе.</iz:sadrzaj>
     </iz:zalbe>
     <iz:zalbe>
         <iz:zalbaID>ID003</iz:zalbaID>
-        <iz:sadrzaj>sadrzaj2</iz:sadrzaj>
+        <iz:sadrzaj>Садржај треће жалбе.</iz:sadrzaj>
     </iz:zalbe>
 </iz:Izvestaj>
