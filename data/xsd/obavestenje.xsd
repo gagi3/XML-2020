@@ -44,6 +44,8 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="cena" type="xs:double"/>
+            <xs:element name="informacija" type="xs:string"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
         <xs:attribute name="broj" type="xs:string"/>
