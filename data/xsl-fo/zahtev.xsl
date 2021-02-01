@@ -42,20 +42,36 @@
                             <fo:list-block>
                                 <fo:list-item>
                                     <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
-                                    <fo:list-item-body start-indent="body-start()"> <fo:block>обавештење да ли поседује тражену информацију;</fo:block> </fo:list-item-body>
+                                    <fo:list-item-body start-indent="body-start()"> 
+                                        <fo:block>
+                                            <xsl:if test="z:Zahtev/z:tip = 'obavestenje'"><fo:inline color="red">×</fo:inline></xsl:if>
+                                            обавештење да ли поседује тражену информацију;
+                                        </fo:block>
+                                    </fo:list-item-body>
                                 </fo:list-item>
                                 <fo:list-item>
                                     <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
-                                    <fo:list-item-body start-indent="body-start()"> <fo:block>увид у документ који садржи тражену информацију;</fo:block> </fo:list-item-body>
+                                    <fo:list-item-body start-indent="body-start()"> 
+                                        <fo:block>
+                                            <xsl:if test="z:Zahtev/z:tip = 'uvid'"><fo:inline color="red">×</fo:inline></xsl:if>
+                                            увид у документ који садржи тражену информацију;
+                                        </fo:block>
+                                    </fo:list-item-body>
                                 </fo:list-item>
                                 <fo:list-item>
                                     <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
-                                    <fo:list-item-body start-indent="body-start()"> <fo:block>копију документа који садржи тражену информацију;</fo:block> </fo:list-item-body>
+                                    <fo:list-item-body start-indent="body-start()"> 
+                                        <fo:block>
+                                            <xsl:if test="z:Zahtev/z:tip = 'kopija'"><fo:inline color="red">×</fo:inline></xsl:if>
+                                            копију документа који садржи тражену информацију;
+                                        </fo:block>
+                                    </fo:list-item-body>
                                 </fo:list-item>
                                 <fo:list-item>
                                     <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
                                     <fo:list-item-body start-indent="body-start()">
                                         <fo:block>
+                                            <xsl:if test="z:Zahtev/z:tip = 'dostava'"><fo:inline color="red">×</fo:inline></xsl:if>
                                             достављање копије документа који садржи тражену информацију: <fo:inline font-size="75%" baseline-shift="super">**</fo:inline>
                                         </fo:block>
                                     </fo:list-item-body>
@@ -66,20 +82,36 @@
                                         <fo:list-block>
                                             <fo:list-item>
                                                 <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
-                                                <fo:list-item-body start-indent="body-start()"> <fo:block>поштом</fo:block> </fo:list-item-body>
-                                            </fo:list-item>
-                                            <fo:list-item>
-                                                <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
-                                                <fo:list-item-body start-indent="body-start()"> <fo:block>електронском поштом</fo:block> </fo:list-item-body>
-                                            </fo:list-item>
-                                            <fo:list-item>
-                                                <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
-                                                <fo:list-item-body start-indent="body-start()"> <fo:block>факсом</fo:block> </fo:list-item-body>
+                                                <fo:list-item-body start-indent="body-start()">
+                                                    <fo:block>
+                                                        <xsl:if test="z:Zahtev/z:dostava = 'posta'"><fo:inline color="red">×</fo:inline></xsl:if>
+                                                        поштом
+                                                    </fo:block>
+                                                </fo:list-item-body>
                                             </fo:list-item>
                                             <fo:list-item>
                                                 <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
                                                 <fo:list-item-body start-indent="body-start()">
                                                     <fo:block>
+                                                        <xsl:if test="z:Zahtev/z:dostava = 'email'"><fo:inline color="red">×</fo:inline></xsl:if>
+                                                        електронском поштом
+                                                    </fo:block>
+                                                </fo:list-item-body>
+                                            </fo:list-item>
+                                            <fo:list-item>
+                                                <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
+                                                <fo:list-item-body start-indent="body-start()">
+                                                    <fo:block>
+                                                        <xsl:if test="z:Zahtev/z:dostava = 'faks'"><fo:inline color="red">×</fo:inline></xsl:if>
+                                                        факсом
+                                                    </fo:block>
+                                                </fo:list-item-body>
+                                            </fo:list-item>
+                                            <fo:list-item>
+                                                <fo:list-item-label start-indent="body-start()"> <fo:block></fo:block> </fo:list-item-label>
+                                                <fo:list-item-body start-indent="body-start()">
+                                                    <fo:block>
+                                                        <xsl:if test="z:Zahtev/z:dostava = 'drugo'"><fo:inline color="red">×</fo:inline></xsl:if>
                                                         на други начин: <fo:inline font-size="75%" baseline-shift="super">***</fo:inline> 
                                                         <xsl:value-of select="z:Zahtev/z:drugiNacinDostave"/>
                                                     </fo:block>
