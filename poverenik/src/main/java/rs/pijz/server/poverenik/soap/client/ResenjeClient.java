@@ -17,7 +17,7 @@ public class ResenjeClient extends WebServiceGatewaySupport {
 
 		GetResenjeResponse response = (GetResenjeResponse) getWebServiceTemplate().marshalSendAndReceive(
 				"http://localhost:8081/ws/resenje-soap.wsdl", request,
-				new SoapActionCallback("http://www.pijz.rs/obavestenje/GetResenjeRequest"));
+				new SoapActionCallback("http://www.pijz.rs/resenje/GetResenjeRequest"));
 
 		return response;
 	}
