@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getZahtevRequest xmlns="http://www.pijz.rs/zahtev">
+         <id xmlns="http://www.pijz.rs/zahtev">ID-Z-001</id>
+      </getZahtevRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

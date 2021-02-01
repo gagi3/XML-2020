@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getIzjasnjenjeNaZalbuRequest xmlns="http://www.pijz.rs/izjasnjenje-na-zalbu">
+         <broj xmlns="http://www.pijz.rs/izjasnjenje-na-zalbu">IZ-001</broj>
+      </getIzjasnjenjeNaZalbuRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

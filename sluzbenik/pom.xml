@@ -157,6 +157,18 @@
             <artifactId>json</artifactId>
             <version>20190722</version>
         </dependency>
+        
+        <!-- SOAP [start] -->
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>wsdl4j</groupId>
+		    <artifactId>wsdl4j</artifactId>
+		</dependency>
+		<!-- SOAP [end] -->
+		
     </dependencies>
 
     <build>
