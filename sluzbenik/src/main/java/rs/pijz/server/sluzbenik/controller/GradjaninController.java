@@ -63,6 +63,28 @@ public class GradjaninController {
         }
     }
 
+    @PostMapping(value = "/edit", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Gradjanin> edit(@RequestBody Gradjanin gradjanin) {
+        try {
+            Gradjanin gradjanin1 = gradjaninService.edit(gradjanin);
+            return ResponseEntity.ok().body(gradjanin1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Boolean> delete(@RequestParam String id) {
+        try {
+            Boolean deleted = gradjaninService.delete(id);
+            return ResponseEntity.ok().body(deleted);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
