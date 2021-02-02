@@ -46,6 +46,7 @@
                 <r:informacija>досије</r:informacija>
             </r:dokument>
             <r:rok_obavestenja>5</r:rok_obavestenja>
+            <r:tekst>Текст става број 1.</r:tekst>
         </r:stav>
         <r:stav redni_broj="2">
             <r:dokument>
@@ -55,6 +56,7 @@
                 <r:informacija>место несреће</r:informacija>
             </r:dokument>
             <r:rok_obavestenja>10</r:rok_obavestenja>
+            <r:tekst>Текст става број 2.</r:tekst>
         </r:stav>
         <r:stav redni_broj="3">
             <r:dokument>
@@ -64,14 +66,10 @@
                 <r:informacija>подаци о оптуженом</r:informacija>
             </r:dokument>
             <r:rok_obavestenja>15</r:rok_obavestenja>
+            <r:tekst>Текст става број 3.</r:tekst>
         </r:stav>
     </r:dispozitiv>
     <r:obrazlozenje>
-        <r:paragraf>
-            АА, као тражилац информација, изјавио је дана 07.05.2020. године жалбу Поверенику, због непоступања Учитељског факултета у Призрену 
-            са привременим седиштем у Лепосавићу по његовом захтеву од 16.04.2020. године за приступ информацијама од јавног значаја и у прилогу 
-            доставио копију истог.
-        </r:paragraf>
         <r:paragraf>
             Поступајући по жалби, Повереник је дана 11.05.2020. године упутио исту на изјашњење Учитељском факултету у Призрену са привременим седиштем 
             у Лепосавићу, као органу власти у смислу члана 3. Закона о слободном приступу информацијама од јавног значаја и затражио да се изјасни о наводима 

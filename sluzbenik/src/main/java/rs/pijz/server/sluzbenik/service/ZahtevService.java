@@ -1,27 +1,32 @@
 package rs.pijz.server.sluzbenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.sluzbenik.model.gradjanin.Gradjanin;
 import rs.pijz.server.sluzbenik.model.gradjanin.ObjectFactory;
 import rs.pijz.server.sluzbenik.model.zahtev.Zahtev;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ZahtevRepository;
 import rs.pijz.server.sluzbenik.service.auth.intf.AuthenticationService;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
+import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
 public class ZahtevService {
@@ -37,6 +42,15 @@ public class ZahtevService {
 
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private XSLFOTransformer xslfoTransformer;
+
+    private final String xslTemplatePath = "../data/xsl/zahtev.xsl";
+    private final String xslfoTemplatePath = "../data/xsl-fo/zahtev.xsl";
+
+    private final String htmlOutput = "../data/html/zahtev.html";
+    private final String pdfOutput = "../data/pdf/zahtev.pdf";
 
     @Autowired
     private AuthenticationService authenticationService;
@@ -108,5 +122,13 @@ public class ZahtevService {
         String xml = "../data/xml/" + "zahtev_" + id + ".xml";
         documentService.createXML(Zahtev.class, zahtev, xmlInstance);
         System.out.println("Docs generated!");
+    }
+    
+    public String convertToHTML(String xml) throws Exception {
+        return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+    }
+
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+        return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
     }
 }

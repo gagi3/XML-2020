@@ -38,12 +38,27 @@
                         <fo:block text-align="center">ЖАЛБУ</fo:block>
                         <fo:block text-align="center">против</fo:block>
                         <fo:block margin-top="10px">
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:protiv_organa"/>  
+                            <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:protiv_organa"/> </fo:inline>
                             <fo:block margin-top="10px" text-align="center"> (навести назив органа) </fo:block>
                         </fo:block>
                         <fo:block margin-top="10px" text-align="center">
                             <fo:block> због тога што орган власти: </fo:block>
-                            <fo:block> <xsl:value-of select="zc:ZalbaCutanje/zc:razlog"/> </fo:block>
+                            <fo:block>
+                                <xsl:choose>
+                                    <xsl:when test="zc:ZalbaCutanje/zc:razlog = 'organ_nije_postupio'">
+                                        <fo:inline text-decoration="underline">није поступио</fo:inline> / није поступио у целости / у законском року
+                                    </xsl:when>
+                                    <xsl:when test="zc:ZalbaCutanje/zc:razlog = 'organ_nije_postupio_u_celosti'">
+                                        није поступио / <fo:inline text-decoration="underline">није поступио у целости</fo:inline> / у законском року
+                                    </xsl:when>
+                                    <xsl:when test="zc:ZalbaCutanje/zc:razlog = 'organ_nije_postupio_u_zakonskom_roku'">
+                                        није поступио / није поступио у целости / <fo:inline text-decoration="underline">у законском року</fo:inline>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <u>није поступио</u> / није поступио у целости / у законском року
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </fo:block>
                             <fo:block> (подвући због чега се изјављује жалба) </fo:block>
                         </fo:block>
                         <fo:block margin-top="10px" text-align="justify">
@@ -53,7 +68,7 @@
                             документа који садржи информације о /у вези са :
                         </fo:block>
                         <fo:block margin-top="10px">
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:podaci_o_zahtevu"/>  
+                            <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:podaci_o_zahtevu"/> </fo:inline>
                             <fo:block margin-top="10px" text-align="center"> (навести податке о захтеву и информацији/ама) </fo:block>
                         </fo:block>
 
@@ -63,7 +78,7 @@
 
                         <fo:block margin-top="20px" text-align="right">
                             <fo:block>
-                                <fo:block margin-top="10px">
+                                <fo:block text-decoration="underline" margin-top="10px">
                                     <xsl:call-template name="FizickoLiceSimple">
                                         <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/>
                                     </xsl:call-template>
@@ -72,7 +87,7 @@
                                     Подносилац жалбе / Име и презиме
                                 </fo:block>
 
-                                <fo:block margin-top="10px"> 
+                                <fo:block text-decoration="underline" margin-top="10px"> 
                                     <xsl:call-template name="Adresa">
                                         <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba/cmn:adresa"/>
                                     </xsl:call-template> 
@@ -81,7 +96,7 @@
                                     адреса
                                 </fo:block>
 
-                                <fo:block margin-top="10px">
+                                <fo:block text-decoration="underline" margin-top="10px">
                                     <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:drugi_kontakt"/>
                                 </fo:block>
                                 <fo:block>
@@ -92,8 +107,8 @@
                     </fo:block>
                     <fo:block margin-top="20px">
                         <fo:block>
-                            У <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:grad"/>, 
-                            дана <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:datum"/> године
+                            У <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:grad"/> </fo:inline>, 
+                            дана <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:datum"/> </fo:inline> године
                         </fo:block>
                     </fo:block>
                 </fo:flow>

@@ -35,7 +35,7 @@
 
                         <fo:block margin-top="20px" text-align="center">ЖАЛБA</fo:block>
 
-                        <fo:block margin-top="10px">
+                        <fo:block text-decoration="underline" margin-top="10px">
                             <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:osoba_zalilac/cmn:ime"/>&#160;
                             <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:osoba_zalilac/cmn:prezime"/> 
                             (
@@ -45,13 +45,13 @@
                             ) - 
                             <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:naziv"/>,&#160;
                             <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:sediste_zalioca"/>   
-                            <fo:block margin-top="10px" text-align="center">(Име, презиме, односно назив, адреса и седиште жалиоца)</fo:block>
                         </fo:block>
+                        <fo:block margin-top="10px" text-align="center">(Име, презиме, односно назив, адреса и седиште жалиоца)</fo:block>
                         <fo:block margin-top="10px" text-align="center">против решења-закључка</fo:block>
-                        <fo:block margin-top="10px">
-                            <xsl:value-of select="zo:ZalbaOdluka/zo:donosilac_odluke"/>  
-                            <fo:block margin-top="10px" text-align="center">(назив органа који је донео одлуку)</fo:block>
+                        <fo:block text-decoration="underline" margin-top="10px">
+                            <xsl:value-of select="zo:ZalbaOdluka/zo:donosilac_odluke"/>
                         </fo:block>
+                        <fo:block margin-top="10px" text-align="center">(назив органа који је донео одлуку)</fo:block>
 
                         <fo:block margin-top="10px">
                             Број <xsl:value-of select="zo:ZalbaOdluka/zo:broj_resenja"/> од <xsl:value-of select="zo:ZalbaOdluka/zo:godina_resenja"/> године.
@@ -72,7 +72,7 @@
 
                         <fo:block margin-top="20px" text-align="right">
                             <fo:block>
-                                <fo:block margin-top="10px">  
+                                <fo:block text-decoration="underline" margin-top="10px">  
                                     <xsl:call-template name="FizickoLiceSimple">
                                         <xsl:with-param name="fizickoLice" select="zo:ZalbaOdluka/zo:podnosilac_zalbe/zo:osoba"/>
                                     </xsl:call-template>
@@ -81,7 +81,7 @@
                                     Подносилац жалбе / Име и презиме
                                 </fo:block>
 
-                                <fo:block margin-top="10px"> 
+                                <fo:block text-decoration="underline" margin-top="10px"> 
                                     <xsl:call-template name="Adresa">
                                         <xsl:with-param name="adresa" select="zo:ZalbaOdluka/zo:podnosilac_zalbe/zo:osoba/cmn:adresa"/>
                                     </xsl:call-template> 
@@ -90,7 +90,7 @@
                                     адреса
                                 </fo:block>
 
-                                <fo:block margin-top="10px">
+                                <fo:block text-decoration="underline" margin-top="10px">
                                     <xsl:value-of select="zo:ZalbaOdluka/zo:podnosilac_zalbe/zo:drugi_kontakt"/>
                                 </fo:block>
                                 <fo:block>

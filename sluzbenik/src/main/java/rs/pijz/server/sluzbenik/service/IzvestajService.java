@@ -1,22 +1,27 @@
 package rs.pijz.server.sluzbenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.sluzbenik.model.izvestaj.Izvestaj;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.IzvestajRepository;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
 public class IzvestajService {
@@ -26,6 +31,15 @@ public class IzvestajService {
     private IzvestajRepository izvestajRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private XSLFOTransformer xslfoTransformer;
+
+    private final String xslTemplatePath = "../data/xsl/izvestaj.xsl";
+    private final String xslfoTemplatePath = "../data/xsl-fo/izvestaj.xsl";
+
+    private final String htmlOutput = "../data/html/izvestaj.html";
+    private final String pdfOutput = "../data/pdf/izvestaj.pdf";
 
     public List<Izvestaj> findAll() throws XMLDBException {
         String xPath = "/iz:Izvestaj";
@@ -79,5 +93,13 @@ public class IzvestajService {
         String xml = "../data/xml/" + "izvestaj-" + id + ".xml";
         documentService.createXML(Izvestaj.class, izvestaj, xmlInstance);
         System.out.println("Docs generated!");
+    }
+    
+    public String convertToHTML(String xml) throws Exception {
+        return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+    }
+
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+        return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
     }
 }

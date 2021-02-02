@@ -75,6 +75,16 @@
                     </div>
                     <div>
                         <p class="c-subtitle">О б р а з л о ж е њ е</p>
+                        <p>
+                            <xsl:call-template name="FizickoLiceSimple">
+                                <xsl:with-param name="fizickoLice" select="r:Resenje/r:trazilac" />
+                            </xsl:call-template>, као тражилац информација, изјавио је дана 
+                            07.05.2020. године жалбу Поверенику, због непоступања установе
+                            <xsl:call-template name="PravnoLice">
+                                <xsl:with-param name="pravnoLice" select="r:Resenje/r:ustanova" />
+                            </xsl:call-template> по његовом захтеву од <xsl:value-of select="r:Resenje/@datum_zahteva"/> 
+                            године за приступ информацијама од јавног значаја и у прилогу доставио копију истог.
+                        </p>
                         <xsl:for-each select="r:Resenje/r:obrazlozenje/r:paragraf">
             				<xsl:call-template name="Paragraf">
                                 <xsl:with-param name="paragraf" select="." />
@@ -105,7 +115,8 @@
     <xsl:template name="Stav">
         <xsl:param name="stav"/>
         <p>
-            <xsl:value-of select="$stav/@redni_broj"/>
+            <xsl:value-of select="$stav/@redni_broj"/>&#160;
+            <xsl:value-of select="$stav/r:tekst"/>
             Документ "<xsl:value-of select="$stav/r:dokument/r:naziv"/>" са траженим информацијама:
             <xsl:for-each select="$stav/r:dokument/r:informacija">
                 <xsl:value-of select="."/>

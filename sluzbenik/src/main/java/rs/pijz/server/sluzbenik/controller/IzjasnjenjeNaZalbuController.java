@@ -12,6 +12,7 @@ import rs.pijz.server.sluzbenik.model.izjasnjenje_na_zalbu.IzjasnjenjeNaZalbu;
 import rs.pijz.server.sluzbenik.service.DomParserService;
 import rs.pijz.server.sluzbenik.service.IzjasnjenjeNaZalbuService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 @CrossOrigin
@@ -98,5 +99,17 @@ public class IzjasnjenjeNaZalbuController {
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
+    }
+    
+    @PostMapping(value = "/convert-to-html")
+    public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
+        String result = izjasnjenjeNaZalbuService.convertToHTML(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/convert-to-pdf")
+    public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
+        ByteArrayOutputStream result = izjasnjenjeNaZalbuService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

@@ -12,6 +12,7 @@ import rs.pijz.server.sluzbenik.model.resenje.Resenje;
 import rs.pijz.server.sluzbenik.service.DomParserService;
 import rs.pijz.server.sluzbenik.service.ResenjeService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,5 +101,17 @@ public class ResenjeController {
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
+    }
+    
+    @PostMapping(value = "/convert-to-html")
+    public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
+        String result = resenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/convert-to-pdf")
+    public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
+        ByteArrayOutputStream result = resenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }
