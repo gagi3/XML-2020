@@ -15,7 +15,6 @@ import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,15 +28,15 @@ public class ZalbaCutanjeService {
     private ZalbaCutanjeRepository zalbaCutanjeRepository;
     @Autowired
     private DocumentService documentService;
-    
+
     @Autowired
     private XSLFOTransformer xslfoTransformer;
-    
-    private String xslTemplatePath = "../data/xsl/zalba-cutanje.xsl";
-    private String xslfoTemplatePath = "../data/xsl-fo/zalba-cutanje.xsl";
-    
-    private String htmlOutput = "../data/html/zalba-cutanje.html";
-    private String pdfOutput = "../data/pdf/zalba-cutanje.pdf";
+
+    private final String xslTemplatePath = "../data/xsl/zalba-cutanje.xsl";
+    private final String xslfoTemplatePath = "../data/xsl-fo/zalba-cutanje.xsl";
+
+    private final String htmlOutput = "../data/html/zalba-cutanje.html";
+    private final String pdfOutput = "../data/pdf/zalba-cutanje.pdf";
 
     public List<ZalbaCutanje> findAll() throws XMLDBException {
         String xPath = "/zc:ZalbaCutanje";
@@ -74,6 +73,15 @@ public class ZalbaCutanjeService {
         return zalbaCutanjeRepository.save(zalbaCutanje);
     }
 
+    public ZalbaCutanje edit(ZalbaCutanje zalbaCutanje) throws Exception {
+        return zalbaCutanjeRepository.edit(zalbaCutanje);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        zalbaCutanjeRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/zc:ZalbaCutanje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
@@ -83,12 +91,12 @@ public class ZalbaCutanjeService {
         documentService.createXML(ZalbaCutanje.class, zalbaCutanje, xmlInstance);
         System.out.println("Docs generated!");
     }
-    
+
     public String convertToHTML(String xml) throws Exception {
-    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+        return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
     }
-    
+
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
-		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
-	}
+        return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
 }

@@ -62,6 +62,15 @@ public class IzvestajService {
         return izvestajRepository.save(izvestaj);
     }
 
+    public Izvestaj edit(Izvestaj izvestaj) throws Exception {
+        return izvestajRepository.edit(izvestaj);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        izvestajRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/iz:Izvestaj[@id='" + id + "']";
         ResourceSet result = commonRepository.queryIzvestaj(xPath);

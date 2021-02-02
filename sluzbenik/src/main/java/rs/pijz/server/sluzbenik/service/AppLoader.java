@@ -48,11 +48,11 @@ public class AppLoader implements ApplicationRunner {
 
     private Boolean hasAdmin() throws XMLDBException {
         AtomicReference<Boolean> hasAdmin = new AtomicReference<>(false);
-        
+
         if (korisnikService.findAll() == null) {
-        	return false;
+            return false;
         }
-        
+
         korisnikService.findAll().forEach(user -> {
             if (user.getTip().equals("POVERENIK")) {
                 hasAdmin.set(true);

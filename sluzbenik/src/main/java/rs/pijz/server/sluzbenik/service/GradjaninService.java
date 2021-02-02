@@ -92,8 +92,8 @@ public class GradjaninService {
         String xPath = "/g:Gradjanin[g:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryGradjanin(xPath);
         Gradjanin gradjanin = (Gradjanin) commonRepository.resourceSetToClass(result, Gradjanin.class);
-        String xmlInstance = "../data/xsd/instance/" + "gradjanin" + id + ".xml";
-        String xml = "../data/xml/" + "gradjanin" + id + ".xml";
+        String xmlInstance = "../data/xsd/instance/" + "gradjanin-" + id + ".xml";
+        String xml = "../data/xml/" + "gradjanin-" + id + ".xml";
         documentService.createXML(Gradjanin.class, gradjanin, xmlInstance);
         System.out.println("Docs generated!");
     }
