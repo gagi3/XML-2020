@@ -105,7 +105,8 @@
     <xsl:template name="Stav">
         <xsl:param name="stav"/>
         <p>
-            <xsl:value-of select="$stav/@redni_broj"/>
+            <xsl:value-of select="$stav/@redni_broj"/>&#160;
+            <xsl:value-of select="$stav/r:tekst"/>
             Документ "<xsl:value-of select="$stav/r:dokument/r:naziv"/>" са траженим информацијама:
             <xsl:for-each select="$stav/r:dokument/r:informacija">
                 <xsl:value-of select="."/>
