@@ -66,6 +66,15 @@ public class ResenjeService {
         return resenjeRepository.save(resenje);
     }
 
+    public Resenje edit(Resenje resenje) throws Exception {
+        return resenjeRepository.edit(resenje);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        resenjeRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/r:Resenje[@ID='" + id + "']";
         ResourceSet result = commonRepository.queryResenje(xPath);

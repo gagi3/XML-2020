@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class PoverenikRepository {
+    private final String collectionURI = "/db/pijz_poverenik/poverenik";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,24 +25,41 @@ public class PoverenikRepository {
     @Autowired
     private CommonRepository commonRepository;
 
-    public Poverenik save(Poverenik Poverenik) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/poverenik");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+    private String getDocumentName(String id) {
+        return "poverenik-" + id + ".xml";
+    }
+
+    public Poverenik save(Poverenik poverenik) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(poverenik.getKorisnik().getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
-        jaxbService.marshal(Poverenik, stream, Poverenik.class);
+        jaxbService.marshal(poverenik, stream, Poverenik.class);
         resource.setContent(stream);
         collection.storeResource(resource);
-        return Poverenik;
+        return poverenik;
+    }
+
+    public Poverenik edit(Poverenik poverenik) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(poverenik.getKorisnik().getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(poverenik, stream, Poverenik.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return poverenik;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
     }
 
     public void generatePoverenikXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/p:Poverenik[k:Korisnik[@id='" + ID + "']]";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("p", "http://www.pijz.rs/poverenik");
-        namespace.put("k", "http://www.pijz.rs/korisnik");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/poverenik", namespace, xpath);
-        Poverenik Poverenik = (Poverenik) commonRepository.resourceSetToClass(result, Poverenik.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(Poverenik.class, Poverenik, xmlFile);
+        String xpath = "/p:Poverenik[p:korisnik[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryPoverenik(xpath);
+        Poverenik poverenik = (Poverenik) commonRepository.resourceSetToClass(result, Poverenik.class);
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
+        commonRepository.generateXML(Poverenik.class, poverenik, xmlFile);
     }
 }

@@ -79,6 +79,15 @@ public class SluzbenikService {
         return sluzbenikRepository.save(sluzbenik);
     }
 
+    public Sluzbenik edit(Sluzbenik sluzbenik) throws Exception {
+        return sluzbenikRepository.edit(sluzbenik);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        sluzbenikRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/s:Sluzbenik[s:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.querySluzbenik(xPath);

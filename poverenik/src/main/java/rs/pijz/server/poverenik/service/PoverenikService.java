@@ -79,6 +79,15 @@ public class PoverenikService {
         return poverenikRepository.save(poverenik);
     }
 
+    public Poverenik edit(Poverenik poverenik) throws Exception {
+        return poverenikRepository.edit(poverenik);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        poverenikRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/p:Poverenik[p:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryPoverenik(xPath);

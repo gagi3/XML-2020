@@ -15,7 +15,6 @@ import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,15 +31,15 @@ public class ResenjeService {
 
     @Autowired
     private DocumentService documentService;
-    
+
     @Autowired
     private XSLFOTransformer xslfoTransformer;
-    
-    private String xslTemplatePath = "../data/xsl/resenje.xsl";
-    private String xslfoTemplatePath = "../data/xsl-fo/resenje.xsl";
-    
-    private String htmlOutput = "../data/html/resenje.html";
-    private String pdfOutput = "../data/pdf/resenje.pdf";
+
+    private final String xslTemplatePath = "../data/xsl/resenje.xsl";
+    private final String xslfoTemplatePath = "../data/xsl-fo/resenje.xsl";
+
+    private final String htmlOutput = "../data/html/resenje.html";
+    private final String pdfOutput = "../data/pdf/resenje.pdf";
 
     public List<Resenje> findAll() throws XMLDBException {
         String xPath = "/r:Resenje";
@@ -78,6 +77,15 @@ public class ResenjeService {
         return resenjeRepository.save(resenje);
     }
 
+    public Resenje edit(Resenje resenje) throws Exception {
+        return resenjeRepository.edit(resenje);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        resenjeRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/r:Resenje[@ID='" + id + "']";
         ResourceSet result = commonRepository.queryResenje(xPath);
@@ -87,12 +95,12 @@ public class ResenjeService {
         documentService.createXML(Resenje.class, resenje, xmlInstance);
         System.out.println("Docs generated!");
     }
-    
+
     public String convertToHTML(String xml) throws Exception {
-    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+        return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
     }
-    
+
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
-		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
-	}
+        return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
 }

@@ -62,6 +62,15 @@ public class ZalbaCutanjeService {
         return zalbaCutanjeRepository.save(zalbaCutanje);
     }
 
+    public ZalbaCutanje edit(ZalbaCutanje zalbaCutanje) throws Exception {
+        return zalbaCutanjeRepository.edit(zalbaCutanje);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        zalbaCutanjeRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/zc:ZalbaCutanje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaCutanje(xPath);

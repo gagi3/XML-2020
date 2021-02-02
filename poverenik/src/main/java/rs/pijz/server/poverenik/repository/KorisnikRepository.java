@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class KorisnikRepository {
+    private final String collectionURI = "/db/pijz_poverenik/korisnik";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,23 +25,41 @@ public class KorisnikRepository {
     @Autowired
     private CommonRepository commonRepository;
 
-    public Korisnik save(Korisnik Korisnik) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/korisnik");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+    private String getDocumentName(String id) {
+        return "korisnik-" + id + ".xml";
+    }
+
+    public Korisnik save(Korisnik korisnik) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(korisnik.getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
-        jaxbService.marshal(Korisnik, stream, Korisnik.class);
+        jaxbService.marshal(korisnik, stream, Korisnik.class);
         resource.setContent(stream);
         collection.storeResource(resource);
-        return Korisnik;
+        return korisnik;
+    }
+
+    public Korisnik edit(Korisnik korisnik) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(korisnik.getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(korisnik, stream, Korisnik.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return korisnik;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
     }
 
     public void generateKorisnikXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/k:Korisnik[@id='" + ID + "']";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("k", "http://www.pijz.rs/korisnik");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/korisnik", namespace, xpath);
-        Korisnik Korisnik = (Korisnik) commonRepository.resourceSetToClass(result, Korisnik.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(Korisnik.class, Korisnik, xmlFile);
+        String xpath = "/k:Korisnik[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryKorisnik(xpath);
+        Korisnik korisnik = (Korisnik) commonRepository.resourceSetToClass(result, Korisnik.class);
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
+        commonRepository.generateXML(Korisnik.class, korisnik, xmlFile);
     }
 }

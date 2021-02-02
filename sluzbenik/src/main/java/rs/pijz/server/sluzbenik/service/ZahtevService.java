@@ -14,10 +14,8 @@ import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ZahtevRepository;
 import rs.pijz.server.sluzbenik.service.auth.intf.AuthenticationService;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -89,8 +87,17 @@ public class ZahtevService {
         }
         ObjectFactory gFactory = new ObjectFactory();
         gradjanin.getZahtevi().add(gFactory.createGradjaninZahtevi(zahtev.getId()));
-        
+
         return zahtevRepository.save(zahtev);
+    }
+
+    public Zahtev edit(Zahtev zahtev) throws Exception {
+        return zahtevRepository.edit(zahtev);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        zahtevRepository.delete(id);
+        return !existsById(id);
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {

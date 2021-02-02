@@ -58,6 +58,28 @@ public class ZalbaOdlukaController {
         }
     }
 
+    @PostMapping(value = "/edit", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<ZalbaOdluka> edit(@RequestBody ZalbaOdluka zalbaOdluka) {
+        try {
+            ZalbaOdluka zalbaOdluka1 = zalbaOdlukaService.edit(zalbaOdluka);
+            return ResponseEntity.ok().body(zalbaOdluka1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Boolean> delete(@RequestParam String id) {
+        try {
+            Boolean deleted = zalbaOdlukaService.delete(id);
+            return ResponseEntity.ok().body(deleted);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {

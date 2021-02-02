@@ -1,17 +1,16 @@
 package rs.pijz.server.poverenik.service;
 
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
-
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.xmldb.api.base.XMLDBException;
-
 import rs.pijz.server.poverenik.model.common.Adresa;
 import rs.pijz.server.poverenik.model.common.FizickoLice;
 import rs.pijz.server.poverenik.model.korisnik.Korisnik;
+
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Component
 public class AppLoader implements ApplicationRunner {
@@ -49,11 +48,11 @@ public class AppLoader implements ApplicationRunner {
 
     private Boolean hasAdmin() throws XMLDBException {
         AtomicReference<Boolean> hasAdmin = new AtomicReference<>(false);
-        
+
         if (korisnikService.findAll() == null) {
-        	return false;
+            return false;
         }
-        
+
         korisnikService.findAll().forEach(user -> {
             if (user.getTip().equals("POVERENIK")) {
                 hasAdmin.set(true);

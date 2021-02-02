@@ -62,6 +62,15 @@ public class ZalbaOdlukaService {
         return zalbaOdlukaRepository.save(zalbaOdluka);
     }
 
+    public ZalbaOdluka edit(ZalbaOdluka zalbaOdluka) throws Exception {
+        return zalbaOdlukaRepository.edit(zalbaOdluka);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        zalbaOdlukaRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/zo:ZalbaOdluka[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaOdluka(xPath);

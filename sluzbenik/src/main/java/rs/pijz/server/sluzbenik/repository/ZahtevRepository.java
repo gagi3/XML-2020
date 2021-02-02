@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class ZahtevRepository {
+    private final String collectionURI = "/db/pijz_sluzbenik/zahtev";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,23 +25,41 @@ public class ZahtevRepository {
     @Autowired
     private CommonRepository commonRepository;
 
-    public Zahtev save(Zahtev Zahtev) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/zahtev");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+    private String getDocumentName(String id) {
+        return "zahtev-" + id + ".xml";
+    }
+
+    public Zahtev save(Zahtev zahtev) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(zahtev.getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
-        jaxbService.marshal(Zahtev, stream, Zahtev.class);
+        jaxbService.marshal(zahtev, stream, Zahtev.class);
         resource.setContent(stream);
         collection.storeResource(resource);
-        return Zahtev;
+        return zahtev;
+    }
+
+    public Zahtev edit(Zahtev zahtev) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(zahtev.getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(zahtev, stream, Zahtev.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return zahtev;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
     }
 
     public void generateZahtevXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/z:Zahtev[@id='" + ID + "']";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("z", "http://www.pijz.rs/zahtev");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_sluzbenik/zahtev", namespace, xpath);
-        Zahtev Zahtev = (Zahtev) commonRepository.resourceSetToClass(result, Zahtev.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(Zahtev.class, Zahtev, xmlFile);
+        String xpath = "/z:Zahtev[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryZahtev(xpath);
+        Zahtev zahtev = (Zahtev) commonRepository.resourceSetToClass(result, Zahtev.class);
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
+        commonRepository.generateXML(Zahtev.class, zahtev, xmlFile);
     }
 }

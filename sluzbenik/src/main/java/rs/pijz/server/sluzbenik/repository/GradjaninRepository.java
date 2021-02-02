@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class GradjaninRepository {
+    private final String collectionURI = "/db/pijz_sluzbenik/gradjanin";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,43 +25,41 @@ public class GradjaninRepository {
     @Autowired
     private CommonRepository commonRepository;
 
-    public Gradjanin save(Gradjanin Gradjanin) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
-        XMLResource resource = (XMLResource) collection.createResource("gradjanin-" + Gradjanin.getKorisnik().getId() + ".xml", XMLResource.RESOURCE_TYPE);
-        OutputStream stream = new ByteArrayOutputStream();
-        jaxbService.marshal(Gradjanin, stream, Gradjanin.class);
-        resource.setContent(stream);
-        collection.storeResource(resource);
-        return Gradjanin;
+    private String getDocumentName(String id) {
+        return "gradjanin-" + id + ".xml";
     }
 
-    public Gradjanin edit(Gradjanin Gradjanin) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
-        XMLResource resource = (XMLResource) collection.getResource("gradjanin-" + Gradjanin.getKorisnik().getId() + ".xml");
+    public Gradjanin save(Gradjanin gradjanin) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(gradjanin.getKorisnik().getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
-        System.out.println(Gradjanin.getKorisnik().getId());
-        System.out.println(Gradjanin.toString());
-        System.out.println(resource.getContent().toString());
-        jaxbService.marshal(Gradjanin, stream, Gradjanin.class);
+        jaxbService.marshal(gradjanin, stream, Gradjanin.class);
         resource.setContent(stream);
         collection.storeResource(resource);
-        return Gradjanin;
+        return gradjanin;
+    }
+
+    public Gradjanin edit(Gradjanin gradjanin) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(gradjanin.getKorisnik().getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(gradjanin, stream, Gradjanin.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return gradjanin;
     }
 
     public void delete(String id) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
-        XMLResource resource = (XMLResource) collection.getResource("gradjanin-" + id + ".xml");
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
         collection.removeResource(resource);
     }
 
     public void generateGradjaninXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/g:Gradjanin/k:Korisnik[@id='" + ID + "']]";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("g", "http://www.pijz.rs/gradjanin");
-        namespace.put("k", "http://www.pijz.rs/korisnik");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_sluzbenik/gradjanin", namespace, xpath);
-        Gradjanin Gradjanin = (Gradjanin) commonRepository.resourceSetToClass(result, Gradjanin.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(Gradjanin.class, Gradjanin, xmlFile);
+        String xpath = "/g:Gradjanin[g:korisnik[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryGradjanin(xpath);
+        Gradjanin gradjanin = (Gradjanin) commonRepository.resourceSetToClass(result, Gradjanin.class);
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
+        commonRepository.generateXML(Gradjanin.class, gradjanin, xmlFile);
     }
 }

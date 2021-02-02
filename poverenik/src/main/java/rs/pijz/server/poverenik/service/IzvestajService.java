@@ -15,7 +15,6 @@ import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,15 +28,15 @@ public class IzvestajService {
     private IzvestajRepository izvestajRepository;
     @Autowired
     private DocumentService documentService;
-    
+
     @Autowired
     private XSLFOTransformer xslfoTransformer;
-    
-    private String xslTemplatePath = "../data/xsl/izvestaj.xsl";
-    private String xslfoTemplatePath = "../data/xsl-fo/izvestaj.xsl";
-    
-    private String htmlOutput = "../data/html/izvestaj.html";
-    private String pdfOutput = "../data/pdf/izvestaj.pdf";
+
+    private final String xslTemplatePath = "../data/xsl/izvestaj.xsl";
+    private final String xslfoTemplatePath = "../data/xsl-fo/izvestaj.xsl";
+
+    private final String htmlOutput = "../data/html/izvestaj.html";
+    private final String pdfOutput = "../data/pdf/izvestaj.pdf";
 
     public List<Izvestaj> findAll() throws XMLDBException {
         String xPath = "/iz:Izvestaj";
@@ -74,6 +73,15 @@ public class IzvestajService {
         return izvestajRepository.save(izvestaj);
     }
 
+    public Izvestaj edit(Izvestaj izvestaj) throws Exception {
+        return izvestajRepository.edit(izvestaj);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        izvestajRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/iz:Izvestaj[@id='" + id + "']";
         ResourceSet result = commonRepository.queryIzvestaj(xPath);
@@ -83,12 +91,12 @@ public class IzvestajService {
         documentService.createXML(Izvestaj.class, izvestaj, xmlInstance);
         System.out.println("Docs generated!");
     }
-    
+
     public String convertToHTML(String xml) throws Exception {
-    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+        return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
     }
-    
+
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
-		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
-	}
+        return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
 }

@@ -62,6 +62,15 @@ public class ObavestenjeService {
         return obavestenjeRepository.save(obavestenje);
     }
 
+    public Obavestenje edit(Obavestenje obavestenje) throws Exception {
+        return obavestenjeRepository.edit(obavestenje);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        obavestenjeRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/o:Obavestenje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryObavestenje(xPath);

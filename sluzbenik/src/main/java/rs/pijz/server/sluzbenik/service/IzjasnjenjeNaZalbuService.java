@@ -65,6 +65,15 @@ public class IzjasnjenjeNaZalbuService {
         return izjasnjenjeNaZalbuRepository.save(izjasnjenjeNaZalbu);
     }
 
+    public IzjasnjenjeNaZalbu edit(IzjasnjenjeNaZalbu izjasnjenjeNaZalbu) throws Exception {
+        return izjasnjenjeNaZalbuRepository.edit(izjasnjenjeNaZalbu);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        izjasnjenjeNaZalbuRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/i:IzjasnjenjeNaZalbu[@id='" + id + "']";
         ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);

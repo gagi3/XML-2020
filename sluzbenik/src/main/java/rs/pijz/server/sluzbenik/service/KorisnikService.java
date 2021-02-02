@@ -87,7 +87,7 @@ public class KorisnikService {
             throw new Exception("Korisnik sa istom email adresom vec postoji!");
         }
         korisnik.setPassword(new BCryptPasswordEncoder().encode(korisnik.getPassword()));
-        switch(korisnik.getTip()) {
+        switch (korisnik.getTip()) {
             case "SLUZBENIK":
                 Sluzbenik sluzbenik = new Sluzbenik();
                 sluzbenik.setKorisnik(korisnik);
@@ -105,6 +105,15 @@ public class KorisnikService {
                 break;
         }
         return korisnikRepository.save(korisnik);
+    }
+
+    public Korisnik edit(Korisnik korisnik) throws Exception {
+        return korisnikRepository.edit(korisnik);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        korisnikRepository.delete(id);
+        return !existsById(id);
     }
 
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {

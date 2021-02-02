@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class ZalbaCutanjeRepository {
+    private final String collectionURI = "/db/pijz_sluzbenik/zalba-cutanje";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,9 +25,13 @@ public class ZalbaCutanjeRepository {
     @Autowired
     private CommonRepository commonRepository;
 
+    private String getDocumentName(String id) {
+        return "zalba-cutanje-" + id + ".xml";
+    }
+
     public ZalbaCutanje save(ZalbaCutanje zalbaCutanje) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/zalba-cutanje");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(zalbaCutanje.getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(zalbaCutanje, stream, ZalbaCutanje.class);
         resource.setContent(stream);
@@ -35,13 +39,27 @@ public class ZalbaCutanjeRepository {
         return zalbaCutanje;
     }
 
+    public ZalbaCutanje edit(ZalbaCutanje zalbaCutanje) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(zalbaCutanje.getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(zalbaCutanje, stream, ZalbaCutanje.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return zalbaCutanje;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
+    }
+
     public void generateZalbaCutanjeXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/zc:ZalbaCutanje[@id='" + ID + "']";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("zc", "http://www.pijz.rs/zalba-cutanje");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_sluzbenik/zalba-cutanje", namespace, xpath);
+        String xpath = "/zc:ZalbaCutanje[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xpath);
         ZalbaCutanje zalbaCutanje = (ZalbaCutanje) commonRepository.resourceSetToClass(result, ZalbaCutanje.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
         commonRepository.generateXML(ZalbaCutanje.class, zalbaCutanje, xmlFile);
     }
 }
