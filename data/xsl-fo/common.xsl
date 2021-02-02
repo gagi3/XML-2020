@@ -19,7 +19,7 @@
     <xsl:template name="FizickoLice">
         <xsl:param name="fizickoLice"/>
         <fo:block>
-            <xsl:value-of select="$fizickoLice/cmn:ime"/>&#160;<xsl:value-of select="$fizickoLice/cmn:prezime"/><br/>
+            <fo:block> <xsl:value-of select="$fizickoLice/cmn:ime"/>&#160;<xsl:value-of select="$fizickoLice/cmn:prezime"/> </fo:block>
             <xsl:call-template name="Adresa">
                 <xsl:with-param name="adresa" select="$fizickoLice/cmn:adresa"/>
             </xsl:call-template>

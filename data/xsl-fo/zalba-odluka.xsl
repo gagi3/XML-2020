@@ -36,7 +36,15 @@
                         <fo:block margin-top="20px" text-align="center">ЖАЛБA</fo:block>
 
                         <fo:block margin-top="10px">
-                            <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac"/>  
+                            <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:osoba_zalilac/cmn:ime"/>&#160;
+                            <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:osoba_zalilac/cmn:prezime"/> 
+                            (
+                                <xsl:call-template name="Adresa">
+                                    <xsl:with-param name="adresa" select="zo:ZalbaOdluka/zo:zalilac/zo:osoba_zalilac/cmn:adresa"/>
+                                </xsl:call-template>
+                            ) - 
+                            <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:naziv"/>,&#160;
+                            <xsl:value-of select="zo:ZalbaOdluka/zo:zalilac/zo:sediste_zalioca"/>   
                             <fo:block margin-top="10px" text-align="center">(Име, презиме, односно назив, адреса и седиште жалиоца)</fo:block>
                         </fo:block>
                         <fo:block margin-top="10px" text-align="center">против решења-закључка</fo:block>

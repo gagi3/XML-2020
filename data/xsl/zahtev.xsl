@@ -14,6 +14,7 @@
 
             .c-centered { text-align: center; }
 
+            .c-red { color: red; }
             .c-info { margin-bottom: 10px; }
             .c-header { margin-bottom: 20px; }
             .c-footer { margin-top: 20px; display: flex; justify-content: space-between; }
@@ -45,16 +46,38 @@
 
             <p>
               <ul>
-                <li>обавештење да ли поседује тражену информацију;</li>
-                <li>увид у документ који садржи тражену информацију;</li>
-                <li>копију документа који садржи тражену информацију;</li>
                 <li>
+                  <xsl:if test="z:Zahtev/z:tip = 'obavestenje'"><span class="c-red">×</span></xsl:if>
+                  обавештење да ли поседује тражену информацију;
+                </li>
+                <li>
+                  <xsl:if test="z:Zahtev/z:tip = 'uvid'"><span class="c-red">×</span></xsl:if>
+                  увид у документ који садржи тражену информацију;
+                </li>
+                <li>
+                  <xsl:if test="z:Zahtev/z:tip = 'kopija'"><span class="c-red">×</span></xsl:if>
+                  копију документа који садржи тражену информацију;
+                </li>
+                <li>
+                  <xsl:if test="z:Zahtev/z:tip = 'dostava'"><span class="c-red">×</span></xsl:if>
                   достављање копије документа који садржи тражену информацију:**
                   <ul>
-                    <li>поштом</li>
-                    <li>електронском поштом</li>
-                    <li>факсом</li>
-                    <li>на други начин:*** <u><xsl:value-of select="z:Zahtev/z:drugiNacinDostave"/></u></li>
+                    <li>
+                      <xsl:if test="z:Zahtev/z:dostava = 'posta'"><span class="c-red">×</span></xsl:if>
+                      поштом
+                    </li>
+                    <li>
+                      <xsl:if test="z:Zahtev/z:dostava = 'email'"><span class="c-red">×</span></xsl:if>
+                      електронском поштом
+                    </li>
+                    <li>
+                      <xsl:if test="z:Zahtev/z:dostava = 'faks'"><span class="c-red">×</span></xsl:if>
+                      факсом
+                    </li>
+                    <li>
+                      <xsl:if test="z:Zahtev/z:dostava = 'drugo'"><span class="c-red">×</span></xsl:if>
+                      на други начин:*** <u><xsl:value-of select="z:Zahtev/z:drugiNacinDostave"/></u>
+                    </li>
                   </ul>
                 </li>
               </ul>
