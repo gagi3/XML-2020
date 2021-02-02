@@ -79,6 +79,15 @@ public class GradjaninService {
         return gradjaninRepository.save(gradjanin);
     }
 
+    public Gradjanin edit(Gradjanin gradjanin) throws Exception {
+        return gradjaninRepository.edit(gradjanin);
+    }
+
+    public Boolean delete(String id) throws Exception {
+        gradjaninRepository.delete(id);
+        return !existsById(id);
+    }
+
     public void generateDocuments(String id) throws XMLDBException, IOException, DocumentException, TransformerException, SAXException, ParserConfigurationException, JAXBException {
         String xPath = "/g:Gradjanin[g:korisnik[@id='" + id + "']]";
         ResourceSet result = commonRepository.queryGradjanin(xPath);

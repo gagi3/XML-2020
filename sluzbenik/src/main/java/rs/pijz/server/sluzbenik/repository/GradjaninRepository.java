@@ -27,12 +27,31 @@ public class GradjaninRepository {
 
     public Gradjanin save(Gradjanin Gradjanin) throws XMLDBException, JAXBException {
         Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+        XMLResource resource = (XMLResource) collection.createResource("gradjanin-" + Gradjanin.getKorisnik().getId() + ".xml", XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(Gradjanin, stream, Gradjanin.class);
         resource.setContent(stream);
         collection.storeResource(resource);
         return Gradjanin;
+    }
+
+    public Gradjanin edit(Gradjanin Gradjanin) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
+        XMLResource resource = (XMLResource) collection.getResource("gradjanin-" + Gradjanin.getKorisnik().getId() + ".xml");
+        OutputStream stream = new ByteArrayOutputStream();
+        System.out.println(Gradjanin.getKorisnik().getId());
+        System.out.println(Gradjanin.toString());
+        System.out.println(resource.getContent().toString());
+        jaxbService.marshal(Gradjanin, stream, Gradjanin.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return Gradjanin;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/gradjanin");
+        XMLResource resource = (XMLResource) collection.getResource("gradjanin-" + id + ".xml");
+        collection.removeResource(resource);
     }
 
     public void generateGradjaninXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
