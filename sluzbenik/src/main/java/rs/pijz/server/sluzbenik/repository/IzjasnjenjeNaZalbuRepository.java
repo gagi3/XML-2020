@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class IzjasnjenjeNaZalbuRepository {
+    private final String collectionURI = "/db/pijz_sluzbenik/izjasnjenje-na-zalbu";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,9 +25,13 @@ public class IzjasnjenjeNaZalbuRepository {
     @Autowired
     private CommonRepository commonRepository;
 
+    private String getDocumentName(String id) {
+        return "izjasnjenje-na-zalbu-" + id + ".xml";
+    }
+
     public IzjasnjenjeNaZalbu save(IzjasnjenjeNaZalbu izjasnjenjeNaZalbu) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_sluzbenik/izjasnjenje-na-zalbu");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(izjasnjenjeNaZalbu.getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(izjasnjenjeNaZalbu, stream, IzjasnjenjeNaZalbu.class);
         resource.setContent(stream);
@@ -35,13 +39,27 @@ public class IzjasnjenjeNaZalbuRepository {
         return izjasnjenjeNaZalbu;
     }
 
+    public IzjasnjenjeNaZalbu edit(IzjasnjenjeNaZalbu izjasnjenjeNaZalbu) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(izjasnjenjeNaZalbu.getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(izjasnjenjeNaZalbu, stream, IzjasnjenjeNaZalbu.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return izjasnjenjeNaZalbu;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
+    }
+
     public void generateIzjasnjenjeNaZalbuXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/i:IzjasnjenjeNaZalbu[@id='" + ID + "']";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("i", "http://www.pijz.rs/izjasnjenje-na-zalbu");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_sluzbenik/izjasnjenje-na-zalbu", namespace, xpath);
-        IzjasnjenjeNaZalbu izjasnjenjeNa = (IzjasnjenjeNaZalbu) commonRepository.resourceSetToClass(result, IzjasnjenjeNaZalbu.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(IzjasnjenjeNaZalbu.class, izjasnjenjeNa, xmlFile);
+        String xpath = "/i:IzjasnjenjeNaZalbu[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xpath);
+        IzjasnjenjeNaZalbu izjasnjenjeNaZalbu = (IzjasnjenjeNaZalbu) commonRepository.resourceSetToClass(result, IzjasnjenjeNaZalbu.class);
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
+        commonRepository.generateXML(IzjasnjenjeNaZalbu.class, izjasnjenjeNaZalbu, xmlFile);
     }
 }

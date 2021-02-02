@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class ZalbaOdlukaRepository {
+    private final String collectionURI = "/db/pijz_poverenik/zalba-odluka";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,9 +25,13 @@ public class ZalbaOdlukaRepository {
     @Autowired
     private CommonRepository commonRepository;
 
+    private String getDocumentName(String id) {
+        return "zalba-odluka-" + id + ".xml";
+    }
+
     public ZalbaOdluka save(ZalbaOdluka zalbaOdluka) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/zalba-odluka");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(zalbaOdluka.getId()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
         jaxbService.marshal(zalbaOdluka, stream, ZalbaOdluka.class);
         resource.setContent(stream);
@@ -35,13 +39,27 @@ public class ZalbaOdlukaRepository {
         return zalbaOdluka;
     }
 
+    public ZalbaOdluka edit(ZalbaOdluka zalbaOdluka) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(zalbaOdluka.getId()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(zalbaOdluka, stream, ZalbaOdluka.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return zalbaOdluka;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
+    }
+
     public void generateZalbaOdlukaXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/zo:ZalbaOdluka[@id='" + ID + "']";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("zo", "http://www.pijz.rs/zalba-odluka");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/zalba-odluka", namespace, xpath);
+        String xpath = "/zo:ZalbaOdluka[@id='" + ID + "']]";
+        ResourceSet result = commonRepository.queryZalbaOdluka(xpath);
         ZalbaOdluka zalbaOdluka = (ZalbaOdluka) commonRepository.resourceSetToClass(result, ZalbaOdluka.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
         commonRepository.generateXML(ZalbaOdluka.class, zalbaOdluka, xmlFile);
     }
 }

@@ -120,7 +120,7 @@ public class CommonRepository {
 
     public ResourceSet queryPoverenik(String query) throws XMLDBException {
         HashMap<String, String> namespace = new HashMap<>() {{
-        put("p", "http://www.pijz.rs/poverenik");
+            put("p", "http://www.pijz.rs/poverenik");
         }};
         return runXpath("/db/pijz_sluzbenik/poverenik", namespace, query);
     }

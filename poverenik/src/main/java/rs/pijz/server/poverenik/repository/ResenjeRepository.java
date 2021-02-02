@@ -14,10 +14,10 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 @Repository
 public class ResenjeRepository {
+    private final String collectionURI = "/db/pijz_poverenik/resenje";
     @Autowired
     private DatabaseConnection databaseConnection;
     @Autowired
@@ -25,23 +25,41 @@ public class ResenjeRepository {
     @Autowired
     private CommonRepository commonRepository;
 
-    public Resenje save(Resenje Resenje) throws XMLDBException, JAXBException {
-        Collection collection = databaseConnection.getOrCreateCollection("/db/pijz_poverenik/resenje");
-        XMLResource resource = (XMLResource) collection.createResource(null, XMLResource.RESOURCE_TYPE);
+    private String getDocumentName(String id) {
+        return "resenje-" + id + ".xml";
+    }
+
+    public Resenje save(Resenje resenje) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.createResource(getDocumentName(resenje.getID()), XMLResource.RESOURCE_TYPE);
         OutputStream stream = new ByteArrayOutputStream();
-        jaxbService.marshal(Resenje, stream, Resenje.class);
+        jaxbService.marshal(resenje, stream, Resenje.class);
         resource.setContent(stream);
         collection.storeResource(resource);
-        return Resenje;
+        return resenje;
+    }
+
+    public Resenje edit(Resenje resenje) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(resenje.getID()));
+        OutputStream stream = new ByteArrayOutputStream();
+        jaxbService.marshal(resenje, stream, Resenje.class);
+        resource.setContent(stream);
+        collection.storeResource(resource);
+        return resenje;
+    }
+
+    public void delete(String id) throws XMLDBException, JAXBException {
+        Collection collection = databaseConnection.getOrCreateCollection(collectionURI);
+        XMLResource resource = (XMLResource) collection.getResource(getDocumentName(id));
+        collection.removeResource(resource);
     }
 
     public void generateResenjeXML(String ID, String file) throws XMLDBException, JAXBException, FileNotFoundException {
-        String xpath = "/r:Resenje[@ID='" + ID + "']";
-        HashMap<String, String> namespace = new HashMap<>();
-        namespace.put("r", "http://www.pijz.rs/resenje");
-        ResourceSet result = commonRepository.runXpath("/db/pijz_poverenik/resenje", namespace, xpath);
-        Resenje Resenje = (Resenje) commonRepository.resourceSetToClass(result, Resenje.class);
-        String xmlFile = "data/xml-schemas/instance/" + file + ".xml";
-        commonRepository.generateXML(Resenje.class, Resenje, xmlFile);
+        String xpath = "/r:Resenje[@ID='" + ID + "']]";
+        ResourceSet result = commonRepository.queryResenje(xpath);
+        Resenje resenje = (Resenje) commonRepository.resourceSetToClass(result, Resenje.class);
+        String xmlFile = "data/xsd/instance/" + file + ".xml";
+        commonRepository.generateXML(Resenje.class, resenje, xmlFile);
     }
 }
