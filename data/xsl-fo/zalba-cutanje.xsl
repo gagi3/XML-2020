@@ -38,7 +38,7 @@
                         <fo:block text-align="center">ЖАЛБУ</fo:block>
                         <fo:block text-align="center">против</fo:block>
                         <fo:block margin-top="10px">
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:protiv_organa"/>  
+                            <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:protiv_organa"/> </fo:inline>
                             <fo:block margin-top="10px" text-align="center"> (навести назив органа) </fo:block>
                         </fo:block>
                         <fo:block margin-top="10px" text-align="center">
@@ -68,7 +68,7 @@
                             документа који садржи информације о /у вези са :
                         </fo:block>
                         <fo:block margin-top="10px">
-                            <xsl:value-of select="zc:ZalbaCutanje/zc:podaci_o_zahtevu"/>  
+                            <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:podaci_o_zahtevu"/> </fo:inline>
                             <fo:block margin-top="10px" text-align="center"> (навести податке о захтеву и информацији/ама) </fo:block>
                         </fo:block>
 
@@ -78,7 +78,7 @@
 
                         <fo:block margin-top="20px" text-align="right">
                             <fo:block>
-                                <fo:block margin-top="10px">
+                                <fo:block text-decoration="underline" margin-top="10px">
                                     <xsl:call-template name="FizickoLiceSimple">
                                         <xsl:with-param name="fizickoLice" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba"/>
                                     </xsl:call-template>
@@ -87,7 +87,7 @@
                                     Подносилац жалбе / Име и презиме
                                 </fo:block>
 
-                                <fo:block margin-top="10px"> 
+                                <fo:block text-decoration="underline" margin-top="10px"> 
                                     <xsl:call-template name="Adresa">
                                         <xsl:with-param name="adresa" select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:osoba/cmn:adresa"/>
                                     </xsl:call-template> 
@@ -96,7 +96,7 @@
                                     адреса
                                 </fo:block>
 
-                                <fo:block margin-top="10px">
+                                <fo:block text-decoration="underline" margin-top="10px">
                                     <xsl:value-of select="zc:ZalbaCutanje/zc:podnosilac_zalbe/zc:drugi_kontakt"/>
                                 </fo:block>
                                 <fo:block>
@@ -107,8 +107,8 @@
                     </fo:block>
                     <fo:block margin-top="20px">
                         <fo:block>
-                            У <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:grad"/>, 
-                            дана <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:datum"/> године
+                            У <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:grad"/> </fo:inline>, 
+                            дана <fo:inline text-decoration="underline"> <xsl:value-of select="zc:ZalbaCutanje/zc:mesto_podnosenja_zalbe/zc:datum"/> </fo:inline> године
                         </fo:block>
                     </fo:block>
                 </fo:flow>

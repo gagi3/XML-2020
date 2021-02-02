@@ -23,9 +23,11 @@
             <fo:page-sequence master-reference="zahtev-page">
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block text-align="center">
-                        <xsl:call-template name="PravnoLice">
-                            <xsl:with-param name="pravnoLice" select="z:Zahtev/z:poverenik" />
-                        </xsl:call-template> 
+                        <fo:inline text-decoration="underline">
+                            <xsl:call-template name="PravnoLice">
+                                <xsl:with-param name="pravnoLice" select="z:Zahtev/z:poverenik" />
+                            </xsl:call-template> 
+                        </fo:inline>
                         <fo:block text-align="center">(назив и седиште органа коме се захтев упућује)</fo:block>
                     </fo:block>
 
@@ -113,7 +115,7 @@
                                                     <fo:block>
                                                         <xsl:if test="z:Zahtev/z:dostava = 'drugo'"><fo:inline color="red">×</fo:inline></xsl:if>
                                                         на други начин: <fo:inline font-size="75%" baseline-shift="super">***</fo:inline> 
-                                                        <xsl:value-of select="z:Zahtev/z:drugiNacinDostave"/>
+                                                        <fo:inline text-decoration="underline"> <xsl:value-of select="z:Zahtev/z:drugiNacinDostave"/> </fo:inline>
                                                     </fo:block>
                                                 </fo:list-item-body>
                                             </fo:list-item>
@@ -125,7 +127,7 @@
                         
                         <fo:block margin-top="10px">
                             <fo:block> Овај захтев се односи на следеће информације: </fo:block>
-                            <fo:block margin-top="8px"> <xsl:value-of select="z:Zahtev/z:opisInformacije"/> </fo:block>
+                            <fo:block text-decoration="underline" margin-top="8px"> <xsl:value-of select="z:Zahtev/z:opisInformacije"/> </fo:block>
                             <fo:block margin-top="8px" font-size="8px">
                                 (навести што прецизнији опис информације која се тражи као и друге податке који олакшавају проналажење тражене информације)
                             </fo:block>
@@ -135,7 +137,7 @@
                             <fo:block margin-top="20px" text-align="right">
                                 <fo:block>
                                     <fo:block margin-top="10px">
-                                        <fo:block> 
+                                        <fo:block text-decoration="underline"> 
                                             <xsl:call-template name="FizickoLiceSimple">
                                                 <xsl:with-param name="fizickoLice" select="z:Zahtev/z:trazilac"/>
                                             </xsl:call-template>
@@ -146,7 +148,7 @@
                                     </fo:block>
 
                                     <fo:block margin-top="10px">
-                                        <fo:block> 
+                                        <fo:block text-decoration="underline"> 
                                             <xsl:call-template name="Adresa">
                                                 <xsl:with-param name="adresa" select="z:Zahtev/z:trazilac/cmn:adresa"/>
                                             </xsl:call-template> 
@@ -157,7 +159,7 @@
                                     </fo:block>
 
                                     <fo:block margin-top="10px">
-                                        <fo:block>
+                                        <fo:block text-decoration="underline">
                                             <xsl:value-of select="z:Zahtev/z:trazilacDodatniKontakt"/>
                                         </fo:block>
                                         <fo:block>
@@ -168,8 +170,8 @@
                             </fo:block>
 
                             <fo:block>
-                                У <xsl:value-of select="z:Zahtev/z:mesto"/>,
-                                дана <xsl:value-of select="z:Zahtev/@datum"/> године.
+                                У <fo:inline text-decoration="underline"> <xsl:value-of select="z:Zahtev/z:mesto"/> </fo:inline>,
+                                дана <fo:inline text-decoration="underline"> <xsl:value-of select="z:Zahtev/@datum"/> </fo:inline> године.
                             </fo:block>
 
                         </fo:block>
