@@ -3,7 +3,13 @@ package rs.pijz.server.poverenik.model.zalba_cutanje;
 
 import rs.pijz.server.poverenik.model.common.*;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -34,7 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="protiv_organa" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="razlog" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="razlog" type="{http://www.pijz.rs/zalba-cutanje}Razlog"/>
  *         &lt;element name="podaci_o_zahtevu" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="podnosilac_zalbe">
  *           &lt;complexType>
@@ -76,7 +82,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
-@XmlRootElement(name = "ZalbaCutanje", namespace = "http://www.pijz.rs/zalba-cutanje")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ZalbaCutanje", namespace = "http://www.pijz.rs/zalba-cutanje", propOrder = {
     "metadata",
@@ -99,7 +104,8 @@ public class ZalbaCutanje {
     @XmlElement(name = "protiv_organa", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected String protivOrgana;
     @XmlElement(namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
-    protected String razlog;
+    @XmlSchemaType(name = "string")
+    protected Razlog razlog;
     @XmlElement(name = "podaci_o_zahtevu", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
     protected String podaciOZahtevu;
     @XmlElement(name = "podnosilac_zalbe", namespace = "http://www.pijz.rs/zalba-cutanje", required = true)
@@ -229,10 +235,10 @@ public class ZalbaCutanje {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Razlog }
      *     
      */
-    public String getRazlog() {
+    public Razlog getRazlog() {
         return razlog;
     }
 
@@ -241,10 +247,10 @@ public class ZalbaCutanje {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Razlog }
      *     
      */
-    public void setRazlog(String value) {
+    public void setRazlog(Razlog value) {
         this.razlog = value;
     }
 

@@ -74,6 +74,8 @@ import java.util.List;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element name="cena" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="informacija" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -91,7 +93,6 @@ import java.util.List;
  * 
  * 
  */
-@XmlRootElement(name = "Obavestenje", namespace = "http://www.pijz.rs/obavestenje")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Obavestenje", namespace = "http://www.pijz.rs/obavestenje", propOrder = {
     "metadata",
@@ -100,7 +101,9 @@ import java.util.List;
     "naslov",
     "podnaslov",
     "telo",
-    "podnozje"
+    "podnozje",
+    "cena",
+    "informacija"
 })
 public class Obavestenje {
 
@@ -118,6 +121,10 @@ public class Obavestenje {
     protected Telo telo;
     @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
     protected Podnozje podnozje;
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje")
+    protected double cena;
+    @XmlElement(namespace = "http://www.pijz.rs/obavestenje", required = true)
+    protected String informacija;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -311,6 +318,46 @@ public class Obavestenje {
      */
     public void setPodnozje(Podnozje value) {
         this.podnozje = value;
+    }
+
+    /**
+     * Gets the value of the cena property.
+     * 
+     */
+    public double getCena() {
+        return cena;
+    }
+
+    /**
+     * Sets the value of the cena property.
+     * 
+     */
+    public void setCena(double value) {
+        this.cena = value;
+    }
+
+    /**
+     * Gets the value of the informacija property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getInformacija() {
+        return informacija;
+    }
+
+    /**
+     * Sets the value of the informacija property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setInformacija(String value) {
+        this.informacija = value;
     }
 
     /**
