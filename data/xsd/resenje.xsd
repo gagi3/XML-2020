@@ -63,6 +63,7 @@
         <xs:attribute name="ID" type="xs:ID"/>
         <xs:attribute name="broj" type="xs:string"/>
         <xs:attribute name="zalbaID" type="xs:string"/>
+        <xs:attribute name="datum" type="xs:date"/>
         <xs:attribute name="datum_zahteva" type="xs:date"/>
         <xs:attribute name="datum_zalbe" type="xs:date"/>
         <xs:attribute name="datum_postupka" type="xs:date"/>

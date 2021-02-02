@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getZalbaOdlukaRequest xmlns="http://www.pijz.rs/zalba-odluka">
+         <broj xmlns="http://www.pijz.rs/zalba-odluka">ZO-001</broj>
+      </getZalbaOdlukaRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getResenjeRequest xmlns="http://www.pijz.rs/resenje">
+         <broj xmlns="http://www.pijz.rs/resenje">R-001</broj>
+      </getResenjeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

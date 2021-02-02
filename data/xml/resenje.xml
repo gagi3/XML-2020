@@ -4,7 +4,7 @@
  xmlns:cmn="http://www.pijz.rs/common"
  xmlns:r="http://www.pijz.rs/resenje"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.pijz.rs/resenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/resenje.xsd" ID="ID000" broj="071-01-1114/2020-03" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04"
+ xsi:schemaLocation="http://www.pijz.rs/resenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/resenje.xsd" ID="ID000" broj="071-01-1114/2020-03" datum="2006-05-04" datum_zahteva="2006-05-04" datum_zalbe="2006-05-04" datum_postupka="2006-05-04"
      tip="zalba_osnovana">
     <r:metadata>
         <cmn:meta property="property0" content="content0">meta0</cmn:meta>

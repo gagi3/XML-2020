@@ -10,10 +10,13 @@ import org.xmldb.api.base.XMLDBException;
 import rs.pijz.server.poverenik.model.izvestaj.Izvestaj;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.IzvestajRepository;
+import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,15 @@ public class IzvestajService {
     private IzvestajRepository izvestajRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private XSLFOTransformer xslfoTransformer;
+    
+    private String xslTemplatePath = "../data/xsl/izvestaj.xsl";
+    private String xslfoTemplatePath = "../data/xsl-fo/izvestaj.xsl";
+    
+    private String htmlOutput = "../data/html/izvestaj.html";
+    private String pdfOutput = "../data/pdf/izvestaj.pdf";
 
     public List<Izvestaj> findAll() throws XMLDBException {
         String xPath = "/iz:Izvestaj";
@@ -71,4 +83,12 @@ public class IzvestajService {
         documentService.createXML(Izvestaj.class, izvestaj, xmlInstance);
         System.out.println("Docs generated!");
     }
+    
+    public String convertToHTML(String xml) throws Exception {
+    	return xslfoTransformer.generateHTML(xml, htmlOutput, xslTemplatePath);
+    }
+    
+    public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
+		return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+	}
 }

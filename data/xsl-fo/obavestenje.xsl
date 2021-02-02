@@ -23,7 +23,7 @@
                 <fo:flow flow-name="xsl-region-body">
 
                     <fo:block>
-                        <xsl:value-of select="o:Obavestenje/o:organ/o:naziv"/>
+                        <fo:block> <xsl:value-of select="o:Obavestenje/o:organ/o:naziv"/> </fo:block>
                         <xsl:call-template name="Adresa">
                             <xsl:with-param name="adresa" select="o:Obavestenje/o:organ/o:sediste"/>
                         </xsl:call-template>
@@ -59,7 +59,7 @@
                         <fo:block margin-top="10px" text-align="justify">
                             На основу члана 16. ст. 1. Закона о слободном приступу информацијама од јавног значаја, поступајући по вашем захтеву 
                             за слободан приступ информацијама од <xsl:value-of select="o:Obavestenje/@datum_zahtevanja"/> којим сте тражили увид у документ/е са 
-                            информацијама о / у вези са: (опис тражене информације), обавештавамо вас да дана <xsl:value-of select="o:Obavestenje/@datum_uvida"/>
+                            информацијама о / у вези са: <xsl:value-of select="o:Obavestenje/o:informacija"/>, обавештавамо вас да дана <xsl:value-of select="o:Obavestenje/@datum_uvida"/>
                             у периоду од <xsl:value-of select="o:Obavestenje/@vreme_uvida_od"/> до <xsl:value-of select="o:Obavestenje/@vreme_uvida_do"/> часова
                             можете извршити увид у документ/е у коме је садржана тражена информација.
                         </fo:block>
@@ -72,7 +72,7 @@
                             једне стране документа из физичког у електронски облик – 30 динара.
                         </fo:block>
                         <fo:block margin-top="10px" text-align="justify">
-                            Износ укупних трошкова израде копије документа по вашем захтеву износи ............ динара 
+                            Износ укупних трошкова израде копије документа по вашем захтеву износи <xsl:value-of select="o:Obavestenje/o:cena"/> динара 
                             и уплаћује се на жиро-рачун Буџета Републике Србије бр. 840-742328-843-30, с позивом на број 97 – 
                             ознака шифре општине/града где се налази орган власти (из Правилника о условима и начину вођења рачуна 
                             – „Сл. гласник РС“, 20/07... 40/10). 
@@ -80,27 +80,33 @@
                     </fo:block>
 
                     <fo:block margin-top="20px" span="all">
-                        <fo:block margin-top="10px">
-                            Достављено: 
-                            <fo:list-block>
-                                <fo:list-item>
-                                    <fo:list-item-label start-indent="body-start()"> <fo:block>-</fo:block> </fo:list-item-label>
-                                    <fo:list-item-body start-indent="body-start()"> <fo:block>именованом</fo:block> </fo:list-item-body>
-                                </fo:list-item>
-                                <fo:list-item>
-                                    <fo:list-item-label start-indent="body-start()"> <fo:block>-</fo:block> </fo:list-item-label>
-                                    <fo:list-item-body start-indent="body-start()"> <fo:block>архиви</fo:block> </fo:list-item-body>
-                                </fo:list-item>
-                            </fo:list-block>
-                        </fo:block>
-                        <fo:block margin-top="10px"> (М. П.) </fo:block>
-                        <fo:block margin-top="10px">
-                            <fo:block> 
-                                <xsl:value-of select="o:Obavestenje/o:podnozje/o:potpis"/>
-                                <fo:block> (потпис овлашћеног лица, односно руководиоца органа) </fo:block>
+                        <fo:inline-container inline-progression-dimension="40%">
+                            <fo:block margin-top="10px">
+                                Достављено: 
+                                <fo:list-block>
+                                    <fo:list-item>
+                                        <fo:list-item-label end-indent="label-end()"> <fo:block>-</fo:block> </fo:list-item-label>
+                                        <fo:list-item-body start-indent="body-start()"> <fo:block>именованом</fo:block> </fo:list-item-body>
+                                    </fo:list-item>
+                                    <fo:list-item>
+                                        <fo:list-item-label end-indent="label-end()"> <fo:block>-</fo:block> </fo:list-item-label>
+                                        <fo:list-item-body start-indent="body-start()"> <fo:block>архиви</fo:block> </fo:list-item-body>
+                                    </fo:list-item>
+                                </fo:list-block>
                             </fo:block>
-                            <xsl:value-of select="o:Obavestenje/o:podnozje/o:pecat"/>
-                        </fo:block>
+                        </fo:inline-container>
+                        <fo:inline-container inline-progression-dimension="20%">
+                            <fo:block margin-top="10px"> (М. П.) </fo:block>
+                        </fo:inline-container>
+                        <fo:inline-container inline-progression-dimension="40%">
+                            <fo:block margin-top="10px">
+                                <fo:block> 
+                                    <xsl:value-of select="o:Obavestenje/o:podnozje/o:potpis"/>
+                                    <fo:block> (потпис овлашћеног лица, односно руководиоца органа) </fo:block>
+                                </fo:block>
+                                <xsl:value-of select="o:Obavestenje/o:podnozje/o:pecat"/>
+                            </fo:block>
+                        </fo:inline-container>
                     </fo:block>
                 </fo:flow>
             </fo:page-sequence>

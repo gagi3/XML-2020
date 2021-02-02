@@ -21,33 +21,37 @@
             <fo:page-sequence master-reference="resenje-page">
                 <fo:flow flow-name="xsl-region-body">
                     <fo:block>
-                        <fo:block>
+                        <fo:inline-container inline-progression-dimension="50%">
                             <fo:block>
-                                <xsl:choose>
-                                    <xsl:when test="r:Resenje/@tip = 'zalba_osnovana'">
-                                        Решење када је жалба основана - налаже се:
-                                    </xsl:when>
-                                    <xsl:when test="r:Resenje/@tip = 'zalba_neosnovana'">
-                                        Решење - одбија се као неоснована:
-                                    </xsl:when>
-                                    <xsl:when test="r:Resenje/@tip = 'zahtev_odbijen'">
-                                        Решење - одбија се захтев:
-                                    </xsl:when>
-                                    <xsl:when test="r:Resenje/@tip = 'ponisteno'">
-                                        Решење - поништава се:
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        Решење:
-                                    </xsl:otherwise>
-                                </xsl:choose>
+                                <fo:block>
+                                    <xsl:choose>
+                                        <xsl:when test="r:Resenje/@tip = 'zalba_osnovana'">
+                                            Решење када је жалба основана - налаже се:
+                                        </xsl:when>
+                                        <xsl:when test="r:Resenje/@tip = 'zalba_neosnovana'">
+                                            Решење - одбија се као неоснована:
+                                        </xsl:when>
+                                        <xsl:when test="r:Resenje/@tip = 'zahtev_odbijen'">
+                                            Решење - одбија се захтев:
+                                        </xsl:when>
+                                        <xsl:when test="r:Resenje/@tip = 'ponisteno'">
+                                            Решење - поништава се:
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            Решење:
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                </fo:block>
+                                <fo:block>
+                                    Број: <xsl:value-of select="r:Resenje/@broj"/>
+                                </fo:block>
                             </fo:block>
-                            <fo:block>
-                                Број: <xsl:value-of select="r:Resenje/@broj"/>
+                        </fo:inline-container>
+                        <fo:inline-container inline-progression-dimension="50%">
+                            <fo:block text-align="right">
+                                Датум: <xsl:value-of select="r:Resenje/@datum"/>
                             </fo:block>
-                        </fo:block>
-                        <fo:block>
-                            Датум: <xsl:value-of select="r:Resenje/@datum"/>
-                        </fo:block>
+                        </fo:inline-container>
                     </fo:block>
                     <fo:block margin-top="20px">
                         <fo:block text-align="justify">
