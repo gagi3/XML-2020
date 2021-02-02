@@ -59,6 +59,28 @@ public class ZalbaOdlukaController {
         }
     }
 
+    @PostMapping(value = "/edit", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<ZalbaOdluka> edit(@RequestBody ZalbaOdluka zalbaOdluka) {
+        try {
+            ZalbaOdluka zalbaOdluka1 = zalbaOdlukaService.edit(zalbaOdluka);
+            return ResponseEntity.ok().body(zalbaOdluka1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Boolean> delete(@RequestParam String id) {
+        try {
+            Boolean deleted = zalbaOdlukaService.delete(id);
+            return ResponseEntity.ok().body(deleted);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
@@ -75,16 +97,16 @@ public class ZalbaOdlukaController {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
     }
-    
+
     @PostMapping(value = "/convert-to-html")
     public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
-    	String result = zalbaOdlukaService.convertToHTML(domParserService.readMultipartXMLFile(file));
+        String result = zalbaOdlukaService.convertToHTML(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
+
     @PostMapping(value = "/convert-to-pdf")
     public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
-    	ByteArrayOutputStream result = zalbaOdlukaService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        ByteArrayOutputStream result = zalbaOdlukaService.convertToPDF(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

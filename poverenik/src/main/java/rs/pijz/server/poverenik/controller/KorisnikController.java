@@ -63,6 +63,28 @@ public class KorisnikController {
         }
     }
 
+    @PostMapping(value = "/edit", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Korisnik> edit(@RequestBody Korisnik korisnik) {
+        try {
+            Korisnik korisnik1 = korisnikService.edit(korisnik);
+            return ResponseEntity.ok().body(korisnik1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Boolean> delete(@RequestParam String id) {
+        try {
+            Boolean deleted = korisnikService.delete(id);
+            return ResponseEntity.ok().body(deleted);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {

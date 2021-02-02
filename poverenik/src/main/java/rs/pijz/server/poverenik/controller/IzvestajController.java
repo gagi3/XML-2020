@@ -64,6 +64,28 @@ public class IzvestajController {
         }
     }
 
+    @PostMapping(value = "/edit", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Izvestaj> edit(@RequestBody Izvestaj izvestaj) {
+        try {
+            Izvestaj izvestaj1 = izvestajService.edit(izvestaj);
+            return ResponseEntity.ok().body(izvestaj1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Boolean> delete(@RequestParam String id) {
+        try {
+            Boolean deleted = izvestajService.delete(id);
+            return ResponseEntity.ok().body(deleted);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
@@ -80,16 +102,16 @@ public class IzvestajController {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
     }
-    
+
     @PostMapping(value = "/convert-to-html")
     public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
-    	String result = izvestajService.convertToHTML(domParserService.readMultipartXMLFile(file));
+        String result = izvestajService.convertToHTML(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
+
     @PostMapping(value = "/convert-to-pdf")
     public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
-    	ByteArrayOutputStream result = izvestajService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        ByteArrayOutputStream result = izvestajService.convertToPDF(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }

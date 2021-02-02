@@ -63,6 +63,28 @@ public class ObavestenjeController {
         }
     }
 
+    @PostMapping(value = "/edit", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Obavestenje> edit(@RequestBody Obavestenje obavestenje) {
+        try {
+            Obavestenje obavestenje1 = obavestenjeService.edit(obavestenje);
+            return ResponseEntity.ok().body(obavestenje1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @DeleteMapping(value = "/delete", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Boolean> delete(@RequestParam String id) {
+        try {
+            Boolean deleted = obavestenjeService.delete(id);
+            return ResponseEntity.ok().body(deleted);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
