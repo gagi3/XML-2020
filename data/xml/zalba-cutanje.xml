@@ -20,7 +20,7 @@
         </zc:adresa_za_postu>
     </zc:kome_je_upucena>
     <zc:protiv_organa>Основни кривични суд у Београду</zc:protiv_organa>
-    <zc:razlog>није поступио / није поступио у целости /  у законском року</zc:razlog>
+    <zc:razlog>organ_nije_postupio</zc:razlog>
     <zc:podaci_o_zahtevu>детаљни подаци о захтеву и информацијама</zc:podaci_o_zahtevu>
     <zc:podnosilac_zalbe>
         <zc:osoba>

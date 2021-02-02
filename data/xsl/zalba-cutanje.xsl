@@ -38,7 +38,21 @@
                     </p>
                     <p class="c-centered">
                         због тога што орган власти: <br/>
-                        <b> <xsl:value-of select="zc:ZalbaCutanje/zc:razlog"/> </b> <br/>
+
+                        <xsl:choose>
+                            <xsl:when test="zc:ZalbaCutanje/zc:razlog = 'organ_nije_postupio'">
+                                <u>није поступио</u> / није поступио у целости / у законском року
+                            </xsl:when>
+                            <xsl:when test="zc:ZalbaCutanje/zc:razlog = 'organ_nije_postupio_u_celosti'">
+                                није поступио / <u>није поступио у целости</u> / у законском року
+                            </xsl:when>
+                            <xsl:when test="zc:ZalbaCutanje/zc:razlog = 'organ_nije_postupio_u_zakonskom_roku'">
+                                није поступио / није поступио у целости / <u>у законском року</u>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <u>није поступио</u> / није поступио у целости / у законском року
+                            </xsl:otherwise>
+                        </xsl:choose> <br/>
                         (подвући због чега се изјављује жалба)
                     </p>
                     <p>
