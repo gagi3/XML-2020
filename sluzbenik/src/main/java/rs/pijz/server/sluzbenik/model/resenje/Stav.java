@@ -29,6 +29,7 @@ import java.util.List;
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="rok_obavestenja" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="tekst" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *       &lt;attribute name="redni_broj" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
@@ -41,7 +42,8 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Stav", namespace = "http://www.pijz.rs/resenje", propOrder = {
     "dokument",
-    "rokObavestenja"
+    "rokObavestenja",
+    "tekst"
 })
 public class Stav {
 
@@ -49,6 +51,8 @@ public class Stav {
     protected Dokument dokument;
     @XmlElement(name = "rok_obavestenja", namespace = "http://www.pijz.rs/resenje")
     protected int rokObavestenja;
+    @XmlElement(namespace = "http://www.pijz.rs/resenje", required = true)
+    protected String tekst;
     @XmlAttribute(name = "redni_broj")
     protected Integer redniBroj;
 
@@ -90,6 +94,30 @@ public class Stav {
      */
     public void setRokObavestenja(int value) {
         this.rokObavestenja = value;
+    }
+
+    /**
+     * Gets the value of the tekst property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTekst() {
+        return tekst;
+    }
+
+    /**
+     * Sets the value of the tekst property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTekst(String value) {
+        this.tekst = value;
     }
 
     /**

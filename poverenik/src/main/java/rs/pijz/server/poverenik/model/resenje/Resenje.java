@@ -5,7 +5,13 @@ import rs.pijz.server.poverenik.model.common.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -52,6 +58,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="zalbaID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zalbe" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_postupka" type="{http://www.w3.org/2001/XMLSchema}date" />
@@ -66,7 +73,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
-@XmlRootElement(name = "Resenje", namespace = "http://www.pijz.rs/resenje")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Resenje", namespace = "http://www.pijz.rs/resenje", propOrder = {
     "metadata",
@@ -99,6 +105,9 @@ public class Resenje {
     protected String broj;
     @XmlAttribute(name = "zalbaID")
     protected String zalbaID;
+    @XmlAttribute(name = "datum")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar datum;
     @XmlAttribute(name = "datum_zahteva")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumZahteva;
@@ -331,6 +340,30 @@ public class Resenje {
      */
     public void setZalbaID(String value) {
         this.zalbaID = value;
+    }
+
+    /**
+     * Gets the value of the datum property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDatum() {
+        return datum;
+    }
+
+    /**
+     * Sets the value of the datum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDatum(XMLGregorianCalendar value) {
+        this.datum = value;
     }
 
     /**

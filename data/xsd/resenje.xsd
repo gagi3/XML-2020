@@ -28,6 +28,7 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="rok_obavestenja" type="xs:int"/>
+            <xs:element name="tekst" type="xs:string"/>
         </xs:sequence>
         <xs:attribute name="redni_broj" type="xs:int"/>
     </xs:complexType>

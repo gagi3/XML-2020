@@ -7,6 +7,14 @@
     <xs:import namespace="http://www.pijz.rs/common" schemaLocation="common.xsd"/>
 
     <xs:element name="ZalbaCutanje" type="zc:ZalbaCutanje"> </xs:element>
+
+    <xs:simpleType name="Razlog">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="organ_nije_postupio"/>
+            <xs:enumeration value="organ_nije_postupio_u_celosti"/>
+            <xs:enumeration value="organ_nije_postupio_u_zakonskom_roku"/>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:complexType name="ZalbaCutanje">
         <xs:sequence>
             <xs:element name="metadata" type="cmn:MetaData"/>
@@ -20,7 +28,7 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="protiv_organa" nillable="false" type="xs:string"/>
-            <xs:element name="razlog" type="xs:string"/>
+            <xs:element name="razlog" type="zc:Razlog"/>
             <xs:element name="podaci_o_zahtevu" type="xs:string"/>
             <xs:element name="podnosilac_zalbe">
                 <xs:complexType>

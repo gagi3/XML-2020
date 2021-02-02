@@ -55,6 +55,7 @@ import java.util.List;
  *       &lt;attribute name="ID" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="zalbaID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zalbe" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_postupka" type="{http://www.w3.org/2001/XMLSchema}date" />
@@ -69,7 +70,6 @@ import java.util.List;
  * 
  * 
  */
-@XmlRootElement(name = "Resenje", namespace = "http://www.pijz.rs/resenje")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Resenje", namespace = "http://www.pijz.rs/resenje", propOrder = {
     "metadata",
@@ -102,6 +102,9 @@ public class Resenje {
     protected String broj;
     @XmlAttribute(name = "zalbaID")
     protected String zalbaID;
+    @XmlAttribute(name = "datum")
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar datum;
     @XmlAttribute(name = "datum_zahteva")
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumZahteva;
@@ -334,6 +337,30 @@ public class Resenje {
      */
     public void setZalbaID(String value) {
         this.zalbaID = value;
+    }
+
+    /**
+     * Gets the value of the datum property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDatum() {
+        return datum;
+    }
+
+    /**
+     * Sets the value of the datum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDatum(XMLGregorianCalendar value) {
+        this.datum = value;
     }
 
     /**
