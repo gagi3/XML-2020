@@ -1,12 +1,7 @@
 package rs.pijz.server.sluzbenik;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import rs.pijz.server.sluzbenik.soap.client.ObavestenjeClient;
-import rs.pijz.server.sluzbenik.soap.communication.obavestenje.GetObavestenjeResponse;
 
 @SpringBootApplication
 public class SluzbenikApplication {
@@ -15,18 +10,18 @@ public class SluzbenikApplication {
         SpringApplication.run(SluzbenikApplication.class, args);
     }
     
-    @Bean
-    CommandLineRunner lookupObavestenje(ObavestenjeClient obavestenjeClient) {
-      return args -> {
-        String broj = "OB-001";
-
-        if (args.length > 0) {
-          broj = args[0];
-        }
-        
-        GetObavestenjeResponse response = obavestenjeClient.getObavestenje(broj);
-        System.err.println(response.getObavestenje().getBroj());
-      };
-    }
+//    @Bean
+//    CommandLineRunner lookupObavestenje(ObavestenjeClient obavestenjeClient) {
+//      return args -> {
+//        String broj = "OB-001";
+//
+//        if (args.length > 0) {
+//          broj = args[0];
+//        }
+//        
+//        GetObavestenjeResponse response = obavestenjeClient.getObavestenje(broj);
+//        System.err.println(response.getObavestenje().getBroj());
+//      };
+//    }
 
 }
