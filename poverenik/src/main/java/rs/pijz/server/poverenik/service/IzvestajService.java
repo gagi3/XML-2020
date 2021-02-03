@@ -1,24 +1,30 @@
 package rs.pijz.server.poverenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.poverenik.model.izvestaj.Izvestaj;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.IzvestajRepository;
+import rs.pijz.server.poverenik.soap.client.IzvestajClient;
+import rs.pijz.server.poverenik.soap.communication.izvestaj.ExchangeIzvestajResponse;
+import rs.pijz.server.poverenik.soap.communication.izvestaj.GetIzvestajResponse;
 import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class IzvestajService {
@@ -28,6 +34,9 @@ public class IzvestajService {
     private IzvestajRepository izvestajRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private IzvestajClient izvestajClient;
 
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -112,5 +121,17 @@ public class IzvestajService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public Izvestaj getOneSOAP(String id) {
+    	GetIzvestajResponse response = izvestajClient.getIzvestaj(id);
+    	return response.getIzvestaj();
+    }
+    
+    public Boolean exchangeSOAP(Izvestaj izvestaj) {
+    	ExchangeIzvestajResponse response = izvestajClient.exchangeIzvestaj(izvestaj);
+    	return response.isStatus();
     }
 }

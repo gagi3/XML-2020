@@ -28,6 +28,9 @@ import rs.pijz.server.sluzbenik.model.zahtev.Zahtev;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ZahtevRepository;
 import rs.pijz.server.sluzbenik.service.auth.intf.AuthenticationService;
+import rs.pijz.server.sluzbenik.soap.client.ZahtevClient;
+import rs.pijz.server.sluzbenik.soap.communication.zahtev.ExchangeZahtevResponse;
+import rs.pijz.server.sluzbenik.soap.communication.zahtev.GetZahtevResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
@@ -44,6 +47,9 @@ public class ZahtevService {
 
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZahtevClient zahtevClient;
     
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -174,5 +180,17 @@ public class ZahtevService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public Zahtev getOneSOAP(String id) {
+    	GetZahtevResponse response = zahtevClient.getZahtev(id);
+    	return response.getZahtev();
+    }
+    
+    public Boolean exchangeSOAP(Zahtev zahtev) {
+    	ExchangeZahtevResponse response = zahtevClient.exchangeZahtev(zahtev);
+    	return response.isStatus();
     }
 }

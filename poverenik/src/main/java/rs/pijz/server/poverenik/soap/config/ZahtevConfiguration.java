@@ -19,7 +19,7 @@ public class ZahtevConfiguration {
 	@Bean
 	public ZahtevClient zahtevClient(Jaxb2Marshaller zahtevMarshaller) {
 		ZahtevClient client = new ZahtevClient();
-		client.setDefaultUri("http://localhost:8080/ws");
+		client.setDefaultUri("http://localhost:8081/ws");
 		client.setMarshaller(zahtevMarshaller);
 		client.setUnmarshaller(zahtevMarshaller);
 		return client;

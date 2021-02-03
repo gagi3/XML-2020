@@ -22,6 +22,9 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.sluzbenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ZalbaCutanjeRepository;
+import rs.pijz.server.sluzbenik.soap.client.ZalbaCutanjeClient;
+import rs.pijz.server.sluzbenik.soap.communication.zalba_cutanje.ExchangeZalbaCutanjeResponse;
+import rs.pijz.server.sluzbenik.soap.communication.zalba_cutanje.GetZalbaCutanjeResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
@@ -32,6 +35,9 @@ public class ZalbaCutanjeService {
     private ZalbaCutanjeRepository zalbaCutanjeRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZalbaCutanjeClient zalbaCutanjeClient;
     
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -200,5 +206,17 @@ public class ZalbaCutanjeService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public ZalbaCutanje getOneSOAP(String id) {
+    	GetZalbaCutanjeResponse response = zalbaCutanjeClient.getZalbaCutanje(id);
+    	return response.getZalbaCutanje();
+    }
+    
+    public Boolean exchangeSOAP(ZalbaCutanje zalbaCutanje) {
+    	ExchangeZalbaCutanjeResponse response = zalbaCutanjeClient.exchangeZalbaCutanje(zalbaCutanje);
+    	return response.isStatus();
     }
 }

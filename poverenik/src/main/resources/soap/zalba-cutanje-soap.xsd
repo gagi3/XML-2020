@@ -9,7 +9,7 @@
     <xs:element name="getZalbaCutanjeRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="broj" type="xs:string" />
+				<xs:element name="id" type="xs:ID" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -18,6 +18,22 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="zalbaCutanje" type="zc:ZalbaCutanje" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="exchangeZalbaCutanjeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="zalbaCutanje" type="zc:ZalbaCutanje" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="exchangeZalbaCutanjeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:boolean" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
