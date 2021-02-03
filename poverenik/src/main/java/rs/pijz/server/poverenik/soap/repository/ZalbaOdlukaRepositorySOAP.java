@@ -12,8 +12,8 @@ public class ZalbaOdlukaRepositorySOAP {
 	@Autowired
 	private ZalbaOdlukaService zalbaOdlukaService;
 
-	public ZalbaOdluka getZalbaOdluka(String broj) throws Exception {
-		ZalbaOdluka zalbaOdluka = zalbaOdlukaService.getOne(broj);
+	public ZalbaOdluka getZalbaOdluka(String id) throws Exception {
+		ZalbaOdluka zalbaOdluka = zalbaOdlukaService.getOne(id);
 
 		return zalbaOdluka;
 	}

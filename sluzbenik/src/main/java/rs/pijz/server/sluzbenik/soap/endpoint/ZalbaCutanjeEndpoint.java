@@ -24,7 +24,7 @@ public class ZalbaCutanjeEndpoint {
 	@ResponsePayload
 	public GetZalbaCutanjeResponse getZalbaCutanje(@RequestPayload GetZalbaCutanjeRequest request) throws Exception {
 		GetZalbaCutanjeResponse response = new GetZalbaCutanjeResponse();
-		response.setZalbaCutanje(zalbaCutanjeRepositorySOAP.getZalbaCutanje(request.getBroj()));
+		response.setZalbaCutanje(zalbaCutanjeRepositorySOAP.getZalbaCutanje(request.getId()));
 
 		return response;
 	}

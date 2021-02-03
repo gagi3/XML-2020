@@ -9,7 +9,7 @@
     <xs:element name="getZalbaCutanjeRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="broj" type="xs:string" />
+				<xs:element name="id" type="xs:ID" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

@@ -16,10 +16,10 @@ public class ZalbaCutanjeClient extends WebServiceGatewaySupport {
 	private static String GET_REQUEST_CALLBACK = "http://www.pijz.rs/zalba-cutanje/GetZalbaCutanjeRequest";
 	private static String EXCHANGE_REQUEST_CALLBACK = "http://www.pijz.rs/zalba-cutanje/ExchangeZalbaCutanjeRequest";
 
-	public GetZalbaCutanjeResponse getZalbaCutanje(String broj) {
+	public GetZalbaCutanjeResponse getZalbaCutanje(String id) {
 
 		GetZalbaCutanjeRequest request = new GetZalbaCutanjeRequest();
-		request.setBroj(broj);
+		request.setId(id);
 
 		GetZalbaCutanjeResponse response = (GetZalbaCutanjeResponse) getWebServiceTemplate()
 				.marshalSendAndReceive(WSDL_URL, request, new SoapActionCallback(GET_REQUEST_CALLBACK));

@@ -24,7 +24,7 @@ public class ZalbaOdlukaEndpoint {
 	@ResponsePayload
 	public GetZalbaOdlukaResponse getZalbaOdluka(@RequestPayload GetZalbaOdlukaRequest request) throws Exception {
 		GetZalbaOdlukaResponse response = new GetZalbaOdlukaResponse();
-		response.setZalbaOdluka(zalbaOdlukaRepositorySOAP.getZalbaOdluka(request.getBroj()));
+		response.setZalbaOdluka(zalbaOdlukaRepositorySOAP.getZalbaOdluka(request.getId()));
 
 		return response;
 	}
