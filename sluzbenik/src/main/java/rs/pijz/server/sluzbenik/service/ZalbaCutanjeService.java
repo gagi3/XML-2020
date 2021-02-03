@@ -3,6 +3,7 @@ package rs.pijz.server.sluzbenik.service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
@@ -49,6 +50,104 @@ public class ZalbaCutanjeService {
 
     public List<ZalbaCutanje> findAll() throws XMLDBException {
         String xPath = "/zc:ZalbaCutanje";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllByGradjanin(String id) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@gradjaninID='" + id + "']";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllBySluzbenik(String id) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@sluzbenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllByPoverenik(String id) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@poverenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllByBroj(String broj) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@broj='" + broj + "']";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllByZahtevId(String id) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@zahtevID='" + id + "']";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllByDatum(Date datum) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@datum='" + datum + "']";
+        ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<ZalbaCutanje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((ZalbaCutanje) commonRepository.resourceToClass(iterator.nextResource(), ZalbaCutanje.class));
+        }
+        return results;
+    }
+
+    public List<ZalbaCutanje> findAllByDatumZahteva(Date datum) throws XMLDBException {
+        String xPath = "/zc:ZalbaCutanje[@datum_zahteva='" + datum + "']";
         ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
         if (result.getSize() == 0) {
             return null;

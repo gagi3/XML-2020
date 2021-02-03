@@ -61,6 +61,20 @@ public class IzvestajService {
         return results;
     }
 
+    public List<Izvestaj> findAllBySluzbenik(String id) throws XMLDBException {
+        String xPath = "/iz:Izvestaj[@sluzbenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryIzvestaj(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Izvestaj> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Izvestaj) commonRepository.resourceToClass(iterator.nextResource(), Izvestaj.class));
+        }
+        return results;
+    }
+
     public Izvestaj getOne(String id) throws XMLDBException {
         String xPath = "/iz:Izvestaj[@id='" + id + "']";
         ResourceSet result = commonRepository.queryIzvestaj(xPath);

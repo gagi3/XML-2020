@@ -3,6 +3,7 @@ package rs.pijz.server.poverenik.service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
@@ -52,6 +53,48 @@ public class ZahtevService {
 
     public List<Zahtev> findAll() throws XMLDBException {
         String xPath = "/z:Zahtev";
+        ResourceSet result = commonRepository.queryZahtev(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Zahtev> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Zahtev) commonRepository.resourceToClass(iterator.nextResource(), Zahtev.class));
+        }
+        return results;
+    }
+
+    public List<Zahtev> findAllByGradjanin(String id) throws XMLDBException {
+        String xPath = "/z:Zahtev[@gradjaninID='" + id + "']";
+        ResourceSet result = commonRepository.queryZahtev(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Zahtev> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Zahtev) commonRepository.resourceToClass(iterator.nextResource(), Zahtev.class));
+        }
+        return results;
+    }
+
+    public List<Zahtev> findAllBySluzbenik(String id) throws XMLDBException {
+        String xPath = "/z:Zahtev[@sluzbenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryZahtev(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Zahtev> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Zahtev) commonRepository.resourceToClass(iterator.nextResource(), Zahtev.class));
+        }
+        return results;
+    }
+
+    public List<Zahtev> findAllByDatum(Date datum) throws XMLDBException {
+        String xPath = "/z:Zahtev[@datum='" + datum + "']";
         ResourceSet result = commonRepository.queryZahtev(xPath);
         if (result.getSize() == 0) {
             return null;
