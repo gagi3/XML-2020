@@ -24,6 +24,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean<>(servlet, "/ws/*");
 	}
 	
+	@Bean(name = "izvestaj-soap")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionIzvestaj(XsdSchema izvestajSchema) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("IzvestajPort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/izvestaj");
+		wsdl11Definition.setSchema(izvestajSchema);
+		return wsdl11Definition;
+	}
+	
 	@Bean(name = "zahtev-soap")
 	public DefaultWsdl11Definition defaultWsdl11DefinitionZahtev(XsdSchema zahtevSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -52,6 +62,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/zalba-odluka");
 		wsdl11Definition.setSchema(zalbaOdlukaSchema);
 		return wsdl11Definition;
+	}
+	
+	@Bean
+	public XsdSchema izvestajSchema() {
+		return new SimpleXsdSchema(new ClassPathResource("soap/izvestaj-soap.xsd"));
 	}
 	
 	@Bean
