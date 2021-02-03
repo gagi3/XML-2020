@@ -21,6 +21,9 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.sluzbenik.model.izvestaj.Izvestaj;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.IzvestajRepository;
+import rs.pijz.server.sluzbenik.soap.client.IzvestajClient;
+import rs.pijz.server.sluzbenik.soap.communication.izvestaj.ExchangeIzvestajResponse;
+import rs.pijz.server.sluzbenik.soap.communication.izvestaj.GetIzvestajResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
@@ -31,6 +34,9 @@ public class IzvestajService {
     private IzvestajRepository izvestajRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private IzvestajClient izvestajClient;
     
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -101,5 +107,17 @@ public class IzvestajService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+	// SOAP communications
+    
+    public Izvestaj getOneSOAP(String id) {
+    	GetIzvestajResponse response = izvestajClient.getIzvestaj(id);
+    	return response.getIzvestaj();
+    }
+    
+    public Boolean exchangeSOAP(Izvestaj izvestaj) {
+    	ExchangeIzvestajResponse response = izvestajClient.exchangeIzvestaj(izvestaj);
+    	return response.isStatus();
     }
 }

@@ -1,24 +1,30 @@
 package rs.pijz.server.poverenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.poverenik.model.zahtev.Zahtev;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ZahtevRepository;
+import rs.pijz.server.poverenik.soap.client.ZahtevClient;
+import rs.pijz.server.poverenik.soap.communication.zahtev.ExchangeZahtevResponse;
+import rs.pijz.server.poverenik.soap.communication.zahtev.GetZahtevResponse;
 import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ZahtevService {
@@ -31,6 +37,9 @@ public class ZahtevService {
 
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZahtevClient zahtevClient;
 
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -102,5 +111,17 @@ public class ZahtevService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public Zahtev getOneSOAP(String id) {
+    	GetZahtevResponse response = zahtevClient.getZahtev(id);
+    	return response.getZahtev();
+    }
+    
+    public Boolean exchangeSOAP(Zahtev zahtev) {
+    	ExchangeZahtevResponse response = zahtevClient.exchangeZahtev(zahtev);
+    	return response.isStatus();
     }
 }
