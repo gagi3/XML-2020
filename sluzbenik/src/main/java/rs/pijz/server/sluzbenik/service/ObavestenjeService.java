@@ -55,6 +55,34 @@ public class ObavestenjeService {
         return results;
     }
 
+    public List<Obavestenje> findAllByGradjanin(String id) throws XMLDBException {
+        String xPath = "/o:Obavestenje[@gradjaninID='" + id + "']";
+        ResourceSet result = commonRepository.queryObavestenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Obavestenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Obavestenje) commonRepository.resourceToClass(iterator.nextResource(), Obavestenje.class));
+        }
+        return results;
+    }
+
+    public List<Obavestenje> findAllBySluzbenik(String id) throws XMLDBException {
+        String xPath = "/o:Obavestenje[@sluzbenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryObavestenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Obavestenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Obavestenje) commonRepository.resourceToClass(iterator.nextResource(), Obavestenje.class));
+        }
+        return results;
+    }
+
     public Obavestenje getOne(String id) throws XMLDBException {
         String xPath = "/o:Obavestenje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryObavestenje(xPath);

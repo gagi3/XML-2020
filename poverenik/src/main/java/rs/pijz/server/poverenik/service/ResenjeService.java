@@ -18,6 +18,7 @@ import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,6 +44,132 @@ public class ResenjeService {
 
     public List<Resenje> findAll() throws XMLDBException {
         String xPath = "/r:Resenje";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByGradjanin(String id) throws XMLDBException {
+        String xPath = "/r:Resenje[@gradjaninID='" + id + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllBySluzbenik(String id) throws XMLDBException {
+        String xPath = "/r:Resenje[@sluzbenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByPoverenik(String id) throws XMLDBException {
+        String xPath = "/r:Resenje[@poverenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByBroj(String broj) throws XMLDBException {
+        String xPath = "/r:Resenje[@broj='" + broj + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByZalbaId(String id) throws XMLDBException {
+        String xPath = "/r:Resenje[@zalbaID='" + id + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByDatum(Date datum) throws XMLDBException {
+        String xPath = "/r:Resenje[@datum_izjave='" + datum + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByDatumZalbe(Date datum) throws XMLDBException {
+        String xPath = "/r:Resenje[@datum_zalbe='" + datum + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByDatumZahteva(Date datum) throws XMLDBException {
+        String xPath = "/r:Resenje[@datum_zahteva='" + datum + "']";
+        ResourceSet result = commonRepository.queryResenje(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<Resenje> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((Resenje) commonRepository.resourceToClass(iterator.nextResource(), Resenje.class));
+        }
+        return results;
+    }
+
+    public List<Resenje> findAllByDatumPostupka(Date datum) throws XMLDBException {
+        String xPath = "/r:Resenje[@datum_postupka='" + datum + "']";
         ResourceSet result = commonRepository.queryResenje(xPath);
         if (result.getSize() == 0) {
             return null;

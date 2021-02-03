@@ -18,6 +18,7 @@ import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,6 +44,90 @@ public class IzjasnjenjeNaZalbuService {
 
     public List<IzjasnjenjeNaZalbu> findAll() throws XMLDBException {
         String xPath = "/i:IzjasnjenjeNaZalbu";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<IzjasnjenjeNaZalbu> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((IzjasnjenjeNaZalbu) commonRepository.resourceToClass(iterator.nextResource(), IzjasnjenjeNaZalbu.class));
+        }
+        return results;
+    }
+
+    public List<IzjasnjenjeNaZalbu> findAllByGradjanin(String id) throws XMLDBException {
+        String xPath = "/i:IzjasnjenjeNaZalbu[@gradjaninID='" + id + "']";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<IzjasnjenjeNaZalbu> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((IzjasnjenjeNaZalbu) commonRepository.resourceToClass(iterator.nextResource(), IzjasnjenjeNaZalbu.class));
+        }
+        return results;
+    }
+
+    public List<IzjasnjenjeNaZalbu> findAllBySluzbenik(String id) throws XMLDBException {
+        String xPath = "/i:IzjasnjenjeNaZalbu[@sluzbenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<IzjasnjenjeNaZalbu> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((IzjasnjenjeNaZalbu) commonRepository.resourceToClass(iterator.nextResource(), IzjasnjenjeNaZalbu.class));
+        }
+        return results;
+    }
+
+    public List<IzjasnjenjeNaZalbu> findAllByPoverenik(String id) throws XMLDBException {
+        String xPath = "/i:IzjasnjenjeNaZalbu[@poverenikID='" + id + "']";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<IzjasnjenjeNaZalbu> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((IzjasnjenjeNaZalbu) commonRepository.resourceToClass(iterator.nextResource(), IzjasnjenjeNaZalbu.class));
+        }
+        return results;
+    }
+
+    public List<IzjasnjenjeNaZalbu> findAllByBroj(String broj) throws XMLDBException {
+        String xPath = "/i:IzjasnjenjeNaZalbu[@broj='" + broj + "']";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<IzjasnjenjeNaZalbu> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((IzjasnjenjeNaZalbu) commonRepository.resourceToClass(iterator.nextResource(), IzjasnjenjeNaZalbu.class));
+        }
+        return results;
+    }
+
+    public List<IzjasnjenjeNaZalbu> findAllByBrojZalbe(String broj) throws XMLDBException {
+        String xPath = "/i:IzjasnjenjeNaZalbu[@broj_zalbe='" + broj + "']";
+        ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
+        if (result.getSize() == 0) {
+            return null;
+        }
+        List<IzjasnjenjeNaZalbu> results = new ArrayList<>();
+        ResourceIterator iterator = result.getIterator();
+        while (iterator.hasMoreResources()) {
+            results.add((IzjasnjenjeNaZalbu) commonRepository.resourceToClass(iterator.nextResource(), IzjasnjenjeNaZalbu.class));
+        }
+        return results;
+    }
+
+    public List<IzjasnjenjeNaZalbu> findAllByDatum(Date datum) throws XMLDBException {
+        String xPath = "/i:IzjasnjenjeNaZalbu[@datum_izjave='" + datum + "']";
         ResourceSet result = commonRepository.queryIzjasnjenjeNaZalbu(xPath);
         if (result.getSize() == 0) {
             return null;
