@@ -4,23 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
-import rs.pijz.server.poverenik.repository.ZalbaCutanjeRepository;
+import rs.pijz.server.poverenik.service.ZalbaCutanjeService;
 
 @Component
 public class ZalbaCutanjeRepositorySOAP {
 
 	@Autowired
-	private ZalbaCutanjeRepository zalbaCutanjeRepository;
+	private ZalbaCutanjeService zalbaCutanjeService;
 
-	public ZalbaCutanje getZalbaCutanje(String broj) {
-		ZalbaCutanje zalbaCutanje = new ZalbaCutanje();
-		zalbaCutanje.setBroj(broj);
+	public ZalbaCutanje getZalbaCutanje(String broj) throws Exception {
+		ZalbaCutanje zalbaCutanje = zalbaCutanjeService.getOne(broj);
 
 		return zalbaCutanje;
 	}
 
 	public boolean exchangeZalbaCutanje(ZalbaCutanje zalbaCutanje) throws Exception {
-		zalbaCutanjeRepository.save(zalbaCutanje);
+		zalbaCutanjeService.create(zalbaCutanje);
 
 		return true;
 	}

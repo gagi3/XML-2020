@@ -4,23 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import rs.pijz.server.poverenik.model.izvestaj.Izvestaj;
-import rs.pijz.server.poverenik.repository.IzvestajRepository;
+import rs.pijz.server.poverenik.service.IzvestajService;
 
 @Component
 public class IzvestajRepositorySOAP {
 
 	@Autowired
-	private IzvestajRepository izvestajRepository;
+	private IzvestajService izvestajService;
 
-	public Izvestaj getIzvestaj(String id) {
-		Izvestaj izvestaj = new Izvestaj();
-		izvestaj.setId(id);
+	public Izvestaj getIzvestaj(String id) throws Exception {
+		Izvestaj izvestaj = izvestajService.getOne(id);
 
 		return izvestaj;
 	}
 
 	public boolean exchangeIzvestaj(Izvestaj izvestaj) throws Exception {
-		izvestajRepository.save(izvestaj);
+		izvestajService.create(izvestaj);
 
 		return true;
 	}

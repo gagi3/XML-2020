@@ -22,7 +22,7 @@ public class ZalbaOdlukaEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getZalbaOdlukaRequest")
 	@ResponsePayload
-	public GetZalbaOdlukaResponse getZalbaOdluka(@RequestPayload GetZalbaOdlukaRequest request) {
+	public GetZalbaOdlukaResponse getZalbaOdluka(@RequestPayload GetZalbaOdlukaRequest request) throws Exception {
 		GetZalbaOdlukaResponse response = new GetZalbaOdlukaResponse();
 		response.setZalbaOdluka(zalbaOdlukaRepositorySOAP.getZalbaOdluka(request.getBroj()));
 

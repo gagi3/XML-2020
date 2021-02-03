@@ -22,7 +22,7 @@ public class IzvestajEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getIzvestajRequest")
 	@ResponsePayload
-	public GetIzvestajResponse getIzvestaj(@RequestPayload GetIzvestajRequest request) {
+	public GetIzvestajResponse getIzvestaj(@RequestPayload GetIzvestajRequest request) throws Exception {
 		GetIzvestajResponse response = new GetIzvestajResponse();
 		response.setIzvestaj(izvestajRepositorySOAP.getIzvestaj(request.getId()));
 

@@ -22,7 +22,7 @@ public class ZahtevEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getZahtevRequest")
 	@ResponsePayload
-	public GetZahtevResponse getZahtev(@RequestPayload GetZahtevRequest request) {
+	public GetZahtevResponse getZahtev(@RequestPayload GetZahtevRequest request) throws Exception {
 		GetZahtevResponse response = new GetZahtevResponse();
 		response.setZahtev(zahtevRepositorySOAP.getZahtev(request.getId()));
 

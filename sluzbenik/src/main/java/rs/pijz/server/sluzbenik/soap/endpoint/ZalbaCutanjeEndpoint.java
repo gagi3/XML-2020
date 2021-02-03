@@ -22,7 +22,7 @@ public class ZalbaCutanjeEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getZalbaCutanjeRequest")
 	@ResponsePayload
-	public GetZalbaCutanjeResponse getZalbaCutanje(@RequestPayload GetZalbaCutanjeRequest request) {
+	public GetZalbaCutanjeResponse getZalbaCutanje(@RequestPayload GetZalbaCutanjeRequest request) throws Exception {
 		GetZalbaCutanjeResponse response = new GetZalbaCutanjeResponse();
 		response.setZalbaCutanje(zalbaCutanjeRepositorySOAP.getZalbaCutanje(request.getBroj()));
 
