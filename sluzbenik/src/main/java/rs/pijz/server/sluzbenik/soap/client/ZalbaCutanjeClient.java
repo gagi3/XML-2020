@@ -11,7 +11,7 @@ import rs.pijz.server.sluzbenik.soap.communication.zalba_cutanje.GetZalbaCutanje
 
 public class ZalbaCutanjeClient extends WebServiceGatewaySupport {
 
-	private static String WSDL_URL = "http://localhost:8082/ws/zalba-cutanje-soap.wsdl";
+	private static String WSDL_URL = "http://localhost:8081/ws/zalba-cutanje-soap.wsdl";
 
 	private static String GET_REQUEST_CALLBACK = "http://www.pijz.rs/zalba-cutanje/GetZalbaCutanjeRequest";
 	private static String EXCHANGE_REQUEST_CALLBACK = "http://www.pijz.rs/zalba-cutanje/ExchangeZalbaCutanjeRequest";

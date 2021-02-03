@@ -12,7 +12,7 @@ import rs.pijz.server.poverenik.soap.communication.zahtev.GetZahtevResponse;
 
 public class ZahtevClient extends WebServiceGatewaySupport {
 
-	private static String WSDL_URL = "http://localhost:8081/ws/zahtev-soap.wsdl";
+	private static String WSDL_URL = "http://localhost:8082/ws/zahtev-soap.wsdl";
 
 	private static String GET_REQUEST_CALLBACK = "http://www.pijz.rs/zahtev/GetZahtevRequest";
 	private static String EXCHANGE_REQUEST_CALLBACK = "http://www.pijz.rs/zahtev/ExchangeZahtevRequest";

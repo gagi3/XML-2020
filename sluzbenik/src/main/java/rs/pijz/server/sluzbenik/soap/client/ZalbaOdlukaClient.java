@@ -11,7 +11,7 @@ import rs.pijz.server.sluzbenik.soap.communication.zalba_odluka.GetZalbaOdlukaRe
 
 public class ZalbaOdlukaClient extends WebServiceGatewaySupport {
 	
-	private static String WSDL_URL = "http://localhost:8082/ws/zalba-odluka-soap.wsdl";
+	private static String WSDL_URL = "http://localhost:8081/ws/zalba-odluka-soap.wsdl";
 
 	private static String GET_REQUEST_CALLBACK = "http://www.pijz.rs/zalba-odluka/GetZalbaOdlukaRequest";
 	private static String EXCHANGE_REQUEST_CALLBACK = "http://www.pijz.rs/zalba-odluka/ExchangeZalbaOdlukaRequest";
