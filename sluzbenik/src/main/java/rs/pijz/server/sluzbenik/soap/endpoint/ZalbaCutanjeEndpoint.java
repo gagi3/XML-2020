@@ -14,12 +14,12 @@ import rs.pijz.server.sluzbenik.soap.repository.ZalbaCutanjeRepositorySOAP;
 
 @Endpoint
 public class ZalbaCutanjeEndpoint {
-	
-private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-cutanje";
-	
+
+	private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-cutanje";
+
 	@Autowired
 	private ZalbaCutanjeRepositorySOAP zalbaCutanjeRepositorySOAP;
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getZalbaCutanjeRequest")
 	@ResponsePayload
 	public GetZalbaCutanjeResponse getZalbaCutanje(@RequestPayload GetZalbaCutanjeRequest request) {
@@ -28,10 +28,11 @@ private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-cutanje";
 
 		return response;
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeZalbaCutanjeRequest")
 	@ResponsePayload
-	public ExchangeZalbaCutanjeResponse exchangeZalbaCutanje(@RequestPayload ExchangeZalbaCutanjeRequest request) {
+	public ExchangeZalbaCutanjeResponse exchangeZalbaCutanje(@RequestPayload ExchangeZalbaCutanjeRequest request)
+			throws Exception {
 		ExchangeZalbaCutanjeResponse response = new ExchangeZalbaCutanjeResponse();
 		response.setStatus(zalbaCutanjeRepositorySOAP.exchangeZalbaCutanje(request.getZalbaCutanje()));
 

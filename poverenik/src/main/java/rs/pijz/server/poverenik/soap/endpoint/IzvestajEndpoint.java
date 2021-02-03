@@ -14,12 +14,12 @@ import rs.pijz.server.poverenik.soap.repository.IzvestajRepositorySOAP;
 
 @Endpoint
 public class IzvestajEndpoint {
-	
-private static final String NAMESPACE_URI = "http://www.pijz.rs/izvestaj";
-	
+
+	private static final String NAMESPACE_URI = "http://www.pijz.rs/izvestaj";
+
 	@Autowired
 	private IzvestajRepositorySOAP izvestajRepositorySOAP;
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getIzvestajRequest")
 	@ResponsePayload
 	public GetIzvestajResponse getIzvestaj(@RequestPayload GetIzvestajRequest request) {
@@ -28,10 +28,10 @@ private static final String NAMESPACE_URI = "http://www.pijz.rs/izvestaj";
 
 		return response;
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeIzvestajRequest")
 	@ResponsePayload
-	public ExchangeIzvestajResponse exchangeIzvestaj(@RequestPayload ExchangeIzvestajRequest request) {
+	public ExchangeIzvestajResponse exchangeIzvestaj(@RequestPayload ExchangeIzvestajRequest request) throws Exception {
 		ExchangeIzvestajResponse response = new ExchangeIzvestajResponse();
 		response.setStatus(izvestajRepositorySOAP.exchangeIzvestaj(request.getIzvestaj()));
 

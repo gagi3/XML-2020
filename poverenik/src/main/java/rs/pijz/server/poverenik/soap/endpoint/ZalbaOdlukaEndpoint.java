@@ -14,12 +14,12 @@ import rs.pijz.server.poverenik.soap.repository.ZalbaOdlukaRepositorySOAP;
 
 @Endpoint
 public class ZalbaOdlukaEndpoint {
-	
-private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-odluka";
-	
+
+	private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-odluka";
+
 	@Autowired
 	private ZalbaOdlukaRepositorySOAP zalbaOdlukaRepositorySOAP;
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getZalbaOdlukaRequest")
 	@ResponsePayload
 	public GetZalbaOdlukaResponse getZalbaOdluka(@RequestPayload GetZalbaOdlukaRequest request) {
@@ -28,10 +28,11 @@ private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-odluka";
 
 		return response;
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeZalbaOdlukaRequest")
 	@ResponsePayload
-	public ExchangeZalbaOdlukaResponse exchangeZalbaCutanje(@RequestPayload ExchangeZalbaOdlukaRequest request) {
+	public ExchangeZalbaOdlukaResponse exchangeZalbaCutanje(@RequestPayload ExchangeZalbaOdlukaRequest request)
+			throws Exception {
 		ExchangeZalbaOdlukaResponse response = new ExchangeZalbaOdlukaResponse();
 		response.setStatus(zalbaOdlukaRepositorySOAP.exchangeZalbaOdluka(request.getZalbaOdluka()));
 

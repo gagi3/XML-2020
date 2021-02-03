@@ -14,12 +14,12 @@ import rs.pijz.server.poverenik.soap.repository.ZahtevRepositorySOAP;
 
 @Endpoint
 public class ZahtevEndpoint {
-	
-private static final String NAMESPACE_URI = "http://www.pijz.rs/zahtev";
-	
+
+	private static final String NAMESPACE_URI = "http://www.pijz.rs/zahtev";
+
 	@Autowired
 	private ZahtevRepositorySOAP zahtevRepositorySOAP;
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getZahtevRequest")
 	@ResponsePayload
 	public GetZahtevResponse getZahtev(@RequestPayload GetZahtevRequest request) {
@@ -28,10 +28,10 @@ private static final String NAMESPACE_URI = "http://www.pijz.rs/zahtev";
 
 		return response;
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeZahtevRequest")
 	@ResponsePayload
-	public ExchangeZahtevResponse exchangeZahtev(@RequestPayload ExchangeZahtevRequest request) {
+	public ExchangeZahtevResponse exchangeZahtev(@RequestPayload ExchangeZahtevRequest request) throws Exception {
 		ExchangeZahtevResponse response = new ExchangeZahtevResponse();
 		response.setStatus(zahtevRepositorySOAP.exchangeZahtev(request.getZahtev()));
 
