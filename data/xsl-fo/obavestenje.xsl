@@ -22,7 +22,7 @@
             <fo:page-sequence master-reference="obavestenje-page">
                 <fo:flow flow-name="xsl-region-body">
 
-                    <fo:block>
+                    <fo:block text-decoration="underline">
                         <fo:block> <xsl:value-of select="o:Obavestenje/o:organ/o:naziv"/> </fo:block>
                         <xsl:call-template name="Adresa">
                             <xsl:with-param name="adresa" select="o:Obavestenje/o:organ/o:sediste"/>
@@ -31,14 +31,14 @@
                     <fo:block>(назив и седиште органа)</fo:block>
 
                     <fo:block margin-top="10px">
-                        Број предмета: <xsl:value-of select="o:Obavestenje/@broj"/>
+                        Број предмета: <fo:inline text-decoration="underline"> <xsl:value-of select="o:Obavestenje/@broj"/> </fo:inline>
                     </fo:block>
 
                     <fo:block margin-top="10px">
-                        Датум: <xsl:value-of select="o:Obavestenje/@datum"/>
+                        Датум: <fo:inline text-decoration="underline"> <xsl:value-of select="o:Obavestenje/@datum"/> </fo:inline>
                     </fo:block>
 
-                    <fo:block margin-top="10px">
+                    <fo:block margin-top="10px" text-decoration="underline">
                         <xsl:if test="name(o:Obavestenje/o:podnosilac/*[1]) = 'o:fizickoLice'">
                             <xsl:call-template name="FizickoLice">
                                 <xsl:with-param name="fizickoLice" select="o:Obavestenje/o:podnosilac/o:fizickoLice" />
@@ -101,7 +101,7 @@
                         <fo:inline-container inline-progression-dimension="40%">
                             <fo:block margin-top="10px">
                                 <fo:block> 
-                                    <xsl:value-of select="o:Obavestenje/o:podnozje/o:potpis"/>
+                                    <fo:inline text-decoration="underline"> <xsl:value-of select="o:Obavestenje/o:podnozje/o:potpis"/> </fo:inline>
                                     <fo:block> (потпис овлашћеног лица, односно руководиоца органа) </fo:block>
                                 </fo:block>
                                 <xsl:value-of select="o:Obavestenje/o:podnozje/o:pecat"/>

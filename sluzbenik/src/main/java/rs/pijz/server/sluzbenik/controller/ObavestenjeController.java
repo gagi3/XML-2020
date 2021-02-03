@@ -12,6 +12,7 @@ import rs.pijz.server.sluzbenik.model.obavestenje.Obavestenje;
 import rs.pijz.server.sluzbenik.service.DomParserService;
 import rs.pijz.server.sluzbenik.service.ObavestenjeService;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,5 +101,17 @@ public class ObavestenjeController {
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
+    }
+    
+    @PostMapping(value = "/convert-to-html")
+    public ResponseEntity<String> convertToHTML(@RequestParam("file") MultipartFile file) throws Exception {
+        String result = obavestenjeService.convertToHTML(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/convert-to-pdf")
+    public ResponseEntity<byte[]> convertToPDF(@RequestParam("file") MultipartFile file) throws Exception {
+        ByteArrayOutputStream result = obavestenjeService.convertToPDF(domParserService.readMultipartXMLFile(file));
+        return new ResponseEntity<>(result.toByteArray(), HttpStatus.OK);
     }
 }
