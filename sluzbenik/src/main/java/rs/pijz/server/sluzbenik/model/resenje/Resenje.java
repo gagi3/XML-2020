@@ -70,6 +70,7 @@ import java.util.List;
  * 
  * 
  */
+@XmlRootElement(name = "Resenje", namespace = "http://www.pijz.rs/resenje")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Resenje", namespace = "http://www.pijz.rs/resenje", propOrder = {
     "metadata",
