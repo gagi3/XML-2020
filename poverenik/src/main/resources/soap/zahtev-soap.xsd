@@ -20,6 +20,22 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="exchangeZahtevRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="zahtev" type="z:Zahtev" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="exchangeZahtevResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
     <xs:element name="Zahtev" type="z:Zahtev"> </xs:element>
     <xs:simpleType name="TipZahteva">

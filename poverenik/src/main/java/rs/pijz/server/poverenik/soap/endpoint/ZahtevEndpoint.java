@@ -6,6 +6,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.zahtev.ExchangeZahtevRequest;
+import rs.pijz.server.poverenik.soap.communication.zahtev.ExchangeZahtevResponse;
 import rs.pijz.server.poverenik.soap.communication.zahtev.GetZahtevRequest;
 import rs.pijz.server.poverenik.soap.communication.zahtev.GetZahtevResponse;
 import rs.pijz.server.poverenik.soap.repository.ZahtevRepositorySOAP;
@@ -22,7 +24,16 @@ private static final String NAMESPACE_URI = "http://www.pijz.rs/zahtev";
 	@ResponsePayload
 	public GetZahtevResponse getZahtev(@RequestPayload GetZahtevRequest request) {
 		GetZahtevResponse response = new GetZahtevResponse();
-		response.setZahtev(zahtevRepositorySOAP.findZahtev(request.getId()));
+		response.setZahtev(zahtevRepositorySOAP.getZahtev(request.getId()));
+
+		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeZahtevRequest")
+	@ResponsePayload
+	public ExchangeZahtevResponse exchangeZahtev(@RequestPayload ExchangeZahtevRequest request) {
+		ExchangeZahtevResponse response = new ExchangeZahtevResponse();
+		response.setStatus(zahtevRepositorySOAP.exchangeZahtev(request.getZahtev()));
 
 		return response;
 	}

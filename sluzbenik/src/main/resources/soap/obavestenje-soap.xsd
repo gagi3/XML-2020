@@ -24,6 +24,22 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:element name="exchangeObavestenjeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="obavestenje" type="o:Obavestenje" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="exchangeObavestenjeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 	<xs:element name="Obavestenje" type="o:Obavestenje">
 	</xs:element>

@@ -24,36 +24,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean<>(servlet, "/ws/*");
 	}
 	
-	@Bean(name = "izjasnjenje-na-zalbu-soap")
-	public DefaultWsdl11Definition defaultWsdl11DefinitionIzjasnjenjeNaZalbu(XsdSchema izjasnjenjeNaZalbuSchema) {
-		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("IzjasnjenjeNaZalbuPort");
-		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/izjasnjenje-na-zalbu");
-		wsdl11Definition.setSchema(izjasnjenjeNaZalbuSchema);
-		return wsdl11Definition;
-	}
-	
-	@Bean(name = "obavestenje-soap")
-	public DefaultWsdl11Definition defaultWsdl11DefinitionObavestenje(XsdSchema obavestenjeSchema) {
-		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("ObavestenjePort");
-		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/obavestenje");
-		wsdl11Definition.setSchema(obavestenjeSchema);
-		return wsdl11Definition;
-	}
-	
-	@Bean(name = "resenje-soap")
-	public DefaultWsdl11Definition defaultWsdl11DefinitionResenje(XsdSchema resenjeSchema) {
-		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("ResenjePort");
-		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/resenje");
-		wsdl11Definition.setSchema(resenjeSchema);
-		return wsdl11Definition;
-	}
-	
 	@Bean(name = "zahtev-soap")
 	public DefaultWsdl11Definition defaultWsdl11DefinitionZahtev(XsdSchema zahtevSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -82,21 +52,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/zalba-odluka");
 		wsdl11Definition.setSchema(zalbaOdlukaSchema);
 		return wsdl11Definition;
-	}
-	
-	@Bean
-	public XsdSchema izjasnjenjeNaZalbuSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("soap/izjasnjenje-na-zalbu-soap.xsd"));
-	}
-	
-	@Bean
-	public XsdSchema obavestenjeSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("soap/obavestenje-soap.xsd"));
-	}
-	
-	@Bean
-	public XsdSchema resenjeSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("soap/resenje-soap.xsd"));
 	}
 	
 	@Bean

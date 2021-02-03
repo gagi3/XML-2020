@@ -6,6 +6,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.ExchangeZalbaCutanjeRequest;
+import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.ExchangeZalbaCutanjeResponse;
 import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.GetZalbaCutanjeRequest;
 import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.GetZalbaCutanjeResponse;
 import rs.pijz.server.poverenik.soap.repository.ZalbaCutanjeRepositorySOAP;
@@ -22,7 +24,16 @@ private static final String NAMESPACE_URI = "http://www.pijz.rs/zalba-cutanje";
 	@ResponsePayload
 	public GetZalbaCutanjeResponse getZalbaCutanje(@RequestPayload GetZalbaCutanjeRequest request) {
 		GetZalbaCutanjeResponse response = new GetZalbaCutanjeResponse();
-		response.setZalbaCutanje(zalbaCutanjeRepositorySOAP.findZalbaCutanje(request.getBroj()));
+		response.setZalbaCutanje(zalbaCutanjeRepositorySOAP.getZalbaCutanje(request.getBroj()));
+
+		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeZalbaCutanjeRequest")
+	@ResponsePayload
+	public ExchangeZalbaCutanjeResponse exchangeZalbaCutanje(@RequestPayload ExchangeZalbaCutanjeRequest request) {
+		ExchangeZalbaCutanjeResponse response = new ExchangeZalbaCutanjeResponse();
+		response.setStatus(zalbaCutanjeRepositorySOAP.exchangeZalbaCutanje(request.getZalbaCutanje()));
 
 		return response;
 	}
