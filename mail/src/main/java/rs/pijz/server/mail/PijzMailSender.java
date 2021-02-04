@@ -1,12 +1,14 @@
-package rs.pijz.server.poverenik.mail;
+package rs.pijz.server.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-public class MailSender {
+@Service
+public class PijzMailSender {
     @Autowired
     private JavaMailSender javaMailSender;
     private final String FROM = "pijz.portal.rs@gmail.com";
