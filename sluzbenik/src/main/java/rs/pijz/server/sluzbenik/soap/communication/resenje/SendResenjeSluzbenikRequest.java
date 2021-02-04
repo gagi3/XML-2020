@@ -50,7 +50,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "xhtmlURL",
     "pdfURL"
 })
-@XmlRootElement(name = "sendResenjeSluzbenikRequest")
+@XmlRootElement(name = "sendResenjeSluzbenikRequest", namespace = "http://www.pijz.rs/resenje")
 public class SendResenjeSluzbenikRequest {
 
     @XmlElement(required = true)

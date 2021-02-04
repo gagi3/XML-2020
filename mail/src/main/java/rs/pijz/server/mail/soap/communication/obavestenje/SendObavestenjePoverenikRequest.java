@@ -48,7 +48,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "xhtmlURL",
     "pdfURL"
 })
-@XmlRootElement(name = "sendObavestenjePoverenikRequest")
+@XmlRootElement(name = "sendObavestenjePoverenikRequest", namespace = "http://www.pijz.rs/obavestenje")
 public class SendObavestenjePoverenikRequest {
 
     @XmlElement(required = true)
