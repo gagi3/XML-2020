@@ -30,12 +30,31 @@ public class ObavestenjeController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<?> findAll() {
+//        try {
+//            List<Obavestenje> obavestenja = new ArrayList<>();
+//            obavestenja = obavestenjeService.findAll();
+//            return ResponseEntity.ok(obavestenja);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<?> findAll() {
+    private ResponseEntity<List<Obavestenje>> findAllByParams(@RequestParam (required = false) String gradjaninID,
+                                                             @RequestParam (required = false) String sluzbenikID) {
         try {
-            List<Obavestenje> obavestenja = new ArrayList<>();
-            obavestenja = obavestenjeService.findAll();
-            return ResponseEntity.ok(obavestenja);
+            List<Obavestenje> list;
+            if (gradjaninID != null && !gradjaninID.equals("")) {
+                list = obavestenjeService.findAllByGradjanin(gradjaninID);
+            } else if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                list = obavestenjeService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                list = obavestenjeService.findAll();
+            }
+            return ResponseEntity.ok().body(list);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

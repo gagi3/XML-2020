@@ -14,6 +14,7 @@ import rs.pijz.server.sluzbenik.service.ResenjeService;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -30,12 +31,52 @@ public class ResenjeController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<?> findAll() {
+//        try {
+//            List<Resenje> resenja = new ArrayList<>();
+//            resenja = resenjeService.findAll();
+//            return ResponseEntity.ok(resenja);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<?> findAll() {
+    private ResponseEntity<List<Resenje>> findAllByParams(@RequestParam (required = false) String broj,
+                                                         @RequestParam (required = false) String zalbaID,
+                                                         @RequestParam (required = false) String gradjaninID,
+                                                         @RequestParam (required = false) Date datum,
+                                                          @RequestParam (required = false) Date datumZahteva,
+                                                          @RequestParam (required = false) Date datumZalbe,
+                                                          @RequestParam (required = false) Date datumPostupka,
+                                                         @RequestParam (required = false) String poverenikID,
+                                                         @RequestParam (required = false) String sluzbenikID) {
         try {
-            List<Resenje> resenja = new ArrayList<>();
-            resenja = resenjeService.findAll();
-            return ResponseEntity.ok(resenja);
+            List<Resenje> list;
+            if (broj != null && !broj.equals("")) {
+                list = resenjeService.findAllByBroj(broj);
+            } else if (zalbaID != null && !zalbaID.equals("")) {
+                list = resenjeService.findAllByZalbaId(zalbaID);
+            } else if (gradjaninID != null && !gradjaninID.equals("")) {
+                list = resenjeService.findAllByGradjanin(gradjaninID);
+            } else if (datum != null) {
+                list = resenjeService.findAllByDatum(datum);
+            } else if (datumZahteva != null) {
+                list = resenjeService.findAllByDatumZahteva(datumZahteva);
+            } else if (datumZalbe != null) {
+                list = resenjeService.findAllByDatumZalbe(datumZalbe);
+            } else if (datumPostupka != null) {
+                list = resenjeService.findAllByDatumPostupka(datumPostupka);
+            } else if (poverenikID != null && !poverenikID.equals("")) {
+                list = resenjeService.findAllByPoverenik(poverenikID);
+            } else if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                list = resenjeService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                list = resenjeService.findAll();
+            }
+            return ResponseEntity.ok().body(list);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

@@ -13,6 +13,7 @@ import rs.pijz.server.sluzbenik.service.DomParserService;
 import rs.pijz.server.sluzbenik.service.ZalbaCutanjeService;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -26,11 +27,42 @@ public class ZalbaCutanjeController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<List<ZalbaCutanje>> findAll() {
+//        try {
+//            List<ZalbaCutanje> zalbe = zalbaCutanjeService.findAll();
+//            return ResponseEntity.ok().body(zalbe);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<List<ZalbaCutanje>> findAll() {
+    private ResponseEntity<List<ZalbaCutanje>> findAllByParams(@RequestParam (required = false) String broj,
+                                                          @RequestParam (required = false) String gradjaninID,
+                                                          @RequestParam (required = false) Date datum,
+                                                          @RequestParam (required = false) Date datumZahteva,
+                                                          @RequestParam (required = false) String poverenikID,
+                                                          @RequestParam (required = false) String sluzbenikID) {
         try {
-            List<ZalbaCutanje> zalbe = zalbaCutanjeService.findAll();
-            return ResponseEntity.ok().body(zalbe);
+            List<ZalbaCutanje> list;
+            if (broj != null && !broj.equals("")) {
+                list = zalbaCutanjeService.findAllByBroj(broj);
+            } else if (gradjaninID != null && !gradjaninID.equals("")) {
+                list = zalbaCutanjeService.findAllByGradjanin(gradjaninID);
+            } else if (datum != null) {
+                list = zalbaCutanjeService.findAllByDatum(datum);
+            } else if (datumZahteva != null) {
+                list = zalbaCutanjeService.findAllByDatumZahteva(datumZahteva);
+            } else if (poverenikID != null && !poverenikID.equals("")) {
+                list = zalbaCutanjeService.findAllByPoverenik(poverenikID);
+            } else if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                list = zalbaCutanjeService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                list = zalbaCutanjeService.findAll();
+            }
+            return ResponseEntity.ok().body(list);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

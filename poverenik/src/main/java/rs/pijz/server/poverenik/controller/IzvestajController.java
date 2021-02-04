@@ -30,12 +30,28 @@ public class IzvestajController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<?> findAll() {
+//        try {
+//            List<Izvestaj> obavestenja = new ArrayList<>();
+//            obavestenja = izvestajService.findAll();
+//            return ResponseEntity.ok(obavestenja);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<?> findAll() {
+    private ResponseEntity<List<Izvestaj>> findAllByParams(@RequestParam (required = false) String sluzbenikID) {
         try {
-            List<Izvestaj> obavestenja = new ArrayList<>();
-            obavestenja = izvestajService.findAll();
-            return ResponseEntity.ok(obavestenja);
+            List<Izvestaj> list;
+            if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                list = izvestajService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                list = izvestajService.findAll();
+            }
+            return ResponseEntity.ok().body(list);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
