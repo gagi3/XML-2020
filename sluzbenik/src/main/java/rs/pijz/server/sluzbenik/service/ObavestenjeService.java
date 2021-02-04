@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -21,6 +22,8 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.sluzbenik.model.obavestenje.Obavestenje;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ObavestenjeRepository;
+import rs.pijz.server.sluzbenik.soap.client.ObavestenjeClient;
+import rs.pijz.server.sluzbenik.soap.communication.obavestenje.SendObavestenjePoverenikResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
@@ -31,6 +34,9 @@ public class ObavestenjeService {
     private ObavestenjeRepository obavestenjeRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ObavestenjeClient obavestenjeClient;
     
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -129,5 +135,12 @@ public class ObavestenjeService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public Boolean sendObavestenjePoverenikSOAP(String username, XMLGregorianCalendar date, String sluzbenik, String xhtmlURL, String pdfURL) {
+    	SendObavestenjePoverenikResponse response = obavestenjeClient.sendObavestenjePoverenik(username, date, sluzbenik, xhtmlURL, pdfURL);
+    	return response.isStatus();
     }
 }

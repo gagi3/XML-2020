@@ -1,25 +1,32 @@
 package rs.pijz.server.poverenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.poverenik.model.resenje.Resenje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ResenjeRepository;
+import rs.pijz.server.poverenik.soap.client.ResenjeClient;
+import rs.pijz.server.poverenik.soap.communication.resenje.SendResenjeGradjaninResponse;
+import rs.pijz.server.poverenik.soap.communication.resenje.SendResenjeSluzbenikResponse;
 import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Service
 public class ResenjeService {
@@ -32,6 +39,9 @@ public class ResenjeService {
 
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ResenjeClient resenjeClient;
 
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -229,5 +239,17 @@ public class ResenjeService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public Boolean sendResenjeGradjaninSOAP(String username, String zalbaID, XMLGregorianCalendar date, String poverenik, String xhtmlURL, String pdfURL) {
+    	SendResenjeGradjaninResponse response = resenjeClient.sendResenjeGradjaninResponse(username, zalbaID, date, poverenik, xhtmlURL, pdfURL);
+    	return response.isStatus();
+    }
+    
+    public Boolean sendResenjeSluzbenikSOAP(String username, String zalbaID, XMLGregorianCalendar date, String poverenik, String xhtmlURL, String pdfURL) {
+    	SendResenjeSluzbenikResponse response = resenjeClient.sendResenjeSluzbenikResponse(username, zalbaID, date, poverenik, xhtmlURL, pdfURL);
+    	return response.isStatus();
     }
 }

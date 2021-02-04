@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -22,6 +23,9 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.sluzbenik.model.resenje.Resenje;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ResenjeRepository;
+import rs.pijz.server.sluzbenik.soap.client.ResenjeClient;
+import rs.pijz.server.sluzbenik.soap.communication.resenje.SendResenjeGradjaninResponse;
+import rs.pijz.server.sluzbenik.soap.communication.resenje.SendResenjeSluzbenikResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
@@ -35,6 +39,9 @@ public class ResenjeService {
 
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ResenjeClient resenjeClient;
     
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -232,5 +239,17 @@ public class ResenjeService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public Boolean sendResenjeGradjaninSOAP(String username, String zalbaID, XMLGregorianCalendar date, String poverenik, String xhtmlURL, String pdfURL) {
+    	SendResenjeGradjaninResponse response = resenjeClient.sendResenjeGradjaninResponse(username, zalbaID, date, poverenik, xhtmlURL, pdfURL);
+    	return response.isStatus();
+    }
+    
+    public Boolean sendResenjeSluzbenikSOAP(String username, String zalbaID, XMLGregorianCalendar date, String poverenik, String xhtmlURL, String pdfURL) {
+    	SendResenjeSluzbenikResponse response = resenjeClient.sendResenjeSluzbenikResponse(username, zalbaID, date, poverenik, xhtmlURL, pdfURL);
+    	return response.isStatus();
     }
 }
