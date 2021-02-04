@@ -178,6 +178,9 @@ public class ZalbaCutanjeService {
         if (existsById(zalbaCutanje.getId())) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
+        
+        this.exchangeSOAP(zalbaCutanje);
+        
         return zalbaCutanjeRepository.save(zalbaCutanje);
     }
 
