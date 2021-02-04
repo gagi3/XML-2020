@@ -19,7 +19,7 @@ public class ZalbaOdlukaConfiguration {
 	@Bean
 	public ZalbaOdlukaClient zalbaOdlukaClient(Jaxb2Marshaller zalbaOdlukaMarshaller) {
 		ZalbaOdlukaClient client = new ZalbaOdlukaClient();
-		client.setDefaultUri("http://localhost:8080/ws");
+		client.setDefaultUri("http://localhost:8081/ws");
 		client.setMarshaller(zalbaOdlukaMarshaller);
 		client.setUnmarshaller(zalbaOdlukaMarshaller);
 		return client;

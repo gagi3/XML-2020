@@ -1,25 +1,31 @@
 package rs.pijz.server.poverenik.service;
 
-import com.itextpdf.text.DocumentException;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import com.itextpdf.text.DocumentException;
+
 import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ZalbaCutanjeRepository;
+import rs.pijz.server.poverenik.soap.client.ZalbaCutanjeClient;
+import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.ExchangeZalbaCutanjeResponse;
+import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.GetZalbaCutanjeResponse;
 import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Service
 public class ZalbaCutanjeService {
@@ -29,6 +35,9 @@ public class ZalbaCutanjeService {
     private ZalbaCutanjeRepository zalbaCutanjeRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZalbaCutanjeClient zalbaCutanjeClient;
 
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -197,5 +206,17 @@ public class ZalbaCutanjeService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public ZalbaCutanje getOneSOAP(String id) {
+    	GetZalbaCutanjeResponse response = zalbaCutanjeClient.getZalbaCutanje(id);
+    	return response.getZalbaCutanje();
+    }
+    
+    public Boolean exchangeSOAP(ZalbaCutanje zalbaCutanje) {
+    	ExchangeZalbaCutanjeResponse response = zalbaCutanjeClient.exchangeZalbaCutanje(zalbaCutanje);
+    	return response.isStatus();
     }
 }

@@ -22,6 +22,9 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.sluzbenik.model.zalba_odluka.ZalbaOdluka;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ZalbaOdlukaRepository;
+import rs.pijz.server.sluzbenik.soap.client.ZalbaOdlukaClient;
+import rs.pijz.server.sluzbenik.soap.communication.zalba_odluka.ExchangeZalbaOdlukaResponse;
+import rs.pijz.server.sluzbenik.soap.communication.zalba_odluka.GetZalbaOdlukaResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
 
 @Service
@@ -32,6 +35,9 @@ public class ZalbaOdlukaService {
     private ZalbaOdlukaRepository zalbaOdlukaRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZalbaOdlukaClient zalbaOdlukaClient;
     
     @Autowired
     private XSLFOTransformer xslfoTransformer;
@@ -214,5 +220,17 @@ public class ZalbaOdlukaService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+    
+    // SOAP communications
+    
+    public ZalbaOdluka getOneSOAP(String id) {
+    	GetZalbaOdlukaResponse response = zalbaOdlukaClient.getZalbaOdluka(id);
+    	return response.getZalbaOdluka();
+    }
+    
+    public Boolean exchangeSOAP(ZalbaOdluka zalbaOdluka) {
+    	ExchangeZalbaOdlukaResponse response = zalbaOdlukaClient.exchangeZalbaOdluka(zalbaOdluka);
+    	return response.isStatus();
     }
 }

@@ -1,34 +1,27 @@
 package rs.pijz.server.poverenik.soap.repository;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import rs.pijz.server.poverenik.model.resenje.Resenje;
 import rs.pijz.server.poverenik.model.zahtev.Zahtev;
+import rs.pijz.server.poverenik.service.ZahtevService;
 
 @Component
 public class ZahtevRepositorySOAP {
-	
-	private static final Map<String, Zahtev> zahtevi = new HashMap<>();
-	
-	@PostConstruct
-	public void initData() throws Exception {
-		Zahtev zahtev1 = new Zahtev();
-		zahtev1.setId("ID-Z-001");
-		
-		Zahtev zahtev2 = new Zahtev();
-		zahtev2.setId("ID-Z-002");
-		
-		zahtevi.put(zahtev1.getId(), zahtev1);
-		zahtevi.put(zahtev2.getId(), zahtev2);
+
+	@Autowired
+	private ZahtevService zahtevService;
+
+	public Zahtev getZahtev(String id) throws Exception {
+		Zahtev zahtev = zahtevService.getOne(id);
+
+		return zahtev;
 	}
-	
-	public Zahtev findZahtev(String id) {
-		return zahtevi.get(id);
+
+	public boolean exchangeZahtev(Zahtev zahtev) throws Exception {
+		zahtevService.create(zahtev);
+
+		return true;
 	}
 
 }

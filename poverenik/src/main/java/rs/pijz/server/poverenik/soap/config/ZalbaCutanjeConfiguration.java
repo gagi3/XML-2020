@@ -19,7 +19,7 @@ public class ZalbaCutanjeConfiguration {
 	@Bean
 	public ZalbaCutanjeClient zalbaCutanjeClient(Jaxb2Marshaller zalbaCutanjeMarshaller) {
 		ZalbaCutanjeClient client = new ZalbaCutanjeClient();
-		client.setDefaultUri("http://localhost:8080/ws");
+		client.setDefaultUri("http://localhost:8081/ws");
 		client.setMarshaller(zalbaCutanjeMarshaller);
 		client.setUnmarshaller(zalbaCutanjeMarshaller);
 		return client;
