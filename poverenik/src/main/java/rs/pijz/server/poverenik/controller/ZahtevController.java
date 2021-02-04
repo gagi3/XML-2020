@@ -14,6 +14,7 @@ import rs.pijz.server.poverenik.service.ZahtevService;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -30,12 +31,34 @@ public class ZahtevController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<?> findAll() {
+//        try {
+//            List<Zahtev> zahtevi = new ArrayList<>();
+//            zahtevi = zahtevService.findAll();
+//            return ResponseEntity.ok(zahtevi);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<?> findAll() {
+    private ResponseEntity<List<Zahtev>> findAllByParams(@RequestParam (required = false) String gradjaninID,
+                                                          @RequestParam (required = false) Date datum,
+                                                          @RequestParam (required = false) String sluzbenikID) {
         try {
-            List<Zahtev> zahtevi = new ArrayList<>();
-            zahtevi = zahtevService.findAll();
-            return ResponseEntity.ok(zahtevi);
+            List<Zahtev> list;
+            if (gradjaninID != null && !gradjaninID.equals("")) {
+                list = zahtevService.findAllByGradjanin(gradjaninID);
+            } else if (datum != null) {
+                list = zahtevService.findAllByDatum(datum);
+            } else if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                list = zahtevService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                list = zahtevService.findAll();
+            }
+            return ResponseEntity.ok().body(list);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

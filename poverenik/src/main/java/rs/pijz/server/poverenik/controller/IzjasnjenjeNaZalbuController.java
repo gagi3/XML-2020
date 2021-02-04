@@ -13,6 +13,8 @@ import rs.pijz.server.poverenik.service.DomParserService;
 import rs.pijz.server.poverenik.service.IzjasnjenjeNaZalbuService;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -29,22 +31,53 @@ public class IzjasnjenjeNaZalbuController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAll() {
-        try {
-            List<IzjasnjenjeNaZalbu> izjasnjenja = izjasnjenjeNaZalbuService.findAll();
-            return ResponseEntity.ok().body(izjasnjenja);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAll() {
+//        try {
+//            List<IzjasnjenjeNaZalbu> izjasnjenja = izjasnjenjeNaZalbuService.findAll();
+//            return ResponseEntity.ok().body(izjasnjenja);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
 
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<IzjasnjenjeNaZalbu> getOne(@RequestParam String id) {
         try {
             IzjasnjenjeNaZalbu izjasnjenje = izjasnjenjeNaZalbuService.getOne(id);
             return ResponseEntity.ok().body(izjasnjenje);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAllByParams(@RequestParam (required = false) String broj,
+                                                                   @RequestParam (required = false) String brojZalbe,
+                                                                   @RequestParam (required = false) String gradjaninID,
+                                                                   @RequestParam (required = false) Date datum,
+                                                                   @RequestParam (required = false) String poverenikID,
+                                                                   @RequestParam (required = false) String sluzbenikID) {
+        try {
+            List<IzjasnjenjeNaZalbu> izjasnjenja;
+            if (broj != null && !broj.equals("")) {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAllByBroj(broj);
+            } else if (brojZalbe != null && !brojZalbe.equals("")) {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAllByBrojZalbe(brojZalbe);
+            } else if (gradjaninID != null && !gradjaninID.equals("")) {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAllByGradjanin(gradjaninID);
+            } else if (datum != null) {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAllByDatum(datum);
+            } else if (poverenikID != null && !poverenikID.equals("")) {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAllByPoverenik(poverenikID);
+            } else if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                izjasnjenja = izjasnjenjeNaZalbuService.findAll();
+            }
+            return ResponseEntity.ok().body(izjasnjenja);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);

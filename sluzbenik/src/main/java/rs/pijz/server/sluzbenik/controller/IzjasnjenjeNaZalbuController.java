@@ -13,6 +13,7 @@ import rs.pijz.server.sluzbenik.service.DomParserService;
 import rs.pijz.server.sluzbenik.service.IzjasnjenjeNaZalbuService;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -29,11 +30,42 @@ public class IzjasnjenjeNaZalbuController {
     @Autowired
     private MetadataExtractor metadataExtractor;
 
+//    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
+//    private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAll() {
+//        try {
+//            List<IzjasnjenjeNaZalbu> izjasnjenja = izjasnjenjeNaZalbuService.findAll();
+//            return ResponseEntity.ok().body(izjasnjenja);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body(null);
+//        }
+//    }
+
     @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
-    private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAll() {
+    private ResponseEntity<List<IzjasnjenjeNaZalbu>> findAllByParams(@RequestParam (required = false) String broj,
+                                                                     @RequestParam (required = false) String brojZalbe,
+                                                                     @RequestParam (required = false) String gradjaninID,
+                                                                     @RequestParam (required = false) Date datum,
+                                                                     @RequestParam (required = false) String poverenikID,
+                                                                     @RequestParam (required = false) String sluzbenikID) {
         try {
-            List<IzjasnjenjeNaZalbu> izjasnjenja = izjasnjenjeNaZalbuService.findAll();
-            return ResponseEntity.ok().body(izjasnjenja);
+            List<IzjasnjenjeNaZalbu> list;
+            if (broj != null && !broj.equals("")) {
+                list = izjasnjenjeNaZalbuService.findAllByBroj(broj);
+            } else if (brojZalbe != null && !brojZalbe.equals("")) {
+                list = izjasnjenjeNaZalbuService.findAllByBrojZalbe(brojZalbe);
+            } else if (gradjaninID != null && !gradjaninID.equals("")) {
+                list = izjasnjenjeNaZalbuService.findAllByGradjanin(gradjaninID);
+            } else if (datum != null) {
+                list = izjasnjenjeNaZalbuService.findAllByDatum(datum);
+            } else if (poverenikID != null && !poverenikID.equals("")) {
+                list = izjasnjenjeNaZalbuService.findAllByPoverenik(poverenikID);
+            } else if (sluzbenikID != null && !sluzbenikID.equals("")) {
+                list = izjasnjenjeNaZalbuService.findAllBySluzbenik(sluzbenikID);
+            } else {
+                list = izjasnjenjeNaZalbuService.findAll();
+            }
+            return ResponseEntity.ok().body(list);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
