@@ -20,8 +20,7 @@ public class ObavestenjeEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "sendObavestenjePoverenikRequest")
 	@ResponsePayload
-	public SendObavestenjePoverenikResponse sendObavestenjePoverenik(@RequestPayload SendObavestenjePoverenikRequest request)
-			throws Exception {
+	public SendObavestenjePoverenikResponse sendObavestenjePoverenik(@RequestPayload SendObavestenjePoverenikRequest request) {
 		SendObavestenjePoverenikResponse response = new SendObavestenjePoverenikResponse();
 
 		obavestenjeRepositorySOAP.sendObavestenjePoverenik(request.getUsername(),

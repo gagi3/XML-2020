@@ -3,9 +3,11 @@ package rs.pijz.server.sluzbenik.service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -175,7 +177,8 @@ public class ObavestenjeService {
         String xhtmlURL = String.format("http://localhost:8082/file/download/%s", this.convertToHTMLMail(xml, obavestenje.getId()));
         String pdfURL = String.format("http://localhost:8082/file/download/%s", this.convertToPDFMail(xml, obavestenje.getId()));
         
-        this.sendObavestenjePoverenikSOAP("djordjesevic@gmail.com", obavestenje.getDatumZahtevanja(), sluzbenik, xhtmlURL, pdfURL);
+        GregorianCalendar now = new GregorianCalendar();
+        this.sendObavestenjePoverenikSOAP("djordjesevic@gmail.com", DatatypeFactory.newInstance().newXMLGregorianCalendar(now), "nekirandom@gmail.com", xhtmlURL, pdfURL);
         
         return obavestenjeRepository.save(obavestenje);
     }

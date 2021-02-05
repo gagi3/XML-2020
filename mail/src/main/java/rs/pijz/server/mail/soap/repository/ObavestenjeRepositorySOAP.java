@@ -13,7 +13,7 @@ public class ObavestenjeRepositorySOAP {
 	@Autowired
 	private PijzMailSender pijzMailSender;
 
-	public void sendObavestenjePoverenik(String username, Date date, String sluzbenik, String xhtmlURL, String pdfURL) throws Exception {
+	public void sendObavestenjePoverenik(String username, Date date, String sluzbenik, String xhtmlURL, String pdfURL) {
 		pijzMailSender.sendObavestenjeToPoverenik(username, date, sluzbenik, xhtmlURL, pdfURL);
 	}
 

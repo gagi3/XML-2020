@@ -19,7 +19,7 @@ public class ObavestenjeConfig {
 	@Bean
 	public ObavestenjeClient obavestenjeClient(Jaxb2Marshaller obavestenjeMarshaller) {
 		ObavestenjeClient client = new ObavestenjeClient();
-		client.setDefaultUri("http://localhost:8082/ws");
+		client.setDefaultUri("http://localhost:8083/ws");
 		client.setMarshaller(obavestenjeMarshaller);
 		client.setUnmarshaller(obavestenjeMarshaller);
 		return client;
