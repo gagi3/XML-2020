@@ -143,7 +143,7 @@ public class ObavestenjeService {
         String pdfURL = String.format("http://localhost:8082/file/download/%s", this.convertToPDFMail(xml, o.getId()));
         
         GregorianCalendar now = new GregorianCalendar();
-        this.sendObavestenjePoverenikSOAP("djvlada03@gmail.com", DatatypeFactory.newInstance().newXMLGregorianCalendar(now), "nekirandom@gmail.com", xhtmlURL, pdfURL);
+        this.sendObavestenjePoverenikSOAP(gradjanin.getKorisnik().getUsername(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), sluzbenik, xhtmlURL, pdfURL);
         
         return o;
     }

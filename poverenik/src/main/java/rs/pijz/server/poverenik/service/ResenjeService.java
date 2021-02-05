@@ -246,8 +246,8 @@ public class ResenjeService {
         String pdfURL = String.format("http://localhost:8081/file/download/%s", this.convertToPDFMail(xml, r.getID()));
 
         GregorianCalendar now = new GregorianCalendar();
-        this.sendResenjeGradjaninSOAP("djvlada03@gmail.com", r.getZalbaID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
-        this.sendResenjeSluzbenikSOAP("djvlada03@gmail.com", r.getZalbaID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
+        this.sendResenjeGradjaninSOAP(gradjanin.getKorisnik().getUsername(), r.getZalbaID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
+        this.sendResenjeSluzbenikSOAP(sluzbenik.getKorisnik().getUsername(), r.getZalbaID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
 
         return r;
     }
@@ -265,8 +265,8 @@ public class ResenjeService {
         String xPath = "/r:Resenje[@ID='" + id + "']";
         ResourceSet result = commonRepository.queryResenje(xPath);
         Resenje resenje = (Resenje) commonRepository.resourceSetToClass(result, Resenje.class);
-        String xmlInstance = "../data/xsd/instance/" + "resenje-" + id + ".xml";
-        String xml = "../data/xml/" + "resenje_" + id + ".xml";
+        String xmlInstance = mailOutput + "resenje-" + id + ".xml";
+        String xml = "../data/xml/" + "resenje-" + id + ".xml";
         documentService.createXML(Resenje.class, resenje, xmlInstance);
         System.out.println("Docs generated!");
     }

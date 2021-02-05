@@ -10,7 +10,7 @@ import rs.pijz.server.poverenik.soap.communication.obavestenje.SendObavestenjePo
 
 public class ObavestenjeClient extends WebServiceGatewaySupport {
 
-	private static String WSDL_URL = "http://localhost:8081/ws/obavestenje-soap.wsdl";
+	private static String WSDL_URL = "http://localhost:8083/ws/obavestenje-soap.wsdl";
 
 	private static String SEND_REQUEST_CALLBACK = "http://www.pijz.rs/obavestenje/SendObavestenjePoverenikRequest";
 
