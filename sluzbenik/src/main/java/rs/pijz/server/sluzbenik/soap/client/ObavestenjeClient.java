@@ -22,17 +22,9 @@ public class ObavestenjeClient extends WebServiceGatewaySupport {
 		request.setSluzbenik(sluzbenik);
 		request.setXhtmlURL(xhtmlURL);
 		request.setPdfURL(pdfURL);
-		
-		System.out.println(username);
-		System.out.println(date);
-		System.out.println(sluzbenik);
-		System.out.println(xhtmlURL);
-		System.out.println(pdfURL);
 
 		SendObavestenjePoverenikResponse response = (SendObavestenjePoverenikResponse) getWebServiceTemplate().marshalSendAndReceive(WSDL_URL,
 				request, new SoapActionCallback(SEND_REQUEST_CALLBACK));
-		
-		System.out.println(response);
 
 		return response;
 	}

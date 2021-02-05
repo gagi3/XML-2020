@@ -230,10 +230,9 @@ public class ZalbaOdlukaService {
 
         String xhtmlURL = String.format("http://localhost:8081/file/download/%s", this.convertToHTMLMail(xml, zc.getId()));
         String pdfURL = String.format("http://localhost:8081/file/download/%s", this.convertToPDFMail(xml, zc.getId()));
-        this.exchangeSOAP(zc);
 
         GregorianCalendar now = new GregorianCalendar();
-        this.sendZalbaSluzbenikSOAP("djvlada03@gmail.com", zc.getZahtevID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
+        this.sendZalbaSluzbenikSOAP(sluzbenik.getKorisnik().getUsername(), zc.getZahtevID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
 
         return zc;
     }
@@ -251,8 +250,8 @@ public class ZalbaOdlukaService {
         String xPath = "/zo:ZalbaOdluka[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaOdluka(xPath);
         ZalbaOdluka zalbaOdluka = (ZalbaOdluka) commonRepository.resourceSetToClass(result, ZalbaOdluka.class);
-        String xmlInstance = "../data/xsd/instance/" + "zalba-odluka-" + id + ".xml";
-        String xml = "../data/xml/" + "zalba-odluka_" + id + ".xml";
+        String xmlInstance = mailOutput + "zalba-odluka-" + id + ".xml";
+        String xml = "../data/xml/" + "zalba-odluka-" + id + ".xml";
         documentService.createXML(ZalbaOdluka.class, zalbaOdluka, xmlInstance);
         System.out.println("Docs generated!");
     }

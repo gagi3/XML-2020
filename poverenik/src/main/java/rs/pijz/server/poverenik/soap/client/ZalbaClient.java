@@ -10,7 +10,7 @@ import rs.pijz.server.poverenik.soap.communication.zalba.SendZalbaSluzbenikRespo
 
 public class ZalbaClient extends WebServiceGatewaySupport {
 
-	private static String WSDL_URL = "http://localhost:8081/ws/zalba-soap.wsdl";
+	private static String WSDL_URL = "http://localhost:8083/ws/zalba-soap.wsdl";
 
 	private static String SEND_REQUEST_CALLBACK = "http://www.pijz.rs/zalba/SendZalbaSluzbenikRequest";
 
