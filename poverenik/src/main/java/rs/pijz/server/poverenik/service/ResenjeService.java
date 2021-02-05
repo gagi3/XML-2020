@@ -2,10 +2,7 @@ package rs.pijz.server.poverenik.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeFactory;
@@ -232,8 +229,11 @@ public class ResenjeService {
     }
 
     public Resenje create(Resenje resenje) throws Exception {
-        if (existsById(resenje.getID())) {
-            throw new Exception("Resenje sa istim ID vec postoji!");
+        if (resenje.getID() == null || resenje.getID().equals("")) {
+            resenje.setID(UUID.randomUUID().toString());
+        }
+        while (existsById(resenje.getID())) {
+            resenje.setID(UUID.randomUUID().toString());
         }
         Gradjanin gradjanin = gradjaninService.getOne(resenje.getGradjaninID());
         Sluzbenik sluzbenik = sluzbenikService.getOne(resenje.getSluzbenikID());

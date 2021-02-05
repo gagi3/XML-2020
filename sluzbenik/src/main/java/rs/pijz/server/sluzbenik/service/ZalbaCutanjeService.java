@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -181,8 +182,11 @@ public class ZalbaCutanjeService {
     }
 
     public ZalbaCutanje create(ZalbaCutanje zalbaCutanje) throws Exception {
-        if (existsById(zalbaCutanje.getId())) {
-            throw new Exception("Zalba sa istim ID vec postoji!");
+        if (zalbaCutanje.getId() == null || zalbaCutanje.getId().equals("")) {
+            zalbaCutanje.setId(UUID.randomUUID().toString());
+        }
+        while (existsById(zalbaCutanje.getId())) {
+            zalbaCutanje.setId(UUID.randomUUID().toString());
         }
         
         this.exchangeSOAP(zalbaCutanje);

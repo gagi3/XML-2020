@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -90,8 +91,11 @@ public class IzvestajService {
     }
 
     public Izvestaj create(Izvestaj izvestaj) throws Exception {
-        if (existsById(izvestaj.getId())) {
-            throw new Exception("Izvestaj sa istim ID vec postoji!");
+        if (izvestaj.getId() == null || izvestaj.getId().equals("")) {
+            izvestaj.setId(UUID.randomUUID().toString());
+        }
+        while (existsById(izvestaj.getId())) {
+            izvestaj.setId(UUID.randomUUID().toString());
         }
         
         this.exchangeSOAP(izvestaj);

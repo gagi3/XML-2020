@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -104,8 +105,11 @@ public class ObavestenjeService {
     }
 
     public Obavestenje create(Obavestenje obavestenje) throws Exception {
-        if (existsById(obavestenje.getId())) {
-            throw new Exception("Obavestenje sa istim ID vec postoji!");
+        if (obavestenje.getId() == null || obavestenje.getId().equals("")) {
+            obavestenje.setId(UUID.randomUUID().toString());
+        }
+        while (existsById(obavestenje.getId())) {
+            obavestenje.setId(UUID.randomUUID().toString());
         }
         return obavestenjeRepository.save(obavestenje);
     }

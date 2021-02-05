@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -208,8 +209,11 @@ public class ResenjeService {
     }
 
     public Resenje create(Resenje resenje) throws Exception {
-        if (existsById(resenje.getID())) {
-            throw new Exception("Resenje sa istim ID vec postoji!");
+        if (resenje.getID() == null || resenje.getID().equals("")) {
+            resenje.setID(UUID.randomUUID().toString());
+        }
+        while (existsById(resenje.getID())) {
+            resenje.setID(UUID.randomUUID().toString());
         }
         return resenjeRepository.save(resenje);
     }
