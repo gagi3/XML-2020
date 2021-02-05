@@ -54,13 +54,19 @@ public class ObavestenjeService {
     @Autowired
     private XSLFOTransformer xslfoTransformer;
 
+    @Autowired
+    private FileService fileService;
+
+    @Autowired
+    private DomParserService domParserService;
+
     private final String xslTemplatePath = "../data/xsl/obavestenje.xsl";
     private final String xslfoTemplatePath = "../data/xsl-fo/obavestenje.xsl";
 
     private final String htmlOutput = "../data/html/obavestenje.html";
     private final String pdfOutput = "../data/pdf/obavestenje.pdf";
     
-    private final String mailOutput = "src/main/resources/output";
+    private final String mailOutput = "src/main/resources/output/";
 
     public List<Obavestenje> findAll() throws XMLDBException {
         String xPath = "/o:Obavestenje";
@@ -125,62 +131,17 @@ public class ObavestenjeService {
         
         Gradjanin gradjanin = gradjaninService.getOne(obavestenje.getGradjaninID());
         String sluzbenik = authenticationService.getUsername();
-        
-        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-        		+ "<?xml-stylesheet type=\"text/xsl\" href=\"../xsl-fo/obavestenje.xsl\"?>\n"
-        		+ "<o:Obavestenje xmlns:vc=\"http://www.w3.org/2007/XMLSchema-versioning\"\n"
-        		+ " xmlns:cmn=\"http://www.pijz.rs/common\"\n"
-        		+ " xmlns:o=\"http://www.pijz.rs/obavestenje\"\n"
-        		+ " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
-        		+ " xsi:schemaLocation=\"http://www.pijz.rs/obavestenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/obavestenje.xsd\" id=\"ID000\" broj=\"33-2102/2311\" datum=\"2006-05-04\" datum_zahtevanja=\"2006-05-04\" datum_uvida=\"2006-05-04\" vreme_uvida_od=\"01:01:01.001\"\n"
-        		+ "     vreme_uvida_do=\"01:01:01.001\">\n"
-        		+ "    <o:metadata>\n"
-        		+ "        <cmn:meta property=\"property0\" content=\"content0\">meta0</cmn:meta>\n"
-        		+ "        <cmn:meta property=\"property1\" content=\"content1\">meta1</cmn:meta>\n"
-        		+ "        <cmn:meta property=\"property2\" content=\"content2\">meta2</cmn:meta>\n"
-        		+ "    </o:metadata>\n"
-        		+ "    <o:organ>\n"
-        		+ "        <o:naziv>Основни кривични суд</o:naziv>\n"
-        		+ "        <o:sediste>\n"
-        		+ "            <cmn:grad>Нови Сад</cmn:grad>\n"
-        		+ "            <cmn:ulica>Његошева</cmn:ulica>\n"
-        		+ "            <cmn:broj>3</cmn:broj>\n"
-        		+ "        </o:sediste>\n"
-        		+ "    </o:organ>\n"
-        		+ "    <o:podnosilac>\n"
-        		+ "        <o:fizickoLice>\n"
-        		+ "            <cmn:ime>Николина</cmn:ime>\n"
-        		+ "            <cmn:prezime>Марковић</cmn:prezime>\n"
-        		+ "            <cmn:adresa>\n"
-        		+ "                <cmn:grad>Нови Сад</cmn:grad>\n"
-        		+ "                <cmn:ulica>Булевар Ослобођења</cmn:ulica>\n"
-        		+ "                <cmn:broj>99а</cmn:broj>\n"
-        		+ "            </cmn:adresa>\n"
-        		+ "        </o:fizickoLice>\n"
-        		+ "    </o:podnosilac>\n"
-        		+ "    <o:naslov>О Б А В Е Ш Т Е Њ Е</o:naslov>\n"
-        		+ "    <o:podnaslov>о стављању на увид документа који садржи тражену информацију и о изради копије</o:podnaslov>\n"
-        		+ "    <o:telo>\n"
-        		+ "        <o:paragraf>paragraf0</o:paragraf>\n"
-        		+ "        <o:paragraf>paragraf1</o:paragraf>\n"
-        		+ "        <o:paragraf>paragraf2</o:paragraf>\n"
-        		+ "    </o:telo>\n"
-        		+ "    <o:podnozje>\n"
-        		+ "        <o:pecat>П Е Ч А Т</o:pecat>\n"
-        		+ "        <o:potpis>П О Т П И С</o:potpis>\n"
-        		+ "    </o:podnozje>\n"
-        		+ "    <o:cena>850</o:cena>\n"
-        		+ "    <o:informacija>информација о јавној доступности документа о статусу националних мањина</o:informacija>\n"
-        		+ "</o:Obavestenje>\n"
-        		+ "";
-        
-        String xhtmlURL = String.format("http://localhost:8082/file/download/%s", this.convertToHTMLMail(xml, obavestenje.getId()));
-        String pdfURL = String.format("http://localhost:8082/file/download/%s", this.convertToPDFMail(xml, obavestenje.getId()));
+        Obavestenje o = obavestenjeRepository.save(obavestenje);
+        generateDocuments(obavestenje.getId());
+        String xml = domParserService.readXMLFile(fileService.getFile("obavestenje-" + o.getId() + ".xml"));
+
+        String xhtmlURL = String.format("http://localhost:8082/file/download/%s", this.convertToHTMLMail(xml, o.getId()));
+        String pdfURL = String.format("http://localhost:8082/file/download/%s", this.convertToPDFMail(xml, o.getId()));
         
         GregorianCalendar now = new GregorianCalendar();
-        this.sendObavestenjePoverenikSOAP("djordjesevic@gmail.com", DatatypeFactory.newInstance().newXMLGregorianCalendar(now), "nekirandom@gmail.com", xhtmlURL, pdfURL);
+        this.sendObavestenjePoverenikSOAP("djvlada03@gmail.com", DatatypeFactory.newInstance().newXMLGregorianCalendar(now), "nekirandom@gmail.com", xhtmlURL, pdfURL);
         
-        return obavestenjeRepository.save(obavestenje);
+        return o;
     }
 
     public Obavestenje edit(Obavestenje obavestenje) throws Exception {
@@ -196,7 +157,7 @@ public class ObavestenjeService {
         String xPath = "/o:Obavestenje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryObavestenje(xPath);
         Obavestenje obavestenje = (Obavestenje) commonRepository.resourceSetToClass(result, Obavestenje.class);
-        String xmlInstance = "../data/xsd/instance/" + "obavestenje-" + id + ".xml";
+        String xmlInstance = mailOutput + "obavestenje-" + id + ".xml";
         String xml = "../data/xml/" + "obavestenje-" + id + ".xml";
         documentService.createXML(Obavestenje.class, obavestenje, xmlInstance);
         System.out.println("Docs generated!");
