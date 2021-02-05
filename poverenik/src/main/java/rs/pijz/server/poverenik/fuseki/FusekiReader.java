@@ -19,8 +19,6 @@ import org.apache.jena.rdf.model.RDFNode;
 
 public class FusekiReader {
 
-	private static final String QUERY_FILEPATH = "src/main/resources/rq/resenje.rq";
-
 	private FusekiReader() {
 	}
 
@@ -29,11 +27,11 @@ public class FusekiReader {
 		return new String(encoded, encoding);
 	}
 
-	public static ArrayList<String> executeQuery(Map<String, String> params, String dataset) throws IOException {
+	public static ArrayList<String> executeQuery(Map<String, String> params, String queryPath, String dataset) throws IOException {
 
 		AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties(dataset);
 
-		String sparqlQueryTemplate = readFile(QUERY_FILEPATH, StandardCharsets.UTF_8);
+		String sparqlQueryTemplate = readFile(queryPath, StandardCharsets.UTF_8);
 		String sparqlQuery = StringSubstitutor.replace(sparqlQueryTemplate, params, "{{", "}}");
 
 		QueryExecution query = QueryExecutionFactory.sparqlService(conn.queryEndpoint, sparqlQuery);

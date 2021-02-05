@@ -1,0 +1,8 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="">
+    <cmn:ime xmlns:cmn="http://www.pijz.rs/common" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Маријана</cmn:ime>
+  </rdf:Description>
+  <rdf:Description rdf:about="">
+    <cmn:prezime xmlns:cmn="http://www.pijz.rs/common" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Петровић</cmn:prezime>
+  </rdf:Description>
+</rdf:RDF>

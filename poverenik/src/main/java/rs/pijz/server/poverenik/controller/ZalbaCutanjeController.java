@@ -1,6 +1,9 @@
 package rs.pijz.server.poverenik.controller;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import rs.pijz.server.poverenik.dto.ResponseMessage;
+import rs.pijz.server.poverenik.dto.sparql.ZalbaCutanjeSPARQL;
 import rs.pijz.server.poverenik.fuseki.MetadataExtractor;
 import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.poverenik.service.DomParserService;
@@ -138,6 +142,12 @@ public class ZalbaCutanjeController {
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file), dataset);
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
+    }
+    
+    @PostMapping("/search-metadata")
+    public ResponseEntity<Collection<String>> searchMetadata(@RequestBody ZalbaCutanjeSPARQL zalbaCutanjeSPARQL) throws IOException {
+        ArrayList<String> result = zalbaCutanjeService.searchMetadata(zalbaCutanjeSPARQL, dataset);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping(value = "/convert-to-html")

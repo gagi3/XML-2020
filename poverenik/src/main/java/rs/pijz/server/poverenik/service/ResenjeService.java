@@ -78,6 +78,8 @@ public class ResenjeService {
 
 	private final String htmlOutput = "../data/html/resenje.html";
 	private final String pdfOutput = "../data/pdf/resenje.pdf";
+	
+	private static final String QUERY_FILEPATH = "src/main/resources/rq/resenje.rq";
 
 	public List<Resenje> findAll() throws XMLDBException {
 		String xPath = "/r:Resenje";
@@ -308,7 +310,7 @@ public class ResenjeService {
 		params.put("ime", resenjeSPARQL.getIme());
 		params.put("prezime", resenjeSPARQL.getPrezime());
 
-		ArrayList<String> result = FusekiReader.executeQuery(params, dataset);
+		ArrayList<String> result = FusekiReader.executeQuery(params, QUERY_FILEPATH, dataset);
 		return result;
 	}
 

@@ -1,0 +1,4 @@
+SELECT * FROM <http://localhost:8080/fuseki/IzjasnjenjeNaZalbu/data/metadata> where{
+    ?izjasnjenjeNaZalbu <http://www.pijz.rs/izjasnjenje-na-zalbutekst_izjave> ?tekstIzjave .
+    FILTER(CONTAINS(UCASE(str(?tekstIzjave)), UCASE("{{tekstIzjave}}"))).
+}

@@ -1,20 +1,32 @@
 package rs.pijz.server.poverenik.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
 import rs.pijz.server.poverenik.dto.ResponseMessage;
+import rs.pijz.server.poverenik.dto.sparql.ZalbaOdlukaSPARQL;
 import rs.pijz.server.poverenik.fuseki.MetadataExtractor;
 import rs.pijz.server.poverenik.model.zalba_odluka.ZalbaOdluka;
 import rs.pijz.server.poverenik.service.DomParserService;
 import rs.pijz.server.poverenik.service.ZalbaOdlukaService;
-
-import java.io.ByteArrayOutputStream;
-import java.util.Date;
-import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -130,6 +142,12 @@ public class ZalbaOdlukaController {
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
         metadataExtractor.extract(domParserService.readMultipartXMLFile(file), dataset);
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
+    }
+    
+    @PostMapping("/search-metadata")
+    public ResponseEntity<Collection<String>> searchMetadata(@RequestBody ZalbaOdlukaSPARQL zalbaOdlukaSPARQL) throws IOException {
+        ArrayList<String> result = zalbaOdlukaService.searchMetadata(zalbaOdlukaSPARQL, dataset);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping(value = "/convert-to-html")
