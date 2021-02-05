@@ -6,9 +6,7 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.pijz.rs/izjasnjenje-na-zalbu file:/D:/College/XML%202020/Project/XML-2020/data/xsd/izjasnjenje-na-zalbu.xsd" id="ID000" broj="12-0001/17" broj_zalbe="303-444/1721" datum_izjave="2006-05-04">
     <i:metadata>
-        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
-        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
-        <cmn:meta property="property2" content="content2">meta2</cmn:meta>
+        <cmn:meta property="i:tekst_izjave" content="Lorem Ipsum"></cmn:meta>
     </i:metadata>
     <i:tekst_izjave>
         Lorem Ipsum је једноставно модел текста који се користи у штампарској и словослагачкој индустрији. Lorem ipsum је био 

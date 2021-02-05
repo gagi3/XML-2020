@@ -7,9 +7,8 @@
  xsi:schemaLocation="http://www.pijz.rs/obavestenje file:/D:/College/XML%202020/Project/XML-2020/data/xsd/obavestenje.xsd" id="ID000" broj="33-2102/2311" datum="2006-05-04" datum_zahtevanja="2006-05-04" datum_uvida="2006-05-04" vreme_uvida_od="01:01:01.001"
      vreme_uvida_do="01:01:01.001">
     <o:metadata>
-        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
-        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
-        <cmn:meta property="property2" content="content2">meta2</cmn:meta>
+        <cmn:meta property="cmn:ime" content="Николина"></cmn:meta>
+        <cmn:meta property="cmn:prezime" content="Марковић"></cmn:meta>
     </o:metadata>
     <o:organ>
         <o:naziv>Основни кривични суд</o:naziv>

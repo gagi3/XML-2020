@@ -5,9 +5,7 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.pijz.rs/izvestaj file:/D:/College/XML%202020/Project/XML-2020/data/xsd/izvestaj.xsd" id="ID000" sluzbenikID="sluzbenikID0">
     <iz:metadata>
-        <cmn:meta property="property0" content="content0">meta0</cmn:meta>
-        <cmn:meta property="property1" content="content1">meta1</cmn:meta>
-        <cmn:meta property="property2" content="content2">meta2</cmn:meta>
+        <cmn:meta property="iz:brojZalbiOdluka" content="18"></cmn:meta>
     </iz:metadata>
     <iz:brojPodnetihZahteva>18</iz:brojPodnetihZahteva>
     <iz:brojOdbijenihZahteva>6</iz:brojOdbijenihZahteva>
