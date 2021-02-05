@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -22,7 +23,9 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ZalbaCutanjeRepository;
+import rs.pijz.server.poverenik.soap.client.ZalbaClient;
 import rs.pijz.server.poverenik.soap.client.ZalbaCutanjeClient;
+import rs.pijz.server.poverenik.soap.communication.zalba.SendZalbaSluzbenikResponse;
 import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.ExchangeZalbaCutanjeResponse;
 import rs.pijz.server.poverenik.soap.communication.zalba_cutanje.GetZalbaCutanjeResponse;
 import rs.pijz.server.poverenik.util.xslfo.XSLFOTransformer;
@@ -35,6 +38,9 @@ public class ZalbaCutanjeService {
     private ZalbaCutanjeRepository zalbaCutanjeRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZalbaClient zalbaClient;
     
     @Autowired
     private ZalbaCutanjeClient zalbaCutanjeClient;
@@ -178,6 +184,9 @@ public class ZalbaCutanjeService {
         if (existsById(zalbaCutanje.getId())) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
+        
+        this.exchangeSOAP(zalbaCutanje);
+        
         return zalbaCutanjeRepository.save(zalbaCutanje);
     }
 
@@ -217,6 +226,11 @@ public class ZalbaCutanjeService {
     
     public Boolean exchangeSOAP(ZalbaCutanje zalbaCutanje) {
     	ExchangeZalbaCutanjeResponse response = zalbaCutanjeClient.exchangeZalbaCutanje(zalbaCutanje);
+    	return response.isStatus();
+    }
+    
+    public Boolean sendZalbaSluzbenikSOAP(String username, String zalbaID, XMLGregorianCalendar date, String poverenik, String xhtmlURL, String pdfURL) {
+    	SendZalbaSluzbenikResponse response = zalbaClient.sendZalbaSluzbenik(username, zalbaID, date, poverenik, xhtmlURL, pdfURL);
     	return response.isStatus();
     }
 }

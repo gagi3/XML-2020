@@ -93,6 +93,9 @@ public class IzvestajService {
         if (existsById(izvestaj.getId())) {
             throw new Exception("Izvestaj sa istim ID vec postoji!");
         }
+        
+        this.exchangeSOAP(izvestaj);
+        
         return izvestajRepository.save(izvestaj);
     }
 

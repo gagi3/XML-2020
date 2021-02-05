@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "status"
 })
-@XmlRootElement(name = "exchangeIzvestajResponse")
+@XmlRootElement(name = "exchangeIzvestajResponse", namespace = "http://www.pijz.rs/izvestaj")
 public class ExchangeIzvestajResponse {
 
     protected boolean status;

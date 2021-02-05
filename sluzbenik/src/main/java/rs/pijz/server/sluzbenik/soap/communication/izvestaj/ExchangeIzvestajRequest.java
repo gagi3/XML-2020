@@ -40,7 +40,7 @@ import rs.pijz.server.sluzbenik.model.izvestaj.Izvestaj;
 @XmlType(name = "", propOrder = {
     "izvestaj"
 })
-@XmlRootElement(name = "exchangeIzvestajRequest")
+@XmlRootElement(name = "exchangeIzvestajRequest", namespace = "http://www.pijz.rs/izvestaj")
 public class ExchangeIzvestajRequest {
 
     @XmlElement(required = true)

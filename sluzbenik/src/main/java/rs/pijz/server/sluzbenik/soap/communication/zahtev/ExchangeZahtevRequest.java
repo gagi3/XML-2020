@@ -40,7 +40,7 @@ import rs.pijz.server.sluzbenik.model.zahtev.Zahtev;
 @XmlType(name = "", propOrder = {
     "zahtev"
 })
-@XmlRootElement(name = "exchangeZahtevRequest")
+@XmlRootElement(name = "exchangeZahtevRequest", namespace = "http://www.pijz.rs/zahtev")
 public class ExchangeZahtevRequest {
 
     @XmlElement(required = true)

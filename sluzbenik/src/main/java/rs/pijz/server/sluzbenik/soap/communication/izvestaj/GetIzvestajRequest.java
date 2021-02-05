@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "", propOrder = {
     "id"
 })
-@XmlRootElement(name = "getIzvestajRequest")
+@XmlRootElement(name = "getIzvestajRequest", namespace = "http://www.pijz.rs/izvestaj")
 public class GetIzvestajRequest {
 
     @XmlElement(required = true)

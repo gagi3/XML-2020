@@ -40,7 +40,7 @@ import rs.pijz.server.poverenik.model.izvestaj.Izvestaj;
 @XmlType(name = "", propOrder = {
     "izvestaj"
 })
-@XmlRootElement(name = "getIzvestajResponse")
+@XmlRootElement(name = "getIzvestajResponse", namespace = "http://www.pijz.rs/izvestaj")
 public class GetIzvestajResponse {
 
     @XmlElement(required = true)
