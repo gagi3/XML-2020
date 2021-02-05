@@ -126,6 +126,9 @@ public class ZahtevService {
         if (existsById(zahtev.getId())) {
             throw new Exception("Zahtev sa istim ID vec postoji!");
         }
+        
+        this.exchangeSOAP(zahtev);
+        
         return zahtevRepository.save(zahtev);
     }
 

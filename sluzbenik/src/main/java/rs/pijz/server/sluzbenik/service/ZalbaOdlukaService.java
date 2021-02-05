@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -22,7 +23,9 @@ import com.itextpdf.text.DocumentException;
 import rs.pijz.server.sluzbenik.model.zalba_odluka.ZalbaOdluka;
 import rs.pijz.server.sluzbenik.repository.CommonRepository;
 import rs.pijz.server.sluzbenik.repository.ZalbaOdlukaRepository;
+import rs.pijz.server.sluzbenik.soap.client.ZalbaClient;
 import rs.pijz.server.sluzbenik.soap.client.ZalbaOdlukaClient;
+import rs.pijz.server.sluzbenik.soap.communication.zalba.SendZalbaSluzbenikResponse;
 import rs.pijz.server.sluzbenik.soap.communication.zalba_odluka.ExchangeZalbaOdlukaResponse;
 import rs.pijz.server.sluzbenik.soap.communication.zalba_odluka.GetZalbaOdlukaResponse;
 import rs.pijz.server.sluzbenik.util.xslfo.XSLFOTransformer;
@@ -35,6 +38,9 @@ public class ZalbaOdlukaService {
     private ZalbaOdlukaRepository zalbaOdlukaRepository;
     @Autowired
     private DocumentService documentService;
+    
+    @Autowired
+    private ZalbaClient zalbaClient;
     
     @Autowired
     private ZalbaOdlukaClient zalbaOdlukaClient;
@@ -192,6 +198,9 @@ public class ZalbaOdlukaService {
         if (existsById(zalbaOdluka.getId())) {
             throw new Exception("Zalba sa istim ID vec postoji!");
         }
+        
+        this.exchangeSOAP(zalbaOdluka);
+        
         return zalbaOdlukaRepository.save(zalbaOdluka);
     }
 
@@ -231,6 +240,11 @@ public class ZalbaOdlukaService {
     
     public Boolean exchangeSOAP(ZalbaOdluka zalbaOdluka) {
     	ExchangeZalbaOdlukaResponse response = zalbaOdlukaClient.exchangeZalbaOdluka(zalbaOdluka);
+    	return response.isStatus();
+    }
+    
+    public Boolean sendZalbaSluzbenikSOAP(String username, String zalbaID, XMLGregorianCalendar date, String poverenik, String xhtmlURL, String pdfURL) {
+    	SendZalbaSluzbenikResponse response = zalbaClient.sendZalbaSluzbenik(username, zalbaID, date, poverenik, xhtmlURL, pdfURL);
     	return response.isStatus();
     }
 }

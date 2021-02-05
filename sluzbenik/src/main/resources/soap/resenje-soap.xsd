@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.pijz.rs/resenje" vc:minVersion="1.1"
+    xmlns:r="http://www.pijz.rs/resenje" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:element name="sendResenjeGradjaninRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="username" type="xs:string" />
+                <xs:element name="zalbaID" type="xs:string" />
+                <xs:element name="date" type="xs:date" />
+                <xs:element name="poverenik" type="xs:string" />
+                <xs:element name="xhtmlURL" type="xs:string" />
+                <xs:element name="pdfURL" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="sendResenjeSluzbenikRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="username" type="xs:string" />
+                <xs:element name="zalbaID" type="xs:string" />
+                <xs:element name="date" type="xs:date" />
+                <xs:element name="poverenik" type="xs:string" />
+                <xs:element name="xhtmlURL" type="xs:string" />
+                <xs:element name="pdfURL" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sendResenjeGradjaninResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="sendResenjeSluzbenikResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+</xs:schema>
