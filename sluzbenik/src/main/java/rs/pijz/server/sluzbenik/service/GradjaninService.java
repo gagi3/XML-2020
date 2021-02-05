@@ -17,6 +17,7 @@ import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class GradjaninService {
@@ -70,8 +71,11 @@ public class GradjaninService {
     }
 
     public Gradjanin create(Gradjanin gradjanin) throws Exception {
-        if (existsById(gradjanin.getKorisnik().getId())) {
-            throw new Exception("Gradjanin sa istim ID vec postoji!");
+        if (gradjanin.getKorisnik().getId() == null || gradjanin.getKorisnik().getId().equals("")) {
+            gradjanin.getKorisnik().setId(UUID.randomUUID().toString());
+        }
+        while (existsById(gradjanin.getKorisnik().getId())) {
+            gradjanin.getKorisnik().setId(UUID.randomUUID().toString());
         }
         if (existsByUsername(gradjanin.getKorisnik().getUsername())) {
             throw new Exception("Gradjanin sa istom email adresom vec postoji!");

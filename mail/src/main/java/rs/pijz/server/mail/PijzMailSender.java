@@ -37,12 +37,12 @@ public class PijzMailSender {
         javaMailSender.send(message);
     }
 
-    public void sendZalbaToSluzbenik(String username, String zalbaID, Date date, String poverenik, String xhtmlURL, String pdfURL) {
+    public void sendZalbaToSluzbenik(String username, String obavestenjeID, Date date, String poverenik, String xhtmlURL, String pdfURL) {
         SimpleMailMessage message = basicSetup(username);
         message.setSubject("Uložena žalba");
         message.setText("Poštovani/a,\n" +
                 "\n" +
-                "Uložena je žalba na vašu odluku u postupku broj " + zalbaID + " podnetu " + date.toString() + ".\n" +
+                "Uložena je žalba na vašu odluku u postupku broj " + obavestenjeID + " podnetu " + date.toString() + ".\n" +
                 "\n" +
                 "Dostavljamo vam linkove za preuzimanje dokumenta žalbe u HTML i PDF formi.\n" +
                 "\n" +

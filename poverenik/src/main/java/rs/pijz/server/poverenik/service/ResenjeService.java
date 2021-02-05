@@ -2,11 +2,10 @@ package rs.pijz.server.poverenik.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -20,9 +19,14 @@ import org.xmldb.api.base.XMLDBException;
 
 import com.itextpdf.text.DocumentException;
 
+import rs.pijz.server.poverenik.model.gradjanin.Gradjanin;
+import rs.pijz.server.poverenik.model.obavestenje.Obavestenje;
 import rs.pijz.server.poverenik.model.resenje.Resenje;
+import rs.pijz.server.poverenik.model.sluzbenik.Sluzbenik;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ResenjeRepository;
+import rs.pijz.server.poverenik.service.auth.intf.AuthenticationService;
+import rs.pijz.server.poverenik.soap.client.ObavestenjeClient;
 import rs.pijz.server.poverenik.soap.client.ResenjeClient;
 import rs.pijz.server.poverenik.soap.communication.resenje.SendResenjeGradjaninResponse;
 import rs.pijz.server.poverenik.soap.communication.resenje.SendResenjeSluzbenikResponse;
@@ -45,6 +49,23 @@ public class ResenjeService {
 
     @Autowired
     private XSLFOTransformer xslfoTransformer;
+
+    @Autowired
+    private SluzbenikService sluzbenikService;
+
+    @Autowired
+    private GradjaninService gradjaninService;
+
+    @Autowired
+    private FileService fileService;
+
+    @Autowired
+    private DomParserService domParserService;
+
+    @Autowired
+    private AuthenticationService authenticationService;
+
+    private final String mailOutput = "src/main/resources/output/";
 
     private final String xslTemplatePath = "../data/xsl/resenje.xsl";
     private final String xslfoTemplatePath = "../data/xsl-fo/resenje.xsl";
@@ -208,10 +229,27 @@ public class ResenjeService {
     }
 
     public Resenje create(Resenje resenje) throws Exception {
-        if (existsById(resenje.getID())) {
-            throw new Exception("Resenje sa istim ID vec postoji!");
+        if (resenje.getID() == null || resenje.getID().equals("")) {
+            resenje.setID(UUID.randomUUID().toString());
         }
-        return resenjeRepository.save(resenje);
+        while (existsById(resenje.getID())) {
+            resenje.setID(UUID.randomUUID().toString());
+        }
+        Gradjanin gradjanin = gradjaninService.getOne(resenje.getGradjaninID());
+        Sluzbenik sluzbenik = sluzbenikService.getOne(resenje.getSluzbenikID());
+        String poverenik = authenticationService.getUsername();
+        Resenje r = resenjeRepository.save(resenje);
+        generateDocuments(resenje.getID());
+        String xml = domParserService.readXMLFile(fileService.getFile("resenje-" + r.getID() + ".xml"));
+
+        String xhtmlURL = String.format("http://localhost:8081/file/download/%s", this.convertToHTMLMail(xml, r.getID()));
+        String pdfURL = String.format("http://localhost:8081/file/download/%s", this.convertToPDFMail(xml, r.getID()));
+
+        GregorianCalendar now = new GregorianCalendar();
+        this.sendResenjeGradjaninSOAP("djvlada03@gmail.com", r.getZalbaID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
+        this.sendResenjeSluzbenikSOAP("djvlada03@gmail.com", r.getZalbaID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
+
+        return r;
     }
 
     public Resenje edit(Resenje resenje) throws Exception {
@@ -239,6 +277,20 @@ public class ResenjeService {
 
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
+    }
+
+    public String convertToHTMLMail(String xml, String id) throws Exception {
+        String name = String.format("resenje-%s.html", id);
+        xslfoTransformer.generateHTML(xml, String.format("%s/%s", mailOutput, name), xslTemplatePath);
+
+        return name;
+    }
+
+    public String convertToPDFMail(String xml, String id) throws Exception {
+        String name = String.format("resenje-%s.pdf", id);
+        xslfoTransformer.generatePDF(xml, String.format("%s/%s", mailOutput, name), xslfoTemplatePath);
+
+        return name;
     }
     
     // SOAP communications

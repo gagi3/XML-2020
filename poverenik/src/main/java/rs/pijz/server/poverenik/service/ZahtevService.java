@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -123,8 +124,11 @@ public class ZahtevService {
     }
 
     public Zahtev create(Zahtev zahtev) throws Exception {
-        if (existsById(zahtev.getId())) {
-            throw new Exception("Zahtev sa istim ID vec postoji!");
+        if (zahtev.getId() == null || zahtev.getId().equals("")) {
+            zahtev.setId(UUID.randomUUID().toString());
+        }
+        while (existsById(zahtev.getId())) {
+            zahtev.setId(UUID.randomUUID().toString());
         }
         
         this.exchangeSOAP(zahtev);

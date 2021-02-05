@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -158,8 +159,11 @@ public class IzjasnjenjeNaZalbuService {
     }
 
     public IzjasnjenjeNaZalbu create(IzjasnjenjeNaZalbu izjasnjenjeNaZalbu) throws Exception {
-        if (existsById(izjasnjenjeNaZalbu.getId())) {
-            throw new Exception("Izjasnjenje sa istim ID vec postoji!");
+        if (izjasnjenjeNaZalbu.getId() == null || izjasnjenjeNaZalbu.getId().equals("")) {
+            izjasnjenjeNaZalbu.setId(UUID.randomUUID().toString());
+        }
+        while (existsById(izjasnjenjeNaZalbu.getId())) {
+            izjasnjenjeNaZalbu.setId(UUID.randomUUID().toString());
         }
         return izjasnjenjeNaZalbuRepository.save(izjasnjenjeNaZalbu);
     }
