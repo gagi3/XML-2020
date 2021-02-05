@@ -1,20 +1,28 @@
 package rs.pijz.server.poverenik.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
 import rs.pijz.server.poverenik.dto.ResponseMessage;
 import rs.pijz.server.poverenik.fuseki.MetadataExtractor;
 import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.poverenik.service.DomParserService;
 import rs.pijz.server.poverenik.service.ZalbaCutanjeService;
-
-import java.io.ByteArrayOutputStream;
-import java.util.Date;
-import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -26,6 +34,8 @@ public class ZalbaCutanjeController {
     private DomParserService domParserService;
     @Autowired
     private MetadataExtractor metadataExtractor;
+    
+    private final String dataset = "conn.zalba-cutanje-dataset";
 
 //    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
 //    private ResponseEntity<List<ZalbaCutanje>> findAll() {
@@ -126,7 +136,7 @@ public class ZalbaCutanjeController {
 
     @PostMapping(value = "/extract-metadata")
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
-        metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
+        metadataExtractor.extract(domParserService.readMultipartXMLFile(file), dataset);
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
     }
 

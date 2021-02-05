@@ -26,6 +26,8 @@ public class ZalbaOdlukaController {
     private DomParserService domParserService;
     @Autowired
     private MetadataExtractor metadataExtractor;
+    
+    private final String dataset = "conn.zalba-odluka-dataset";
 
 //    @GetMapping(value = "", produces = MediaType.APPLICATION_XML_VALUE)
 //    private ResponseEntity<List<ZalbaOdluka>> findAll() {
@@ -126,7 +128,7 @@ public class ZalbaOdlukaController {
 
     @PostMapping(value = "/extract-metadata")
     public ResponseEntity<String> extractMetadata(@RequestParam("file") MultipartFile file) throws Exception {
-        metadataExtractor.extract(domParserService.readMultipartXMLFile(file));
+        metadataExtractor.extract(domParserService.readMultipartXMLFile(file), dataset);
         return new ResponseEntity<>("Metadata extraction finished.", HttpStatus.OK);
     }
 
