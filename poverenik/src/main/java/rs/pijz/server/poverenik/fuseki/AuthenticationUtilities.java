@@ -10,7 +10,7 @@ public class AuthenticationUtilities {
      *
      * @return the configuration object
      */
-    public static ConnectionProperties loadProperties() throws IOException {
+    public static ConnectionProperties loadProperties(String dataset) throws IOException {
         String propsName = "fuseki.properties";
 
         InputStream propsStream = openStream(propsName);
@@ -20,7 +20,7 @@ public class AuthenticationUtilities {
         Properties props = new Properties();
         props.load(propsStream);
 
-        return new ConnectionProperties(props);
+        return new ConnectionProperties(props, dataset);
     }
 
     /**
@@ -47,9 +47,9 @@ public class AuthenticationUtilities {
         public String dataEndpoint;
 
 
-        public ConnectionProperties(Properties props) {
+        public ConnectionProperties(Properties props, String dataset) {
             super();
-            dataset = props.getProperty("conn.dataset").trim();
+            dataset = props.getProperty(dataset).trim();
             endpoint = props.getProperty("conn.endpoint").trim();
 
             queryEndpoint = String.join("/", endpoint, dataset, props.getProperty("conn.query").trim());

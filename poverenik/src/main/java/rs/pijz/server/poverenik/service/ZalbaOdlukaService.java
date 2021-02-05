@@ -19,6 +19,9 @@ import org.xmldb.api.base.XMLDBException;
 
 import com.itextpdf.text.DocumentException;
 
+import rs.pijz.server.poverenik.dto.sparql.ResenjeSPARQL;
+import rs.pijz.server.poverenik.dto.sparql.ZalbaOdlukaSPARQL;
+import rs.pijz.server.poverenik.fuseki.FusekiReader;
 import rs.pijz.server.poverenik.model.sluzbenik.Sluzbenik;
 import rs.pijz.server.poverenik.model.zalba_odluka.ZalbaOdluka;
 import rs.pijz.server.poverenik.model.zalba_odluka.ZalbaOdluka;
@@ -72,6 +75,8 @@ public class ZalbaOdlukaService {
 
     private final String htmlOutput = "../data/html/zalba-odluka.html";
     private final String pdfOutput = "../data/pdf/zalba-odluka.pdf";
+    
+    private static final String QUERY_FILEPATH = "src/main/resources/rq/zalba-odluka.rq";
 
     public List<ZalbaOdluka> findAll() throws XMLDBException {
         String xPath = "/zo:ZalbaOdluka";
@@ -277,6 +282,15 @@ public class ZalbaOdlukaService {
 
         return name;
     }
+    
+    public ArrayList<String> searchMetadata(ZalbaOdlukaSPARQL zalbaOdlukaSPARQL, String dataset) throws IOException {
+		Map<String, String> params = new HashMap<>();
+		params.put("ime", zalbaOdlukaSPARQL.getIme());
+		params.put("prezime", zalbaOdlukaSPARQL.getPrezime());
+
+		ArrayList<String> result = FusekiReader.executeQuery(params, QUERY_FILEPATH, dataset);
+		return result;
+	}
     
     // SOAP communications
     

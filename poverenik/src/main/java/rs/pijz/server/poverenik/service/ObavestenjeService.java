@@ -3,7 +3,9 @@ package rs.pijz.server.poverenik.service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
@@ -20,6 +22,9 @@ import org.xmldb.api.base.XMLDBException;
 
 import com.itextpdf.text.DocumentException;
 
+import rs.pijz.server.poverenik.dto.sparql.ObavestenjeSPARQL;
+import rs.pijz.server.poverenik.dto.sparql.ResenjeSPARQL;
+import rs.pijz.server.poverenik.fuseki.FusekiReader;
 import rs.pijz.server.poverenik.model.obavestenje.Obavestenje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.ObavestenjeRepository;
@@ -47,6 +52,8 @@ public class ObavestenjeService {
 
     private final String htmlOutput = "../data/html/obavestenje.html";
     private final String pdfOutput = "../data/pdf/obavestenje.pdf";
+    
+    private static final String QUERY_FILEPATH = "src/main/resources/rq/obavestenje.rq";
 
     public List<Obavestenje> findAll() throws XMLDBException {
         String xPath = "/o:Obavestenje";
@@ -140,6 +147,15 @@ public class ObavestenjeService {
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
     }
+    
+    public ArrayList<String> searchMetadata(ObavestenjeSPARQL obavestenjeSPARQL, String dataset) throws IOException {
+		Map<String, String> params = new HashMap<>();
+		params.put("ime", obavestenjeSPARQL.getIme());
+		params.put("prezime", obavestenjeSPARQL.getPrezime());
+
+		ArrayList<String> result = FusekiReader.executeQuery(params, QUERY_FILEPATH, dataset);
+		return result;
+	}
     
     // SOAP communications
     

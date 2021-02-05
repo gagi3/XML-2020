@@ -1,14 +1,8 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
   <rdf:Description rdf:about="">
-    <zo:id xmlns:zo="http://www.pijz.rs/zalba-odluka" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">ID002</zo:id>
+    <cmn:ime xmlns:cmn="http://www.pijz.rs/common" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Маријана</cmn:ime>
   </rdf:Description>
   <rdf:Description rdf:about="">
-    <zo:broj xmlns:zo="http://www.pijz.rs/zalba-odluka" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">03/21</zo:broj>
-  </rdf:Description>
-  <rdf:Description rdf:about="">
-    <zo:datum xmlns:zo="http://www.pijz.rs/zalba-odluka" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">2006-05-04</zo:datum>
-  </rdf:Description>
-  <rdf:Description rdf:about="">
-    <zo:datum_zahteva xmlns:zo="http://www.pijz.rs/zalba-odluka" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">2006-05-04</zo:datum_zahteva>
+    <cmn:prezime xmlns:cmn="http://www.pijz.rs/common" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Петровић</cmn:prezime>
   </rdf:Description>
 </rdf:RDF>

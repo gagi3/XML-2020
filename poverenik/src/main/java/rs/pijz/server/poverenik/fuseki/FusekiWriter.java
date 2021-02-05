@@ -15,9 +15,9 @@ public class FusekiWriter {
     private static final String RDF_FILEPATH = "src/main/resources/rdf/output.rdf";
     private static final String GRAPH_URI = "metadata";
 
-    public static void saveRDF() throws IOException {
+    public static void saveRDF(String dataset) throws IOException {
         System.out.println("[INFO] Loading triples from an RDF/XML to a model...");
-        AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
+        AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties(dataset);
 
         Model model = ModelFactory.createDefaultModel();
         model.read(RDF_FILEPATH);
