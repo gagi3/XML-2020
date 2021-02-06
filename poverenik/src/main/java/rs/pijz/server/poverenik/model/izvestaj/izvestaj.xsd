@@ -18,7 +18,7 @@
             <xs:element name="brojPodnetihZahteva" type="xs:int"/>
             <xs:element name="brojOdbijenihZahteva" type="xs:int"/>
             <xs:element name="brojZalbiOdluka" type="xs:int"/>
-            <xs:element name="zalbe" type="iz:ZalbaSadrzaj"/>
+            <xs:element name="zalbe" type="iz:ZalbaSadrzaj" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
         <xs:attribute name="sluzbenikID" type="xs:string"/>

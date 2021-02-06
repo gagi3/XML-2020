@@ -2,8 +2,9 @@
 package rs.pijz.server.poverenik.model.izvestaj;
 
 import rs.pijz.server.poverenik.model.common.MetaData;
-import rs.pijz.server.poverenik.model.izvestaj.ZalbaSadrzaj;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="brojPodnetihZahteva" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="brojOdbijenihZahteva" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="brojZalbiOdluka" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="zalbe" type="{http://www.pijz.rs/izvestaj}ZalbaSadrzaj"/>
+ *         &lt;element name="zalbe" type="{http://www.pijz.rs/izvestaj}ZalbaSadrzaj" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="sluzbenikID" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -53,8 +54,8 @@ public class Izvestaj {
     protected int brojOdbijenihZahteva;
     @XmlElement(namespace = "http://www.pijz.rs/izvestaj")
     protected int brojZalbiOdluka;
-    @XmlElement(namespace = "http://www.pijz.rs/izvestaj", required = true)
-    protected ZalbaSadrzaj zalbe;
+    @XmlElement(namespace = "http://www.pijz.rs/izvestaj")
+    protected List<ZalbaSadrzaj> zalbe;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -138,25 +139,30 @@ public class Izvestaj {
     /**
      * Gets the value of the zalbe property.
      * 
-     * @return
-     *     possible object is
-     *     {@link ZalbaSadrzaj }
-     *     
-     */
-    public ZalbaSadrzaj getZalbe() {
-        return zalbe;
-    }
-
-    /**
-     * Sets the value of the zalbe property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the zalbe property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link ZalbaSadrzaj }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getZalbe().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ZalbaSadrzaj }
+     * 
+     * 
      */
-    public void setZalbe(ZalbaSadrzaj value) {
-        this.zalbe = value;
+    public List<ZalbaSadrzaj> getZalbe() {
+        if (zalbe == null) {
+            zalbe = new ArrayList<ZalbaSadrzaj>();
+        }
+        return this.zalbe;
     }
 
     /**

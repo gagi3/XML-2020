@@ -70,6 +70,17 @@ public class IzvestajController {
         }
     }
 
+    @GetMapping(value = "/generate", produces = MediaType.APPLICATION_XML_VALUE)
+    private ResponseEntity<Izvestaj> generate(@RequestParam String sluzbenikID) {
+        try {
+            Izvestaj izvestaj = izvestajService.generate(sluzbenikID);
+            return ResponseEntity.ok().body(izvestaj);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_XML_VALUE)
     private ResponseEntity<Izvestaj> create(@RequestBody Izvestaj izvestaj) {
         try {
@@ -106,7 +117,7 @@ public class IzvestajController {
     @GetMapping(value = "/generate")
     private ResponseEntity<ResponseMessage> generateDocuments(@RequestParam String id) {
         try {
-            izvestajService.generateDocuments(id);
+            izvestajService.generate(id);
             return ResponseEntity.ok().body(new ResponseMessage("Uspesno kreiranje."));
         } catch (Exception e) {
             e.printStackTrace();

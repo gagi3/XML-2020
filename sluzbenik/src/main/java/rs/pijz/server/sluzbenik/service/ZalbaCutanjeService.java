@@ -2,10 +2,7 @@ package rs.pijz.server.sluzbenik.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -187,6 +184,12 @@ public class ZalbaCutanjeService {
         }
         while (existsById(zalbaCutanje.getId())) {
             zalbaCutanje.setId(UUID.randomUUID().toString());
+        }
+        Calendar zcd = zalbaCutanje.getDatum().toGregorianCalendar();
+        Calendar zd = zalbaCutanje.getDatumZahteva().toGregorianCalendar();
+        zd.add(Calendar.DAY_OF_MONTH, 15);
+        if (zcd.before(zd)) {
+            throw new Exception("Nije proteklo 15 dana od datuma podnosenja zahteva!");
         }
         
         this.exchangeSOAP(zalbaCutanje);

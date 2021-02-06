@@ -38,12 +38,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class ZalbaSadrzaj {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/izvestaj", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
     protected String zalbaID;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.pijz.rs/izvestaj", required = true)
     protected String sadrzaj;
 
     /**

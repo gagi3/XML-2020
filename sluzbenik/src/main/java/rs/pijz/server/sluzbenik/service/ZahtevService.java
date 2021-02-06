@@ -138,19 +138,19 @@ public class ZahtevService {
         while (existsById(zahtev.getId())) {
             zahtev.setId(UUID.randomUUID().toString());
         }
-        String id = authenticationService.getUser().getId();
-        if (id == null || !authenticationService.getUser().getTip().equals("GRADJANIN")) {
-            return null;
-        }
+//        String id = authenticationService.getUser().getId();
+//        if (id == null || !authenticationService.getUser().getTip().equals("GRADJANIN")) {
+//            return null;
+//        }
         GregorianCalendar cal = new GregorianCalendar();
         zahtev.setDatum(DatatypeFactory.newInstance().newXMLGregorianCalendar(cal));
-        zahtev.setGradjaninID(id);
-        Gradjanin gradjanin = gradjaninService.getOne(id);
-        if (gradjanin == null) {
-            return null;
-        }
+//        zahtev.setGradjaninID(za);
+//        Gradjanin gradjanin = gradjaninService.getOne(id);
+//        if (gradjanin == null) {
+//            return null;
+//        }
         ObjectFactory gFactory = new ObjectFactory();
-        gradjanin.getZahtevi().add(gFactory.createGradjaninZahtevi(zahtev.getId()));
+//        gradjanin.getZahtevi().add(gFactory.createGradjaninZahtevi(zahtev.getId()));
 
         return zahtevRepository.save(zahtev);
     }
