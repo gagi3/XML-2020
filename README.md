@@ -53,3 +53,36 @@ Maven dokumentacija za instaliranje: https://maven.apache.org/install.html
 4. Ponoviti postupak za aplikacije sluzbenik i mail (unutar foldera `/sluzbenik` i `/mail`)
 
 Alternativno, ukoliko se koristi IDE (razvojno okruženje), potrebno je uvesti sve biblioteke (iz `/libs` direktorijuma za svaki projekat), instalirati Lombok plugin u razvojnom okruženju i omogućiti pretprocesiranje anotacija (annotation preprocessing).
+
+
+###### Endpoints
+
+Spisak aplikacija i njihovih portova:
+1. Poverenik: `8081`
+2. Službenik: `8082`
+3. Mail: `8083`
+
+Neki od osnovnih endpointa su `/create` za kreiranje, `/edit` za izmenu, ` ` za pretragu (sa parametrima), `/search?id=ID` za pretragu po ID, `/generate?id=ID` za generisanje XML dokumenta, `/convert-to-pdf` i `/convert-to-html` za konverziju dokumenata, `/extract-metadata` za ekstrakciju metapodataka i `/search-metadata` za pretragu nad podacima.
+
+Ove operacije (ili veći deo njih) se mogu raditi nad `/gradjanin`, `/izjasnjenje-na-zalbu`, `/izvestaj`, `/korisnik`, `/obavestenje`, `/poverenik`, `/resenje`, `/sluzbenik`, `/zahtev`, `/zalba-cutanje`, `/zalba-odluka`.
+
+Operacije registracije i logovanja su dostupne na `/api/user/register` i `/api/user/login`.
+
+Generisanje izveštaja službenika je dostupno na `GET localhost:8082/izvestaj/generate?id=ID`, gde se pod ID podrazumeva ID službenika koji želi da generiše izveštaje.
+
+Za više informacija, pogledati foldere `controller` u aplikacijama poverenika i službenika.
+
+Jedan primer: `GET localhost:8081/resenje?poverenikID=ID001`. Ovaj zahtev preuzima iz baze podataka poverenika sva rešenja koja sadrže ID001 kao ID poverenika, tačnije, sva rešenja koja je izdao poverenik sa ID001.
+
+##### Front end
+
+NPM/Node.js dokumentacija za instaliranje: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+0. Proveriti da li su podešene varijable komandom `npm --version` unutar Command Prompt/Terminal/Powershell - ukoliko izbaci grešku, ponoviti postupak podešavanja varijabli
+1. Otvoriti Command Prompt/Terminal/Powershell
+2. Pozicionirati se u folder `/front-poverenik` (unutar kloniranog repozitorijuma)
+3. Ukucati `npm install` i pritisnuti Enter
+4. Kada se izvršavanje komande završi, ukucati `npm start` i pritisnuti Enter
+5. Ponoviti postupak za aplikaciju službenika (unutar foldera `/front-sluzbenik`)
+
+Aplikacija poverenika je dostupna na `localhost:4200`.
