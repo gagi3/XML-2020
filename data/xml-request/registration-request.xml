@@ -1,0 +1,14 @@
+<Korisnik>
+    <fizickoLice>
+        <ime>Drugi</ime>
+        <prezime>Gradjanin</prezime>
+        <adresa>
+            <grad>Novi Sad</grad>
+            <ulica>Everywhere</ulica>
+            <broj>8</broj>
+        </adresa>
+    </fizickoLice>
+    <password>vlada</password>
+    <username>a1@gmail.com</username>
+    <tip>GRADJANIN</tip>
+</Korisnik>

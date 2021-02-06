@@ -1,0 +1,73 @@
+<Obavestenje>
+    <metadata>
+        <meta>
+            <meta>
+                <value></value>
+                <property>r:ID</property>
+                <content>ID001</content>
+            </meta>
+            <meta>
+                <value></value>
+                <property>r:broj</property>
+                <content>04/21</content>
+            </meta>
+            <meta>
+                <value></value>
+                <property>r:datum</property>
+                <content>2006-05-04</content>
+            </meta>
+            <meta>
+                <value></value>
+                <property>r:datum</property>
+                <content>2006-05-04</content>
+            </meta>
+        </meta>
+    </metadata>
+    <organ>
+        <naziv>Основни кривични суд</naziv>
+        <sediste>
+            <grad>Нови Сад</grad>
+            <ulica>Његошева</ulica>
+            <broj>3</broj>
+        </sediste>
+    </organ>
+    <podnosilac>
+        <fizickoLice>
+            <ime>Николина</ime>
+            <prezime>Марковић</prezime>
+            <adresa>
+                <grad>Нови Сад</grad>
+                <ulica>Булевар Ослобођења</ulica>
+                <broj>99а</broj>
+            </adresa>
+        </fizickoLice>
+    </podnosilac>
+    <naslov>О Б А В Е Ш Т Е Њ Е</naslov>
+    <podnaslov>о стављању на увид документа који садржи тражену информацију и о изради копије</podnaslov>
+    <telo>
+        <paragraf>
+            <paragraf>paragraf0</paragraf>
+        </paragraf>
+        <paragraf>
+            <paragraf>paragraf1</paragraf>
+        </paragraf>
+        <paragraf>
+            <paragraf>paragraf2</paragraf>
+        </paragraf>
+    </telo>
+    <podnozje>
+        <pecat>П Е Ч А Т</pecat>
+        <potpis>П О Т П И С</potpis>
+    </podnozje>
+    <cena>850</cena>
+    <informacija>информација о јавној доступности документа о статусу националних мањина</informacija>
+    <id>ID015</id>
+    <gradjaninID>1</gradjaninID>
+    <sluzbenikID>ID001</sluzbenikID>
+    <broj>Oj5hCtsId9cYWp0SJ8x</broj>
+    <datum_zahtevanja>2021-11-20T00:00:00.000+0000</datum_zahtevanja>
+    <datum_uvida>2021-03-16T00:00:00.000+0000</datum_uvida>
+    <datum>2021-03-16T00:00:00.000+0000</datum>
+    <vreme_uvida_od>01:01:01.001</vreme_uvida_od>
+    <vreme_uvida_do>01:01:01.001</vreme_uvida_do>
+</Obavestenje>

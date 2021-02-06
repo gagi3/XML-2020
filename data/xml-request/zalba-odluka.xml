@@ -1,0 +1,68 @@
+<ZalbaOdluka>
+    <metadata>
+        <meta>
+            <meta>
+                <value></value>
+                <property>cmn:ime</property>
+                <content>Маријана</content>
+            </meta>
+            <meta>
+                <value></value>
+                <property>cmn:prezime</property>
+                <content>Петровић</content>
+            </meta>
+        </meta>
+    </metadata>
+    <predmet>ЖАЛБА ПРОТИВ ОДЛУКЕ ОРГАНА ВЛАСТИ КОЈОМ ЈЕ ОДБИЈЕН ИЛИ ОДБАЧЕН ЗАХТЕВ ЗА ПРИСТУП ИНФОРМАЦИЈИ</predmet>
+    <komeJeUpucena>
+        <naziv>Поверенику за информације од јавног значаја и заштиту података о личности</naziv>
+        <adresaZaPostu>
+            <grad>Београд</grad>
+            <ulica>Булевар краља Александра</ulica>
+            <broj>15</broj>
+        </adresaZaPostu>
+    </komeJeUpucena>
+    <zalilac>
+        <osobaZalilac>
+            <ime>Анастасија</ime>
+            <prezime>Петровић</prezime>
+            <adresa>
+                <grad>Београд</grad>
+                <ulica>Устаничка</ulica>
+                <broj>100</broj>
+            </adresa>
+        </osobaZalilac>
+        <sedisteZalioca>Суботица</sedisteZalioca>
+        <naziv>Први основни суд</naziv>
+    </zalilac>
+    <donosilacOdluke>Први кривични суд у Суботици</donosilacOdluke>
+    <brojResenja>90</brojResenja>
+    <godinaResenja>2006-05-03T22:00:00.000+0000</godinaResenja>
+    <razlogPobijanja>Сл. Гласник бр. 35/20</razlogPobijanja>
+    <podnosilacZalbe>
+        <osoba>
+            <ime>Маријана</ime>
+            <prezime>Петровић</prezime>
+            <adresa>
+                <grad>Београд</grad>
+                <ulica>Устаничка</ulica>
+                <broj>100</broj>
+            </adresa>
+        </osoba>
+        <drugiKontakt>marijanapetrovic@gmail.com</drugiKontakt>
+        <potpis>М А Р И Ј А Н А - П.</potpis>
+    </podnosilacZalbe>
+    <mestoPodnosenjaZalbe>
+        <grad>Нови Сад</grad>
+        <datum>2006-05-03T22:00:00.000+0000</datum>
+    </mestoPodnosenjaZalbe>
+    <id>ID000</id>
+    <zahtevID/>
+    <obavestenjeID/>
+    <broj>broj0</broj>
+    <datum>2006-05-03T22:00:00.000+0000</datum>
+    <datumZahteva>2006-05-03T22:00:00.000+0000</datumZahteva>
+    <sluzbenikID>ID001</sluzbenikID>
+    <poverenikID>ID003</poverenikID>
+    <gradjaninID>ID002</gradjaninID>
+</ZalbaOdluka>

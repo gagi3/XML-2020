@@ -1,0 +1,17 @@
+<Sluzbenik>
+    <korisnik>
+        <fizickoLice>
+            <ime>Prvi</ime>
+            <prezime>Sluzbenik</prezime>
+            <adresa>
+                <grad>Novi Sad</grad>
+                <ulica>Everywhere</ulica>
+                <broj>8</broj>
+            </adresa>
+        </fizickoLice>
+        <password>djoka</password>
+        <tip>SLUZBENIK</tip>
+        <id>ID001</id>
+        <username>sevicbb@gmail.com</username>
+    </korisnik>
+</Sluzbenik>

@@ -1,0 +1,53 @@
+<ZalbaCutanje>
+    <id>ID000</id>
+    <zahtevID/>
+    <obavestenjeID/>
+    <broj>broj0</broj>
+    <datum>2006-05-03T22:00:00.000+0000</datum>
+    <datum_zahteva>2006-05-03T22:00:00.000+0000</datum_zahteva>
+    <sluzbenikID>ID001</sluzbenikID>
+    <poverenikID>ID003</poverenikID>
+    <gradjaninID>ID002</gradjaninID>
+    <metadata>
+        <meta>
+            <meta>
+                <value></value>
+                <property>cmn:ime</property>
+                <content>Маријана</content>
+            </meta>
+            <meta>
+                <value></value>
+                <property>cmn:prezime</property>
+                <content>Петровић</content>
+            </meta>
+        </meta>
+    </metadata>
+    <predmet>ЖАЛБА КАДА ОРГАН ВЛАСТИ НИЈЕ ПОСТУПИО/ није поступио у целости/ ПО ЗАХТЕВУ ТРАЖИОЦА У ЗАКОНСКОМ РОКУ (ЋУТАЊЕ УПРАВЕ)</predmet>
+    <kome_je_upucena>
+        <naziv>Повереникy за информације од јавног значаја и заштиту података о личности</naziv>
+        <adresa_za_postu>
+            <grad>Београд</grad>
+            <ulica>Булевар краља Александрa</ulica>
+            <broj>15</broj>
+        </adresa_za_postu>
+    </kome_je_upucena>
+    <protiv_organa>Основни кривични суд у Београду</protiv_organa>
+    <razlog>organ_nije_postupio</razlog>
+    <podaci_o_zahtevu>детаљни подаци о захтеву и информацијама</podaci_o_zahtevu>
+    <podnosilac_zalbe>
+        <osoba>
+            <ime>Маријана</ime>
+            <prezime>Попов</prezime>
+            <adresa>
+                <grad>Нови Сад</grad>
+                <ulica>Степе Степановића</ulica>
+                <broj>30</broj>
+            </adresa>
+        </osoba>
+        <drugi_kontakt>marijanapopov@gmail.com</drugi_kontakt>
+    </podnosilac_zalbe>
+    <mesto_podnosenja_zalbe>
+        <grad>Нови Сад</grad>
+        <datum>2006-05-04</datum>
+    </mesto_podnosenja_zalbe>
+</ZalbaCutanje>

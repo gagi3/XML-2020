@@ -1,0 +1,30 @@
+<Izvestaj>
+    <metadata/>
+    <brojPodnetihZahteva>3</brojPodnetihZahteva>
+    <brojOdbijenihZahteva>0</brojOdbijenihZahteva>
+    <brojZalbiOdluka>5</brojZalbiOdluka>
+    <zalbe>
+        <zalbe>
+            <zalbaID>d9164699-97c2-4d4c-97cc-8699bf407697</zalbaID>
+            <sadrzaj>неоснованост чињеница</sadrzaj>
+        </zalbe>
+        <zalbe>
+            <zalbaID>feb16666-b398-436f-9d78-7b6f7b71e047</zalbaID>
+            <sadrzaj>неоснованост чињеница</sadrzaj>
+        </zalbe>
+        <zalbe>
+            <zalbaID>227150b3-4de8-4fef-901d-dd3496739181</zalbaID>
+            <sadrzaj>неоснованост чињеница</sadrzaj>
+        </zalbe>
+        <zalbe>
+            <zalbaID>9ee62370-9a4c-4247-941a-8a490734aa55</zalbaID>
+            <sadrzaj>неоснованост чињеница</sadrzaj>
+        </zalbe>
+        <zalbe>
+            <zalbaID>ID000</zalbaID>
+            <sadrzaj>неоснованост чињеница</sadrzaj>
+        </zalbe>
+    </zalbe>
+    <id>a8f1008f-e50c-4099-a58b-0097f8b57b5b</id>
+    <sluzbenikID>ID001</sluzbenikID>
+</Izvestaj>

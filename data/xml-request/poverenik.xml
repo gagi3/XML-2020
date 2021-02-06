@@ -1,0 +1,17 @@
+<Poverenik>
+    <korisnik>
+        <fizickoLice>
+            <ime>Prvi</ime>
+            <prezime>Poverenik</prezime>
+            <adresa>
+                <grad>Novi Sad</grad>
+                <ulica>Everywhere</ulica>
+                <broj>8</broj>
+            </adresa>
+        </fizickoLice>
+        <password>sparql</password>
+        <tip>POVERENIK</tip>
+        <id>ID003</id>
+        <username>xml2020@gmail.com</username>
+    </korisnik>
+</Poverenik>
