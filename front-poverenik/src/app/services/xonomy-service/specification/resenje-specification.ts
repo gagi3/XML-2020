@@ -177,10 +177,7 @@ export const resenjeSpecification = {
         },
       ],
       attributes: [],
-      elements: {
-        ime: { hasText: true },
-        prezime: { hasText: true },
-      },
+      elements: {},
     },
     poverenik: {
       mustBeBefore: ['ustanova', 'dispozitiv', 'obrazlozenje'],
@@ -199,10 +196,7 @@ export const resenjeSpecification = {
         },
       ],
       attributes: [],
-      elements: {
-        ime: { hasText: true, asker: Xonomy.askString },
-        prezime: { hasText: true, asker: Xonomy.askString },
-      },
+      elements: {},
     },
     ustanova: {
       mustBeBefore: ['dispozitiv', 'obrazlozenje'],
@@ -217,55 +211,7 @@ export const resenjeSpecification = {
         },
       ],
       attributes: [],
-      elements: {
-        stav: {
-          menu: [
-            {
-              caption: 'Додај <dokument>',
-              action: Xonomy.newElementChild,
-              actionParameter: '<dokument></dokument>',
-              hideIf: (el: any) => el.hasChildElement('dokument'),
-            },
-            {
-              caption: 'Додај <rokObavestenja>',
-              action: Xonomy.newElementChild,
-              actionParameter: '<rokObavestenja></rokObavestenja>',
-              hideIf: (el: any) => el.hasChildElement('rokObavestenja'),
-            },
-            {
-              caption: 'Додај <tekst>',
-              action: Xonomy.newElementChild,
-              actionParameter: '<tekst></tekst>',
-              hideIf: (el: any) => el.hasChildElement('tekst'),
-            },
-          ],
-          attributes: [],
-          elements: {
-            dokument: {
-              menu: [
-                {
-                  caption: 'Додај <naziv>',
-                  action: Xonomy.newElementChild,
-                  actionParameter: '<naziv></naziv>',
-                  hideIf: (el: any) => el.hasChildElement('naziv'),
-                },
-                {
-                  caption: 'Додај <informacija>',
-                  action: Xonomy.newElementChild,
-                  actionParameter: '<informacija></informacija>',
-                },
-              ],
-              attributes: [],
-              elements: {
-                naziv: { hasText: true, asker: Xonomy.askString },
-                informacija: { hasText: true, asker: Xonomy.askString },
-              },
-            },
-            rokObavestenja: { hasText: true, asker: Xonomy.askString },
-            tekst: { hasText: true, asker: Xonomy.askString },
-          },
-        },
-      },
+      elements: {},
     },
     obrazlozenje: {
       menu: [
@@ -276,9 +222,55 @@ export const resenjeSpecification = {
         },
       ],
       attributes: [],
-      elements: {
-        paragraf: { hasText: true, asker: Xonomy.askString },
-      },
+      elements: {},
     },
+    ime: { hasText: true, oneliner: true, asker: Xonomy.askString },
+    prezime: { hasText: true, oneliner: true, asker: Xonomy.askString },
+    stav: {
+      menu: [
+        {
+          caption: 'Додај <dokument>',
+          action: Xonomy.newElementChild,
+          actionParameter: '<dokument></dokument>',
+          hideIf: (el: any) => el.hasChildElement('dokument'),
+        },
+        {
+          caption: 'Додај <rokObavestenja>',
+          action: Xonomy.newElementChild,
+          actionParameter: '<rokObavestenja></rokObavestenja>',
+          hideIf: (el: any) => el.hasChildElement('rokObavestenja'),
+        },
+        {
+          caption: 'Додај <tekst>',
+          action: Xonomy.newElementChild,
+          actionParameter: '<tekst></tekst>',
+          hideIf: (el: any) => el.hasChildElement('tekst'),
+        },
+      ],
+      attributes: [],
+      elements: {},
+    },
+    dokument: {
+      menu: [
+        {
+          caption: 'Додај <naziv>',
+          action: Xonomy.newElementChild,
+          actionParameter: '<naziv></naziv>',
+          hideIf: (el: any) => el.hasChildElement('naziv'),
+        },
+        {
+          caption: 'Додај <informacija>',
+          action: Xonomy.newElementChild,
+          actionParameter: '<informacija></informacija>',
+        },
+      ],
+      attributes: [],
+      elements: {},
+    },
+    naziv: { hasText: true, oneliner: true, asker: Xonomy.askString },
+    informacija: { hasText: true, oneliner: true, asker: Xonomy.askString },
+    rokObavestenja: { hasText: true, oneliner: true, asker: Xonomy.askString },
+    tekst: { hasText: true, oneliner: true, asker: Xonomy.askString },
+    paragraf: { hasText: true, oneliner: true, asker: Xonomy.askString },
   },
 };
