@@ -1,0 +1,49 @@
+<div>
+  <h5>Жалбе</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Документ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zalba of zalbe; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><code>линк ка документу</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Решења</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Документ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resenje of resenja; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><code>линк ка документу</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Извештаји</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Документ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let izvestaj of izvestaji; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><code>линк ка документу</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
