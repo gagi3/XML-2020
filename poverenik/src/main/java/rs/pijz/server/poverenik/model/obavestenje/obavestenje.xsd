@@ -48,6 +48,7 @@
             <xs:element name="informacija" type="xs:string"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:ID"/>
+        <xs:attribute name="zahtevID" type="xs:string"/>
         <xs:attribute name="broj" type="xs:string"/>
         <xs:attribute name="datum" type="xs:date"/>
         <xs:attribute name="datum_zahtevanja" type="xs:date"/>
@@ -56,5 +57,6 @@
         <xs:attribute name="vreme_uvida_do" type="xs:time"/>
         <xs:attribute name="sluzbenikID" type="xs:string"/>
         <xs:attribute name="gradjaninID" type="xs:string"/>
+        <xs:attribute name="zahtevPrihvacen" type="xs:boolean"/>
     </xs:complexType>
 </xs:schema>

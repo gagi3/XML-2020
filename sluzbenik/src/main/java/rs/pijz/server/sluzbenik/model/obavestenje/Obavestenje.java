@@ -1,17 +1,14 @@
 
 package rs.pijz.server.sluzbenik.model.obavestenje;
 
-import rs.pijz.server.sluzbenik.model.common.Adresa;
-import rs.pijz.server.sluzbenik.model.common.FizickoLice;
-import rs.pijz.server.sluzbenik.model.common.MetaData;
-import rs.pijz.server.sluzbenik.model.common.PravnoLice;
+import rs.pijz.server.sluzbenik.model.common.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -78,6 +75,7 @@ import java.util.List;
  *         &lt;element name="informacija" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="zahtevID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="broj" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_zahtevanja" type="{http://www.w3.org/2001/XMLSchema}date" />
@@ -86,6 +84,7 @@ import java.util.List;
  *       &lt;attribute name="vreme_uvida_do" type="{http://www.w3.org/2001/XMLSchema}time" />
  *       &lt;attribute name="sluzbenikID" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="gradjaninID" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="zahtevPrihvacen" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -131,6 +130,8 @@ public class Obavestenje {
     @XmlID
     @XmlSchemaType(name = "ID")
     protected String id;
+    @XmlAttribute(name = "zahtevID")
+    protected String zahtevID;
     @XmlAttribute(name = "broj")
     protected String broj;
     @XmlAttribute(name = "datum")
@@ -152,6 +153,8 @@ public class Obavestenje {
     protected String sluzbenikID;
     @XmlAttribute(name = "gradjaninID")
     protected String gradjaninID;
+    @XmlAttribute(name = "zahtevPrihvacen")
+    protected Boolean zahtevPrihvacen;
 
     /**
      * Gets the value of the metadata property.
@@ -386,6 +389,30 @@ public class Obavestenje {
     }
 
     /**
+     * Gets the value of the zahtevID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getZahtevID() {
+        return zahtevID;
+    }
+
+    /**
+     * Sets the value of the zahtevID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setZahtevID(String value) {
+        this.zahtevID = value;
+    }
+
+    /**
      * Gets the value of the broj property.
      * 
      * @return
@@ -575,6 +602,30 @@ public class Obavestenje {
      */
     public void setGradjaninID(String value) {
         this.gradjaninID = value;
+    }
+
+    /**
+     * Gets the value of the zahtevPrihvacen property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isZahtevPrihvacen() {
+        return zahtevPrihvacen;
+    }
+
+    /**
+     * Sets the value of the zahtevPrihvacen property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setZahtevPrihvacen(Boolean value) {
+        this.zahtevPrihvacen = value;
     }
 
 
