@@ -31,7 +31,7 @@ public class ZalbaOdlukaEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exchangeZalbaOdlukaRequest")
 	@ResponsePayload
-	public ExchangeZalbaOdlukaResponse exchangeZalbaCutanje(@RequestPayload ExchangeZalbaOdlukaRequest request)
+	public ExchangeZalbaOdlukaResponse exchangeZalbaOdluka(@RequestPayload ExchangeZalbaOdlukaRequest request)
 			throws Exception {
 		ExchangeZalbaOdlukaResponse response = new ExchangeZalbaOdlukaResponse();
 		response.setStatus(zalbaOdlukaRepositorySOAP.exchangeZalbaOdluka(request.getZalbaOdluka()));
