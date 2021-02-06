@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateResenjeComponent } from './resenje/create-resenje/create-resenje.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateResenjeComponent
   ],
   imports: [
     BrowserModule,
