@@ -3,7 +3,7 @@ Informacioni sistem za pristup informacijama od javnog značaja.
 
 ### Demo
 
-(YouTube Link)
+https://youtu.be/QroqvgmKYQg
 
 ### Pokretanje
 
