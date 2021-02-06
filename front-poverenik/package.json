@@ -23,6 +23,8 @@
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "bootstrap": "^4.5.0",
     "rxjs": "~6.6.0",
+    "stream": "^0.0.2",
+    "timers": "^0.1.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

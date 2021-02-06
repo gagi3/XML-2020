@@ -24,6 +24,7 @@ export class AuthService {
 
     this.httpOptions = {
       headers: this.httpHeaders,
+      responseType: 'text',
     };
   }
 
@@ -60,5 +61,9 @@ export class AuthService {
       korisnik.toXML(),
       this.httpOptions
     );
+  }
+
+  logout() {
+    localStorage.removeItem('token');
   }
 }
