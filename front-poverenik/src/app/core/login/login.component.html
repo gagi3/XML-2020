@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="c-login">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input
+      name="email"
+      type="email"
+      placeholder="email"
+      formControlName="email"
+      class="form-control mb-2"
+    />
+    <input
+      name="password"
+      type="password"
+      placeholder="password"
+      formControlName="password"
+      class="form-control mb-2"
+    />
+    <button
+      type="submit"
+      class="btn-primary mr-2"
+      [disabled]="loginForm.invalid"
+    >
+      Login
+    </button>
+    <a href="/register">Register</a>
+  </form>
+</div>
