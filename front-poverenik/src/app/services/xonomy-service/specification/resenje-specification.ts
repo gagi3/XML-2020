@@ -1,3 +1,10 @@
+import {
+  adresaSpecification,
+  fizickoLiceSpecification,
+  pravnoLiceSpecification,
+  tuzbaSpecification,
+} from './common-specification';
+
 declare const Xonomy: any;
 
 const validateAttribute = (el: any, attribute: string) => {
@@ -162,72 +169,15 @@ export const resenjeSpecification = {
     },
     trazilac: {
       mustBeBefore: ['poverenik', 'ustanova', 'dispozitiv', 'obrazlozenje'],
-      menu: [
-        {
-          caption: 'Додај <ime>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<ime></ime>',
-          hideIf: (el: any) => el.hasChildElement('ime'),
-        },
-        {
-          caption: 'Додај <prezime>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<prezime></prezime>',
-          hideIf: (el: any) => el.hasChildElement('prezime'),
-        },
-        {
-          caption: 'Додај <adresa>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<adresa></adresa>',
-          hideIf: (el: any) => el.hasChildElement('prezime'),
-        },
-      ],
-      attributes: [],
-      elements: {},
+      ...fizickoLiceSpecification,
     },
     poverenik: {
       mustBeBefore: ['ustanova', 'dispozitiv', 'obrazlozenje'],
-      menu: [
-        {
-          caption: 'Додај <ime>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<ime></ime>',
-          hideIf: (el: any) => el.hasChildElement('ime'),
-        },
-        {
-          caption: 'Додај <prezime>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<prezime></prezime>',
-          hideIf: (el: any) => el.hasChildElement('prezime'),
-        },
-        {
-          caption: 'Додај <adresa>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<adresa></adresa>',
-          hideIf: (el: any) => el.hasChildElement('prezime'),
-        },
-      ],
-      attributes: [],
-      elements: {},
+      ...fizickoLiceSpecification,
     },
     ustanova: {
       mustBeBefore: ['dispozitiv', 'obrazlozenje'],
-      menu: [
-        {
-          caption: 'Додај <naziv>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<naziv></naziv>',
-          hideIf: (el: any) => el.hasChildElement('naziv'),
-        },
-        {
-          caption: 'Додај <adresa>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<adresa></adresa>',
-          hideIf: (el: any) => el.hasChildElement('prezime'),
-        },
-      ],
-      attributes: [],
-      elements: {},
+      ...pravnoLiceSpecification,
     },
     dispozitiv: {
       mustBeBefore: ['obrazlozenje'],
@@ -260,30 +210,7 @@ export const resenjeSpecification = {
     },
     ime: { hasText: true, oneliner: true, asker: Xonomy.askString },
     prezime: { hasText: true, oneliner: true, asker: Xonomy.askString },
-    adresa: {
-      menu: [
-        {
-          caption: 'Додај <grad>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<grad></grad>',
-          hideIf: (el: any) => el.hasChildElement('grad'),
-        },
-        {
-          caption: 'Додај <ulica>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<ulica></ulica>',
-          hideIf: (el: any) => el.hasChildElement('ulica'),
-        },
-        {
-          caption: 'Додај <broj>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<broj></broj>',
-          hideIf: (el: any) => el.hasChildElement('broj'),
-        },
-      ],
-      attributes: [],
-      elements: {},
-    },
+    adresa: adresaSpecification,
     grad: { hasText: true, oneliner: true, asker: Xonomy.askString },
     ulica: { hasText: true, oneliner: true, asker: Xonomy.askString },
     broj: { hasText: true, oneliner: true, asker: Xonomy.askString },
@@ -333,24 +260,7 @@ export const resenjeSpecification = {
     rokObavestenja: { hasText: true, oneliner: true, asker: Xonomy.askString },
     tekst: { hasText: true, oneliner: true, asker: Xonomy.askString },
     paragraf: { hasText: true, oneliner: true, asker: Xonomy.askString },
-    tuzba: {
-      menu: [
-        {
-          caption: 'Додај <rok>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<rok></rok>',
-          hideIf: (el: any) => el.hasChildElement('rok'),
-        },
-        {
-          caption: 'Додај <taksa>',
-          action: Xonomy.newElementChild,
-          actionParameter: '<taksa></taksa>',
-          hideIf: (el: any) => el.hasChildElement('taksa'),
-        },
-      ],
-      attributes: [],
-      elements: {},
-    },
+    tuzba: tuzbaSpecification,
     rok: { hasText: true, oneliner: true, asker: Xonomy.askString },
     taksa: { hasText: true, oneliner: true, asker: Xonomy.askString },
   },
