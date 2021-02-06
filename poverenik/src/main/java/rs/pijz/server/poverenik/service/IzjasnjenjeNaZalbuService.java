@@ -7,6 +7,10 @@ import org.xml.sax.SAXException;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+
+import rs.pijz.server.poverenik.dto.sparql.IzjasnjenjeNaZalbuSPARQL;
+import rs.pijz.server.poverenik.dto.sparql.ResenjeSPARQL;
+import rs.pijz.server.poverenik.fuseki.FusekiReader;
 import rs.pijz.server.poverenik.model.izjasnjenje_na_zalbu.IzjasnjenjeNaZalbu;
 import rs.pijz.server.poverenik.repository.CommonRepository;
 import rs.pijz.server.poverenik.repository.IzjasnjenjeNaZalbuRepository;
@@ -19,7 +23,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -42,6 +48,8 @@ public class IzjasnjenjeNaZalbuService {
 
     private final String htmlOutput = "../data/html/izjasnjenje-na-zalbu.html";
     private final String pdfOutput = "../data/pdf/izjasnjenje-na-zalbu.pdf";
+    
+    private static final String QUERY_FILEPATH = "src/main/resources/rq/izjasnjenje-na-zalbu.rq";
 
     public List<IzjasnjenjeNaZalbu> findAll() throws XMLDBException {
         String xPath = "/i:IzjasnjenjeNaZalbu";
@@ -191,4 +199,12 @@ public class IzjasnjenjeNaZalbuService {
     public ByteArrayOutputStream convertToPDF(String xml) throws Exception {
         return xslfoTransformer.generatePDF(xml, pdfOutput, xslfoTemplatePath);
     }
+    
+    public ArrayList<String> searchMetadata(IzjasnjenjeNaZalbuSPARQL izjasnjenjeNaZalbuSPARQL, String dataset) throws IOException {
+		Map<String, String> params = new HashMap<>();
+		params.put("tekstIzjave", izjasnjenjeNaZalbuSPARQL.getTekstIzjave());
+
+		ArrayList<String> result = FusekiReader.executeQuery(params, QUERY_FILEPATH, dataset);
+		return result;
+	}
 }

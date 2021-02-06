@@ -16,8 +16,8 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    @GetMapping(value = "/download")
-    private ResponseEntity<InputStreamResource> getOne(@RequestParam String filename) {
+    @GetMapping(value = "/download/{filename}")
+    private ResponseEntity<InputStreamResource> getOne(@PathVariable String filename) {
         try {
             InputStreamResource resource = fileService.getFile(filename);
             HttpHeaders headers = new HttpHeaders();

@@ -2,7 +2,13 @@ package rs.pijz.server.poverenik.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeFactory;
@@ -19,8 +25,8 @@ import org.xmldb.api.base.XMLDBException;
 
 import com.itextpdf.text.DocumentException;
 
-import rs.pijz.server.poverenik.model.gradjanin.Gradjanin;
-import rs.pijz.server.poverenik.model.resenje.Resenje;
+import rs.pijz.server.poverenik.dto.sparql.ZalbaCutanjeSPARQL;
+import rs.pijz.server.poverenik.fuseki.FusekiReader;
 import rs.pijz.server.poverenik.model.sluzbenik.Sluzbenik;
 import rs.pijz.server.poverenik.model.zalba_cutanje.ZalbaCutanje;
 import rs.pijz.server.poverenik.repository.CommonRepository;
@@ -73,6 +79,8 @@ public class ZalbaCutanjeService {
 
     private final String htmlOutput = "../data/html/zalba-cutanje.html";
     private final String pdfOutput = "../data/pdf/zalba-cutanje.pdf";
+    
+    private static final String QUERY_FILEPATH = "src/main/resources/rq/zalba-cutanje.rq";
 
     public List<ZalbaCutanje> findAll() throws XMLDBException {
         String xPath = "/zc:ZalbaCutanje";
@@ -215,10 +223,9 @@ public class ZalbaCutanjeService {
 
         String xhtmlURL = String.format("http://localhost:8081/file/download/%s", this.convertToHTMLMail(xml, zc.getId()));
         String pdfURL = String.format("http://localhost:8081/file/download/%s", this.convertToPDFMail(xml, zc.getId()));
-        this.exchangeSOAP(zc);
 
         GregorianCalendar now = new GregorianCalendar();
-        this.sendZalbaSluzbenikSOAP("djvlada03@gmail.com", zc.getZahtevID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
+        this.sendZalbaSluzbenikSOAP(sluzbenik.getKorisnik().getUsername(), zc.getZahtevID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
 
         return zc;
     }
@@ -236,7 +243,7 @@ public class ZalbaCutanjeService {
         String xPath = "/zc:ZalbaCutanje[@id='" + id + "']";
         ResourceSet result = commonRepository.queryZalbaCutanje(xPath);
         ZalbaCutanje zalbaCutanje = (ZalbaCutanje) commonRepository.resourceSetToClass(result, ZalbaCutanje.class);
-        String xmlInstance = "../data/xsd/instance/" + "zalba-cutanje-" + id + ".xml";
+        String xmlInstance = mailOutput + "zalba-cutanje-" + id + ".xml";
         String xml = "../data/xml/" + "zalba-cutanje-" + id + ".xml";
         documentService.createXML(ZalbaCutanje.class, zalbaCutanje, xmlInstance);
         System.out.println("Docs generated!");
@@ -263,6 +270,15 @@ public class ZalbaCutanjeService {
 
         return name;
     }
+    
+    public ArrayList<String> searchMetadata(ZalbaCutanjeSPARQL zalbaCutanjeSPARQL, String dataset) throws IOException {
+		Map<String, String> params = new HashMap<>();
+		params.put("ime", zalbaCutanjeSPARQL.getIme());
+		params.put("prezime", zalbaCutanjeSPARQL.getPrezime());
+
+		ArrayList<String> result = FusekiReader.executeQuery(params, QUERY_FILEPATH, dataset);
+		return result;
+	}
     
     // SOAP communications
     

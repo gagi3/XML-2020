@@ -1,0 +1,6 @@
+SELECT * FROM <http://localhost:8080/fuseki/Obavestenje/data/metadata> where{
+    ?obavestenje <http://www.pijz.rs/commonime> ?ime .
+    ?obavestenje <http://www.pijz.rs/commonprezime> ?prezime .
+    FILTER(CONTAINS(UCASE(str(?ime)), UCASE("{{ime}}"))
+    && CONTAINS(UCASE(str(?prezime)), UCASE("{{prezime}}"))).
+}

@@ -12,7 +12,7 @@ import rs.pijz.server.poverenik.soap.communication.resenje.SendResenjeSluzbenikR
 
 public class ResenjeClient extends WebServiceGatewaySupport {
 
-	private static String WSDL_URL = "http://localhost:8081/ws/resenje-soap.wsdl";
+	private static String WSDL_URL = "http://localhost:8083/ws/resenje-soap.wsdl";
 
 	private static String SEND_GRADJANIN_REQUEST_CALLBACK = "http://www.pijz.rs/resenje/SendResenjeGradjaninRequest";
 	private static String SEND_SLUZBENIK_REQUEST_CALLBACK = "http://www.pijz.rs/resenje/SendResenjeSluzbenikRequest";

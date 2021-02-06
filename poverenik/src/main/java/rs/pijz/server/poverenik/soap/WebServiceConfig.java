@@ -69,7 +69,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("ObavestenjePort");
 		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/оbavestenje");
+		wsdl11Definition.setTargetNamespace("http://www.pijz.rs/obavestenje");
 		wsdl11Definition.setSchema(obavestenjeSchema);
 		return wsdl11Definition;
 	}
