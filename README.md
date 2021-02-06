@@ -72,6 +72,8 @@ Generisanje izveštaja službenika je dostupno na `GET localhost:8082/izvestaj/g
 
 Za više informacija, pogledati foldere `controller` u aplikacijama poverenika i službenika.
 
+Primeri tela zahteva za kreiranje novih XML dokumenata se nalaze u folderu `/data/xml-request`.
+
 Jedan primer: `GET localhost:8081/resenje?poverenikID=ID001`. Ovaj zahtev preuzima iz baze podataka poverenika sva rešenja koja sadrže ID001 kao ID poverenika, tačnije, sva rešenja koja je izdao poverenik sa ID001.
 
 ##### Front end
