@@ -17,7 +17,7 @@
     <button
       type="submit"
       class="btn-primary mr-2"
-      [disabled]="loginForm.invalid"
+      [disabled]="loginForm && loginForm.invalid"
     >
       Login
     </button>

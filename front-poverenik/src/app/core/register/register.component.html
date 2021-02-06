@@ -55,7 +55,7 @@
     <button
       type="submit"
       class="btn-primary mr-2"
-      [disabled]="registerForm.invalid"
+      [disabled]="registerForm && registerForm.invalid"
     >
       Register
     </button>
