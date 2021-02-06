@@ -30,8 +30,9 @@ export class CreateResenjeComponent implements OnInit {
 
   submitXML(): void {
     const XML = Xonomy.harvest();
-    this.resenjeService.create(XML).subscribe((data) => {
-      console.log(data);
-    });
+    console.log(XML);
+    // this.resenjeService.create(XML).subscribe((data) => {
+    //  console.log(data);
+    // });
   }
 }
