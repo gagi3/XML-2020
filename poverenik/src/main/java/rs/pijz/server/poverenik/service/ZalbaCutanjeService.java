@@ -2,13 +2,7 @@ package rs.pijz.server.poverenik.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeFactory;
@@ -214,6 +208,12 @@ public class ZalbaCutanjeService {
         }
         while (existsById(zalbaCutanje.getId())) {
             zalbaCutanje.setId(UUID.randomUUID().toString());
+        }
+        Calendar zcd = zalbaCutanje.getDatum().toGregorianCalendar();
+        Calendar zd = zalbaCutanje.getDatumZahteva().toGregorianCalendar();
+        zd.add(Calendar.DAY_OF_MONTH, 15);
+        if (zcd.before(zd)) {
+            throw new Exception("Nije proteklo 15 dana od datuma podnosenja zahteva!");
         }
         Sluzbenik sluzbenik = sluzbenikService.getOne(zalbaCutanje.getSluzbenikID());
         String poverenik = authenticationService.getUsername();
