@@ -1,6 +1,37 @@
 <div class="c-register">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <input
+      name="ime"
+      placeholder="ime"
+      formControlName="ime"
+      class="form-control mb-2"
+    />
+    <input
+      name="prezime"
+      placeholder="prezime"
+      formControlName="prezime"
+      class="form-control mb-2"
+    />
+    <input
+      name="grad"
+      placeholder="grad"
+      formControlName="grad"
+      class="form-control mb-2"
+    />
+    <input
+      name="ulica"
+      placeholder="ulica"
+      formControlName="ulica"
+      class="form-control mb-2"
+    />
+    <input
+      name="broj"
+      type="number"
+      placeholder="broj"
+      formControlName="broj"
+      class="form-control mb-2"
+    />
+    <input
       name="email"
       type="email"
       placeholder="email"
@@ -24,7 +55,7 @@
     <button
       type="submit"
       class="btn-primary mr-2"
-      [disabled]="loginForm.invalid"
+      [disabled]="registerForm.invalid"
     >
       Register
     </button>
