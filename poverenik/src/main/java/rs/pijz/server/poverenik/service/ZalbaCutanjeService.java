@@ -226,7 +226,7 @@ public class ZalbaCutanjeService {
 
         GregorianCalendar now = new GregorianCalendar();
         this.sendZalbaSluzbenikSOAP(sluzbenik.getKorisnik().getUsername(), zc.getZahtevID(), DatatypeFactory.newInstance().newXMLGregorianCalendar(now), poverenik, xhtmlURL, pdfURL);
-
+        this.exchangeSOAP(zc);
         return zc;
     }
 

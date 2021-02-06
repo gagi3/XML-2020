@@ -192,7 +192,7 @@ public class ZalbaCutanjeService {
             throw new Exception("Nije proteklo 15 dana od datuma podnosenja zahteva!");
         }
         
-        this.exchangeSOAP(zalbaCutanje);
+//        this.exchangeSOAP(zalbaCutanje);
         
         return zalbaCutanjeRepository.save(zalbaCutanje);
     }

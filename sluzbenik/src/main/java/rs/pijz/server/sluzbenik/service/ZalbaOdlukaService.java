@@ -203,7 +203,7 @@ public class ZalbaOdlukaService {
             zalbaOdluka.setId(UUID.randomUUID().toString());
         }
         
-        this.exchangeSOAP(zalbaOdluka);
+//        this.exchangeSOAP(zalbaOdluka);
         
         return zalbaOdlukaRepository.save(zalbaOdluka);
     }
