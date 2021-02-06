@@ -8,9 +8,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CreateResenjeComponent } from './resenje/create-resenje/create-resenje.component';
+import { DashboardComponent } from './core/dashboard/dashboard.component';
+import { HeaderComponent } from './core/header/header.component';
+import { LoginComponent } from './core/login/login.component';
+import { RegisterComponent } from './core/register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateResenjeComponent],
+  declarations: [AppComponent, CreateResenjeComponent, DashboardComponent, HeaderComponent, LoginComponent, RegisterComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
