@@ -1,0 +1,64 @@
+<div class="c-register">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input
+      name="ime"
+      placeholder="ime"
+      formControlName="ime"
+      class="form-control mb-2"
+    />
+    <input
+      name="prezime"
+      placeholder="prezime"
+      formControlName="prezime"
+      class="form-control mb-2"
+    />
+    <input
+      name="grad"
+      placeholder="grad"
+      formControlName="grad"
+      class="form-control mb-2"
+    />
+    <input
+      name="ulica"
+      placeholder="ulica"
+      formControlName="ulica"
+      class="form-control mb-2"
+    />
+    <input
+      name="broj"
+      type="number"
+      placeholder="broj"
+      formControlName="broj"
+      class="form-control mb-2"
+    />
+    <input
+      name="email"
+      type="email"
+      placeholder="email"
+      formControlName="email"
+      class="form-control mb-2"
+    />
+    <input
+      name="password"
+      type="password"
+      placeholder="password"
+      formControlName="password"
+      class="form-control mb-2"
+    />
+    <input
+      name="confirmPassword"
+      type="password"
+      placeholder="confirm password"
+      formControlName="confirmPassword"
+      class="form-control mb-2"
+    />
+    <button
+      type="submit"
+      class="btn-primary mr-2"
+      [disabled]="registerForm && registerForm.invalid"
+    >
+      Register
+    </button>
+    <a href="/login">Back to login</a>
+  </form>
+</div>
